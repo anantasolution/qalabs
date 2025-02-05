@@ -57,7 +57,7 @@ function Navbar() {
                     </button>
                 </div>
 
-                <div className='flex justify-between items-center gap-7'>
+                <div className='flex  justify-between items-center gap-7  md:hidden'>
 
                 {/* Mobile Menu Toggle */}
                 <button
