@@ -35,7 +35,7 @@ const Home = () => {
     };
 
     return (
-        <div className="absolute min-h-screen w-full">
+        <div id='home' className="relative min-h-screen w-full">
             {/* Dark overlay for background image */}
             <div
                 className="absolute inset-0 bg-black/70 z-10"
@@ -50,7 +50,7 @@ const Home = () => {
 
            
             {/* Hero Content */}
-            <div className="relative z-20 container mx-auto px-4 sm:px-6 pt-16 sm:pt-24 md:pt-32 pb-16 sm:pb-24 md:pb-32">
+            <div className="relative z-20 container mx-auto px-4 sm:px-6 pt-16 sm:pt-24 md:pt-40 pb-16 sm:pb-24 md:pb-32">
                 <div className="max-w-4xl mx-auto text-center">
                     <motion.h1
                         className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6"
