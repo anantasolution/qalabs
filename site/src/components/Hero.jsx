@@ -72,7 +72,7 @@ const HeroSection = () => {
 
   return (
     <div
-      className="min-h-screen bg-black text-white p-14 border-b border-[#717171]"
+      className=" bg-[#151515] text-white p-14 py-20 border-b border-[#717171]"
       ref={sectionRef}
     >
       <div className="max-w-7xl mx-auto">

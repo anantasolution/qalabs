@@ -9,10 +9,7 @@ const ProjectCard = ({id, image, title, description }) => {
   
   const [Hover,setHover] = useState(null)
 
-  console.log("Hover value--->",Hover)
-
   const onMouseIn = (id) =>{
-     console.log("hover on ",id)
      setHover(id)
   }
 
@@ -44,6 +41,21 @@ const ProjectCard = ({id, image, title, description }) => {
 
 const FeaturedProjectSection = () => {
   const projects = [
+    {
+      image: P1,
+      title: "Man & Dance Company Perfume",
+      description: "Vehicula magna morbi scelerisque phasellus neque facilisis quisque venenatis mauris curae ex donec dis bibendum."
+    },
+    {
+      image: P2,
+      title: "Nancy Watch Promotional Landing page",
+      description: "Vehicula magna morbi scelerisque phasellus neque facilisis quisque venenatis mauris curae ex donec dis bibendum."
+    },
+    {
+      image: P3,
+      title: "Malika Perfume Funnel Landing Page",
+      description: "Vehicula magna morbi scelerisque phasellus neque facilisis quisque venenatis mauris curae ex donec dis bibendum."
+    },
     {
       image: P1,
       title: "Man & Dance Company Perfume",

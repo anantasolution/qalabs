@@ -1,8 +1,20 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { motion } from 'framer-motion';
+
 
 import HERO from '../assets/herobg.jpg'
+
+//Importing components
+import HeroSection from '../components/Hero';
+import HelpPage from '../components/HelpPage';
+import Cards from '../components/Cards';
+import FeaturedProjectSection from '../components/FeatureProduct';
+import InovationDesign from '../components/InovationDesign';
+import TestimonialSlider from '../components/TestimonialSlider';
+import StartJourneySection from '../components/StartJourneySection';
+import WhyChooseUs from '../components/WhyChooseUs';
+import HeroForm from '../components/HeroForm';
+import Video from '../components/Video';
 
 const Home = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -35,6 +47,7 @@ const Home = () => {
     };
 
     return (
+    <>
         <div id='home' className="relative min-h-screen w-full">
             {/* Dark overlay for background image */}
             <div
@@ -119,7 +132,21 @@ const Home = () => {
                     </motion.div>
                 </div>
             </div>
+            <div className='md:relative z-50'>
+                 <HeroForm></HeroForm>
+            </div>
         </div>
+        
+        <HeroSection></HeroSection>
+        <HelpPage></HelpPage>
+        <InovationDesign></InovationDesign>
+        <Video></Video>
+        <Cards></Cards>
+        <StartJourneySection></StartJourneySection>
+        <FeaturedProjectSection></FeaturedProjectSection>
+        <WhyChooseUs></WhyChooseUs>
+        <TestimonialSlider></TestimonialSlider>
+    </>
     );
 };
 

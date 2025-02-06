@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import BI from '../assets/background.jpeg'
 
 const ContactPage = () => {
 
@@ -42,7 +43,9 @@ const ContactPage = () => {
     return (
         <>
             {/* Title */}
-            <div className="relative min-h-[70vh]  bg-cover bg-center" style={{ backgroundImage: "url('https://template.creativemox.com/webiso/wp-content/uploads/sites/23/2024/06/3d-black-paper-craft-cubic-patterned-background.jpg')" }}>
+            <div className="relative min-h-[70vh]  bg-cover bg-center" 
+             style={{ backgroundImage: `url(${BI})` }} 
+            >
 
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
                     <motion.div
@@ -67,29 +70,28 @@ const ContactPage = () => {
                         animate="visible"
                         variants={upsideVariants}
                     >
-                        <p className="text-white text-3xl opacity-100">
+                        <p className="text-white text-[25px] opacity-100">
                             Start the conversation to establish a good <br /> relationship and business.
                         </p>
                     </motion.div>
                 </div>
 
             </div>
-
-            <div className="min-h-screen bg-neutral-900 text-white p-8">
-                <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
+            <div className="min-h-screen bg-neutral-900 text-white p-8 px-16 w-full">
+                <div className="max-w-full mx-auto flex gap-12 pt-16 mt-10 pb-16 mb-10">
                     {/* Left Column */}
                     <motion.div
-                        className="space-y-8"
+                        className="space-y-10 w-[45%] "
                         initial="hidden"
                         animate="visible"
                         variants={leftColumnVariants}
                     >
                         <div>
                             <h2 className="text-lime-300 text-sm font-medium mb-2">GET IN TOUCH</h2>
-                            <h1 className="bg-clip-text text-white font-semibold text-4xl">
+                            <h1 className="bg-clip-text text-white font-semibold text-[35px]">
                                 Seamless Communication,
                                 <br />
-                                <span className="text-transparent bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text font-semibold text-4xl">
+                                <span className="text-transparent bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text font-semibold text-[35px]">
                                     Global Impact <span className="text-white">.</span>
                                 </span>
                             </h1>
@@ -98,10 +100,12 @@ const ContactPage = () => {
                                 Auctor dictumst inceptos metus est ad himenaeos habitasse <br /> litora natoque libero nunc
                             </p>
                             <br />
-                            <div className="border-t border-gray-500 my-4"></div>
+                            <div className="max-w-md w-300">
+                                <div className="border-t border-gray-500 my-4 w-400 mx-left"></div>
+                            </div>
                         </div>
 
-                        <div className="space-y-6">
+                        <div className="space-y-7">
                             <div className="flex items-center gap-4">
                                 <div className="bg-lime-300 p-4 rounded-full">
                                     <svg className="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -146,70 +150,48 @@ const ContactPage = () => {
 
                     {/* Right Column - Contact Form */}
                     <motion.div
-                        className="bg-neutral-900 border border-zinc-600 rounded-2xl p-8"
+                        className="bg-neutral-900 col-span-2 w-[55%] border border-zinc-600 rounded-2xl py-8 px-10 " // Reduced padding (py-12 to py-8)
+                        style={{ maxWidth: '5000px', maxHeight: '100vh' }} // Limiting height to 80% of the viewport height
                         initial="hidden"
                         animate="visible"
                         variants={rightColumnVariants}
                     >
-                        <h2 className="text-4xl mb-6">Send us a message</h2>
-                        <p className="text-gray-400 mb-8">
+                        <h2 className="text-4xl mb-2">Send us a message</h2>
+                        <p className="text-gray-400 mb-4">
                             Auctor dictumst inceptos metus est ad himenaeos habitasse litora natoque libero nunc
                         </p>
 
-                        <form className="space-y-6">
-                            <div className="grid md:grid-cols-2 gap-6">
+                        <form className="space-y-4">
+                            <div className="grid md:grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm font-medium mb-2">Name</label>
-                                    <input
-                                        type="text"
-                                        className="w-full px-4 py-3 bg-neutral text-white rounded-lg border border-gray-600"
-                                        placeholder="Name"
-                                    />
+                                    <label className="block text-sm font-medium mb-1">Name</label>
+                                    <input type="text" className="w-full px-4 py-2 bg-neutral-800 text-white rounded-lg border border-gray-600" placeholder="Name" />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium mb-2">Company</label>
-                                    <input
-                                        type="text"
-                                        className="w-full px-4 py-3 bg-neutral text-white rounded-lg border border-gray-600"
-                                        placeholder="Company"
-                                    />
+                                    <label className="block text-sm font-medium mb-1">Company</label>
+                                    <input type="text" className="w-full px-4 py-2 bg-neutral-800 text-white rounded-lg border border-gray-600" placeholder="Company" />
                                 </div>
                             </div>
 
-                            <div className="grid md:grid-cols-2 gap-6">
+                            <div className="grid md:grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-sm font-medium mb-2">Phone</label>
-                                    <input
-                                        type="tel"
-                                        className="w-full px-4 py-3 bg-neutral text-white rounded-lg border border-gray-600"
-                                        placeholder="Phone"
-                                    />
+                                    <label className="block text-sm font-medium mb-1">Phone</label>
+                                    <input type="tel" className="w-full px-4 py-2 bg-neutral-800 text-white rounded-lg border border-gray-600" placeholder="Phone" />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium mb-2">Email</label>
-                                    <input
-                                        type="email"
-                                        className="w-full px-4 py-3 bg-neutral text-white rounded-lg border border-gray-600"
-                                        placeholder="Email"
-                                    />
+                                    <label className="block text-sm font-medium mb-1">Email</label>
+                                    <input type="email" className="w-full px-4 py-2 bg-neutral-800 text-white rounded-lg border border-gray-600" placeholder="Email" />
                                 </div>
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium mb-2">Subject</label>
-                                <input
-                                    type="text"
-                                    className="w-full px-4 py-3 bg-neutral text-white rounded-lg border border-gray-600"
-                                    placeholder="Subject"
-                                />
+                                <label className="block text-sm font-medium mb-1">Subject</label>
+                                <input type="text" className="w-full px-4 py-2 bg-neutral-800 text-white rounded-lg border border-gray-600" placeholder="Subject" />
                             </div>
 
                             <div>
-                                <label className="block text-sm font-medium mb-2">Message</label>
-                                <textarea
-                                    placeholder="Message"
-                                    className="w-full px-4 py-3 bg-neutral text-white rounded-lg border border-gray-600"
-                                ></textarea>
+                                <label className="block text-sm font-medium mb-1">Message</label>
+                                <textarea placeholder="Message" className="w-full px-4 py-2 bg-neutral-800 text-white rounded-lg border border-gray-600 h-24"></textarea>
                             </div>
 
                             <button
@@ -230,6 +212,7 @@ const ContactPage = () => {
                     </motion.div>
                 </div>
             </div>
+
 
             {/* Google Maps Section */}
             <div>

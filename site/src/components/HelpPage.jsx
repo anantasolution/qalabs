@@ -7,12 +7,6 @@ import HERO from "../assets/hero-section.jpg";
 import LOGO from "../assets/logo.png";
 
 const logos = [
-  //   "logo1.png",
-  //   "logo2.png",
-  //   "logo3.png",
-  //   "logo4.png",
-  //   "logo5.png",
-  //   "logo6.png",
   LOGO,
   LOGO,
   LOGO,
@@ -23,9 +17,9 @@ const logos = [
 
 const HelpPage = () => {
   return (
-    <div className="w-full min-h-screen bg-black">
+    <div className="w-full bg-[#151515]">
       {/* Logo Slider */}
-      <div className="w-full py-10 bg-black flex justify-cent">
+      <div className="w-full py-10 bg-[#151515] flex justify-cent">
         <Swiper
           spaceBetween={20}
           slidesPerView={4}
@@ -43,7 +37,7 @@ const HelpPage = () => {
       </div>
 
       {/* Main Content */}
-      <div className="relative w-full min-h-[100vh] flex items-center justify-center">
+      <div className="relative py-32 w-full flex items-center justify-center">
         <img
           src={HERO}
           alt="Background"

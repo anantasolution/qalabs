@@ -1,0 +1,55 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+
+
+*{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  scroll-behavior: smooth;
+}
+
+
+
+/* Pulsating Circle Animation */
+.pulsating-circle {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: rgba(1, 164, 233, 0.4);
+  animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+/* Play Button Animation */
+.pulsating-dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  /* animation: pulse-dot 1.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite; */
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-dot {
+  0%, 100% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1);
+  }
+}

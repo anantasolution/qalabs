@@ -66,7 +66,7 @@ const Questions = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 p-6">
+    <div className=" bg-[#151515] px-6 py-20">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <p className="text-lime-300 uppercase mb-4">PAYMENT & ORDER</p>
