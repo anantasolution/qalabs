@@ -1,223 +1,228 @@
 import React, { useState, useEffect } from 'react';
 import { Check } from 'lucide-react';
-import TEAM from '../assets/TeamWork.jpeg'
+import TEAM from '../assets/TeamWork.jpeg';
+import { motion } from 'framer-motion';
 
-
-function About() {
-    const services = [
-        'Custom Solutions',
-        'Cutting-Edge Design',
-        'SEO Optimization',
-        'Responsive Design',
-        'Innovative Technology',
-        'Security and Reliability'
-      ];
-    
-      const stats = [
-        { value: '27K+', label: 'Project Done' },
-        { value: '4K+', label: 'Happy Client' },
-        { value: '4.7', label: 'Client Reviews' }
-      ];
-    
-      // Add company logos array
-      const logos = [
-        'https://template.creativemox.com/webiso/wp-content/uploads/sites/23/2024/06/logo_6.png',
-        'https://template.creativemox.com/webiso/wp-content/uploads/sites/23/2024/06/logo_7.png',
-        'https://template.creativemox.com/webiso/wp-content/uploads/sites/23/2024/06/logo_5.png',
-        'https://template.creativemox.com/webiso/wp-content/uploads/sites/23/2024/06/logo_8.png',
-        'https://template.creativemox.com/webiso/wp-content/uploads/sites/23/2024/06/logo_3.png',
-      ];
-    
-      const [animatedStats, setAnimatedStats] = useState(stats);
-    
-      useEffect(() => {
-        const animateStats = () => {
-          const newStats = stats.map((stat) => {
-            let endValue = stat.value.replace('+', '');
-            let isDecimal = endValue.includes('.');
-            endValue = parseFloat(endValue);
-            const duration = Math.max(5000, (endValue / 100) * 1000);
-    
-            return {
-              ...stat,
-              value: 0,
-              duration,
-              isDecimal,
-              endValue
-            };
-          });
-    
-          setAnimatedStats(newStats);
-    
-          newStats.forEach((stat, index) => {
-            let currentValue = 0;
-            const interval = setInterval(() => {
-              currentValue = currentValue + (stat.endValue / stat.duration) * 50;
-              if (currentValue >= stat.endValue) {
-                clearInterval(interval);
-                currentValue = stat.endValue;
-              }
-              setAnimatedStats((prevStats) => {
-                const newStats = [...prevStats];
-                newStats[index] = { ...newStats[index], value: currentValue };
-                return newStats;
-              });
-            }, 50);
-          });
-        };
-    
-        animateStats();
-      }, []);
+// HeroSection Component
+const HeroSection = () => {
   return (
-    <div className="min-h-screen bg-[#1a1a1a]">
-    {/* About Us Section */}
-    <section className="min-h-[400px] bg-[#1a1a1a] flex flex-col items-center justify-center relative overflow-hidden">
-      <div className="relative z-10 text-center space-y-4 px-4">
-        <h1 className="text-6xl md:text-7xl font-bold">
-          <span className="text-[#7CD7F9]">About </span>
-          <span className="text-[#5CDA92]">us</span>
-        </h1>
-        <p className="text-white text-xl md:text-2xl font-light">Your Partner in Innovative Web Design.</p>
-      </div>
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute -right-20 -bottom-40 w-96 h-96 bg-gradient-to-br from-gray-700 to-transparent transform rotate-45"></div>
-        <div className="absolute -left-20 -top-40 w-96 h-96 bg-gradient-to-br from-gray-800 to-transparent transform -rotate-45"></div>
-      </div>
-    </section>
-
-    {/* Main Content */}
-    <div className="max-w-7xl mx-auto px-6 mt-24 bg-[#151515] text-white min-h-screen">
-      <div className="grid grid-cols-2 gap-12 h-full">
-        {/* Left Side - Image with Services Overlay */}
-        <div className="relative">
-          <img src={TEAM || "/placeholder.svg"} alt="Team working" className="w-full rounded-lg" />
-          <div className="absolute -bottom-8 -left-4 bg-black/80 rounded-lg p-6 w-[80%]">
-            <div className="space-y-4">
-              {services.map((service, index) => (
-                <div key={index} className="flex items-center space-x-3">
-                  <div className="bg-emerald-400/10 rounded-full p-1">
-                    <Check className="h-5 w-5 text-emerald-400" />
-                  </div>
-                  <span className="text-white text-sm font-medium">{service}</span>
-                </div>
-              ))}
-            </div>
+    <div className="relative w-full h-screen overflow-hidden">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url('https://template.creativemox.com/webiso/wp-content/uploads/sites/23/2024/06/young-web-designers-working-together-at-modern-office.jpg')`
+        }}
+      />
+      {/* Content Container */}
+      <div className="relative h-full flex items-center justify-center px-4 sm:px-10">
+        <div className="bg-[#1a1a1a]/70 p-10 max-w-xl ml-0 sm:ml-16 rounded-lg">
+          <div className="space-y-4">
+            <h1 className="text-white text-3xl sm:text-5xl font-semibold leading-tight">
+              Ready to Start? Let's Build
+              <br />
+              <span className="bg-gradient-to-r from-teal-300 to-emerald-300 bg-clip-text text-transparent">
+                Something Great
+              </span>
+              <br />
+              Together!
+            </h1>
+            <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
+              Maecenas tempor ligula phasellus per hac nisi. Facilisi curae
+              <br />
+              nunc hendrerit vestibulum lobortis commodo lacus sagittis
+              <br />
+              feugiat. Est sollicitudin convallis diam.
+            </p>
+            <button className="mt-6 bg-emerald-300 hover:bg-emerald-400 text-black text-sm sm:text-base font-medium px-8 py-3 rounded-full transition-colors duration-200">
+              Start Your Journey
+            </button>
           </div>
         </div>
+      </div>
+    </div>
+  );
+};
 
-        {/* Right Side Content */}
-        <div className="space-y-8 ml-12">
-          <h3 className="text-emerald-400 font-medium">WHO WE ARE</h3>
-          <h2 className="text-5xl font-bold text-white leading-tight">
-            Innovative Solutions for Your{' '}
-            <span className="text-cyan-400">Online Success.</span>
-          </h2>
-          <p className="text-gray-400 leading-relaxed">
-            Sem iaculis facilisis convallis ex aliquam massa a venenatis blandit
-            pede rhoncus. Euismod consectetuer nostra etiam lectus potenti
-            accumsan pellentesque venenatis.
-          </p>
+const About = () => {
+  const services = [
+    'Custom Solutions',
+    'Cutting-Edge Design',
+    'SEO Optimization',
+    'Responsive Design',
+    'Innovative Technology',
+    'Security and Reliability'
+  ];
 
-          <div className="grid grid-cols-3 gap-8 pt-8 border-t border-gray-800">
-            {animatedStats.map((stat, index) => (
-              <div key={index} className="space-y-2">
-                <div className="text-4xl font-bold text-white">
-                  {stat.isDecimal ? stat.value.toFixed(1) : Math.round(stat.value)}{' '}
-                  {stat.value === 0 ? '' : '+'}
-                </div>
-                <div className="text-gray-400">{stat.label}</div>
+  const stats = [
+    { value: 27000, label: 'Projects Done' },
+    { value: 4000, label: 'Happy Clients' },
+    { value: 4.7, label: 'Client Reviews' }
+  ];
+
+  const logos = [
+    'https://template.creativemox.com/webiso/wp-content/uploads/sites/23/2024/06/logo_6.png',
+    'https://template.creativemox.com/webiso/wp-content/uploads/sites/23/2024/06/logo_7.png',
+    'https://template.creativemox.com/webiso/wp-content/uploads/sites/23/2024/06/logo_5.png',
+    'https://template.creativemox.com/webiso/wp-content/uploads/sites/23/2024/06/logo_8.png',
+    'https://template.creativemox.com/webiso/wp-content/uploads/sites/23/2024/06/logo_3.png',
+  ];
+
+  const [animatedStats, setAnimatedStats] = useState(
+    stats.map(stat => ({ ...stat, value: 0 }))
+  );
+
+  useEffect(() => {
+    const updateStats = () => {
+      stats.forEach((stat, index) => {
+        let count = 0;
+        const step = stat.value / 100;
+        const interval = setInterval(() => {
+          count += step;
+          setAnimatedStats(prevStats => {
+            const newStats = [...prevStats];
+            newStats[index] = {
+              ...newStats[index],
+              value: count >= stat.value ? stat.value : count
+            };
+            return newStats;
+          });
+          if (count >= stat.value) clearInterval(interval);
+        }, 50);
+      });
+    };
+    updateStats();
+  }, []);
+
+  return (
+    // Removed top padding so that the background image of the About Us section starts at the very top.
+    <div className="min-h-screen bg-[#151515] text-white">
+      {/* --- Modified About Us Section (Upper Side) with Background Image starting at the top --- */}
+      <div
+        className="bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "url('https://template.creativemox.com/webiso/wp-content/uploads/sites/23/2024/06/3d-black-paper-craft-cubic-patterned-background.jpg')"
+        }}
+      >
+        <section className="text-center py-16">
+          <motion.h1
+            className="text-4xl sm:text-6xl font-bold text-[#7CD7F9]"
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
+            About <span className="text-[#5CDA92]">Us</span>
+          </motion.h1>
+          <motion.p
+            className="text-lg sm:text-xl font-light mt-4"
+            initial={{ y: -100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
+            Your Partner in Innovative Web Design.
+          </motion.p>
+        </section>
+      </div>
+      {/* ------------------------------------------------ */}
+
+      {/* Content Section with extra top margin */}
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 grid grid-cols-1 sm:grid-cols-2 gap-12 mt-16">
+        {/* Image & Services */}
+        <div className="relative">
+          <img src={TEAM} alt="Team Work" className="w-full rounded-lg" />
+          <div className="absolute -bottom-8 left-4 bg-[#1a1a1a]/80 rounded-lg p-6 w-[80%]">
+            {services.map((service, index) => (
+              <div key={index} className="flex items-center space-x-3 my-2">
+                <Check className="h-5 w-5 text-emerald-400" />
+                <span className="text-sm sm:text-base font-medium">{service}</span>
               </div>
             ))}
           </div>
-
-          <button className="px-6 py-3 bg-emerald-400 text-gray-900 rounded-full font-medium hover:bg-emerald-500 transition-colors">
-            Discover more
-          </button>
-        </div>
-      </div>
-    </div>
-
-    {/* Horizontal White Line */}
-    <div className="border-t-2 border-white my-16 mx-6"></div>
-
-    {/* Logo Marquee Section */}
-    <div className="w-full bg-[#1a1a1a] overflow-hidden py-8">
-      <div className="relative flex items-center">
-        {/* First set of logos */}
-        <div
-          className="flex whitespace-nowrap"
-          style={{
-            animation: 'marquee 25s linear infinite',
-          }}
-        >
-          {logos.map((logo, index) => (
-            <div key={index} className="mx-8 flex items-center justify-center">
-              <img
-                src={logo || "/placeholder.svg"}
-                alt={`Company logo ${index + 1}`}
-                className="h-12 w-auto object-contain brightness-0 invert"
-              />
-            </div>
-          ))}
         </div>
 
-        {/* Duplicate set for seamless loop */}
-        <div
-          className="flex absolute top-0 whitespace-nowrap"
-          style={{
-            animation: 'marquee2 25s linear infinite',
-          }}
-        >
-          {logos.map((logo, index) => (
-            <div key={index} className="mx-8 flex items-center justify-center">
-              <img
-                src={logo || "/placeholder.svg"}
-                alt={`Company logo ${index + 1}`}
-                className="h-12 w-auto object-contain brightness-0 invert"
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-
-    {/* Hero Section */}
-    <div className="bg-cover bg-center h-screen w-screen relative" style={{ backgroundImage: `url('https://template.creativemox.com/webiso/wp-content/uploads/sites/23/2024/06/young-web-designers-working-together-at-modern-office.jpg')` }}>
-      <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-        <div className="text-center text-white px-6 md:px-12">
-          <h1 className="text-5xl font-bold text-white mb-4">
-            Ready to Start? Let's Build<br />
-            Something Great<br />
-            Together!
-          </h1>
-          <p className="text-lg text-gray-200 mb-8">
-            Maecenas tempor ligula phasellus per hac nisi. Facilisi curae<br />
-            nunc hendrerit vestibulum lobortis commodo lacus sagmis<br />
-            feugiat. Est sollicitudin convallis diam.
+        {/* Text & Stats */}
+        <div className="space-y-8">
+          <h3 className="text-emerald-400 font-medium">WHO WE ARE</h3>
+          <h2 className="text-3xl sm:text-5xl font-bold">
+            Innovative Solutions for Your <span className="text-[#7CD7F9]">Online Success</span>.
+          </h2>
+          <p className="text-gray-400">
+            We deliver cutting-edge digital solutions tailored to your needs, ensuring
+            seamless user experiences and impactful online presence.
           </p>
-          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-            Start Your Journey
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 border-t border-gray-800 pt-6">
+            {animatedStats.map((stat, index) => (
+              <div key={index} className="text-center">
+                <span className="text-3xl sm:text-4xl font-bold">
+                  {stat.label === 'Projects Done' || stat.label === 'Happy Clients'
+                    ? Math.floor(stat.value)
+                    : stat.value.toFixed(1)}
+                  +
+                </span>
+                <p className="text-gray-400">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+          <button className="px-6 py-3 bg-emerald-400 text-gray-900 rounded-full font-medium hover:bg-emerald-500 transition">
+            Discover More
           </button>
         </div>
       </div>
 
-      <style>
-        {`
-          @keyframes marquee {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-100%); }
-          }
-          @keyframes marquee2 {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(0%); }
-          }
-        `}
-      </style>
+      {/* Logo Marquee */}
+      <div className="overflow-hidden py-8 bg-[#151515] mt-16">
+        <div className="flex items-center justify-center space-x-12 animate-marquee">
+          {logos.concat(logos).map((logo, index) => (
+            <img key={index} src={logo} alt="Company Logo" className="h-12 brightness-0 invert" />
+          ))}
+        </div>
+      </div>
+
+      {/* Hero Section */}
+      <HeroSection />
+
+      {/* Team Section */}
+      <div className="bg-[#151515] py-20 px-4 sm:px-8">
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <p className="text-emerald-400 font-medium mb-4">MEET OUR TEAM</p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-white">
+              We talk a lot about <span className="text-emerald-400">hope</span> helping
+              <br />
+              and <span className="text-cyan-400">teamwork</span>.
+            </h2>
+          </div>
+          {/* Team Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { id: 1, name: 'David Mitchell', role: 'Founder', image: 'https://template.creativemox.com/webiso/wp-content/uploads/sites/23/2024/06/11.jpg' },
+              { id: 2, name: 'Robert Collins', role: 'Co-Founder', image: 'https://template.creativemox.com/webiso/wp-content/uploads/sites/23/2024/06/6.jpg' },
+              { id: 3, name: 'Sarah Parker', role: 'Business Manager', image: 'https://template.creativemox.com/webiso/wp-content/uploads/sites/23/2024/06/13-300x300.jpg' },
+              { id: 4, name: 'Michael Wilson', role: 'Marketing Manager', image: 'https://template.creativemox.com/webiso/wp-content/uploads/sites/23/2024/06/9-300x300.jpg' }
+            ].map((member) => (
+              <div key={member.id} className="relative group">
+                <div className="bg-[#202020] rounded-lg overflow-hidden">
+                  <div className="relative group-hover:grayscale-0 group-hover:brightness-100 grayscale brightness-50 transition-all duration-1000">
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-[300px] object-cover rounded-lg transition-all duration-500"
+                    />
+                  </div>
+                </div>
+                <div className="text-center mt-4">
+                  <h3 className="text-white text-lg">{member.name}</h3>
+                  <p className="text-gray-400">{member.role}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  )
-}
+  );
+};
 
-export default About
-
-
+export default About;
