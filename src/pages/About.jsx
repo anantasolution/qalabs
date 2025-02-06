@@ -222,7 +222,7 @@ const About = () => {
                 </div>
               ))}
             </motion.div>
-            <img src={TEAM || "/placeholder.svg"} alt="Team working together" className="rounded-lg" />
+            <img src={TEAM || "/placeholder.svg"} alt="Team working together" className="rounded-lg grayscale hover:grayscale-0 transition-all duration-500" />
           </motion.div>
 
           {/* Right Column */}
@@ -265,8 +265,11 @@ const About = () => {
         </div>
       </div>
 
+      {/* White Line */}
+      <div className="border-t border-white my-8"></div>
+
       {/* Logo Marquee */}
-      <div className="bg-[#151515] py-8 overflow-hidden">
+      <div className="bg-[#151515] py-8 overflow-hidden flex justify-center items-center">
         <div className="flex animate-marquee space-x-12">
           {logos.concat(logos).map((logo, index) => (
             <img
