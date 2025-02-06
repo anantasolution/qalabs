@@ -34,7 +34,7 @@ const CompanySlider = () => {
           opacity: "0.5",
         }}
       />
-      <div className="overflow-hidden bg-[#151515] py-4 my-4 ">
+      <div className="overflow-hidden bg-[#151515] py-4 my-4 overflow-hidden">
         <div
           className={`flex transition-transform duration-500 ease-in-out justify-center items-center`}
         >

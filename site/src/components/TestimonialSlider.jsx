@@ -91,7 +91,7 @@ const TestimonialSlider = () => {
     };
   
     return (
-      <section className="bg-[#151515] py-12">
+      <section className="bg-[#151515] py-12 overflow-hidden">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-8">
             <p className="text-lime-400 text-sm uppercase tracking-wider mb-2">

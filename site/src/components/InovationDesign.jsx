@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 function InovationDesign() {
   return (
-    <div className="bg-[#151515] py-32">
+    <div className="bg-[#151515] py-32 overflow-hidden">
        <div className="max-w-[1400px] mx-auto px-8">
          <div className="grid grid-cols-1 md:grid-cols-2 gap-24">
            {/* Left side content */}

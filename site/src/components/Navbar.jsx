@@ -30,7 +30,8 @@ function Navbar() {
         { name: 'About us', path: '/aboutus' },
         { name: 'Services', path: '/services' },
         { name: 'Project', path: '/project' },
-        { name: 'Contact us', path: '/contactus' }
+        { name: 'Contact us', path: '/contactus' },
+        { name: 'Blog Archive', path: '/contactus' }
     ];
 
     return (

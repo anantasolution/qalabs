@@ -40,7 +40,7 @@ const Questions = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-      <div>
+      <div className="overflow-hidden">
         <button
           onClick={() => setIsOpen(!isOpen)}
           className={`w-full p-4 text-left rounded-lg flex justify-between items-center transition-colors duration-200 ${

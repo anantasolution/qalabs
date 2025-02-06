@@ -64,7 +64,7 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <div className="min-h-screen w-full bg-[#151515] text-white flex justify-end items-center py-10 md:py-16"
+    <div className="min-h-screen w-full bg-[#151515] text-white flex justify-end items-center py-10 md:py-16 overflow-hidden"
     ref={sectionRef}>
       <div className="w-full min-h-[100vh] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 ">
         {/* Left Section */}

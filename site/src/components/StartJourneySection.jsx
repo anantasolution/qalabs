@@ -18,7 +18,7 @@ const StartJourneySection = () => {
     setIsVisible(true);
   }, []);
   return (
-    <div ref={ref} className="relative w-full h-[66vh] max-h-screen">
+    <div ref={ref} className="relative w-full h-[66vh] max-h-screen overflow-hidden">
       {/* Background Image */}
       <div
         className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"

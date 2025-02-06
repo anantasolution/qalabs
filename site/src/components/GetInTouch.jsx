@@ -9,7 +9,7 @@ const GetInTouch = () => {
         <div className="w-full">
             {/* Background Banner */}
             <div
-                className="relative flex flex-col h-[420px] items-center text-center space-y-5 px-4 sm:px-6 md:px-12 py-32 bg-cover bg-center bg-no-repeat"
+                className="relative flex flex-col h-[420px] items-center text-center space-y-5 px-4 sm:px-6 md:px-12 py-32 bg-cover bg-center bg-no-repeat overflow-hidden"
                 style={{ backgroundImage: `url(${bgImage})` }}
             >
                 {/* Overlay */}
