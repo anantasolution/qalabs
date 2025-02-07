@@ -6,6 +6,9 @@ import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
 
+import authRoute from "./routes/auth.js";
+import adminRoute from "./routes/admin.js";
+
 // Get the current file's path
 const __filename = fileURLToPath(import.meta.url);
 
@@ -13,7 +16,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // For importing routes
-
 
 // App configuration
 const port = process.env.PORT || 8080;
@@ -60,11 +62,11 @@ app.options("*", cors(corsOptions)); // Allow OPTIONS for all routes
 app.use(cors(corsOptions));
 
 // Middleware to parse JSON
-app.use(express.json({limit:"50mb"}));
+app.use(express.json({ limit: "50mb" }));
 
 // Middleware to read cookies data
 app.use(cookieParser());
-app.use(express.urlencoded({limit:"50mb", extended: true }));
+app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
 const connectDb = async () => {
   try {
@@ -89,9 +91,8 @@ mongoose.connection.on("disconnected", () => {
 });
 
 // Middleware
-
-
-
+app.use("/api/auth", authRoute);
+app.use("/api/admin", adminRoute);
 // Middleware to catch errors
 app.use((err, req, res, next) => {
   const errStatus = err.status || 500;
