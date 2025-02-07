@@ -8,10 +8,10 @@ const HeroForm = () => {
     };
 
     return (
-        <div className="bg-[#151515] p-4 md:p-8 md:py-24 flex flex-col-reverse md:flex-row items-end justify-center gap-8 z-30">
+        <div className="bg-[#151515] p-4 md:p-8 md:py-24 flex flex-col-reverse md:flex-row items-end justify-center gap-8 z-50">
 
             {/* Services Section */}
-            <div className="w-full md:grid md:grid-cols-2 md:w-1/2 place-content-center">
+            <div className="w-full md:grid md:grid-cols-2 md:w-1/2 place-content-center z-50">
                 {/* Design & Development Card */}
                 <div className="p-6 space-y-4">
                     <Globe className="w-12 h-12 text-emerald-400" />
@@ -38,7 +38,7 @@ const HeroForm = () => {
             </div>
 
 
-            <div className='relative w-[500px] flex justify-center md:block '>
+            <div className='relative w-[500px] flex justify-center md:block z-50'>
 
                 {/* Form Section */}
                 <div className="md:absolute bottom-[-4.2rem] w-full max-w-md md:max-w-lg rounded-2xl ">

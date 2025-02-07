@@ -113,7 +113,7 @@ const Questions = () => {
   );
 
   return (
-    <div className="min-h-screen bg-neutral p-8">
+    <div className="min-h-screen overflow-hidden bg-neutral p-8">
       <div className="max-w-6xl mx-auto">
         <motion.div 
           initial={{ opacity: 0, y: -50 }}

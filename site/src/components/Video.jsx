@@ -9,7 +9,7 @@ const Video = () => {
   };
 
   const VideoOverlay = () => (
-    <div className="absolute flex flex-col items-center justify-center bg-black/20 w-full h-full">
+    <div className="absolute flex flex-col items-center justify-center bg-black/20 w-full h-full overflow-hidden">
       <div className="bg-zinc-950/50 py-4 md:py-10 px-4 flex flex-col items-center">
         {/* Animated Button Container */}
         <div className="relative flex items-center justify-center" onClick={() => setIsPlaying(true)}>
@@ -34,7 +34,7 @@ const Video = () => {
   
 
   return (
-    <div className="bg-[#242424] flex justify-center items-center ">
+    <div className="bg-[#242424] flex justify-center items-center">
       <div
         className="relative w-full md:w-4/5 rounded-xl overflow-hidden py-10 px-2"
         style={{ height: "550px" }}

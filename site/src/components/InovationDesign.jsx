@@ -3,30 +3,22 @@ import { motion } from "framer-motion";
 
 function InovationDesign() {
   return (
-    <div className="bg-[#151515] py-32">
-      <div className="max-w-[1400px] mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 ">
-          {/* Left side content */}
-          <motion.div
-            className="flex flex-col justify-center space-y-6 max-w-xl"
-            initial={{ opacity: 0, x: -100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{
-              delay: 0.3,
-              duration: 0.2,
-              ease: "easeInOut",
-              type: "spring",
-              stiffness: 150,
-              damping: 20,
-            }}
-          >
-            <h2 className="md:text-5xl text-[40px] leading-tight text-white">
-              Innovative Design for{" "}
-              <span className="md:text-5xl text-[40px] text-transparent bg-gradient-to-r from-blue-300 to-green-400 text-bold bg-clip-text">
-                Modern Businesses.
-              </span>
-            </h2>
-
+    <div className="bg-[#151515] py-32 overflow-hidden">
+       <div className="max-w-[1400px] mx-auto px-8">
+         <div className="grid grid-cols-1 md:grid-cols-2 gap-24">
+           {/* Left side content */}
+           <motion.div
+             className="flex flex-col justify-center space-y-6 max-w-xl"
+             initial={{ opacity: 0 }}
+             animate={{ opacity: 1 }}
+             transition={{ delay: 0.3 }}
+           >
+             <h2 className="text-4xl md:text-[40px] leading-tight text-white">
+               Innovative Design for{" "}
+               <span className="text-4xl md:text-[40px] text-transparent bg-gradient-to-r from-blue-300 to-green-400 bg-clip-text">
+                 Modern Businesses.
+               </span>
+             </h2>
             <p className="text-gray-400 text-md leading-relaxed">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
               tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.

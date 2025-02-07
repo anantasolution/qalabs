@@ -17,7 +17,7 @@ const logos = [
 
 const HelpPage = () => {
   return (
-    <div className="w-full bg-[#151515]">
+    <div className="w-full bg-[#151515] overflow-hidden">
       {/* Logo Slider */}
       <div className="w-full py-10 bg-[#151515] flex justify-cent">
         <Swiper
