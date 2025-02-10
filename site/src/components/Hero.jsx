@@ -29,11 +29,9 @@ const HeroSection = () => {
         if (entry.isIntersecting) {
           setInView(true);
           controls.start("visible"); // Start animations when in view
-        } else {
-          controls.start("hidden"); // Optionally, reverse animations when out of view
         }
       },
-      { threshold: 0.5 } // Trigger when 50% of the section is in view
+      { threshold: 0.3 } // Trigger when 50% of the section is in view
     );
 
     if (sectionRef.current) {
@@ -46,20 +44,6 @@ const HeroSection = () => {
       }
     };
   }, []);
-
-  const variants = {
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 1, staggerChildren: 0.2 },
-    },
-    hidden: { opacity: 0, y: 50, transition: { duration: 1 } },
-  };
-
-  const itemVariants = {
-    visible: { opacity: 1, x: 0 },
-    hidden: { opacity: 0, x: -50 },
-  };
 
   const counterVariants = {
     visible: {
@@ -76,9 +60,9 @@ const HeroSection = () => {
       ref={sectionRef}
     >
       <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full">
           {/* Left column with image and overlaid services */}
-          <div className="relative">
+          <div className="relative w-full">
             <motion.div
               className="relative overflow-hidden rounded-lg group"
               initial={{ x: "-150%" }}
@@ -88,7 +72,7 @@ const HeroSection = () => {
               <img
                 src={HERO}
                 alt="Team working together"
-                className="w-full h-full object-cover filter grayscale transition-all duration-500 group-hover:grayscale-0"
+                className="w-full md:h-full h-[350px] object-cover filter grayscale transition-all duration-500 group-hover:grayscale-0"
               />
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
@@ -97,14 +81,14 @@ const HeroSection = () => {
             {/* Services list */}
             {inView && (
               <motion.div
-                className="absolute left-0 bottom-0 bg-gradient-to-t from-black via-black/95 to-transparent p-6 rounded-lg"
+                className="absolute -bottom-16 -left-16 md:-left-6  md:bottom-0 bg-black/50 p-6 rounded-lg"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 2.5 }}
               >
                 {services.map((service) => (
-                  <div key={service} className="flex items-center gap-3 mb-4">
-                    <div className="bg-[#00ff8a]/20 rounded-full p-1">
+                  <div key={service} className="flex items-center gap-3 border-b py-1 mb-2 border-[#818181] md:px-6">
+                    <div className="bg-[#00ff8a]/20 rounded-full p-1 ">
                       <Check className="w-4 h-4 text-[#00ff8a]" />
                     </div>
                     <span className="text-sm">{service}</span>
@@ -115,7 +99,7 @@ const HeroSection = () => {
           </div>
 
           {/* Right column - Content */}
-          <div className="space-y-8">
+          <div className="space-y-8 pt-10 md:pt-0">
             {/* WHO WE ARE text */}
             <div className="text-[#00ff8a] mb-4">WHO WE ARE</div>
 

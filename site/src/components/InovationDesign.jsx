@@ -1,24 +1,53 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useState, useRef } from "react";
+import { motion, useAnimation } from "framer-motion";
 
 function InovationDesign() {
+  const [inView, setInView] = useState(false);
+  const controls = useAnimation(); // Animation controls for Framer Motion
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          controls.start("visible"); // Start animations when in view
+        }
+      },
+      { threshold: 0.5 } // Trigger when 50% of the section is in view
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <div className="bg-[#151515] py-32 overflow-hidden">
-       <div className="max-w-[1400px] mx-auto px-8">
-         <div className="grid grid-cols-1 md:grid-cols-2 gap-24">
-           {/* Left side content */}
-           <motion.div
-             className="flex flex-col justify-center space-y-6 max-w-xl"
-             initial={{ opacity: 0 }}
-             animate={{ opacity: 1 }}
-             transition={{ delay: 0.3 }}
-           >
-             <h2 className="text-4xl md:text-[40px] leading-tight text-white">
-               Innovative Design for{" "}
-               <span className="text-4xl md:text-[40px] text-transparent bg-gradient-to-r from-blue-300 to-green-400 bg-clip-text">
-                 Modern Businesses.
-               </span>
-             </h2>
+    <div
+      className="bg-[#151515] py-16 md:py-24 overflow-hidden"
+      ref={sectionRef}
+    >
+      <div className="max-w-[1400px] mx-auto px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-24">
+          {/* Left side content */}
+          <motion.div
+            className="flex flex-col justify-center space-y-6 max-w-xl"
+            initial={{ x: "-150%" }}
+            animate={inView ? { x: 0 } : {}}
+            transition={{ duration: 1 }}
+          >
+            <h2 className="text-4xl md:text-[40px] leading-tight text-white">
+              Innovative Design for{" "}
+              <span className="text-4xl md:text-[40px] text-transparent bg-gradient-to-r from-blue-300 to-green-400 bg-clip-text">
+                Modern Businesses.
+              </span>
+            </h2>
             <p className="text-gray-400 text-md leading-relaxed">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
               tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
@@ -35,16 +64,9 @@ function InovationDesign() {
           <div className="grid md:grid-cols-2 grid-cols-1 gap-6">
             <motion.div
               className=" bg-neutral-800 p-7 rounded-xl "
-              initial={{ opacity: 0, y: -100 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 0.3,
-                duration: 0.2,
-                ease: "easeInOut",
-                type: "spring",
-                stiffness: 100,
-                damping: 20,
-              }}
+              initial={{ y: "150%" }}
+              animate={inView ? { y: 0 } : {}}
+              transition={{ duration: 1 }}
             >
               <div className="flex items-start justify-between mb-4">
                 <h2 className="text-6xl font-dark text-white">+60%</h2>
@@ -73,16 +95,9 @@ function InovationDesign() {
 
             <motion.div
               className="bg-black p-8 rounded-xl border border-gray-700"
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{
-                delay: 0.3,
-                duration: 0.2,
-                ease: "easeInOut",
-                type: "spring",
-                stiffness: 150,
-                damping: 20,
-              }}
+              initial={{ x : "150%" }}
+              animate={inView ? { x: 0 } : {}}
+              transition={{ duration: 1 }}
             >
               <div className="flex items-start justify-between mb-4">
                 <h2 className="text-6xl font-dark text-white">+30%</h2>

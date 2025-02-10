@@ -64,9 +64,9 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <div className="min-h-screen w-full bg-[#151515] text-white flex justify-end items-center py-10 md:py-16 overflow-hidden"
+    <div className="min-h-screen w-full bg-[#151515] text-white flex justify-end items-center py-14 md:py-16 overflow-hidden"
     ref={sectionRef}>
-      <div className="w-full min-h-[100vh] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 ">
+      <div className="w-full min-h-[70vh] md:min-h-[100vh] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 ">
         {/* Left Section */}
         <motion.div
           className="space-y-6 md:space-y-10 px-10 md:pl-16"
@@ -143,7 +143,7 @@ const WhyChooseUs = () => {
 
         {/* Right Section - Larger Image */}
         <motion.div
-          className="relative overflow-hidden flex justify-center"
+          className="relative hidden overflow-hidden md:flex md:justify-center"
         >
           <motion.div className="absolute -right-10 rounded-lg w-full  h-full"
           initial={{ x: "100%" }}

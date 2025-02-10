@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { Autoplay } from "swiper/modules";
+import { Autoplay,Pagination } from "swiper/modules";
 
 //Importing images
 import PERSON from '../assets/person.jpg'
@@ -110,6 +110,7 @@ const TestimonialSlider = () => {
             onSlideChange={handleSlideActive} // Update active index on slide change
             spaceBetween={20}
             slidesPerView={1}
+            pagination={{clickable:true}}
             loop={true}
             modules={[Autoplay]}
             autoplay={{

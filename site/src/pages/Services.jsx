@@ -7,27 +7,27 @@ import Questions from "../components/Questions";
 
 //Importing components
 import InovationDesign from "../components/InovationDesign";
+import Video from "../components/Video";
 
 const Services = () => {
-
   const upsideVariants = {
     hidden: { y: -100, opacity: 0 },
     visible: {
-        y: 0,
-        opacity: 1,
-        transition: { duration: 0.8, ease: "easeOut" }
-    }
-   };
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
 
   const downsideVariants = {
     hidden: { y: 100, opacity: 0 },
     visible: {
-        y: 0,
-        opacity: 1,
-        transition: { duration: 0.8, ease: "easeOut" }
-    }
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
   };
-  
+
   return (
     <div className="bg-[#151515]">
       <div
@@ -35,6 +35,10 @@ const Services = () => {
         style={{
           backgroundImage:
             "url('https://template.creativemox.com/webiso/wp-content/uploads/sites/23/2024/06/3d-black-paper-craft-cubic-patterned-background.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "bottom center",
+          backgroundRepeat: "no-repeat",
+          filter: "brightness(70%)",
         }}
       >
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
@@ -61,16 +65,17 @@ const Services = () => {
             variants={upsideVariants}
           >
             <p className="text-white text-3xl opacity-100">
-            Tailored Solutions for Your Digital Success.
+              Tailored Solutions for Your Digital Success.
             </p>
           </motion.div>
         </div>
       </div>
       <InovationDesign></InovationDesign>
+      <Video />
       <Cards></Cards>
       <GetInTouch></GetInTouch>
       <div className="pt-64">
-       <WhyChooseUs></WhyChooseUs>
+        <WhyChooseUs></WhyChooseUs>
       </div>
       <Questions></Questions>
     </div>
