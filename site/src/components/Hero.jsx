@@ -13,25 +13,26 @@ const services = [
 ];
 
 const stats = [
-  { value: "27K+", label: "Project Done" },
-  { value: "4K+", label: "Happy Client" },
-  { value: "4.7", label: "Client Reviews" },
+  { value: 27, label: "Project Done" },
+  { value: 4, label: "Happy Client" },
+  { value: 4.7, label: "Client Reviews" },
 ];
 
 const HeroSection = () => {
   const [inView, setInView] = useState(false);
-  const controls = useAnimation(); // Animation controls for Framer Motion
+  const controls = useAnimation();
   const sectionRef = useRef(null);
+  const [counts, setCounts] = useState(stats.map(() => 0)); // Initialize all counts at 0
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setInView(true);
-          controls.start("visible"); // Start animations when in view
+          controls.start("visible");
         }
       },
-      { threshold: 0.3 } // Trigger when 50% of the section is in view
+      { threshold: 0.3 }
     );
 
     if (sectionRef.current) {
@@ -45,18 +46,31 @@ const HeroSection = () => {
     };
   }, []);
 
-  const counterVariants = {
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 1, type: "spring" },
-    },
-    hidden: { opacity: 0, scale: 0.5 },
-  };
+  useEffect(() => {
+    if (inView) {
+      stats.forEach((stat, index) => {
+        let start = 0;
+        const end = stat.value;
+        const duration = 3000; // 3 seconds
+        const stepTime = Math.abs(Math.floor(duration / end));
+
+        const counter = setInterval(() => {
+          start += 1;
+          setCounts((prev) => {
+            const newCounts = [...prev];
+            newCounts[index] = start;
+            return newCounts;
+          });
+
+          if (start >= end) clearInterval(counter);
+        }, stepTime);
+      });
+    }
+  }, [inView]);
 
   return (
     <div
-      className=" bg-[#151515] text-white p-14 py-20 border-b border-[#717171] overflow-hidden"
+      className="bg-[#151515] text-white p-14 py-20 border-b border-[#717171] overflow-hidden"
       ref={sectionRef}
     >
       <div className="max-w-7xl mx-auto">
@@ -74,24 +88,22 @@ const HeroSection = () => {
                 alt="Team working together"
                 className="w-full md:h-full h-[350px] object-cover filter grayscale transition-all duration-500 group-hover:grayscale-0"
               />
-              {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
             </motion.div>
 
-            {/* Services list */}
             {inView && (
               <motion.div
-                className="absolute -bottom-16 -left-16 md:-left-6  md:bottom-0 bg-black/50 p-6 rounded-lg"
+                className="absolute -bottom-16 -left-16 md:-left-6 md:bottom-0 bg-black/50 p-6 rounded-lg"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 2.5 }}
               >
-                {services.map((service) => (
-                  <div key={service} className="flex items-center gap-3 border-b py-1 mb-2 border-[#818181] md:px-6">
-                    <div className="bg-[#00ff8a]/20 rounded-full p-1 ">
-                      <Check className="w-4 h-4 text-[#00ff8a]" />
+                {services.map((service, index) => (
+                  <div key={index} className="flex items-center gap-3 mb-4">
+                    <div className="bg-emerald-400 rounded-full p-1">
+                      <Check className="w-4 h-4 text-black" />
                     </div>
-                    <span className="text-sm">{service}</span>
+                    <span className="text-white">{service}</span>
                   </div>
                 ))}
               </motion.div>
@@ -100,10 +112,8 @@ const HeroSection = () => {
 
           {/* Right column - Content */}
           <div className="space-y-8 pt-10 md:pt-0">
-            {/* WHO WE ARE text */}
             <div className="text-[#00ff8a] mb-4">WHO WE ARE</div>
 
-            {/* Heading */}
             <motion.h1
               className="text-4xl lg:text-5xl font-bold"
               initial={{ x: "150%" }}
@@ -116,7 +126,6 @@ const HeroSection = () => {
               </span>
             </motion.h1>
 
-            {/* Description */}
             <motion.p
               className="text-gray-400"
               initial={{ x: "150%" }}
@@ -128,23 +137,22 @@ const HeroSection = () => {
               potenti accumsan pellentesque venenatis.
             </motion.p>
 
-            {/* Stats */}
+            {/* Stats Section */}
             <motion.div
               className="grid grid-cols-3 gap-8 pt-4 border-t border-b py-4 border-[#717171]"
               initial={{ opacity: 0 }}
               animate={inView ? { opacity: 1 } : {}}
               transition={{ duration: 1, delay: 1 }}
             >
-              {stats.map((stat) => (
+              {stats.map((stat, index) => (
                 <div key={stat.value}>
                   <motion.div
                     className="text-3xl font-bold"
-                    variants={counterVariants}
                     initial={{ opacity: 0, scale: 0.5 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 1, type: "spring" }}
                   >
-                    {stat.value}
+                    {counts[index]}K+
                   </motion.div>
                   <div className="text-gray-400 text-sm">{stat.label}</div>
                 </div>

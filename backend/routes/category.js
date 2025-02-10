@@ -6,10 +6,11 @@ const router = express.Router();
 
 
 // Get category by ID
-
 router.get('/getbyId/:id', getCategoryById);
+
 // Get all categories
 router.get('/all', getAllCategory);
+
 // Create a new category
 router.post('/create', createCategory);
 
@@ -17,4 +18,4 @@ router.post('/create', createCategory);
 router.delete('/delete/:id', delCategoryById);
 
 export default router;
-  
+
