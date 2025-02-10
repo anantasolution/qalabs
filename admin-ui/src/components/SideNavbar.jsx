@@ -3,9 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
 //Importing icons
-import { Logs, User } from 'lucide-react';
 import SpaceDashboardOutlinedIcon from '@mui/icons-material/SpaceDashboardOutlined';
 import { Ellipsis } from 'lucide-react';
+import { SquarePen } from 'lucide-react';
+import { Contact } from 'lucide-react';
+import { Brain } from 'lucide-react';
+
 
 function SideNavbar({ toggle }) {
 
@@ -60,7 +63,7 @@ function SideNavbar({ toggle }) {
             </div>
             {/* Navigation Div */}
             <div onMouseEnter={mouseIn} onMouseLeave={mouseOut} className={`${innerToggle ? "w-[200px] absolute" : "w-auto"} h-[89%] flex bg-white flex-col z-50 transition-all duration-500 px-4 py-6`}>
-                <div className='flex flex-col gap-6'>
+                <div className='flex flex-col gap-4'>
                     {
                         toggle || innerToggle ?
                             <span className='text-xs text-gray-500 font-semibold'>NAVIGATION</span>
@@ -84,13 +87,41 @@ function SideNavbar({ toggle }) {
                         toggle || innerToggle ?
                             (
                                 <div onClick={() => handleNavigate("blogs")} className={`flex ${isActive("blogs") && "bg-gray-100"} hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}>
-                                    <span><Logs style={{ fontSize: '1.4rem' }}></Logs></span>
+                                    <span><SquarePen style={{ fontSize: '1.4rem' }}></SquarePen></span>
                                     <span className='text-sm font-semibold'>Blogs</span>
                                 </div>
                             ) :
                             (
                                 <div onClick={() => handleNavigate("blogs")} className={`flex ${isActive("blogs") && "bg-gray-100"} hover:bg-gray-100 cursor-pointer transition-all duration-300  p-1.5 rounded-md  justify-center items-center`}>
-                                    <span><Logs style={{ fontSize: '1.8rem', fontWeight: '200' }}></Logs></span>
+                                    <span><SquarePen style={{ fontSize: '1.8rem', fontWeight: '200' }}></SquarePen></span>
+                                </div>
+                            )
+                    }
+                    {
+                        toggle || innerToggle ?
+                            (
+                                <div onClick={() => handleNavigate("contactus")} className={`flex ${isActive("contactus") && "bg-gray-100"} hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}>
+                                    <span><Contact style={{ fontSize: '1.4rem' }}></Contact></span>
+                                    <span className='text-sm font-semibold'>Contact</span>
+                                </div>
+                            ) :
+                            (
+                                <div onClick={() => handleNavigate("contactus")} className={`flex ${isActive("contactus") && "bg-gray-100"} hover:bg-gray-100 cursor-pointer transition-all duration-300  p-1.5 rounded-md  justify-center items-center`}>
+                                    <span><Contact style={{ fontSize: '1.8rem', fontWeight: '200' }}></Contact></span>
+                                </div>
+                            )
+                    }
+                    {
+                        toggle || innerToggle ?
+                            (
+                                <div onClick={() => handleNavigate("consultant")} className={`flex ${isActive("consultant") && "bg-gray-100"} hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}>
+                                    <span><Brain style={{ fontSize: '1.4rem' }}></Brain></span>
+                                    <span className='text-sm font-semibold'>Consultancy</span>
+                                </div>
+                            ) :
+                            (
+                                <div onClick={() => handleNavigate("consultant")} className={`flex ${isActive("blogs") && "bg-gray-100"} hover:bg-gray-100 cursor-pointer transition-all duration-300  p-1.5 rounded-md  justify-center items-center`}>
+                                    <span><Brain style={{ fontSize: '1.8rem', fontWeight: '200' }}></Brain></span>
                                 </div>
                             )
                     }
