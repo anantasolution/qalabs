@@ -6,7 +6,7 @@ import { MessagesSquare, Coffee, Mail } from 'lucide-react';
 const GetInTouch = () => {
     return (
         
-        <div className="w-full">
+        <div className="w-full relative pb-96 md:pb-0">
             {/* Background Banner */}
             <div
                 className="relative flex flex-col h-[420px] items-center text-center space-y-5 px-4 sm:px-6 md:px-12 py-32 bg-cover bg-center bg-no-repeat overflow-hidden"
@@ -52,7 +52,7 @@ const GetInTouch = () => {
             </div>
 
             {/* Support Cards */}
-            <div className="absolute -mt-36 z-10 grid grid-cols-1 md:grid-cols-3 gap-6 p-3 xl:p-10">
+            <div className="absolute left-0 right-0 -mt-36 md:-mt-44 z-10 grid grid-cols-1 md:grid-cols-3 gap-6 p-3 xl:p-24 max-w-screen-xl w-full mx-auto">
                 {/* Customer Support */}
                 <motion.div
                     className="bg-[#242424] p-4 lg:px-6 lg:py-8 rounded-lg text-center md:py-9"
@@ -72,7 +72,7 @@ const GetInTouch = () => {
                             <MessagesSquare className="text-[#BAFE6D] w-[35px] h-[35px] sm:w-[45px] sm:h-[45px]" strokeWidth={"1.4px"} />
                         </span>
                     </div>
-                    <h1 className="text-lg sm:text-[20px] md:text-[24px] pb-2">Customer Support</h1>
+                    <h1 className="text-lg sm:text-[20px] md:text-[24px] pb-2 text-white">Customer Support</h1>
                     <p className="text-sm md:text-[16px] text-[#828282] leading-6 px-2 lg:px-8 pb-5">
                         Mus quisque non ridiculus sed himenaeos adipiscing consectetur fusce tempus lectus pretium.
                     </p>
@@ -136,7 +136,7 @@ const GetInTouch = () => {
                             <Coffee className="text-[#BAFE6D] w-[35px] h-[35px] sm:w-[45px] sm:h-[45px]" strokeWidth={"1.4px"} />
                         </span>
                     </div>
-                    <h1 className="text-lg sm:text-[20px] md:text-[24px] pb-2">Free Insight</h1>
+                    <h1 className="text-lg sm:text-[20px] md:text-[24px] pb-2 text-white">Free Insight</h1>
                     <p className="text-sm md:text-[16px] text-[#828282] leading-6 px-2 lg:px-8 pb-5">
                         Mus quisque non ridiculus sed himenaeos adipiscing consectetur fusce tempus lectus pretium.
                     </p>
