@@ -8,6 +8,9 @@ import { fileURLToPath } from "url";
 
 import authRoute from "./routes/auth.js";
 import adminRoute from "./routes/admin.js";
+import contactRoutes from "./routes/contact.js";
+import consulationRoutes from "./routes/consulation.js";
+
 
 // Get the current file's path
 const __filename = fileURLToPath(import.meta.url);
@@ -93,6 +96,10 @@ mongoose.connection.on("disconnected", () => {
 // Middleware
 app.use("/api/auth", authRoute);
 app.use("/api/admin", adminRoute);
+app.use("/api/contact", contactRoutes);
+app.use("/api/consulation", consulationRoutes);
+
+
 // Middleware to catch errors
 app.use((err, req, res, next) => {
   const errStatus = err.status || 500;
