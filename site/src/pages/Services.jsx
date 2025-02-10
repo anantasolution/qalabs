@@ -31,7 +31,7 @@ const Services = () => {
   return (
     <div className="bg-[#151515]">
       <div
-        className="relative min-h-[70vh]  bg-cover bg-center"
+        className="relative min-h-[50vh] md:min-h-[60vh]  bg-cover bg-center"
         style={{
           backgroundImage:
             "url('https://template.creativemox.com/webiso/wp-content/uploads/sites/23/2024/06/3d-black-paper-craft-cubic-patterned-background.jpg')",

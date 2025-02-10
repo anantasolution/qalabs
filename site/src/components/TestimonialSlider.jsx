@@ -98,7 +98,7 @@ const TestimonialSlider = () => {
               Testimonials
             </p>
             <h2 className="">
-              <span className="text-4xl bg-gradient-to-r from-[#00ffff] via-[#00ccff] to-[#00ff8a] bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#00ffff] via-[#00ccff] to-[#00ff8a] bg-clip-text text-transparent text-2xl md:text-4xl">
                 Client Feedback & Reviews
               </span>
             </h2>
