@@ -67,10 +67,10 @@ const HeroForm = () => {
         </div>
       </motion.div>
 
-      <div className="relative w-[500px] flex justify-center md:block z-50">
+      <div className="relative w-[350px] md:w-[500px] flex justify-center md:block z-50">
         {/* Form Section */}
         <motion.div
-          className="md:absolute bottom-[-4.2rem] w-full max-w-md md:max-w-lg rounded-2xl "
+          className="md:absolute bottom-[-4.2rem] w-full max-w-md md:max-w-lg rounded-2xl"
           initial={{ y: "150%" }}
           animate={inView ? { y: 0 } : {}}
           transition={{ duration: 1 }}

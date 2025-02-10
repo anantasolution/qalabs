@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import FOOTER from '../assets/footer.png'
 
 function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    // for tracking url 
+    const location = useLocation();
 
     const sidebarVariants = {
         closed: {
@@ -31,7 +34,7 @@ function Navbar() {
         { name: 'Services', path: '/services' },
         { name: 'Project', path: '/project' },
         { name: 'Contact us', path: '/contactus' },
-        { name: 'Blog Archive', path: '/contactus' }
+        { name: 'Blog Archive', path: '/blogsarchive' }
     ];
 
     return (
@@ -43,10 +46,17 @@ function Navbar() {
                 </div>
 
                 {/* Desktop Navigation */}
-                <div className='hidden lg:flex items-center space-x-8'>
+                <div className='hidden lg:flex items-center space-x-8 z-50'>
                     {menuItems.map((item) => (
-                        <Link key={item.path} to={item.path}>
-                            <span className="text-white hover:text-[#BAFE6D] transition-colors">{item.name}</span>
+                        <Link
+                            key={item.path}
+                            to={item.path}
+                            className={` transition-colors ${location.pathname === item.path
+                                ? 'text-[#BAFE6D]'
+                                : 'hover:text-[#BAFE6D] text-white'
+                                }`}
+                        >
+                            {item.name}
                         </Link>
                     ))}
                 </div>

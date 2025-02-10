@@ -36,12 +36,12 @@ const StartJourneySection = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="bg-black/60 backdrop-blur-sm rounded-lg p-6 md:p-8 lg:p-10 w-full max-w-lg md:max-w-2/3 lg:max-w-1/2 aspect-square md:aspect-auto flex flex-col justify-center"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
             Ready to Start? Let's Build{" "}
             <span className="text-emerald-400">Something Great</span> Together!
           </h2>
 
-          <p className="text-gray-300 mb-6 text-sm md:text-base">
+          <p className="text-gray-300 mb-6 text-md md:text-base">
             Maecenas tempor ligula phasellus per hac nisi. Facilisi curae nunc
             hendrerit vestibulum lobortis commodo lacus sagittis feugiat. Est
             sollicitudin convallis diam.

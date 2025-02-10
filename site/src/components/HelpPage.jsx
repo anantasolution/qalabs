@@ -4,10 +4,8 @@ import "swiper/css";
 import "swiper/css/autoplay";
 import { Autoplay } from "swiper/modules";
 import HERO from "../assets/hero-section.jpg";
-import LOGO from "../assets/logo.png";
 import { motion, useAnimation } from "framer-motion";
-
-const logos = [LOGO, LOGO, LOGO, LOGO, LOGO, LOGO];
+import CompanySlider from "./CompanySlider";
 
 const HelpPage = () => {
   const [inView, setInView] = useState(false);
@@ -41,23 +39,7 @@ const HelpPage = () => {
   return (
     <div className="w-full bg-[#151515] overflow-hidden">
       {/* Logo Slider */}
-      <div className="w-full py-10 bg-[#151515] flex justify-cent">
-        <Swiper
-          spaceBetween={20}
-          slidesPerView={4}
-          loop={true}
-          autoplay={{ delay: 2000 }}
-          modules={[Autoplay]}
-          className="w-3/4"
-        >
-          {logos.map((logo, index) => (
-            <SwiperSlide key={index} className="flex justify-center">
-              <img src={logo} alt="logo" className="h-10" />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
-
+      <CompanySlider />
       {/* Main Content */}
       <div
         className="relative py-32 w-full flex items-center justify-center"
