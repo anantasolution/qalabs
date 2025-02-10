@@ -10,6 +10,7 @@ import authRoute from "./routes/auth.js";
 import adminRoute from "./routes/admin.js";
 import contactRoutes from "./routes/contact.js";
 import consulationRoutes from "./routes/consulation.js";
+import newsLetterRoutes from "./routes/newsletter.js";
 
 
 // Get the current file's path
@@ -98,6 +99,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/admin", adminRoute);
 app.use("/api/contact", contactRoutes);
 app.use("/api/consulation", consulationRoutes);
+app.use("/api/newsletter", newsLetterRoutes);
 
 
 // Middleware to catch errors
