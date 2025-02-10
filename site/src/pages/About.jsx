@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { Check } from "lucide-react";
 import TEAM from "../assets/TeamWork.jpeg";
 import { motion, useAnimation } from "framer-motion";
-import { FaFacebookF, FaTwitter, FaLinkedinIn } from 'react-icons/fa';
-import { useInView } from 'react-intersection-observer';
+import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
+import { useInView } from "react-intersection-observer";
 
 const HeroSection = () => {
   const controls = useAnimation();
@@ -56,8 +56,9 @@ const HeroSection = () => {
             Together!
           </h1>
           <p className="text-gray-400 text-base md:text-lg leading-relaxed mb-8 max-w-xl">
-            Maecenas tempor ligula phasellus per hac nisi. Facilisi curae nunc hendrerit vestibulum lobortis commodo
-            lacus sagittis feugiat. Est sollicitudin convallis diam.
+            Maecenas tempor ligula phasellus per hac nisi. Facilisi curae nunc
+            hendrerit vestibulum lobortis commodo lacus sagittis feugiat. Est
+            sollicitudin convallis diam.
           </p>
           <button className="bg-[#5CDA92] hover:bg-[#4bc583] text-black font-medium px-8 py-3 rounded-full transition-colors duration-300 text-sm md:text-base">
             Start Your Journey
@@ -79,7 +80,7 @@ const About = () => {
   ];
 
   const [stats, setStats] = useState([
-    { value: 0, endValue: 27, label: "Project Done", suffix: "K+"},
+    { value: 0, endValue: 27, label: "Project Done", suffix: "K+" },
     { value: 0, endValue: 4, label: "Happy Client", suffix: "K+" },
     { value: 0, endValue: 4.7, label: "Client Reviews", suffix: "+" },
   ]);
@@ -89,13 +90,18 @@ const About = () => {
     const intervalTime = 50; // interval time in milliseconds
     const steps = duration / intervalTime;
 
-    const incrementValues = stats.map(stat => (stat.endValue - stat.value) / steps);
+    const incrementValues = stats.map(
+      (stat) => (stat.endValue - stat.value) / steps
+    );
 
     const interval = setInterval(() => {
-      setStats(prevStats =>
+      setStats((prevStats) =>
         prevStats.map((stat, index) => ({
           ...stat,
-          value: stat.value < stat.endValue ? stat.value + incrementValues[index] : stat.endValue,
+          value:
+            stat.value < stat.endValue
+              ? stat.value + incrementValues[index]
+              : stat.endValue,
         }))
       );
     }, intervalTime);
@@ -116,25 +122,29 @@ const About = () => {
       id: 1,
       name: "David Mitchell",
       role: "Founder",
-      image: "https://template.creativemox.com/webiso/wp-content/uploads/sites/23/2024/06/11.jpg",
+      image:
+        "https://template.creativemox.com/webiso/wp-content/uploads/sites/23/2024/06/11.jpg",
     },
     {
       id: 2,
       name: "Robert Collins",
       role: "Co-Founder",
-      image: "https://template.creativemox.com/webiso/wp-content/uploads/sites/23/2024/06/6.jpg",
+      image:
+        "https://template.creativemox.com/webiso/wp-content/uploads/sites/23/2024/06/6.jpg",
     },
     {
       id: 3,
       name: "Sarah Parker",
       role: "Business Manager",
-      image: "https://template.creativemox.com/webiso/wp-content/uploads/sites/23/2024/06/13-300x300.jpg",
+      image:
+        "https://template.creativemox.com/webiso/wp-content/uploads/sites/23/2024/06/13-300x300.jpg",
     },
     {
       id: 4,
       name: "Michael Wilson",
       role: "Marketing Manager",
-      image: "https://template.creativemox.com/webiso/wp-content/uploads/sites/23/2024/06/9-300x300.jpg",
+      image:
+        "https://template.creativemox.com/webiso/wp-content/uploads/sites/23/2024/06/9-300x300.jpg",
     },
   ];
 
@@ -178,7 +188,7 @@ const About = () => {
     <div className="min-h-screen bg-[#151515] text-white">
       {/* --- About Us Section with Background Image starting from the very top and extra margin from nav --- */}
       <div
-        className="bg-cover bg-center"
+        className="bg-cover bg-center h-[50vh] md:h-[60vh]"
         style={{
           backgroundImage:
             "url('https://template.creativemox.com/webiso/wp-content/uploads/sites/23/2024/06/3d-black-paper-craft-cubic-patterned-background.jpg')",
@@ -207,7 +217,6 @@ const About = () => {
       {/* Who We Are Section */}
       <div className="bg-[#151515] p-8">
         <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-8 items-center">
-          {/* Left Column */}
           <motion.div
             className="lg:w-1/2 relative"
             ref={ref}
@@ -235,10 +244,13 @@ const About = () => {
                 </div>
               ))}
             </motion.div>
-            <img src={TEAM || "/placeholder.svg"} alt="Team working together" className="rounded-lg grayscale hover:grayscale-0 transition-all duration-500" />
+            <img
+              src={TEAM || "/placeholder.svg"}
+              alt="Team working together"
+              className="rounded-lg grayscale hover:grayscale-0 transition-all duration-500"
+            />
           </motion.div>
 
-          {/* Right Column */}
           <motion.div
             className="lg:w-1/2 bg-[#151515] p-8 rounded-lg"
             ref={ref}
@@ -251,19 +263,23 @@ const About = () => {
             <h3 className="text-emerald-400 font-medium mb-4">WHO WE ARE</h3>
             <h2 className="text-4xl lg:text-5xl font-bold mb-4">
               <span className="text-white">Innovative Solutions for Your </span>
-              <span className="text-emerald-400">Online Success.</span>
+              <span className="bg-gradient-to-r from-[#00ffff] via-[#00ccff] to-[#00ff8a] bg-clip-text text-transparent">
+                Online Success.
+              </span>
             </h2>
             <p className="text-gray-400 mb-8">
-              Sem iaculis facilisis convallis ex aliquam massa a venenatis blandit pede rhoncus. Euismod consectetuer
-              nostra etiam lectus potenti accumsan pellentesque venenatis.
+              Sem iaculis facilisis convallis ex aliquam massa a venenatis
+              blandit pede rhoncus. Euismod consectetuer nostra etiam lectus
+              potenti accumsan pellentesque venenatis.
             </p>
 
-            {/* Stats Grid */}
             <div className="grid grid-cols-3 gap-8 mb-8">
               {stats.map((stat, index) => (
                 <div key={index}>
                   <div className="text-white text-3xl lg:text-4xl font-bold mb-2">
-                    {stat.label === "Client Reviews" ? stat.value.toFixed(1) : Math.round(stat.value)}
+                    {stat.label === "Client Reviews"
+                      ? stat.value.toFixed(1)
+                      : Math.round(stat.value)}
                     {stat.suffix || ""}
                   </div>
                   <div className="text-gray-400">{stat.label}</div>
@@ -271,12 +287,19 @@ const About = () => {
               ))}
             </div>
 
-            <button className="bg-emerald-400 text-black px-6 py-3 rounded-full hover:bg-emerald-500 transition-colors">
+            <motion.button
+              className="bg-gradient-to-r from-[#00ff8a] to-[#00ccff] text-black px-6 py-3 rounded-lg hover:opacity-90 transition-all duration-300"
+              initial={{ opacity: 0 }}
+              animate={inView ? { opacity: 1 } : {}}
+              transition={{ duration: 1, delay: 1.5 }}
+            >
               Discover more
-            </button>
+            </motion.button>
           </motion.div>
         </div>
       </div>
+
+      {/* <HeroSection className="border border-red-500 relative" /> */}
 
       {/* White Line */}
       <div className="border-t border-white my-8"></div>
@@ -313,7 +336,8 @@ const About = () => {
           >
             <p className="text-emerald-400 font-medium mb-4">MEET OUR TEAM</p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-white">
-              We talk a lot about <span className="text-emerald-400">hope</span> helping
+              We talk a lot about <span className="text-emerald-400">hope</span>{" "}
+              helping
               <br />
               and <span className="text-cyan-400">teamwork</span>.
             </h2>
@@ -340,20 +364,31 @@ const About = () => {
                     />
                     {/* Social Media Overlay */}
                     <div className="absolute top-4 right-4 flex flex-col space-y-2 transition-opacity duration-300">
-                      <a href="#" className="bg-[#151515] text-emerald-400 p-2 rounded-full hover:bg-emerald-400 hover:text-[#151515] transition-colors">
+                      <a
+                        href="#"
+                        className="bg-[#151515] text-emerald-400 p-2 rounded-full hover:bg-emerald-400 hover:text-[#151515] transition-colors"
+                      >
                         <FaFacebookF className="w-4 h-4" />
                       </a>
-                      <a href="#" className="bg-[#151515] text-cyan-400 p-2 rounded-full hover:bg-cyan-400 hover:text-[#151515] transition-colors">
+                      <a
+                        href="#"
+                        className="bg-[#151515] text-cyan-400 p-2 rounded-full hover:bg-cyan-400 hover:text-[#151515] transition-colors"
+                      >
                         <FaTwitter className="w-4 h-4" />
                       </a>
-                      <a href="#" className="bg-[#151515] text-emerald-400 p-2 rounded-full hover:bg-emerald-400 hover:text-[#151515] transition-colors">
+                      <a
+                        href="#"
+                        className="bg-[#151515] text-emerald-400 p-2 rounded-full hover:bg-emerald-400 hover:text-[#151515] transition-colors"
+                      >
                         <FaLinkedinIn className="w-4 h-4" />
                       </a>
                     </div>
                   </div>
                 </div>
                 <div className="mt-4 bg-[#1A1A1A] p-4 rounded-lg text-center">
-                  <h3 className="text-white text-lg font-medium">{member.name}</h3>
+                  <h3 className="text-white text-lg font-medium">
+                    {member.name}
+                  </h3>
                   <p className="text-emerald-400">{member.role}</p>
                 </div>
               </motion.div>

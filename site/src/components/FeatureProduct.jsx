@@ -57,10 +57,10 @@ const FeaturedProjectSection = () => {
           setInView(true);
           controls.start("visible"); // Start animations when in view
         } else {
-          //   controls.start("hidden"); // Optionally, reverse animations when out of view
+            // controls.start("hidden"); // Optionally, reverse animations when out of view
         }
       },
-      { threshold: 0.2 } // Trigger when 50% of the section is in view
+      {  threshold: 0.1} // Trigger when 50% of the section is in view
     );
 
     if (sectionRef.current) {
@@ -121,7 +121,7 @@ const FeaturedProjectSection = () => {
           <p className="text-lime-400 text-xs md:text-base uppercase tracking-wider mb-4">
             FEATURED PROJECT
           </p>
-          <h1 className="text-4xl text-white">
+          <h1 className="text-2xl md:text-4xl text-white">
             Inspired by{" "}
             <span className="bg-gradient-to-r from-[#00ffff] via-[#00ccff] to-[#00ff8a] bg-clip-text text-transparent">
               Our Projects?
