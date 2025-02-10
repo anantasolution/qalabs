@@ -10,8 +10,9 @@ import authRoute from "./routes/auth.js";
 import adminRoute from "./routes/admin.js";
 import contactRoutes from "./routes/contact.js";
 import consulationRoutes from "./routes/consulation.js";
+import blogRoutes from "./routes/blog.js";
+import categoryRoutes from "./routes/category.js";
 import newsLetterRoutes from "./routes/newsletter.js";
-
 
 // Get the current file's path
 const __filename = fileURLToPath(import.meta.url);
@@ -99,8 +100,9 @@ app.use("/api/auth", authRoute);
 app.use("/api/admin", adminRoute);
 app.use("/api/contact", contactRoutes);
 app.use("/api/consulation", consulationRoutes);
+app.use("/api/blogs", blogRoutes);
+app.use("/api/category", categoryRoutes);
 app.use("/api/newsletter", newsLetterRoutes);
-
 
 // Middleware to catch errors
 app.use((err, req, res, next) => {
