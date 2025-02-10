@@ -1,9 +1,43 @@
-import React from 'react'
+import React, { useState,useRef } from "react";
+import Box from "@mui/material/Box";
+import { DataGrid } from "@mui/x-data-grid";
+import { columns, rows } from "../data/ContactUs"; // Importing Data
 
-function ContactUs() {
-  return (
-    <div className='text-red-500'>ContactUs</div>
-  )
-}
 
-export default ContactUs
+const ContactUs=()=>{
+  const [loading, setLoading] = useState(false);
+  const [openSetting, setOpenSetting] = useState(false);
+  const settingPopref = useRef(null);
+  const settingRef = useRef(null)
+
+  return(
+    <div className="h-full w-full bg-gray-100 flex flex-col">
+   
+
+    {/* Table Section */}
+    <div className="h-full w-full p-6">
+      <div className="h-full bg-white px-4 py-5 rounded-md shadow-md">
+        <Box sx={{ height: "100%" }}>
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            pageSize={5}
+            loading={loading}
+            initialState={{
+              pagination: {
+                paginationModel: {
+                  pageSize: 5,
+                },
+              },
+            }}
+            pageSizeOptions={[5, 10]}
+            checkboxSelection
+          />
+        </Box>
+      </div>
+    </div>
+  </div>
+  );
+};
+
+export default ContactUs;
