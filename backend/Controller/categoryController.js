@@ -63,6 +63,7 @@ export const getCategoryById = async (req, res, next) => {
   }
 };
 
+
 export const getTrendingBlogs = async (req, res) => {
   try {
     const categories = await CATEGORY.aggregate([
@@ -104,3 +105,4 @@ export const getTrendingBlogs = async (req, res) => {
     });
   }
 };
+

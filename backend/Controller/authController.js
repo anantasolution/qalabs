@@ -1,8 +1,7 @@
 import bcrypt from "bcrypt";
 import Admin from "../models/ADMIN.js";
 import Loginmapping from "../models/LOGINMAPPING.js";
-import jwt from 'jsonwebtoken';
-
+import jwt from "jsonwebtoken";
 
 export const createAdmin = async (req, res) => {
   try {
@@ -84,13 +83,14 @@ const validateAdmin = (username, email, password, mobileno) => {
   return { isValid: errors.length === 0, errors };
 };
 
-
 export const loginAdmin = async (req, res, next) => {
   try {
     const { email, password } = req.body;
 
     if (!email || !password) {
-      return res.status(400).json({ message: "Please provide email and password" });
+      return res
+        .status(400)
+        .json({ message: "Please provide email and password" });
     }
 
     const user = await Loginmapping.findOne({ email });
@@ -98,9 +98,9 @@ export const loginAdmin = async (req, res, next) => {
     if (!user) {
       return res.status(404).json({ message: "Invalid email address" });
     }
+
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
-      console.log("Password comparison failed");
       return res.status(401).json({ message: "Invalid password" });
     }
 
@@ -113,6 +113,7 @@ export const loginAdmin = async (req, res, next) => {
       process.env.JWT,
       { expiresIn: "30d" }
     );
+
 
     res.cookie("user_data", token, {
         expires: new Date(Date.now() + 2592000000),
@@ -128,4 +129,52 @@ export const loginAdmin = async (req, res, next) => {
   }
 };
 
+export const updatePassword = async (req, res, next) => {
+  try {
+    const { id, newpassword } = req.body;
 
+    if (!id || !newpassword) {
+      return res
+        .status(400)
+        .json({ message: "Please provide user id and new password" });
+    }
+
+    // Hash the new password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(newpassword, salt);
+
+    // Update the password using `findOneAndUpdate`
+    const updatedUser = await Loginmapping.findOneAndUpdate(
+      { mongoid: id },
+      { password: hashedPassword },
+      { new: true }
+    );
+
+    if (!updatedUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res
+      .status(200)
+      .json({ message: "Password updated successfully", user: updatedUser });
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const logoutAdmin = async (req, res, next) => {
+  try {
+    res
+      .clearCookie("user_data", {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+        domain:
+          process.env.NODE_ENV === "production" ? ".stylic.ai" : undefined,
+      })
+      .status(200)
+      .json({ message: "Logged out successfully" });
+  } catch (err) {
+    next(err);
+  }
+};
