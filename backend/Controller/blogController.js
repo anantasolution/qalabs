@@ -68,7 +68,7 @@ export const createBlog = async (req, res) => {
 // get All Blogs
 export const getAllBlog = async (req, res) => {
   try {
-    const blogs = await Blog.find();
+    const blogs = await Blog.find().populate("category");
 
     if (!blogs) {
       return res.status(202).json({ message: "No Blogs Found", data: [] });
@@ -95,7 +95,7 @@ export const getSpecificBlog = async (req, res) => {
         message: "Please provide id",
       });
     }
-    const blog = await Blog.findById(id);
+    const blog = await Blog.findById(id).populate("category");
     if (!blog) {
       return res.status(202).json({ message: "No Blog Found", data: [] });
     }
