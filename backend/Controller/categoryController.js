@@ -43,7 +43,7 @@ export const getAllCategory = async (req, res, next) => {
     if (category.length === 0)
       return res.status(404).json({ message: "No Category found" });
 
-    return res.status(200).json({ message: "All category", category });
+    return res.status(200).json({ message: "All category", data:category });
   } catch (err) {
     next(err);
   }

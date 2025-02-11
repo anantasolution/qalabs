@@ -1,4 +1,4 @@
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import Admin from "../models/ADMIN.js";
 import Loginmapping from "../models/LOGINMAPPING.js";
 import jwt from "jsonwebtoken";

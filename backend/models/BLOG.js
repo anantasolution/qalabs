@@ -11,12 +11,6 @@ const blog = new mongoose.Schema(
       required: true,
       index: "text",
     },
-    contentImage: {
-      filetype: String,
-      filename: String,
-      filepath: String,
-      fileSize: String,
-    },
     image: {
       filetype: String,
       filename: String,
