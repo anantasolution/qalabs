@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
 import { columns, fetchConsultations } from "../data/Consultant";
 import { AlertCircle } from "lucide-react";
+import Breadcrumbs from '../components/Breadcrumbs';
 
 const Consultancy = () => {
   const [loading, setLoading] = useState(true);
@@ -36,7 +37,11 @@ const Consultancy = () => {
   }, []);
 
   return (
+
     <div className="h-full w-full bg-gray-100 flex flex-col">
+      <div className="p-4">
+        <Breadcrumbs />
+      </div>
       {/* Table Section */}
       <div className="h-full w-full p-6">
         <div className="h-full bg-white px-4 py-5 rounded-md shadow-md">
