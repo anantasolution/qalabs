@@ -1,5 +1,5 @@
-//Wrire column data
 import { useState } from "react";
+import axios from "axios";
 
 const SwitchButton = function () {
   const [isOn, setIsOn] = useState(true);
@@ -18,6 +18,39 @@ const SwitchButton = function () {
       ></div>
     </div>
   );
+};
+
+// Function to fetch all consultations
+export const fetchConsultations = async () => {
+  try {
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_API_BASE_URL}/consulation/getall`
+    );
+
+    console.log("Received Data:", data);
+
+    if (!data || !Array.isArray(data.consultations)) {
+      console.error("Invalid data format received from server:", data);
+      return [];
+    }
+    const formattedConsultations = data.consultations.map((consultation) => ({
+      ...consultation,
+      createdAt: formatDate(consultation.createdAt),
+    }));
+    return formattedConsultations;
+  } catch (error) {
+    console.error("Error fetching consultations:", error);
+    return [];
+  }
+};
+
+const formatDate = (dateString) => {
+  if (!dateString) return "";
+  const date = new Date(dateString);
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0"); // Month is zero-based
+  const year = date.getFullYear();
+  return `${day}-${month}-${year}`;
 };
 
 export const columns = [
@@ -51,7 +84,6 @@ export const columns = [
     headerName: "Email",
     minWidth: 220,
   },
-
   {
     field: "message",
     headerClassName: "super-app-theme--header",
@@ -63,53 +95,5 @@ export const columns = [
     headerClassName: "super-app-theme--header",
     headerName: "Created At",
     minWidth: 220,
-  },
-];
-
-export const rows = [
-  {
-    id: 1,
-    name: "John Carter",
-    company: "Global Solutions Ltd.",
-    email: "john.carter@example.com",
-    phone: "9876543210",
-    message: "Looking for business strategy consultation.",
-    createdAt: "2025-02-10",
-  },
-  {
-    id: 2,
-    name: "Sarah Mitchell",
-    company: "Tech Innovators Inc.",
-    email: "sarah.mitchell@techinnovators.com",
-    phone: "8765432109",
-    message: "Need guidance on digital transformation.",
-    createdAt: "2025-02-09",
-  },
-  {
-    id: 3,
-    name: "Michael Rodriguez",
-    company: "Finance Experts LLC",
-    email: "michael.rodriguez@financeexperts.com",
-    phone: "7654321098",
-    message: "Looking for financial planning advice.",
-    createdAt: "2025-02-08",
-  },
-  {
-    id: 4,
-    name: "Emma Johnson",
-    company: "Healthcare Solutions",
-    email: "emma.johnson@healthcare.com",
-    phone: "6543210987",
-    message: "Need consultation on medical regulations.",
-    createdAt: "2025-02-07",
-  },
-  {
-    id: 5,
-    name: "David Brown",
-    company: "Marketing Experts Ltd.",
-    email: "david.brown@marketingexperts.com",
-    phone: "5432109876",
-    message: "Seeking digital marketing strategy advice.",
-    createdAt: "2025-02-06",
   },
 ];
