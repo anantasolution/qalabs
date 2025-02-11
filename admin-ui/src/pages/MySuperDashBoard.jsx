@@ -18,7 +18,7 @@ function MySuperDashboard() {
             <div className={`flex ${toggle ? "w-[83%]" : "w-[94%]"} flex-col`}>
                 {/* Navbar  */}
                 <Navbar toggle={toggle} setToggle={setToggle}></Navbar>
-                <div className='w-full overflow-auto h-full bg-[#F5F5F5]'>
+                <div className='w-full overflow-y-scroll h-full bg-[#F5F5F5]'>
                     <Outlet></Outlet>
                 </div>
             </div>

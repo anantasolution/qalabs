@@ -15,3 +15,20 @@ export const allContacts = async (req, res, next) => {
     next(err);
   }
 };
+
+export const getAllContacts = async (req, res, next) => {
+  try {
+    const contacts = await CONTACTS.find();
+
+    if (!contacts) {
+      return res.status(404).json({ message: "No contacts found" });
+    }
+
+    res.status(200).json({
+      message: "Contacts fetched successfully",
+      contacts,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
