@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 import SearchIcon from "@mui/icons-material/Search";
 
-const Breadcrumbs = () => {
+const Breadcrumbs = ({setSearchQuery}) => {
   const location = useLocation();
   const pathnames = location.pathname.split("/").filter((x) => x);
 
@@ -17,9 +17,9 @@ const Breadcrumbs = () => {
   }, [location.pathname]);
 
   return (
-    <div className="p-4 bg-white shadow rounded-md flex justify-between items-center flex-wrap">
+    <div className="p-4 bg-white shadow flex justify-between items-center flex-wrap">
       {/* Breadcrumbs (Left Side) */}
-      <div className="flex items-center space-x-2 text-gray-700 flex-wrap">
+      <div className="flex items-center space-x-2 text-gray-700 flex-wrap"> 
         <Link to="/" className="hover:text-gray-950 text-xl font-semibold">
           Home
         </Link>

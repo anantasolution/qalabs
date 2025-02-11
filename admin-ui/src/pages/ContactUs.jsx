@@ -38,7 +38,7 @@ const ContactUs = () => {
 
     return (
         <div className="h-full w-full bg-gray-100 flex flex-col">
-            <div className="p-4">
+            <div className="">
                 <Breadcrumbs />
             </div>
             {/* Table Section */}

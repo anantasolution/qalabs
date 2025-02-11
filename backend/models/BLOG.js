@@ -25,7 +25,7 @@ const blog = new mongoose.Schema(
     },
     category: {
       type: mongoose.Schema.Types.ObjectId,
-      refPath: "Category",
+      ref: "Category",
     },
   },
   { timestamps: true }
