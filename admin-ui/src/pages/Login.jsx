@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
 import { Check, X, Bug, Play, RefreshCw, Eye, EyeOff, ArrowLeft } from 'lucide-react';
+import { toast } from 'react-toastify';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
 const Login = () => {
+  const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -10,7 +17,6 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isRegistering, setIsRegistering] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [registeredUsers, setRegisteredUsers] = useState([]);
   const [successMessage, setSuccessMessage] = useState('');
   
   const handleSubmit = async (e) => {
@@ -21,34 +27,42 @@ const Login = () => {
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
-      setError('Please enter a valid email address');
+      toast.error('Please enter a valid email address');
       setIsLoading(false);
       return;
     }
 
-    if (password.length < 6) {
-      setError('Password must be at least 6 characters long');
+    if (password.length < 4) {
+      toast.error('Password must be at least 4 characters long');
       setIsLoading(false);
       return;
     }
 
     if (isRegistering) {
       if (password !== confirmPassword) {
-        setError('Passwords do not match');
+        toast.error('Passwords do not match');
         setIsLoading(false);
         return;
       }
-      setRegisteredUsers([...registeredUsers, { email, password }]);
-      setSuccessMessage('Registration successful! Please log in.');
+      
+      toast.success('Registration successful! Please log in.');
       setIsRegistering(false);
     } else {
-      const userExists = registeredUsers.some((user) => user.email === email && user.password === password);
-      if (!userExists) {
-        setError('Invalid email or password');
-        setIsLoading(false);
-        return;
-      }
+
       setIsValidated(true);
+
+      //api for login 
+      try{
+        dispatch({type:"USER_FETCH_START"})
+        const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/auth/loginAdmin`,{email,password},{withCredentials:true})
+        console.log(response.data)
+        dispatch({type:"LOGIN_SUCCESS",payload:response.data})
+        navigate('/admin/dashboard')
+      }catch(err){
+        console.log(err)
+        toast.error(err?.response?.data?.message || "Something went wrong.")
+      }
+
       setSuccessMessage('Login successful!');
     }
     setIsLoading(false);
