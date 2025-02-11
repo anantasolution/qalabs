@@ -1,6 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
 import BI from "../assets/background.jpeg";
+import { useState } from "react";
+import axios from "axios";
+import { useEffect } from "react";
+import { LoaderCircle } from "lucide-react";
 
 const ContactPage = () => {
   const upsideVariants = {
@@ -19,6 +23,116 @@ const ContactPage = () => {
       opacity: 1,
       transition: { duration: 0.9, ease: "easeOut" },
     },
+  };
+
+  const [formData, setFormData] = useState({
+    name: "",
+    company: "",
+    phone: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
+
+  // Function to validate individual fields
+  const validateField = (name, value) => {
+    let errorMsg = "";
+
+    switch (name) {
+      case "name":
+        if (!value.trim()) errorMsg = "Name is required";
+        else if (value.length < 3)
+          errorMsg = "Name must be at least 3 characters";
+        break;
+
+      case "email":
+        if (!value.trim()) errorMsg = "Email is required";
+        else if (!/^\S+@\S+\.\S+$/.test(value))
+          errorMsg = "Invalid email format";
+        break;
+
+      case "phone":
+        if (!value.trim()) errorMsg = "Phone number is required";
+        else if (!/^\d{10}$/.test(value))
+          errorMsg = "Invalid phone number (10 digits required)";
+        break;
+
+      case "subject":
+        if (!value.trim()) errorMsg = "Subject is required";
+        break;
+
+      case "message":
+        if (!value.trim()) errorMsg = "Message cannot be empty";
+        else if (value.length < 10)
+          errorMsg = "Message must be at least 10 characters";
+        break;
+
+      default:
+        break;
+    }
+
+    return errorMsg;
+  };
+
+  // Handle Input Change and Validate
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({ ...prev, [name]: value }));
+
+    // Validate field and update errors
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: validateField(name, value),
+    }));
+  };
+
+  // Validate all fields when formData changes
+  useEffect(() => {
+    const newErrors = {};
+    Object.keys(formData).forEach((key) => {
+      newErrors[key] = validateField(key, formData[key]);
+    });
+    setErrors(newErrors);
+  }, [formData]);
+
+  // Handle Form Submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    console.log(process.env.REACT_APP_API_BASE_URL);
+
+    // Check if there are any errors before submitting
+    const hasErrors = Object.values(errors).some((error) => error);
+    if (hasErrors) {
+      console.log("Fix errors before submitting", errors);
+      return;
+    }
+
+    try {
+      setLoading(true);
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_BASE_URL}/contact`,
+        formData
+      );
+
+      console.log("Form submitted successfully:", response.data);
+    } catch (error) {
+      console.error("Submission error:", error);
+    } finally {
+      setLoading(false);
+      setFormData({
+        name: "",
+        company: "",
+        phone: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    }
   };
 
   return (
@@ -187,7 +301,7 @@ const ContactPage = () => {
               natoque libero nunc
             </p>
 
-            <form className="space-y-4">
+            <form className="space-y-4" onSubmit={handleSubmit}>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium mb-1">Name</label>
@@ -195,6 +309,9 @@ const ContactPage = () => {
                     type="text"
                     className="w-full px-4 py-2 bg-neutral-800 text-white rounded-lg border border-gray-600"
                     placeholder="Name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
                   />
                 </div>
                 <div>
@@ -205,6 +322,9 @@ const ContactPage = () => {
                     type="text"
                     className="w-full px-4 py-2 bg-neutral-800 text-white rounded-lg border border-gray-600"
                     placeholder="Company"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleChange}
                   />
                 </div>
               </div>
@@ -218,6 +338,9 @@ const ContactPage = () => {
                     type="tel"
                     className="w-full px-4 py-2 bg-neutral-800 text-white rounded-lg border border-gray-600"
                     placeholder="Phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
                   />
                 </div>
                 <div>
@@ -228,6 +351,9 @@ const ContactPage = () => {
                     type="email"
                     className="w-full px-4 py-2 bg-neutral-800 text-white rounded-lg border border-gray-600"
                     placeholder="Email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                   />
                 </div>
               </div>
@@ -240,6 +366,9 @@ const ContactPage = () => {
                   type="text"
                   className="w-full px-4 py-2 bg-neutral-800 text-white rounded-lg border border-gray-600"
                   placeholder="Subject"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
                 />
               </div>
 
@@ -250,11 +379,15 @@ const ContactPage = () => {
                 <textarea
                   placeholder="Message"
                   className="w-full px-4 py-2 bg-neutral-800 text-white rounded-lg border border-gray-600 h-24"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                 ></textarea>
               </div>
 
               <button
                 type="submit"
+                disabled={loading}
                 className="bg-emerald-300 hover:bg-lime-300 text-gray-900 px-4 py-2 font-sm transition-colors duration-300 flex items-center gap-2 cursor-pointer rounded-full"
               >
                 <svg
@@ -270,7 +403,14 @@ const ContactPage = () => {
                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                   />
                 </svg>
-                Send Message
+                {loading ? (
+                  <div className="flex items-center gap-2">
+                    <LoaderCircle className="animate-spin"></LoaderCircle>{" "}
+                    Loading...
+                  </div>
+                ) : (
+                  "Send Message"
+                )}
               </button>
             </form>
           </div>

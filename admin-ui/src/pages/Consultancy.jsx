@@ -63,7 +63,6 @@ const Consultancy = () => {
   return (
     <div className="h-full w-full bg-gray-100 flex flex-col">
       <Breadcrumbs setSearchQuery={setSearchQuery} />
-
       {/* Table Section */}
       <div className="h-full w-full p-6">
         <div className="h-full bg-white px-4 py-5 rounded-md shadow-md">
@@ -73,7 +72,7 @@ const Consultancy = () => {
               <span>{error}</span>
             </div>
           )}
-          <Box sx={{ height: 400, width: "100%" }}>
+          <Box sx={{ height: "100%", width: "100%" }}>
             <DataGrid
               rows={filterData}
               columns={columns}
