@@ -33,7 +33,6 @@ export const delCategoryById = async (req, res, next) => {
       .json({ message: "Category deleted successfully", delcategory });
   } catch (err) {
     next(err);
-    
   }
 };
 
@@ -61,5 +60,47 @@ export const getCategoryById = async (req, res, next) => {
     return res.status(200).json({ message: "fetched Successfully", getByid });
   } catch (err) {
     next(err);
+  }
+};
+
+export const getTrendingBlogs = async (req, res) => {
+  try {
+    const categories = await CATEGORY.aggregate([
+      {
+        $match: { $expr: { $gt: [{ $size: "$blogs" }, 1] } },
+      },
+      {
+        $lookup: {
+          from: "blogs",
+          let: { blogsIds: "$blogs" },
+          pipeline: [
+            {
+              $match: { $expr: { $in: ["$_id", "$$blogsIds"] } },
+            },
+            {
+              $project: {
+                title: 1,
+                content: 1,
+                contentImage: 1,
+                image: 1,
+                createdAt: 1,
+              },
+            },
+          ],
+          as: "blogs_details",
+        },
+      },
+    ]);
+    if (categories.length === 0)
+      return res.status(404).json({ message: "No Trending Blogs found" });
+
+    return res
+      .status(200)
+      .json({ message: "Trending Blogs", data: categories });
+  } catch (err) {
+    return res.status(404).json({
+      message: "SomethingWent Wrong in GetTrendingBlogs",
+      message2: err.message,
+    });
   }
 };
