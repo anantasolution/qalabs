@@ -30,5 +30,7 @@ export const getAllContacts = async (req, res, next) => {
     });
   } catch (err) {
     next(err);
-  }
+  }
 };
+
+
