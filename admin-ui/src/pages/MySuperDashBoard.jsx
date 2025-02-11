@@ -26,4 +26,4 @@ function MySuperDashboard() {
     )
 }
 
-export default MySuperDashboard
+export default MySuperDashboard;

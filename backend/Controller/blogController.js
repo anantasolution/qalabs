@@ -14,10 +14,10 @@ export const createBlog = async (req, res) => {
     }
 
     // Use req.files, not req.file (since you're using multiple upload middlewares)
-    const image = req.files["image"][0] ? req.files["image"][0] : null;
-    const contentImage = req.files["contentImage"]
-      ? req.files["contentImage"][0]
-      : null;
+    const image = req.files["image"] ? req.files["image"][0] : null;
+    // const contentImage = req.files["contentImage"]
+    //   ? req.files["contentImage"][0]
+    //   : null;
     const imageFormat = image
       ? {
           filetype: image.mimetype,
@@ -27,23 +27,23 @@ export const createBlog = async (req, res) => {
         }
       : null;
 
-    const contentImageFormat = contentImage
-      ? {
-          filetype: contentImage.mimetype,
-          filepath: contentImage.path,
-          filename: contentImage.filename,
-          fileSize: `${contentImage.size} bytes`,
-        }
-      : null;
+    // const contentImageFormat = contentImage
+    //   ? {
+    //       filetype: contentImage.mimetype,
+    //       filepath: contentImage.path,
+    //       filename: contentImage.filename,
+    //       fileSize: `${contentImage.size} bytes`,
+    //     }
+    //   : null;
 
     const newBlog = await Blog.create({
       title,
       content,
       category,
-      image: imageFormat,
-      contentImage: contentImageFormat,
+      ...(image ? { image: imageFormat } : {}), // Corrected condition for spreading
     });
 
+    
     const addBlogToTheCategory = await Category.findByIdAndUpdate(
       category,
       { $push: { blogs: newBlog._id } },

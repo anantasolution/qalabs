@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ckeditor/ckeditor5-react": "^9.4.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^6.4.3",
@@ -11,6 +12,7 @@
     "axios": "^1.7.9",
     "cra-template": "1.2.0",
     "framer-motion": "^12.4.1",
+    "jodit-react": "^5.2.5",
     "lucide-react": "^0.475.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
