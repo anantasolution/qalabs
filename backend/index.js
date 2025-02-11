@@ -31,17 +31,17 @@ dotenv.config();
 const app = express();
 
 // Serve static files from the uploads directory
-app.use(
-  "/uploads/partner/logo",
-  express.static(path.join(__dirname, "uploads/partner/logo"))
-);
+// app.use(
+//   "/uploads/partner/logo",
+//   express.static(path.join(__dirname, "uploads/partner/logo"))
+// );
 
-app.use(
-  "/uploads/company/logo",
-  express.static(path.join(__dirname, "uploads/company/logo"))
-);
+// app.use(
+//   "/uploads/company/logo",
+//   express.static(path.join(__dirname, "uploads/company/logo"))
+// );
 
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+// app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 const corsOptions = {
   origin: (origin, callback) => {

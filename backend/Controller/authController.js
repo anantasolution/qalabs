@@ -115,7 +115,7 @@ export const loginAdmin = async (req, res, next) => {
     );
 
 
-    res.cookie("user_data", token, {
+    res.cookie("qalabs", token, {
         expires: new Date(Date.now() + 2592000000),
         httpOnly: true,
         domain:process.env.NODE_ENV === 'production'?'.stylic.ai':undefined,
@@ -165,7 +165,7 @@ export const updatePassword = async (req, res, next) => {
 export const logoutAdmin = async (req, res, next) => {
   try {
     res
-      .clearCookie("user_data", {
+      .clearCookie("qalabs", {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
         sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
@@ -178,3 +178,23 @@ export const logoutAdmin = async (req, res, next) => {
     next(err);
   }
 };
+
+
+export const validateUser = async (req, res, next)=>{
+  try{
+    const token= req.cookies.qalabs
+
+    if (!token) return res.status(401).json({ message: "No token found." });
+
+    const decoded = jwt.verify(token, process.env.JWT);
+
+    const user = await Loginmapping.findOne({ mongoid: decoded.mongoid });
+
+    if (!user) return res.status(401).json({ message: "User not found." });
+
+    const { email, mongoid } = user._doc;
+    res.status(200).json({ email, mongoid });
+  }catch(err){
+     next(err)
+  }
+}
