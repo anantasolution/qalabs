@@ -13,6 +13,7 @@ import consulationRoutes from "./routes/consulation.js";
 import blogRoutes from "./routes/blog.js";
 import categoryRoutes from "./routes/category.js";
 import newsLetterRoutes from "./routes/newsletter.js";
+import mailRoute from "./routes/mail.js";
 
 // Get the current file's path
 const __filename = fileURLToPath(import.meta.url);
@@ -103,6 +104,7 @@ app.use("/api/consulation", consulationRoutes);
 app.use("/api/blogs", blogRoutes);
 app.use("/api/category", categoryRoutes);
 app.use("/api/newsletter", newsLetterRoutes);
+app.use("/api/mail", mailRoute);
 
 // Middleware to catch errors
 app.use((err, req, res, next) => {
