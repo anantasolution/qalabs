@@ -94,11 +94,12 @@ export const loginAdmin = async (req, res, next) => {
     }
 
     const user = await Loginmapping.findOne({ email });
+
     if (!user) {
       return res.status(404).json({ message: "Invalid email address" });
     }
     const isPasswordValid = await bcrypt.compare(password, user.password);
-    if (isPasswordValid) {
+    if (!isPasswordValid) {
       console.log("Password comparison failed");
       return res.status(401).json({ message: "Invalid password" });
     }
@@ -106,26 +107,21 @@ export const loginAdmin = async (req, res, next) => {
     // Generate JWT token
     const token = jwt.sign(
       {
-        id: user._id,
         mongoid: user.mongoid,
         email: user.email,
-        user_type: user.user_type,
       },
-      process.env.JWT_SECRET || "defaultSecretKey",
+      process.env.JWT,
       { expiresIn: "30d" }
     );
 
-    res.status(200).json({
-      message: "Login successful",
-      token,
-      user: {
-        id: user._id,
-        mongoid: user.mongoid,
-        email: user.email,
-        user_type: user.user_type,
-        status: user.status,
-      },
-    });
+    res.cookie("user_data", token, {
+        expires: new Date(Date.now() + 2592000000),
+        httpOnly: true,
+        domain:process.env.NODE_ENV === 'production'?'.stylic.ai':undefined,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      }).status(200)
+      .json({ email:user.email, mongoid:user.mongoid });
 
   } catch (err) {
     next(err);

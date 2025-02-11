@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import { useSelector, useDispatch } from "react-redux";
 //Importing General
 import Login from "./pages/Login";
 
@@ -11,6 +11,8 @@ import Blogs from "./pages/Blogs";
 import ForgotPassword from "./pages/ForgotPassword";
 
 function App() {
+   const { user } = useSelector((state) => state.auth);
+   
    return (
       <Router>
          <Routes>
