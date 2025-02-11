@@ -120,7 +120,7 @@ function SideNavbar({ toggle }) {
                                 </div>
                             ) :
                             (
-                                <div onClick={() => handleNavigate("consultant")} className={`flex ${isActive("blogs") && "bg-gray-100"} hover:bg-gray-100 cursor-pointer transition-all duration-300  p-1.5 rounded-md  justify-center items-center`}>
+                                <div onClick={() => handleNavigate("consultant")} className={`flex ${isActive("consultant") && "bg-gray-100"} hover:bg-gray-100 cursor-pointer transition-all duration-300  p-1.5 rounded-md  justify-center items-center`}>
                                     <span><Brain style={{ fontSize: '1.8rem', fontWeight: '200' }}></Brain></span>
                                 </div>
                             )
