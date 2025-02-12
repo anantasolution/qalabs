@@ -3,15 +3,20 @@ import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
 import { columns, getAllContacts } from "../data/ContactUs"; // Import API function
 import Breadcrumbs from "../components/Breadcrumbs";
+import ConfirmPopUp from "../components/ConfirmPopUp"; // Import ConfirmPopUp component
+import Tooltip from "@mui/material/Tooltip";
+import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
+import axios from "axios";
 
 const ContactUs = () => {
   const [loading, setLoading] = useState(true);
   const [contacts, setContacts] = useState([]); // Store contacts from backend
   const [filterData, setFilterData] = useState([]);
   const [searchQuery, setSearchQuery] = useState(""); // Add searchQuery state
- 
+  const [confirmPopUp, setConfirmPopUp] = useState(false); // State for confirm popup
+  const [selectedContact, setSelectedContact] = useState(null); // State for selected contact
 
-  useEffect(() => {
+  useEffect(() => { 
     const fetchContacts = async () => {
       setLoading(true);
       try {
@@ -56,16 +61,62 @@ const ContactUs = () => {
     filterData();
   }, [searchQuery, contacts]);
 
+  const handleDeleteContact = async () => {
+    if (selectedContact && selectedContact._id) {
+      try {
+        await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/contact/delete/${selectedContact._id}`);
+        
+        // Filter out deleted contact
+        setContacts((prevContacts) => prevContacts.filter(contact => contact._id !== selectedContact._id));
+        
+        setConfirmPopUp(false);
+        setSelectedContact(null);
+      } catch (error) {
+        console.error("Error deleting contact:", error);
+      }
+    }
+  };
+  
+  const handleOpenConfirmPopUp = (contact) => {
+    setSelectedContact(contact);
+    setConfirmPopUp(true);
+  };
+  
+
+  const updatedColumns = [
+    ...columns,
+    {
+      field: "delete",
+      headerName: "Action",
+      sortable: false,
+      renderCell: (params) => {
+        return (
+            <div className="flex items-center gap-3 h-full">
+           <Tooltip title="Delete" arrow>
+<span
+     onClick={() => handleOpenConfirmPopUp(params.row)}
+    className="bg-red-500 hover:bg-red-600 transition-colors duration-300 text-white w-8 h-8 flex justify-center items-center rounded-full cursor-pointer"
+>
+    <DeleteOutlineIcon className="text-white" style={{ fontSize: '1.4rem' }} />
+</span>
+</Tooltip>
+        
+        </div>
+        )
+    }
+    },
+  ];
+
   return (
     <div className="h-full w-full bg-gray-100 flex flex-col">
-        <Breadcrumbs setSearchQuery={setSearchQuery} />
+      <Breadcrumbs setSearchQuery={setSearchQuery} />
       {/* Table Section */}
       <div className="h-full w-full p-6">
         <div className="h-full bg-white px-4 py-5 rounded-md shadow-md">
           <Box sx={{ height: "100%" }}>
             <DataGrid
               rows={filterData} // Use filterData instead of contacts
-              columns={columns}
+              columns={updatedColumns}
               pageSize={5}
               loading={loading}
               initialState={{
@@ -81,6 +132,12 @@ const ContactUs = () => {
           </Box>
         </div>
       </div>
+      {confirmPopUp && (
+        <ConfirmPopUp
+          setIsOpen={setConfirmPopUp}
+          onConfirm={handleDeleteContact}
+        />
+      )}
     </div>
   );
 };
