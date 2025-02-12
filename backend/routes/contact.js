@@ -1,8 +1,7 @@
 import express from "express";
 
 
-import { allContacts, deleteContact, getAllContacts } from "../Controller/contactController.js";
-import { allContacts, ContactCount, getAllContacts } from "../Controller/contactController.js";
+import { allContacts, deleteContact , ContactCount, getAllContacts } from "../Controller/contactController.js";
 
 
 const router = express.Router();
