@@ -33,4 +33,24 @@ export const getAllContacts = async (req, res, next) => {
   }
 };
 
+export const deleteContact = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    // Validate if the ID is provided
+    if (!id) {
+      return res.status(400).json({ message: "Contact ID is required" });
+    }
+
+    const contact = await CONTACTS.findByIdAndDelete(id);
+
+    if (!contact) {
+      return res.status(404).json({ message: "No contact found with this ID" });
+    }
+
+    res.status(200).json({ message: "Contact deleted successfully" });
+  } catch (err) {
+    res.status(500).json({ message: "Internal server error", error: err.message });
+  }
+};
 

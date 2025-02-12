@@ -1,4 +1,3 @@
-import express from "express";
 import CONSULATIONS from "../models/CONSULATIONS.js";
 
 export const allConsulations = async (req, res, next) => {
@@ -36,6 +35,27 @@ export const getAllConsultations = async (req, res, next) => {
       message: "Consultations fetched successfully",
       consultations,
     });
+  } catch (err) {
+    next(err);
+  }
+};
+
+export const deleteConsultation = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    // Validate if the ID is provided
+    if (!id) {
+      return res.status(400).json({ message: "Consultation ID is required" });
+    }
+
+    const consultations = await CONSULATIONS.findByIdAndDelete(id);
+
+    if (!consultations) {
+      return res.status(404).json({ message: "No consultation found with this ID" });
+    }
+
+    res.status(200).json({ message: "Consultation deleted successfully" });
   } catch (err) {
     next(err);
   }

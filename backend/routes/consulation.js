@@ -1,6 +1,7 @@
 import express from "express";
 import {
   allConsulations,
+  deleteConsultation,
   getAllConsultations,
 } from "../Controller/consulationController.js";
 
@@ -11,5 +12,8 @@ router.post("/", allConsulations);
 router.get("/getall", getAllConsultations);
 
 router.get("/getall", getAllConsultations);
+
+router.delete("/delete/:id",deleteConsultation);
+
 
 export default router;
