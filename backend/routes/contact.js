@@ -1,6 +1,6 @@
 import express from "express";
 
-import { allContacts, deleteContact , ContactCount, getAllContacts } from "../Controller/contactController.js";
+import { allContacts, deleteContact , ContactCount, getAllContacts,getLatestcontact } from "../Controller/contactController.js";
  
 const router = express.Router();
 
@@ -10,6 +10,8 @@ router.delete("/delete/:id",deleteContact);
 
 //Total Counts of Contact
 router.get("/getcounts",ContactCount);
+
+router.get("/latestcontact",getLatestcontact)
 
 
 export default router;

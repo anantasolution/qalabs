@@ -66,3 +66,26 @@ export const ContactCount = async (req, res, next) => {
     next(err);
   }
 };
+
+
+export const getLatestcontact = async (req, res) => {
+  try {
+    const blogs = await CONTACTS.find()
+      .sort({ createdAt: -1 }) // Sort by descending order of createdAt
+      .limit(10); 
+
+    if (!blogs) {
+      return res.status(202).json({ message: "No contact Found", data: [] });
+    }
+
+    return res
+      .status(200)
+      .json({ success: true, message: "Latest  contact", data: blogs });
+  } catch (err) {
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error from GetLatestBlogs",
+      error: err.message,
+    });
+  }
+};
