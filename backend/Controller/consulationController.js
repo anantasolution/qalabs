@@ -56,6 +56,19 @@ export const deleteConsultation = async (req, res, next) => {
     }
 
     res.status(200).json({ message: "Consultation deleted successfully" });
+  }catch(err){
+    next(err);
+  }
+}
+
+export const ConsulationCount = async (req, res, next) => {
+  try {
+    const count = await CONSULATIONS.countDocuments(); // Correct way to get count
+
+    if (count === 0)
+      return res.status(404).json({ message: "No consulation found" });
+
+    return res.status(200).json({ message: "consulation count",  data: count  });
   } catch (err) {
     next(err);
   }

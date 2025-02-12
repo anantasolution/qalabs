@@ -5,6 +5,7 @@ import {
   getAllCategory,
   delCategoryById,
   getTrendingBlogs,
+  CategoryCount,
 } from "../Controller/categoryController.js";
 
 const router = express.Router();
@@ -23,5 +24,8 @@ router.delete("/delete/:id", delCategoryById);
 
 // send the ternding Blogs of  the Category
 router.get("/terndingBlogs", getTrendingBlogs);
+
+//Total Counts of Category
+router.get("/getcounts",CategoryCount)
 
 export default router;

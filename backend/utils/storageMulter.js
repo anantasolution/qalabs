@@ -38,7 +38,6 @@ export const uploadBoth = multer({
   fileFilter,
 }).fields([
   { name: "image", maxCount: 1 }, // Blog cover image
-  { name: "contentImage", maxCount: 1 }, // Blog content image
 ]);
 
 export const uploadImageOfBlog = multer({

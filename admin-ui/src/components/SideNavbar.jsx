@@ -106,12 +106,12 @@ function SideNavbar({ toggle }) {
                            </div>
                            {
                               blogDropDown && 
-                              <div className='flex pl-10 flex-col gap-.5'>
-                                <div onClick={()=>handleNavigate('blogs/allblogs')} className='flex rounded-md cursor-pointer p-1 hover:bg-gray-100 items-center gap-1.5'>
+                              <div className='flex pl-10 flex-col py-2 gap-1'>
+                                <div onClick={()=>handleNavigate('blogs/allblogs')} className={`flex ${isActive('blogs/allblogs') && "bg-gray-100"} rounded-md cursor-pointer p-1 hover:bg-gray-100 items-center gap-1.5`}>
                                   <span className='font-semibold' ><ListOutlinedIcon style={{fontSize:'1.2rem'}}></ListOutlinedIcon></span>
                                   <span className='text-sm font-semibold'>All Blogs</span>
                                 </div>
-                                <div onClick={()=>handleNavigate('blogs/category')} className='flex rounded-md cursor-pointer p-1 hover:bg-gray-100 items-center gap-1.5'>
+                                <div onClick={()=>handleNavigate('blogs/category')} className={`flex ${isActive('blogs/category') && "bg-gray-100"} rounded-md cursor-pointer p-1 hover:bg-gray-100 items-center gap-1.5`}>
                                   <span className='font-semibold' ><CategoryOutlinedIcon style={{fontSize:'1.2rem'}}></CategoryOutlinedIcon></span>
                                   <span className='text-sm font-semibold'>Category</span>
                                 </div>

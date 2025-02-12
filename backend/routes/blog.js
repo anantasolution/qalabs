@@ -7,7 +7,8 @@ import {
   deleteBlog,
   updateImageofBlog,
   updateimageOfContentOfBlog,
-  getLatestBlogs
+  getLatestBlogs,
+  BlogCount
 } from "../Controller/blogController.js";
 import {
   uploadBoth,
@@ -29,6 +30,10 @@ router.get("/getSpecificBlog/:id", getSpecificBlog);
 router.delete("/deleteBlog/:id", deleteBlog);
 //Get latest 5 blogs
 router.get("/latestblogs", getLatestBlogs);
+
+//Total Counts of blog
+router.get("/getcounts",BlogCount)
+
 
 // upadte the  Image of Blog
 router.put(
