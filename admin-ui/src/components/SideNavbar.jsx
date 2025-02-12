@@ -4,10 +4,15 @@ import { useLocation } from 'react-router-dom';
 
 //Importing icons
 import SpaceDashboardOutlinedIcon from '@mui/icons-material/SpaceDashboardOutlined';
-import { Ellipsis } from 'lucide-react';
+import CategoryOutlinedIcon from '@mui/icons-material/CategoryOutlined';
+import { Ellipsis, Users } from 'lucide-react';
 import { SquarePen } from 'lucide-react';
 import { Contact } from 'lucide-react';
 import { Brain } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
+import { ChevronUp } from 'lucide-react';
+import ListOutlinedIcon from '@mui/icons-material/ListOutlined';
+
 
 
 function SideNavbar({ toggle }) {
@@ -16,6 +21,7 @@ function SideNavbar({ toggle }) {
     const location = useLocation()
 
     const [innerToggle, setInnerToggle] = useState(toggle)
+    const [blogDropDown,setBlogDropDown] = useState(false)
 
     const handleNavigate = (path) => {
         navigate(path)
@@ -84,18 +90,40 @@ function SideNavbar({ toggle }) {
                             )
                     }
                     {
-                        toggle || innerToggle ?
-                            (
-                                <div onClick={() => handleNavigate("blogs")} className={`flex ${isActive("blogs") && "bg-gray-100"} hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}>
-                                    <span><SquarePen style={{ fontSize: '1.4rem' }}></SquarePen></span>
-                                    <span className='text-sm font-semibold'>Blogs</span>
+                        toggle || innerToggle ? 
+                        (
+                        <div className='flex flex-col gap-.5'>
+                           <div onClick={()=>setBlogDropDown(prev=>!prev)} className={`flex ${isActive('blogs') && "bg-gray-100"} hover:bg-gray-100 cursor-pointer transition-all justify-between duration-300 rounded-md p-2 items-center gap-2`}>
+                             <div className='flex items-center gap-2'>
+                                 <span className=''><SquarePen></SquarePen></span>
+                                 <span className='text-sm font-semibold'>Blogs</span>
+                             </div>
+                             {
+                                blogDropDown ? 
+                                <ChevronDown className='w-4 h-4'></ChevronDown>
+                                : <ChevronUp className='w-4 h-4'></ChevronUp>
+                             }
+                           </div>
+                           {
+                              blogDropDown && 
+                              <div className='flex pl-10 flex-col gap-.5'>
+                                <div onClick={()=>handleNavigate('blogs/allblogs')} className='flex rounded-md cursor-pointer p-1 hover:bg-gray-100 items-center gap-1.5'>
+                                  <span className='font-semibold' ><ListOutlinedIcon style={{fontSize:'1.2rem'}}></ListOutlinedIcon></span>
+                                  <span className='text-sm font-semibold'>All Blogs</span>
                                 </div>
-                            ) :
-                            (
-                                <div onClick={() => handleNavigate("blogs")} className={`flex ${isActive("blogs") && "bg-gray-100"} hover:bg-gray-100 cursor-pointer transition-all duration-300  p-1.5 rounded-md  justify-center items-center`}>
-                                    <span><SquarePen style={{ fontSize: '1.8rem', fontWeight: '200' }}></SquarePen></span>
+                                <div onClick={()=>handleNavigate('blogs/category')} className='flex rounded-md cursor-pointer p-1 hover:bg-gray-100 items-center gap-1.5'>
+                                  <span className='font-semibold' ><CategoryOutlinedIcon style={{fontSize:'1.2rem'}}></CategoryOutlinedIcon></span>
+                                  <span className='text-sm font-semibold'>Category</span>
                                 </div>
-                            )
+                             </div>
+                           }
+                        </div>
+                        ) :
+                        (
+                            <div className={`flex ${isActive("blogs") && "bg-gray-100"} hover:bg-gray-100 cursor-pointer transition-all duration-300  p-1.5 rounded-md  justify-center items-center`}>
+                              <span><SquarePen style={{ fontSize: '1.8rem', fontWeight: '200' }}></SquarePen></span>
+                            </div>
+                        )
                     }
                     {
                         toggle || innerToggle ?

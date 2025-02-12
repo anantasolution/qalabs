@@ -32,7 +32,7 @@ const Categories = () => {
           `${process.env.REACT_APP_API_BASE_URL}/category/all`
         );
 
-        const formattedCategories = data.category.map((category) => ({
+        const formattedCategories = data.data.map((category) => ({
           name: category.category_name,
           count: category.blogs.length,
           updatedAt: new Date(category.updatedAt).toLocaleDateString("en-IN"), // Correct locale
@@ -46,7 +46,7 @@ const Categories = () => {
     };
 
     fetchData();
-  }, [category]);
+  }, []);
 
   return (
     <div className="h-full w-full bg-gray-100 flex flex-col">
