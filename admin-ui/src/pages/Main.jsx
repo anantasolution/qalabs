@@ -2,7 +2,7 @@ import React from "react";
 
 //Importing components
 import { DashboardCards } from "../constant/DashboardCard";
-
+import Breadcrumbs from "../components/Breadcrumbs";
 // importing icons
 import { MoreVertical } from "lucide-react";
 import { ChevronRight } from "lucide-react";
@@ -64,31 +64,7 @@ function Main() {
 
   return (
     <div>
-      <div className="w-full flex items-center justify-between p-4 bg-white border-b">
-        {/* Left side - Breadcrumbs */}
-        <div className="flex items-center space-x-2">
-          <h1 className="text-xl font-semibold text-gray-700">Dashboard</h1>
-          <ChevronRight className="h-5 w-5 text-gray-400" />
-          <span className="text-gray-500">Home</span>
-          <ChevronRight className="h-5 w-5 text-gray-400" />
-          <span className="text-gray-400">Dashboard</span>
-        </div>
-
-        {/* Right side - Filter and Date Range */}
-        <div className="flex items-center space-x-4">
-          <div className="md:flex hidden border rounded-md p-1.5 gap-1.5 justify-center items-center">
-            <span>
-              <SearchIcon></SearchIcon>
-            </span>
-            <input
-              type="text"
-              className="outline-none"
-              placeholder="Search here...."
-            ></input>
-          </div>
-          
-        </div>
-      </div>
+      <Breadcrumbs></Breadcrumbs>
       <div className="p-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {DashboardCards.map((stat, index) => (
