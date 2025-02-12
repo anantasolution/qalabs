@@ -34,3 +34,15 @@ export const getAllContacts = async (req, res, next) => {
 };
 
 
+export const ContactCount = async (req, res, next) => {
+  try {
+    const count = await CONTACTS.countDocuments(); // Correct way to get count
+
+    if (count === 0)
+      return res.status(404).json({ message: "No contact found" });
+
+    return res.status(200).json({ message: "contact count", data: count });
+  } catch (err) {
+    next(err);
+  }
+};

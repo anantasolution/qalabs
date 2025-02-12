@@ -106,3 +106,16 @@ export const getTrendingBlogs = async (req, res) => {
   }
 };
 
+
+export const CategoryCount = async (req, res, next) => {
+  try {
+    const count = await CATEGORY.countDocuments(); // Correct way to get count
+
+    if (count === 0)
+      return res.status(404).json({ message: "No categories found" });
+
+    return res.status(200).json({ message: "Category count", data:count });
+  } catch (err) {
+    next(err);
+  }
+};
