@@ -7,7 +7,7 @@ import Breadcrumbs from "../components/Breadcrumbs";
 
 const Consultancy = () => {
   const [loading, setLoading] = useState(true);
-  const [searchquery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const [consultations, setConsultations] = useState([]);
   const [filterData, setFilterData] = useState([]);
   const [error] = useState(null);
@@ -38,27 +38,27 @@ const Consultancy = () => {
     loadConsultations();
   }, []);
 
-  useEffect(() => {
+ useEffect(() => {
     const filterData = () => {
-      if (!searchquery) {
+      if (!searchQuery) {
         setFilterData(consultations);
       } else {
         const filteredData = consultations.filter((consultation) => {
           const nameMatch = consultation.name
             .toString()
             .toLowerCase()
-            .includes(searchquery.toLowerCase());
+            .includes(searchQuery.toLowerCase());
           const emailMatch = consultation.email
             .toString()
             .toLowerCase()
-            .includes(searchquery.toLowerCase());
+            .includes(searchQuery.toLowerCase());
           return nameMatch || emailMatch;
         });
         setFilterData(filteredData);
       }
     };
     filterData();
-  }, [searchquery, consultations]);
+  }, [searchQuery, consultations]);
 
   return (
     <div className="h-full w-full bg-gray-100 flex flex-col">
