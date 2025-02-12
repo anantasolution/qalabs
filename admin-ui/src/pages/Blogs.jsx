@@ -34,6 +34,24 @@ const formatTimestamp = (timestamp) => {
     return `${day} ${month} ${year}`;
 };
 
+const extractParagraphs = async (htmlString) => {
+    if (!htmlString) return ""; // Handle empty or undefined input
+
+    // Check if the input contains any HTML tags
+    const hasHtmlTags = /<\/?[a-z][\s\S]*>/i.test(htmlString);
+
+    if (!hasHtmlTags) {
+        // If there are no HTML tags, return the original text
+        return htmlString.trim();
+    }
+
+    // Match content inside <p>...</p> tags
+    const matches = htmlString.match(/<p[^>]*>(.*?)<\/p>/g);
+
+    // Extract text content from matched <p> tags, or return original text if no <p> tags are found
+    return matches ? await matches.map(tag => tag.replace(/<\/?p[^>]*>/g, "")).join("\n") : htmlString.trim();
+};
+
 
 const Blogs = () => {
 
@@ -50,8 +68,8 @@ const Blogs = () => {
             const blogs = response.data.data.map((item, index) => ({
                 ...item,
                 updatedAt: formatTimestamp(item.updatedAt), // Format timestamp
-                category_name: item.category.category_name
-
+                category_name: item.category.category_name,
+                content : extractParagraphs(item.content)
             }));
 
 
@@ -64,16 +82,11 @@ const Blogs = () => {
 
     useEffect(()=>{
         fetchData();
-    },[])
+    },[blogs])
 
     return (
         <>
-            {/* {addForm && (
-                <div className="fixed z-50 inset-0 bg-black/50  flex justify-center items-center">
-                    <BlogCreationForm setShow={setAddForm}/>
-                </div>
-            )} */}
-            <section className="flex flex-col ">
+            <section className="flex flex-col borde">
                 {/* Navbar code */}
                 <Breadcrumbs></Breadcrumbs>
             </section>

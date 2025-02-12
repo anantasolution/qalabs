@@ -82,7 +82,6 @@ export const getTrendingBlogs = async (req, res) => {
               $project: {
                 title: 1,
                 content: 1,
-                contentImage: 1,
                 image: 1,
                 createdAt: 1,
               },
