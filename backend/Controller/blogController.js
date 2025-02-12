@@ -278,3 +278,17 @@ export const getLatestBlogs = async (req, res) => {
     });
   }
 };
+
+
+export const BlogCount = async (req, res, next) => {
+  try {
+    const count = await Blog.countDocuments(); // Correct way to get count
+
+    if (count === 0)
+      return res.status(404).json({ message: "No blog found" });
+
+    return res.status(200).json({ message: "blog count", data:count });
+  } catch (err) {
+    next(err);
+  }
+};

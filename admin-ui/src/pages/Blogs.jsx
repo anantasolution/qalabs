@@ -5,6 +5,7 @@ import { ChevronRight } from 'lucide-react';
 import SearchIcon from "@mui/icons-material/Search";
 import BlogCards from "../components/Blog/BlogCards";
 import { Link } from "react-router-dom";
+import Breadcrumbs from "../components/Breadcrumbs";
 
 
 import axios from "axios";
@@ -87,37 +88,7 @@ const Blogs = () => {
         <>
             <section className="flex flex-col borde">
                 {/* Navbar code */}
-                <div className="w-full flex items-center justify-between p-4 bg-white border-b">
-                    {/* Left side - Breadcrumbs */}
-                    <div className="flex items-center space-x-2">
-                        <h1 className="text-xl font-semibold text-gray-700">Dashboard</h1>
-                        <ChevronRight className="h-5 w-5 text-gray-400" />
-                        <span className="text-gray-500">Home</span>
-                        <ChevronRight className="h-5 w-5 text-gray-400" />
-                        <span className="text-gray-400">Blogs</span>
-                    </div>
-
-                    {/* Right side - Filter and Date Range */}
-                    <div className="flex items-center space-x-4">
-                        <div className="md:flex hidden border rounded-md p-1.5 gap-1.5 justify-center items-center">
-                            <span>
-                                <SearchIcon></SearchIcon>
-                            </span>
-                            <input
-                                type="text"
-                                className="outline-none"
-                                placeholder="Search here...."
-                            ></input>
-                        </div>
-                        <div className=" flex">
-                            <Link to={"/admin/add_blog"} >
-                            <button onClick={e=> setAddForm(true)} className="bg-blue-500 p-2 font-medium text-white hover:bg-blue-700">
-                                Add Blog
-                            </button>
-                            </Link>
-                        </div>
-                    </div>
-                </div>
+                <Breadcrumbs></Breadcrumbs>
             </section>
             <section className="h-[87.9%] w-full p-6">
                 <div className="h-full py-5 px-4 rounded-md bg-white overflow-y-scroll shadow-md">

@@ -32,7 +32,7 @@ const Categories = () => {
           `${process.env.REACT_APP_API_BASE_URL}/category/all`
         );
 
-        const formattedCategories = data.category.map((category) => ({
+        const formattedCategories = data.data.map((category) => ({
           name: category.category_name,
           count: category.blogs.length,
           updatedAt: new Date(category.updatedAt).toLocaleDateString("en-IN"), // Correct locale
@@ -46,13 +46,12 @@ const Categories = () => {
     };
 
     fetchData();
-  }, [category]);
+  }, []);
 
   return (
     <div className="h-full w-full bg-gray-100 flex flex-col">
-      <div className="">
         <Breadcrumbs />
-      </div>
+      
       <div className="p-6 h-full w-full">
         <div className="p-6 bg-white h-full rounded-md">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
