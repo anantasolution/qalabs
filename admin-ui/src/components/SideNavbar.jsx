@@ -32,7 +32,6 @@ function SideNavbar({ toggle }) {
     }, [toggle])
 
     const isActive = (pathname) => {
-        console.log(location.pathname)
         if (location.pathname.includes(pathname)) {
             console.log(pathname, "done")
             return true
@@ -55,7 +54,7 @@ function SideNavbar({ toggle }) {
     }
 
     return (
-        <div className={`${toggle ? "w-[17%]" : "w-[6%]"} overflow-y-hidden transition-all duration-300 h-full border`}>
+        <div className={`${toggle ? "w-[17%]" : "w-[6%]"} md:block hidden overflow-y-hidden transition-all duration-300 h-full border`}>
             <div className='h-20 px-4 w-full border-b flex justify-start items-center'>
                 {
                     toggle ? (
