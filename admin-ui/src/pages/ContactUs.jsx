@@ -127,7 +127,6 @@ const ContactUs = () => {
                 },
               }}
               pageSizeOptions={[5, 10]}
-              checkboxSelection
             />
           </Box>
         </div>
