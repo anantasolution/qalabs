@@ -13,6 +13,8 @@ import ContactUs from "./pages/ContactUs";
 import MySuperDashboard from "./pages/MySuperDashBoard";
 import Blogs from "./pages/Blogs";
 import ForgotPassword from "./pages/ForgotPassword";
+import Categories from "./pages/Categories";
+import AddBlog from "./pages/AddBlog";
 
 const ProtectedRoute = () => {
    const { user } = useSelector((state) => state.auth);
@@ -54,13 +56,15 @@ function App() {
             {/* Public Route  */}
             <Route path="/" element={!user?<Login></Login>:<Navigate to={'/admin/dashboard'}></Navigate>}></Route>
             <Route path="/forget-password" element={!user?<ForgotPassword></ForgotPassword>:<Navigate to={'/admin/dashboard'}></Navigate>}></Route>
-
+            <Route path="category" element={<Categories></Categories>}></Route>
             {/* protected route */}
             <Route path="/admin" element={<ProtectedRoute />} >
                <Route path="dashboard" element={<Main></Main>}></Route>
-               <Route path="blogs" element={<Blogs />} />
+               <Route path="blogs/allblogs" element={<Blogs />} />
+               <Route path="blogs/category" element={<Categories></Categories>}></Route>
                <Route path="contactus" element={<ContactUs></ContactUs>}></Route>
                <Route path="consultant" element={<Consultancy></Consultancy>}></Route>
+               <Route path="add_blog" element={<AddBlog></AddBlog>}></Route>
             </Route>
          </Routes>
       </Router>
