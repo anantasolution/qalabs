@@ -15,6 +15,7 @@ import Blogs from "./pages/Blogs";
 import ForgotPassword from "./pages/ForgotPassword";
 import Categories from "./pages/Categories";
 import AddBlog from "./pages/AddBlog";
+import PreviewAndEditBlog from "./components/Blog/PreviewAndEditBlog";
 
 const ProtectedRoute = () => {
    const { user } = useSelector((state) => state.auth);
@@ -62,9 +63,10 @@ function App() {
                <Route path="dashboard" element={<Main></Main>}></Route>
                <Route path="blogs/allblogs" element={<Blogs />} />
                <Route path="blogs/category" element={<Categories></Categories>}></Route>
+               <Route path="blogs/add_blog" element={<AddBlog></AddBlog>}></Route>
+               <Route path="blogs/preview" element={<PreviewAndEditBlog></PreviewAndEditBlog>}></Route>
                <Route path="contactus" element={<ContactUs></ContactUs>}></Route>
                <Route path="consultant" element={<Consultancy></Consultancy>}></Route>
-               <Route path="add_blog" element={<AddBlog></AddBlog>}></Route>
             </Route>
          </Routes>
       </Router>

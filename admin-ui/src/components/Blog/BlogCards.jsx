@@ -6,7 +6,7 @@ const BlogCards = ({ data }) => {
     const navigate = useNavigate();
 
     const handleNavigatePreview = (id) =>{
-        navigate("/admin/blog", {state : id});
+        navigate("/admin/blogs/preview", {state : id});
     }
 
     return (

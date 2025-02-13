@@ -57,7 +57,7 @@ const Breadcrumbs = ({ setSearchQuery }) => {
         {/* ✅ Add Blog Button - Only on /allblogs */}
         {isBlogPage && (
           <Link
-            to="/add_blog"
+            to="/admin/blogs/add_blog"
             className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm sm:text-base"
           >
             Add Blog
@@ -66,12 +66,11 @@ const Breadcrumbs = ({ setSearchQuery }) => {
 
         {/* ✅ Add Category Button - Only on /category */}
         {isCategoryPage && (
-          <Link
-            to="/add_category"
+          <button
             className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm sm:text-base"
           >
             Add Category
-          </Link>
+          </button>
         )}
       </div>
     </div>

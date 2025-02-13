@@ -194,7 +194,7 @@ const PreviewAndEditBlog = ({ placeholder }) => {
             const response = await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/blogs/deleteBlog/${location.state}`);
             console.log(response);
             toast.success("Blog deleted successfully.");
-            navigate("/admin/blogs");
+            navigate("/admin/blogs/allblogs");
         } catch (error) {
             console.log(error);
             toast.error(error?.response?.data?.message || "Failed to delete blog.");
