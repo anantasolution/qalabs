@@ -1,5 +1,7 @@
 import Blog from "../models/BLOG.js";
 import Category from "../models/CATEGORY.js";
+import fs from "fs";
+import path from "path";
 
 // create  a new blog
 export const createBlog = async (req, res) => {
@@ -43,7 +45,6 @@ export const createBlog = async (req, res) => {
       ...(image ? { image: imageFormat } : {}), // Corrected condition for spreading
     });
 
-    
     const addBlogToTheCategory = await Category.findByIdAndUpdate(
       category,
       { $push: { blogs: newBlog._id } },
@@ -111,11 +112,11 @@ export const getSpecificBlog = async (req, res) => {
   }
 };
 // update Blog
+
 export const updateBlog = async (req, res) => {
   try {
     const { id } = req.params;
     const updatedData = req.body;
-    // console.log(updatedData);
 
     if (!id) {
       return res.status(400).json({
@@ -124,47 +125,61 @@ export const updateBlog = async (req, res) => {
       });
     }
 
+    // Fetch the old blog data
+    const oldBlog = await Blog.findById(id);
+    if (!oldBlog) {
+      return res.status(404).json({ success: false, message: "No Blog Found" });
+    }
+
+    // Handle image update
     if (req.files?.image) {
-      const image = req.files.image
-        ? {
-            filetype: req.files.image[0].mimetype,
+      if (oldBlog.image?.filepath) {
+        // Delete the old image file
+        fs.unlink(oldBlog.image.filepath, (err) => {
+          if (err) console.error("Error deleting old image:", err);
+        });
+      }
 
-            filepath: req.files.image[0].path,
-            filename: req.files.image[0].filename,
-            fileSize: `${req.files.image[0].size} bytes`,
-          }
-        : null;
-      updatedData.image = image;
-    }
-    if (req.files?.contentImage) {
-      const contentImage = req.files.contentImage
-        ? {
-            filetype: req.files.contentImage[0].mimetype,
-            filepath: req.files.contentImage[0].path,
-            filename: req.files.contentImage[0].filename,
-            fileSize: `${req.files.contentImage[0].size} bytes`,
-          }
-        : null;
-      updatedData.contentImage = contentImage;
+      updatedData.image = {
+        filetype: req.files.image[0].mimetype,
+        filepath: req.files.image[0].path,
+        filename: req.files.image[0].filename,
+        fileSize: `${req.files.image[0].size} bytes`,
+      };
     }
 
-    const blog = await Blog.findByIdAndUpdate(id, req.body, {
-      new: true,
-    });
-    if (!blog) {
-      return res.status(202).json({ message: "No Blog Found", data: [] });
-    }
+    // Handle content image update
+    // if (req.files?.contentImage) {
+    //   if (oldBlog.contentImage?.filepath) {
+    //     // Delete the old content image file
+    //     fs.unlink(oldBlog.contentImage.filepath, (err) => {
+    //       if (err) console.error("Error deleting old content image:", err);
+    //     });
+    //   }
+
+    //   updatedData.contentImage = {
+    //     filetype: req.files.contentImage[0].mimetype,
+    //     filepath: req.files.contentImage[0].path,
+    //     filename: req.files.contentImage[0].filename,
+    //     fileSize: `${req.files.contentImage[0].size} bytes`,
+    //   };
+    // }
+
+    // Update the blog
+    const blog = await Blog.findByIdAndUpdate(id, updatedData, { new: true });
+
     return res
       .status(200)
       .json({ success: true, message: "Blog Updated", data: blog });
   } catch (err) {
     return res.status(500).json({
       success: false,
-      message: "Internal server error from uploadBlog",
+      message: "Internal server error from updateBlog",
       error: err.message,
     });
   }
 };
+
 // delete Blog
 export const deleteBlog = async (req, res) => {
   try {
@@ -279,15 +294,13 @@ export const getLatestBlogs = async (req, res) => {
   }
 };
 
-
 export const BlogCount = async (req, res, next) => {
   try {
     const count = await Blog.countDocuments(); // Correct way to get count
 
-    if (count === 0)
-      return res.status(404).json({ message: "No blog found" });
+    if (count === 0) return res.status(404).json({ message: "No blog found" });
 
-    return res.status(200).json({ message: "blog count", data:count });
+    return res.status(200).json({ message: "blog count", data: count });
   } catch (err) {
     next(err);
   }
