@@ -22,7 +22,7 @@ export const createCategory = async (req, res, next) => {
       });
     }
 
-    const newCategory = new CATEGORY({ category_name });
+    const newCategory = new CATEGORY({ category_name: name });
     await newCategory.save();
     return res
       .status(200)
