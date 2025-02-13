@@ -6,7 +6,7 @@ export const createCategory = async (req, res, next) => {
   try {
     const { category_name } = req.body;
 
-    const name = category_name.trim().LowerCase();
+    const name = category_name.trim().toLowerCase();
     if (!category_name || category_name.length === 0) {
       return res
         .status(400)

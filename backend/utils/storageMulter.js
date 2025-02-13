@@ -19,7 +19,7 @@ const storage = multer.diskStorage({
     cb(null, uploadPath);
   },
   filename: (req, file, cb) => {
-    const uniqueName = `${Date.now()}-${file.originalname}`;
+    const uniqueName = `${file.originalname}`;
     cb(null, uniqueName);
   },
 });
@@ -36,6 +36,7 @@ const fileFilter = (req, file, cb) => {
 export const uploadBoth = multer({
   storage,
   fileFilter,
+  limits: { fieldSize: 500 * 1024 * 1024 },
 }).fields([
   { name: "image", maxCount: 1 }, // Blog cover image
 ]);
