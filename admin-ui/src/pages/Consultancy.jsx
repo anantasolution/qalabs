@@ -139,7 +139,6 @@ const Consultancy = () => {
                 },
               }}
               pageSizeOptions={[5, 10]}
-              checkboxSelection
               disableRowSelectionOnClick
             />
           </Box>
