@@ -1,9 +1,55 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { DashboardCards } from "../constant/DashboardCard";
 import Breadcrumbs from "../components/Breadcrumbs";
+import Box from "@mui/material/Box";
+import { DataGrid } from "@mui/x-data-grid";
+import { columns } from "../data/ContactUs";
 
 const Main = () => {
   const dashboardCards = DashboardCards();
+
+  // State to manage table rows and loading state
+  const [rows, setRows] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const formatDate = (dateString) => {
+    if (!dateString) return "";
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, "0");
+    const month = String(date.getMonth() + 1).padStart(2, "0"); // Month is zero-based
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+  };
+
+  // Fetch latest contacts from API using Axios
+  useEffect(() => {
+    const fetchLatestContacts = async () => {
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/contact/latestcontact`);
+
+        if (response.data.success) {
+          const formattedRows = response.data.data.map((row, index) => ({
+            ...row,
+            id: index + 1, // Ensure unique ID for DataGrid
+            createdAt: formatDate(row.createdAt), // Format the date
+            updatedAt: formatDate(row.updatedAt), // Format the date
+          }));
+          setRows(formattedRows);
+        } else {
+          console.error("Error fetching contacts:", response.data.message);
+          setRows([]);
+        }
+      } catch (error) {
+        console.error("Failed to fetch contacts:", error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchLatestContacts();
+  }, []);
+
 
   const StatCard = ({ icon: Icon, title, value, color, progress }) => {
     return (
@@ -13,7 +59,7 @@ const Main = () => {
           <div className="flex justify-between items-start mb-4">
             <div className="flex items-center gap-4">
               <div className={`p-3 rounded-full ${color} bg-opacity-10`}>
-                <Icon className={`w-6 h-6 ${color.replace('bg-', 'text-')}`} />
+                <Icon className={`w-6 h-6 ${color.replace("bg-", "text-")}`} />
               </div>
               <div>
                 <div className="flex items-center gap-2">
@@ -41,13 +87,36 @@ const Main = () => {
 
   return (
     <div className="bg-gray-50 min-h-screen">
-      <Breadcrumbs></Breadcrumbs>
+      <Breadcrumbs />
       <div className="p-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {dashboardCards.map((stat, index) => (
             <StatCard key={index} {...stat} />
           ))}
         </div>
+
+        {/* Table Section */}
+        <div className="h-full w-full p-6 mt-6"> {/* Added mt-6 for spacing */}
+          <div className="h-full bg-white px-4 py-5 rounded-md shadow-md">
+            <Box sx={{ height: "100%" }}>
+              <DataGrid
+                rows={rows}
+                columns={columns}
+                pageSize={5}
+                loading={loading}
+                initialState={{
+                  pagination: {
+                    paginationModel: {
+                      pageSize: 5,
+                    },
+                  },
+                }}
+                pageSizeOptions={[5, 10]}
+              />
+            </Box>
+          </div>
+        </div>
+
       </div>
     </div>
   );
