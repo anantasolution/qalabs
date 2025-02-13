@@ -106,6 +106,7 @@ const AddBlog = ({ placeholder }) => {
                 headers: {"Content-Type":'multipart/formdata'}
             });
 
+            toast.success("Blog created successfully!")
            
             // Reset form
             setBlogPost({
@@ -118,8 +119,6 @@ const AddBlog = ({ placeholder }) => {
 
             //setting content empty in texteditor 
             setContent("");
-
-            toast.success("Blog created successfully!")
         } catch (error) {
             setMessage({ text: 'Failed to create blog post. Please try again.', isError: true });
             console.log("Error in submit",error);

@@ -41,6 +41,7 @@ const extractParagraphs = (htmlString) => {
     return htmlString.trim();
   }
 
+
   // Match content inside <p>...</p> tags
   const matches = htmlString.match(/<p[^>]*>(.*?)<\/p>/g);
 
@@ -48,9 +49,16 @@ const extractParagraphs = (htmlString) => {
   return matches
     ? matches.map((tag) => tag.replace(/<\/?p[^>]*>/g, "")).join("\n")
     : htmlString.trim();
+
+    // Match content inside <p>...</p> tags
+    const matches = htmlString.match(/<p[^>]*>(.*?)<\/p>/g);
+    
+    // Extract text content from matched <p> tags, or return original text if no <p> tags are found
+    return matches ? await matches.map(tag => tag.replace(/<\/?p[^>]*>/g, "")).join("\n") : htmlString.trim();
 };
 
 const Blogs = () => {
+
   const [loading, setLoading] = useState(false);
   const [addForm, setAddForm] = useState(false);
   const [blogs, setBlogs] = useState([]);
@@ -78,6 +86,27 @@ const Blogs = () => {
     } catch (error) {
       console.log(error);
       toast.error(error?.response?.data?.message);
+
+
+    const [blogs, setBlogs] = useState([]);
+
+    const fetchData = async ()=>{
+        try {
+            const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/blogs/getAllBlog`);
+
+            const blogs = response.data.data.map((item, index) => ({
+                ...item,
+                updatedAt: formatTimestamp(item.updatedAt), // Format timestamp
+                category_name: item.category.category_name,
+                content : extractParagraphs(item.content)
+            }));
+
+
+            setBlogs(blogs);
+        } catch (error) {
+            console.log(error);
+            toast.error(error?.response?.data?.message);
+        }
     }
   };
 

@@ -5,6 +5,8 @@ import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
 import { LoaderCircle } from "lucide-react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ContactPage = () => {
   const upsideVariants = {
@@ -33,108 +35,79 @@ const ContactPage = () => {
     subject: "",
     message: "",
   });
-
+  const [formErrors, setFormErrors] = useState({}); // State for validation errors
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
 
   // Function to validate individual fields
-  const validateField = (name, value) => {
-    let errorMsg = "";
+  const validateField = (id, value) => {
+    let error = "";
 
-    switch (name) {
+    switch (id) {
       case "name":
-        if (!value.trim()) errorMsg = "Name is required";
-        else if (value.length < 3)
-          errorMsg = "Name must be at least 3 characters";
+        if (!value.trim()) error = "Name is required.";
         break;
 
       case "email":
-        if (!value.trim()) errorMsg = "Email is required";
-        else if (!/^\S+@\S+\.\S+$/.test(value))
-          errorMsg = "Invalid email format";
+        if (!value.trim()) error = "Email is required.";
+        else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))
+          error = "Invalid email format.";
         break;
 
       case "phone":
-        if (!value.trim()) errorMsg = "Phone number is required";
-        else if (!/^\d{10}$/.test(value))
-          errorMsg = "Invalid phone number (10 digits required)";
+        if (!value.trim()) error = "Phone number is required.";
+        else if (!/^\d{10}$/.test(value)) error = "Phone must be 10 digits.";
         break;
 
       case "subject":
-        if (!value.trim()) errorMsg = "Subject is required";
+        if (!value.trim()) error = "Subject is required";
         break;
 
       case "message":
-        if (!value.trim()) errorMsg = "Message cannot be empty";
-        else if (value.length < 10)
-          errorMsg = "Message must be at least 10 characters";
+        if (!value.trim()) error = "Message cannot be empty.";
         break;
-
       default:
         break;
     }
 
-    return errorMsg;
+    setFormErrors((prevErrors) => ({
+      ...prevErrors,
+      [id]: error,
+    }));
   };
 
   // Handle Input Change and Validate
   const handleChange = (e) => {
-    const { name, value } = e.target;
-
-    setFormData((prev) => ({ ...prev, [name]: value }));
-
-    // Validate field and update errors
-    setErrors((prevErrors) => ({
-      ...prevErrors,
-      [name]: validateField(name, value),
+    const { id, value } = e.target;
+    validateField(id, value);
+    setFormData((prevData) => ({
+      ...prevData,
+      [id]: value || "",
     }));
   };
-
-  // Validate all fields when formData changes
-  useEffect(() => {
-    const newErrors = {};
-    Object.keys(formData).forEach((key) => {
-      newErrors[key] = validateField(key, formData[key]);
-    });
-    setErrors(newErrors);
-  }, [formData]);
 
   // Handle Form Submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(process.env.REACT_APP_API_BASE_URL);
+    const errors = {};
+    Object.keys(formData).forEach((key) => {
+      validateField(key, formData[key]);
+      if (formErrors[key]) errors[key] = formErrors[key];
+    });
 
-    // Check if there are any errors before submitting
-    const hasErrors = Object.values(errors).some((error) => error);
-    if (hasErrors) {
-      console.log("Fix errors before submitting", errors);
-      return;
-    }
+    if (Object.keys(errors).length > 0) return;
 
     try {
-      setLoading(true);
-      const response = await axios.post(
-        `${process.env.REACT_APP_API_BASE_URL}/contact`,
-        formData
-      );
+      const response = await axios.post("http://localhost:8080/api/contact/", formData);
+      toast.success(response.data.message);
 
-      console.log("Form submitted successfully:", response.data);
+      setFormData({ name: "", company: "", phone: "", email: "", message: "" ,subject:""});
+      setFormErrors({});
     } catch (error) {
-      console.error("Submission error:", error);
-    } finally {
-      setLoading(false);
-      setFormData({
-        name: "",
-        company: "",
-        phone: "",
-        email: "",
-        subject: "",
-        message: "",
-      });
+      toast.error(error.response?.data?.message || "Failed to submit consultation.");
     }
   };
-
   return (
     <>
       {/* Title */}
@@ -304,85 +277,124 @@ const ContactPage = () => {
             <form className="space-y-4" onSubmit={handleSubmit}>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium mb-1">Name</label>
-                  <input
-                    type="text"
-                    className="w-full px-4 py-2 bg-neutral-800 text-white rounded-lg border border-gray-600"
-                    placeholder="Name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-1">
-                    Company
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
+                    Name
                   </label>
                   <input
                     type="text"
-                    className="w-full px-4 py-2 bg-neutral-800 text-white rounded-lg border border-gray-600"
-                    placeholder="Company"
-                    name="company"
+                    id="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="w-full px-3 py-2 bg-[#E9E9E9]  text-black rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                    placeholder="Name"
+                  />
+                  {formErrors.name && (
+                    <p className="text-red-500 text-sm">{formErrors.name}</p>
+                  )}
+                </div>
+                <div>
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
+                    company
+                  </label>
+                  <input
+                    type="text"
+                    id="company"
                     value={formData.company}
                     onChange={handleChange}
+                    className="w-full px-3 py-2 bg-[#E9E9E9]  text-black rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                    placeholder="Company"
                   />
+                  {formErrors.company && (
+                    <p className="text-red-500 text-sm">{formErrors.company}</p>
+                  )}
                 </div>
               </div>
 
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium mb-1">
+                  <label
+                    htmlFor="phone"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
                     Phone
                   </label>
                   <input
                     type="tel"
-                    className="w-full px-4 py-2 bg-neutral-800 text-white rounded-lg border border-gray-600"
-                    placeholder="Phone"
-                    name="phone"
+                    id="phone"
                     value={formData.phone}
                     onChange={handleChange}
+                    className="w-full px-3 py-2 bg-[#E9E9E9] text-black rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                    placeholder="Phone"
                   />
+                  {formErrors.phone && (
+                    <p className="text-red-500 text-sm">{formErrors.phone}</p>
+                  )}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
                     Email
                   </label>
                   <input
                     type="email"
-                    className="w-full px-4 py-2 bg-neutral-800 text-white rounded-lg border border-gray-600"
-                    placeholder="Email"
-                    name="email"
+                    id="email"
                     value={formData.email}
                     onChange={handleChange}
+                    className="w-full px-3 py-2 bg-[#E9E9E9] text-black rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                    placeholder="Email"
                   />
+                  {formErrors.email && (
+                    <p className="text-red-500 text-sm">{formErrors.email}</p>
+                  )}
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label
+                  htmlFor="subject"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
                   Subject
                 </label>
                 <input
                   type="text"
-                  className="w-full px-4 py-2 bg-neutral-800 text-white rounded-lg border border-gray-600"
-                  placeholder="Subject"
-                  name="subject"
+                  id="subject"
                   value={formData.subject}
                   onChange={handleChange}
+                  className="w-full px-3 py-2 bg-[#E9E9E9] text-black rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                  placeholder="subject"
                 />
+                {formErrors.subject && (
+                  <p className="text-red-500 text-sm">{formErrors.subject}</p>
+                )}
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
                   Message
                 </label>
                 <textarea
-                  placeholder="Message"
-                  className="w-full px-4 py-2 bg-neutral-800 text-white rounded-lg border border-gray-600 h-24"
-                  name="message"
+                  id="message"
+                  rows={2}
                   value={formData.message}
                   onChange={handleChange}
-                ></textarea>
+                  className="w-full px-3 py-2 bg-[#E9E9E9] text-black  rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                  placeholder="Message"
+                />
+                {formErrors.message && (
+                  <p className="text-red-500 text-sm">{formErrors.message}</p>
+                )}
               </div>
 
               <button

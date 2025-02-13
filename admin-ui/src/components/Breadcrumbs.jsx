@@ -4,12 +4,17 @@ import { ChevronRight, Filter } from "lucide-react";
 import SearchIcon from "@mui/icons-material/Search";
 import axios from "axios";
 
+
 const Breadcrumbs = ({ setSearchQuery, setSelectedCategory }) => {
+
+const Breadcrumbs = ({ setSearchQuery, setIsOpen }) => {
+
   const location = useLocation();
   const pathnames = location.pathname.split("/").filter((x) => x);
   const isDashboard = location.pathname.includes("/dashboard");
   const isBlogPage = location.pathname.includes("/allblogs");
   const isCategoryPage = location.pathname.includes("/category");
+
 
   // State for categories and selected category
   const [categories, setCategories] = useState([]);
@@ -110,6 +115,12 @@ const Breadcrumbs = ({ setSearchQuery, setSelectedCategory }) => {
         {/* Add Category Button - Only on /category */}
         {isCategoryPage && (
           <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm sm:text-base w-full sm:w-auto text-center">
+
+          <button
+            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm sm:text-base"
+            onClick={()=>setIsOpen(true)}
+          >
+
             Add Category
           </button>
         )}

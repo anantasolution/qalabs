@@ -13,10 +13,6 @@ const formatTimestamp = (timestamp) => {
         return "Invalid Date";
     }
 
-    // Extract hours, minutes, and AM/PM
-    let hours = date.getHours();
-    hours = hours % 12 || 12; // Convert 24-hour to 12-hour format
-
     // Extract day, short month, and year
     const day = date.getDate();
     const month = date.toLocaleString("en-US", { month: "short" })
@@ -30,40 +26,31 @@ const BlogsArchive = ()=>{
 
     const [blogs, setBlogs] = useState([]);
 
-    const extractParagraphs = async (htmlString) => {
+    const [loading, setLoading] = useState(true);
+
+    const extractParagraphs = (htmlString) => {
         if (!htmlString) return ""; // Handle empty or undefined input
 
-        // Check if the input contains any HTML tags
-        const hasHtmlTags = /<\/?[a-z][\s\S]*>/i.test(htmlString);
-
-        if (!hasHtmlTags) {
-            // If there are no HTML tags, return the original text
-            return htmlString.trim();
-        }
-
-        // Match content inside <p>...</p> tags
-        const matches = htmlString.match(/<p[^>]*>(.*?)<\/p>/g);
-
-        // Extract text content from matched <p> tags, or return original text if no <p> tags are found
-        return matches ? await matches.map(tag => tag.replace(/<\/?p[^>]*>/g, "")).join("\n") : htmlString.trim();
+        // Remove all HTML tags and keep only the text content
+        return htmlString
+            .replace(/<\/?[^>]+(>|$)/g, "") // Remove all HTML tags
+            .trim(); // Remove extra spaces
     };
 
 
     useEffect(() => {
         const getBlogs = async () => {
+            setLoading(true);
             try {
                 const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/blogs/getAllBlog`);
-                console.log(response);
-
-                const blogs = response.data.data.map((item, index) => (
-                    {
+                const blogs = response.data.data.map((item) => ({
                     ...item,
                     updatedAt: formatTimestamp(item.updatedAt), // Format timestamp
                     category_name: item.category.category_name,
-                    content : extractParagraphs(item?.content)
-
+                    content: extractParagraphs(item?.content) // Now extracts only text
                 }));
                 setBlogs(blogs);
+                setLoading(false);
             } catch (error) {
                 console.log(error);
             }
@@ -100,7 +87,14 @@ const BlogsArchive = ()=>{
                     </motion.p>
                 </section>
             </div>
-            <BlogCardsPage data={blogs} />
+            {
+                loading ? 
+                    <div className="w-full p-10 h-[500px] bg-black/90 flex justify-center items-center">
+                    <div className="animate-spin border-e-2 border-green-500 h-14 w-14 rounded-full"></div>
+                </div>
+                :
+                    <BlogCardsPage data={blogs} /> 
+            }
         </>
     )
 }
