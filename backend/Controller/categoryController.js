@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import CATEGORY from "../models/CATEGORY.js";
+import Blog from "../models/BLOG.js";
 
 export const createCategory = async (req, res, next) => {
   try {
@@ -38,11 +39,21 @@ export const delCategoryById = async (req, res, next) => {
     if (!id) return res.status(404).json({ message: "Entre a valid ID" });
 
     const delcategory = await CATEGORY.findByIdAndDelete(id);
+
     if (!delcategory)
       return res.status(404).json({ message: "Category not deleted" });
-    return res
-      .status(200)
-      .json({ message: "Category deleted successfully", delcategory });
+
+    const blogIds = delcategory.blogs;
+
+    const resposeFromBlogDeletion = await Blog.deleteMany({
+      _id: { $in: blogIds },
+    });
+
+    return res.status(200).json({
+      message: "Category deleted successfully",
+      delcategory,
+      messageByBlogdeletion: resposeFromBlogDeletion,
+    });
   } catch (err) {
     next(err);
   }
