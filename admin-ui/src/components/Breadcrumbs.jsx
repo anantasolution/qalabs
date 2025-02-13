@@ -1,46 +1,71 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Filter } from "lucide-react";
 import SearchIcon from "@mui/icons-material/Search";
+import axios from "axios";
 
-const Breadcrumbs = ({ setSearchQuery }) => {
+const Breadcrumbs = ({ setSearchQuery, setSelectedCategory }) => {
   const location = useLocation();
   const pathnames = location.pathname.split("/").filter((x) => x);
   const isDashboard = location.pathname.includes("/dashboard");
   const isBlogPage = location.pathname.includes("/allblogs");
-  const isCategoryPage = location.pathname.includes("/category"); // ✅ Check for category page
+  const isCategoryPage = location.pathname.includes("/category");
 
-  console.log("Current Path:", location.pathname);
+  // State for categories and selected category
+  const [categories, setCategories] = useState([]);
+
+  // Fetch categories from API on mount
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const { data } = await axios.get(
+          `${process.env.REACT_APP_API_BASE_URL}/category/all`
+        );
+        setCategories(data.data); // Set category list
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    };
+    fetchCategories();
+  }, []);
 
   return (
     <div className="p-4 bg-white shadow flex flex-wrap justify-between items-center">
-      {/* ✅ Left Side: Breadcrumbs */}
+      {/* Breadcrumb Navigation */}
       <div className="flex items-center text-gray-700 flex-wrap space-x-2">
         <Link to="/" className="hover:text-gray-950 text-lg font-semibold">
           Home
         </Link>
-        {pathnames.length > 0 && <ChevronRight className="h-5 w-5 text-gray-400" />}
+        {pathnames.length > 0 && (
+          <ChevronRight className="h-5 w-5 text-gray-400" />
+        )}
 
         {pathnames.map((name, index) => {
           const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
           const isLast = index === pathnames.length - 1;
-          const formattedName = name.replace(/-/g, " ").replace(/\b\w/g, (char) => char.toUpperCase());
+          const formattedName = name
+            .replace(/-/g, " ")
+            .replace(/\b\w/g, (char) => char.toUpperCase());
 
           return (
             <div key={routeTo} className="flex items-center">
               {!isLast ? (
-                <Link to={routeTo} className="hover:text-gray-900">{formattedName}</Link>
+                <Link to={routeTo} className="hover:text-gray-900">
+                  {formattedName}
+                </Link>
               ) : (
                 <span className="text-gray-400">{formattedName}</span>
               )}
-              {!isLast && <ChevronRight className="h-5 w-5 ms-2 text-gray-400" />}
+              {!isLast && (
+                <ChevronRight className="h-5 w-5 ms-2 text-gray-400" />
+              )}
             </div>
           );
         })}
       </div>
 
-      {/* ✅ Right Side: Search & Buttons */}
-      <div className="flex items-center space-x-4 mt-2 md:mt-0">
+      {/* Search, Dropdown & Buttons */}
+      <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4 mt-2 md:mt-0">
         {/* Search Bar - Hidden on Dashboard */}
         {!isDashboard && (
           <div className="relative w-full sm:w-64">
@@ -49,26 +74,42 @@ const Breadcrumbs = ({ setSearchQuery }) => {
               type="text"
               placeholder="Search here..."
               className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 outline-none"
-              onChange={(e)=> setSearchQuery(e.target.value)}
+              onChange={(e) => setSearchQuery(e.target.value)} // Fix function call
             />
           </div>
         )}
 
-        {/* ✅ Add Blog Button - Only on /allblogs */}
+        {/* Dropdown for Category Selection */}
+        {(isCategoryPage || isBlogPage) && (
+          <div className="relative w-full sm:w-64">
+            <Filter className="absolute left-3 top-[10px] text-gray-800" />
+            <select
+              className="border border-gray-300 rounded-md pl-10 pr-4 py-2 text-sm sm:text-base w-full"
+              onChange={(e) => setSelectedCategory(e.target.value)}
+            >
+              <option value="">All Categories</option>
+              {categories.map((category) => (
+                <option key={category._id} value={category.category_name}>
+                  {category.category_name}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
+
+        {/* Add Blog Button - Only on /allblogs */}
         {isBlogPage && (
           <Link
             to="/admin/blogs/add_blog"
-            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm sm:text-base"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm sm:text-base w-full sm:w-auto text-center"
           >
             Add Blog
           </Link>
         )}
 
-        {/* ✅ Add Category Button - Only on /category */}
+        {/* Add Category Button - Only on /category */}
         {isCategoryPage && (
-          <button
-            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm sm:text-base"
-          >
+          <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm sm:text-base w-full sm:w-auto text-center">
             Add Category
           </button>
         )}

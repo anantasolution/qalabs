@@ -5,12 +5,11 @@ import axios from "axios";
 const Categories = () => {
   // Function to generate random light colors
   const generatePastelColor = () => {
-    // Generate higher values for RGB to ensure light colors
     const r = Math.floor(Math.random() * 55) + 200; // 200-255
     const g = Math.floor(Math.random() * 55) + 200; // 200-255
     const b = Math.floor(Math.random() * 55) + 200; // 200-255
 
-    // Create darker version for text (60% of the background color)
+    // Create a darker version for text (20% of the background color)
     const textR = Math.floor(r * 0.2);
     const textG = Math.floor(g * 0.2);
     const textB = Math.floor(b * 0.2);
@@ -21,9 +20,10 @@ const Categories = () => {
     };
   };
 
-  const date = new Date().toLocaleDateString("IN");
-
   const [category, setCategory] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState(""); // Add selectedCategory state
+  const [filteredCategories, setFilteredCategories] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,11 +35,12 @@ const Categories = () => {
         const formattedCategories = data.data.map((category) => ({
           name: category.category_name,
           count: category.blogs.length,
-          updatedAt: new Date(category.updatedAt).toLocaleDateString("en-IN"), // Correct locale
+          updatedAt: new Date(category.updatedAt).toLocaleDateString("en-IN"),
           colors: generatePastelColor(),
         }));
 
-        setCategory(formattedCategories); // Update state once
+        setCategory(formattedCategories);
+        setFilteredCategories(formattedCategories); // Initialize filtered list
       } catch (error) {
         console.error("Error fetching categories:", error);
       }
@@ -48,16 +49,43 @@ const Categories = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const filterData = () => {
+      let filteredData = category;
+
+      if (searchQuery) {
+        filteredData = filteredData.filter((cat) =>
+          cat.name.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+      }
+
+      if (selectedCategory) {
+        filteredData = filteredData.filter((cat) =>
+          cat.name.toLowerCase().includes(selectedCategory.toLowerCase())
+        );
+      }
+
+      setFilteredCategories(filteredData);
+    };
+
+    filterData();
+  }, [searchQuery, selectedCategory, category]);
+
   return (
-    <div className="h-full w-full bg-gray-100 flex flex-col">
-        <Breadcrumbs />
-      
+    <div className="min-h-screen w-full bg-gray-100 flex flex-col">
+      {/* ✅ Pass setSearchQuery and setSelectedCategory as props to Breadcrumbs */}
+      <Breadcrumbs
+        setSearchQuery={setSearchQuery}
+        setSelectedCategory={setSelectedCategory}
+      />
+
       <div className="p-6 h-full w-full">
-        <div className="p-6 bg-white h-full rounded-md">
+        <div className="p-6 bg-white rounded-md">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {category.map((category) => (
+            {/* ✅ Use filteredCategories instead of category */}
+            {filteredCategories.map((category, index) => (
               <div
-                key={category.name}
+                key={`${category.name}-${index}`} // ✅ Ensure unique key
                 className="rounded-xl p-6 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 cursor-pointer"
                 style={{ backgroundColor: category.colors.background }}
               >
@@ -84,13 +112,19 @@ const Categories = () => {
                         style={{ backgroundColor: category.colors.text }}
                       />
                       <span className="text-gray-500 text-sm">
-                        Last Updated : {date}
+                        Last Updated : {category.updatedAt}
                       </span>
                     </div>
                   </div>
                 </div>
               </div>
             ))}
+            {/* ✅ Show message if no categories match search */}
+            {filteredCategories.length === 0 && (
+              <div className="col-span-3 text-center text-gray-500">
+                No categories found.
+              </div>
+            )}
           </div>
         </div>
       </div>

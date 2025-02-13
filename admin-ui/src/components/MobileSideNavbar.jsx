@@ -7,7 +7,7 @@ import SpaceDashboardOutlinedIcon from "@mui/icons-material/SpaceDashboardOutlin
 import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
 import { SquarePen } from "lucide-react";
 import { Contact } from "lucide-react";
-import { Brain } from "lucide-react";
+import { Handshake } from "lucide-react";
 import { ChevronDown } from "lucide-react";
 import { ChevronUp } from "lucide-react";
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
@@ -123,7 +123,7 @@ function MobileSideNavbar({ toggle, ref }) {
             )}
           </div>
 
-           {/* contact  */}
+          {/* contact  */}
           <div
             onClick={() => handleNavigate("contactus")}
             className={`flex ${
@@ -144,11 +144,10 @@ function MobileSideNavbar({ toggle, ref }) {
             } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
           >
             <span>
-              <Brain style={{ fontSize: "1.4rem" }}></Brain>
+              <Handshake style={{ fontSize: "1.4rem" }}></Handshake>
             </span>
             <span className="text-sm font-semibold">Consultancy</span>
           </div>
-
         </div>
       </div>
     </div>
