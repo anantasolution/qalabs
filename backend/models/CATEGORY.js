@@ -4,8 +4,9 @@ import { type } from "os";
 const categorySchema = new mongoose.Schema(
   {
     category_name: {
-        type:String,
+      type: String,
       required: true,
+      unique: true,
     },
     blogs: {
       type: [mongoose.Schema.Types.ObjectId],
