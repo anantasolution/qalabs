@@ -47,17 +47,13 @@ const extractParagraphs = async (htmlString) => {
 
     // Match content inside <p>...</p> tags
     const matches = htmlString.match(/<p[^>]*>(.*?)<\/p>/g);
-
+    
     // Extract text content from matched <p> tags, or return original text if no <p> tags are found
     return matches ? await matches.map(tag => tag.replace(/<\/?p[^>]*>/g, "")).join("\n") : htmlString.trim();
 };
 
 
 const Blogs = () => {
-
-    const [loading, setLoading] = useState(false);
-
-    const [addForm, setAddForm] = useState(false);
 
     const [blogs, setBlogs] = useState([]);
 

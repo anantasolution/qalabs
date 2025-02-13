@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const BlogCards = ({ data }) => {
@@ -24,7 +24,7 @@ const BlogCards = ({ data }) => {
                     />
                     <div className="p-4 flex flex-col justify-center w-full">
                         <h2 className="text-xl font-semibold text-gray-800">{blog?.title}</h2>
-                        <span className="text-gray-600">{blog?.category_name}</span>
+                        <span className="text-gray-600">{blog?.category_name?.charAt(0).toUpperCase() + blog?.category_name?.slice(1)}</span>
                         <p className="text-gray-600 mt-2 w-11/12 line-clamp-3">{blog?.content}</p>
                         <div className="w-full flex justify-end ">
                             <span className="text-gray-700">{blog?.updatedAt}</span>

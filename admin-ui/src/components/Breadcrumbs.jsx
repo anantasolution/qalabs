@@ -3,14 +3,12 @@ import { Link, useLocation } from "react-router-dom";
 import { ChevronRight } from "lucide-react";
 import SearchIcon from "@mui/icons-material/Search";
 
-const Breadcrumbs = ({ setSearchQuery }) => {
+const Breadcrumbs = ({ setSearchQuery, setIsOpen }) => {
   const location = useLocation();
   const pathnames = location.pathname.split("/").filter((x) => x);
   const isDashboard = location.pathname.includes("/dashboard");
   const isBlogPage = location.pathname.includes("/allblogs");
   const isCategoryPage = location.pathname.includes("/category"); // ✅ Check for category page
-
-  console.log("Current Path:", location.pathname);
 
   return (
     <div className="p-4 bg-white shadow flex flex-wrap justify-between items-center">
@@ -68,6 +66,7 @@ const Breadcrumbs = ({ setSearchQuery }) => {
         {isCategoryPage && (
           <button
             className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm sm:text-base"
+            onClick={()=>setIsOpen(true)}
           >
             Add Category
           </button>

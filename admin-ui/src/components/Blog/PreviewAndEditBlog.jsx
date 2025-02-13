@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import { useLocation, useNavigate } from 'react-router-dom';
 import parse from "html-react-parser";
 import PopUp from './PopUp';
+import { formGroupClasses } from '@mui/material';
 
 
 const PreviewAndEditBlog = ({ placeholder }) => {
@@ -100,20 +101,29 @@ const PreviewAndEditBlog = ({ placeholder }) => {
 
         if (!blogPost.category) {
             toast.error("Select category before submiting");
+            setIsSubmitting(false);
             return;
         }
 
         if (!blogPost.content) {
             toast.error("Content is Required.");
+            setIsSubmitting(false);
             return;
         }
 
         const fileData = new FormData();
 
-        fileData.append('image', blogPost.image);
+
+        if (blogPost.image && blogPost.image instanceof File) {
+            fileData.append("image", blogPost.image);
+        }
+
+        // fileData.append('image', blogPost.image);
         fileData.append('title', blogPost.title);
         fileData.append('content', blogPost.content);
         fileData.append('category', blogPost.category);
+
+        // console.log(fileData, blogPost);
 
         try {
 
@@ -149,7 +159,6 @@ const PreviewAndEditBlog = ({ placeholder }) => {
     const fetchData = async () => {
         try {
             const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/blogs/getSpecificBlog/${location.state}`);
-            console.log(response.data.data);
             setBlogPost({
                 category: response.data?.data?.category._id,
                 content: parse(response.data?.data?.content),
@@ -192,7 +201,6 @@ const PreviewAndEditBlog = ({ placeholder }) => {
     const onConfirm = async () => {
         try {
             const response = await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/blogs/deleteBlog/${location.state}`);
-            console.log(response);
             toast.success("Blog deleted successfully.");
             navigate("/admin/blogs/allblogs");
         } catch (error) {
@@ -342,7 +350,7 @@ const PreviewAndEditBlog = ({ placeholder }) => {
                             </div>
                             <div className=' space-y-4'>
                                 <label htmlFor="preview" className='font-medium'>Preview</label>
-                                <div id='preview' dangerouslySetInnerHTML={{ __html: content }} />
+                                <div id='preview' className={`${!content ? 'h-[350px]' : 'h-[350px] overflow-y-scroll'}`} dangerouslySetInnerHTML={{ __html: content }} />
                             </div>
 
                             {/* Submit Button */}
@@ -458,7 +466,7 @@ const PreviewAndEditBlog = ({ placeholder }) => {
                                 {/* Content Input */}
                                 <div className=' space-y-4'>
                                     <label htmlFor="preview" className='font-medium'>Blog Content</label>
-                                    <div id='preview' dangerouslySetInnerHTML={{ __html: parse(content) }} />
+                                    <div id='preview' className={`${!content ? 'h-[350px]' : 'h-[350px] overflow-y-scroll'}`} dangerouslySetInnerHTML={{ __html: content }} />
                                 </div>
                             </form>
                         </div>
