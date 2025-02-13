@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const API_URLS = [
   `${process.env.REACT_APP_API_BASE_URL}/blogs/getcounts`,      
-  `${process.env.REACT_APP_API_BASE_URL}/api/contact/getcounts`,     
+  `${process.env.REACT_APP_API_BASE_URL}/contact/getcounts`,     
   `${process.env.REACT_APP_API_BASE_URL}/consulation/getcounts`, 
   `${process.env.REACT_APP_API_BASE_URL}/category/getcounts`
 ];

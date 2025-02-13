@@ -1,5 +1,5 @@
 import React from 'react';
-import { CalendarDays, MessageSquareText } from 'lucide-react';
+import { CalendarDays } from 'lucide-react';
 
 const BlogHeroSection = ({data}) =>{
 
@@ -21,7 +21,7 @@ const BlogHeroSection = ({data}) =>{
             <div className="relative z-10 flex flex-col items-center justify-center px-6 pt-32 lg:px-12 md:pt-12 md:h-[600px]">
                 {/* Tag */}
                 <span className="bg-green-400 text-white px-4 py-1 rounded-lg text-sm mb-8">
-                    {data?.category}
+                    {data?.category?.charAt(0).toUpperCase() + data?.category?.slice(1)}
                 </span>
 
                 {/* Heading */}
@@ -30,14 +30,10 @@ const BlogHeroSection = ({data}) =>{
                 </h1>
 
                 {/* Meta Information */}
-                <div className="flex items-center space-x-4 mt-8 text-white/80">
+                <div className="pt-8 text-white/80">
                     <div className="flex items-center gap-1">
                         <CalendarDays className='text-[#BAFE6D]' />
                         <span>{data?.updatedAt}</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                        <MessageSquareText className='text-[#BAFE6D]' />
-                        <span>No Comments</span>
                     </div>
                 </div>
             </div>

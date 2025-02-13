@@ -2,53 +2,6 @@ import React from 'react';
 import {  useNavigate } from 'react-router-dom';
 
 const BlogCardsPage = ({ data }) => {
-    const blogPosts = [
-        {
-            id: 1,
-            tag: 'VISUAL CONTENT',
-            title: 'The Role of Visual Content in Web Design: How Images and Videos Impact User Engagement',
-            image: '/api/placeholder/800/600',
-            date: 'June 21, 2024',
-            comments: 'No Comments',
-            description: 'Creating a user-friendly website is crucial for engaging visitors and ensuring they have a positive experience. A well-designed website can lead to higher conversion rates,'
-        },
-        {
-            id: 2,
-            tag: 'MOBILE OPTIMIZATION',
-            title: 'Mobile Optimization: Why Your Website Needs to Be Mobile-Friendly in 2024',
-            image: '/api/placeholder/800/600',
-            date: 'June 21, 2024',
-            comments: 'No Comments',
-            description: 'Creating a user-friendly website is crucial for engaging visitors and ensuring they have a positive experience. A well-designed website can lead to higher conversion rates,'
-        },
-        {
-            id: 3,
-            tag: 'CASE STUDIES',
-            title: 'Case Study: Transforming a Local Business with a New Website Design',
-            image: '/api/placeholder/800/600',
-            date: 'June 21, 2024',
-            comments: 'No Comments',
-            description: 'Creating a user-friendly website is crucial for engaging visitors and ensuring they have a positive experience. A well-designed website can lead to higher conversion rates,'
-        },
-        {
-            id: 4,
-            tag: 'MOBILE OPTIMIZATION',
-            title: 'Mobile Optimization: Why Your Website Needs to Be Mobile-Friendly in 2024',
-            image: '/api/placeholder/800/600',
-            date: 'June 21, 2024',
-            comments: 'No Comments',
-            description: 'Creating a user-friendly website is crucial for engaging visitors and ensuring they have a positive experience. A well-designed website can lead to higher conversion rates,'
-        },
-        {
-            id: 5,
-            tag: 'CASE STUDIES',
-            title: 'Case Study: Transforming a Local Business with a New Website Design',
-            image: '/api/placeholder/800/600',
-            date: 'June 21, 2024',
-            comments: 'No Comments',
-            description: 'Creating a user-friendly website is crucial for engaging visitors and ensuring they have a positive experience. A well-designed website can lead to higher conversion rates,'
-        },
-    ];
 
     const navigate = useNavigate();
 
@@ -60,10 +13,10 @@ const BlogCardsPage = ({ data }) => {
         <>
             <div>
                 <div className="flex px-4 py-12 bg-[#151515] w-full justify-center">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-11/12 md:w-10/12 place-items-center">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-11/12 md:w-10/12 place-items-start">
                         {data.map((post, index) => 
                             <div
-                                key={post.index}
+                                key={index }
                                 onClick={() => handleBlog(post._id)}
                                 className="bg-[#242424] rounded-lg overflow-hidden transition-transform duration-300 cursor-pointer"
                             >
@@ -85,8 +38,7 @@ const BlogCardsPage = ({ data }) => {
                                         <h3 className="text-xl text-white mb-4 transition-colors">
                                             {post.title}
                                         </h3>
-
-                                        <p className="text-[#777777] mb-2 line-clamp-4">
+                                        <p className={`text-[#777777] mb-2 line-clamp-4`}>
                                             {post.content}
                                         </p>
                                     </div>

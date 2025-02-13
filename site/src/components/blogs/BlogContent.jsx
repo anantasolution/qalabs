@@ -1,10 +1,31 @@
 import React, { useState } from 'react';
 import { Mail } from 'lucide-react';
-import blogimage from "../../assets/blogimage.jpg"
 import SocialShare from './SocialShare';
-import parse from "html-react-parser";
 import { useEffect } from 'react';
 import axios from "axios";
+
+// For formating date formate
+const formatTimestamp = (timestamp) => {
+    const date = new Date(timestamp);
+
+    // Check if the date is valid
+    if (isNaN(date.getTime())) {
+        return "Invalid Date";
+    }
+
+    // Extract hours, minutes, and AM/PM
+    let hours = date.getHours();
+    hours = hours % 12 || 12; // Convert 24-hour to 12-hour format
+
+    // Extract day, short month, and year
+    const day = date.getDate();
+    const month = date.toLocaleString("en-US", { month: "short" })
+    const year = date.getFullYear();
+
+    // Return formatted string with the extra space after hh:mm
+    return `${day} ${month} ${year}`;
+};
+
 
 const BlogContent = ({data}) => {
 
@@ -21,21 +42,24 @@ const BlogContent = ({data}) => {
         }
     }
 
-    useEffect(()=>{
-        const getTrendingCategories = async ()=>{
-            try {
-                const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/category/terndingBlogs`);
-                console.log(response);
 
-                response?.data?.data?.map(val=>{
-                    setCategories(prev => [...prev,val.category_name])
-                });
+    const getTrendingCategories = async () => {
+        setCategories([]);
+        try {
+            const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/category/terndingBlogs`);
+            console.log(response);
 
-            } catch (error) {
-                console.log(error);
-            }
+            response?.data?.data?.map(val => {
+                setCategories(prev => [...prev, val.category_name])
+            });
+
+        } catch (error) {
+            console.log(error);
         }
-        getTrendingCategories();
+    }
+
+    useEffect(()=>{
+        getTrendingCategories(); 
         getLatestBlogs();
     },[])
 
@@ -43,12 +67,12 @@ const BlogContent = ({data}) => {
     return (
         <div className="min-h-screen bg-[#151515] text-gray-300 w-full flex justify-center py-5">
             {/* Main Content and Sidebar */}
-            <div className="flex flex-col lg:flex-row w-10/12 gap-3 md:gap-10 ">
+            <div className="flex flex-col lg:flex-row w-11/12 md:w-10/12 gap-3 md:gap-10 ">
                 {/* Main Content */}
 
-                <div className="flex flex-col gap-1 border-blue-400 text-lg">
-                    <section className="bg-[#151515] flex flex-col text-white w-11/12 md:w-3/4 gap-6 py-3">
-                        {parse(data?.content)}
+                <div className="flex flex-col gap-1 p-2  md:w-11/12 text-lg">
+                    <section className="bg-[#151515] flex flex-col text-white w-11/12 gap-6 py-3">
+                        <div id='preview' className={`h-full`} dangerouslySetInnerHTML={{ __html: data.content }} />
                     </section>
 
                     <SocialShare />
@@ -166,7 +190,7 @@ const BlogContent = ({data}) => {
                 </div>
 
                 {/* Sidebar */}
-                <div className="w-full md:w-8/12 flex flex-col justify-center md:justify-start">
+                <div className=" flex flex-col justify-center md:justify-start">
 
                     <div className='px-3 space-y-4'>
 
@@ -175,10 +199,10 @@ const BlogContent = ({data}) => {
                             <h2 className="text-2xl font-bold mb-4 text-white">Popular Categories</h2>
                             <ul className="space-y-3">
                                 {categories.map((category, index) => (
-                                    <li key={index} className="flex items-center gap-2">
+                                    <li key={index} className="flex items-center gap-2  pb-2 border-b border-dashed border-[#3A3A3A]">
                                         <span className="text-green-400">↗</span>
-                                        <a href="#" className="text-gray-400 hover:text-green-400 transition-colors">
-                                            {category}
+                                        <a href="" className="text-gray-400 hover:text-green-400 transition-colors">
+                                            {category.charAt(0).toUpperCase() + category?.slice(1)}
                                         </a>
                                     </li>
                                 ))}
@@ -198,7 +222,7 @@ const BlogContent = ({data}) => {
                             />
                             <input
                                 type="email"
-                                placeholder="Enter your email"
+                                placeholder="Enter your Email"
                                 className="w-full px-4 py-2 mb-3 bg-[#242424] rounded-full text-white focus:outline-none focus:border focus:border-green-400"
                             />
                             <button className="w-full bg-green-400 text-gray-900 py-2 flex justify-center items-center gap-2 rounded-full hover:bg-green-500 transition-colors">
@@ -208,7 +232,7 @@ const BlogContent = ({data}) => {
                         </div>
 
                         {/* Latest posts  */}
-                        <div className="bg-[#242424] p-8 rounded-lg">
+                        <div className="bg-[#242424] p-8 rounded-lg md:w-11/12">
                             <h2 className="text-2xl  mb-6">Latest Blogs</h2>
                             <div className="space-y-6">
                                 {trendingBlogs.map((post, index) => (
@@ -221,10 +245,10 @@ const BlogContent = ({data}) => {
                                             />
                                         </div>
                                         <div>
-                                            <h3 className="font-medium hover:text-blue-400 transition-colors duration-200">
+                                            <h3 className="font-medium hover:text-blue-400 transition-colors duration-200 pr-5">
                                                 {post.title}
                                             </h3>
-                                            <p className="text-sm text-gray-400">{post.date}</p>
+                                            <p className="text-sm text-gray-400">{formatTimestamp(post.updatedAt)}</p>
                                         </div>
                                     </div>
                                 ))}
