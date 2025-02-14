@@ -13,8 +13,10 @@ const projectSchema = new mongoose.Schema(
       trim: true,
     },
     photo: {
-      type: String,
-      required: true,
+      filetype: String,
+      filename: String,
+      filepath: String,
+      fileSize: String,
     },
   },
   {

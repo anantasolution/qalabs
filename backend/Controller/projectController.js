@@ -4,12 +4,21 @@ import PROJECT from "../models/PROJECT.js";
 export const createProject = async (req, res) => {
   try {
     const { title, description } = req.body;
-    const photo = req.file ? req.file.path : null;
-
+    const image = req.file;
+    console.log(image);
+  
+    const imageFormat = image
+      ? {
+          filetype: image.mimetype,
+          filepath: image.path,
+          filename: image.filename,
+          fileSize: `${image.size} bytes`,
+        }
+      : null; 
     const project = new PROJECT({
       title,
       description,
-      photo,
+      photo: imageFormat,
     });
 
     await project.save();
