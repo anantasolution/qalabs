@@ -4,19 +4,14 @@ import { ChevronRight, Filter } from "lucide-react";
 import SearchIcon from "@mui/icons-material/Search";
 import axios from "axios";
 
-
-const Breadcrumbs = ({ setSearchQuery, setSelectedCategory }) => {
-
-const Breadcrumbs = ({ setSearchQuery, setIsOpen }) => {
-
+const Breadcrumbs = ({ setSearchQuery, setSelectedCategory, setIsOpen }) => {
   const location = useLocation();
   const pathnames = location.pathname.split("/").filter((x) => x);
   const isDashboard = location.pathname.includes("/dashboard");
   const isBlogPage = location.pathname.includes("/allblogs");
   const isCategoryPage = location.pathname.includes("/category");
 
-
-  // State for categories and selected category
+  // State for categories
   const [categories, setCategories] = useState([]);
 
   // Fetch categories from API on mount
@@ -26,7 +21,7 @@ const Breadcrumbs = ({ setSearchQuery, setIsOpen }) => {
         const { data } = await axios.get(
           `${process.env.REACT_APP_API_BASE_URL}/category/all`
         );
-        setCategories(data.data); // Set category list
+        setCategories(data.data);
       } catch (error) {
         console.error("Error fetching categories:", error);
       }
@@ -44,14 +39,10 @@ const Breadcrumbs = ({ setSearchQuery, setIsOpen }) => {
         {pathnames.length > 0 && (
           <ChevronRight className="h-5 w-5 text-gray-400" />
         )}
-
         {pathnames.map((name, index) => {
           const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
           const isLast = index === pathnames.length - 1;
-          const formattedName = name
-            .replace(/-/g, " ")
-            .replace(/\b\w/g, (char) => char.toUpperCase());
-
+          const formattedName = name.replace(/-/g, " ").replace(/\b\w/g, (char) => char.toUpperCase());
           return (
             <div key={routeTo} className="flex items-center">
               {!isLast ? (
@@ -61,9 +52,7 @@ const Breadcrumbs = ({ setSearchQuery, setIsOpen }) => {
               ) : (
                 <span className="text-gray-400">{formattedName}</span>
               )}
-              {!isLast && (
-                <ChevronRight className="h-5 w-5 ms-2 text-gray-400" />
-              )}
+              {!isLast && <ChevronRight className="h-5 w-5 ms-2 text-gray-400" />}
             </div>
           );
         })}
@@ -79,7 +68,7 @@ const Breadcrumbs = ({ setSearchQuery, setIsOpen }) => {
               type="text"
               placeholder="Search here..."
               className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-400 outline-none"
-              onChange={(e) => setSearchQuery(e.target.value)} // Fix function call
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
         )}
@@ -114,13 +103,10 @@ const Breadcrumbs = ({ setSearchQuery, setIsOpen }) => {
 
         {/* Add Category Button - Only on /category */}
         {isCategoryPage && (
-          <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm sm:text-base w-full sm:w-auto text-center">
-
           <button
             className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm sm:text-base"
-            onClick={()=>setIsOpen(true)}
+            onClick={() => setIsOpen(true)}
           >
-
             Add Category
           </button>
         )}
