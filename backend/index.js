@@ -14,6 +14,8 @@ import blogRoutes from "./routes/blog.js";
 import categoryRoutes from "./routes/category.js";
 import newsLetterRoutes from "./routes/newsletter.js";
 import mailRoute from "./routes/mail.js";
+import feedbackRoutes from "./routes/feedback.js";
+import projectRoutes from "./routes/project.js";
 
 // Get the current file's path
 const __filename = fileURLToPath(import.meta.url);
@@ -43,7 +45,10 @@ const app = express();
 
 // app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
-app.use("/uploads", express.static(path.join(__dirname, "uploads/blog/photos")))
+app.use(
+  "/uploads",
+  express.static(path.join(__dirname, "uploads/blog/photos"))
+);
 
 const corsOptions = {
   origin: (origin, callback) => {
@@ -107,6 +112,8 @@ app.use("/api/blogs", blogRoutes);
 app.use("/api/category", categoryRoutes);
 app.use("/api/newsletter", newsLetterRoutes);
 app.use("/api/mail", mailRoute);
+app.use("/api/feedback", feedbackRoutes);
+app.use("/api/project", projectRoutes);
 
 // Middleware to catch errors
 app.use((err, req, res, next) => {
