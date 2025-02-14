@@ -72,6 +72,14 @@ export const updateProject = async (req, res) => {
       return res.status(404).json({ message: "Project not found" });
     }
 
+    if (photo && existingProject.photo) {
+      fs.unlink(existingProject.photo, (err) => {
+        if (err) {
+          console.error("Error deleting old photo:", err);
+        }
+      });
+    }
+
     res
       .status(200)
       .json({ message: "Project updated successfully", updatedProject });
