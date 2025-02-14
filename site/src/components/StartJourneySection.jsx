@@ -13,10 +13,9 @@ const StartJourneySection = () => {
   });
 
   useEffect(() => {
-    // Simulate visibility when component mounts
-    // In production, you'd want to use Intersection Observer
     setIsVisible(true);
   }, []);
+
   return (
     <div ref={ref} className="relative w-full h-[66vh] max-h-screen overflow-hidden">
       {/* Background Image */}
@@ -31,8 +30,8 @@ const StartJourneySection = () => {
       {/* Content Container */}
       <div className="relative flex items-center justify-center md:justify-end px-4 md:px-8 lg:px-16 w-full h-full">
         <motion.div
-          initial={{ x: 100, opacity: 0 }}
-          animate={inView ? { x: 0, opacity: 1 } : { x: 100, opacity: 0 }}
+          initial={{ y: -100, opacity: 0 }}  // Start from top
+          animate={inView ? { y: 0, opacity: 1 } : { y: -100, opacity: 0 }}  // Move downward
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="bg-black/60 backdrop-blur-sm rounded-lg p-6 md:p-8 lg:p-10 w-full max-w-lg md:max-w-2/3 lg:max-w-1/2 aspect-square md:aspect-auto flex flex-col justify-center"
         >
@@ -56,5 +55,4 @@ const StartJourneySection = () => {
   );
 };
 
-
-export default StartJourneySection
+export default StartJourneySection;

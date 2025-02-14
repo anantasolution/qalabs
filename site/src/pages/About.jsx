@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Check } from "lucide-react";
 import TEAM from "../assets/TeamWork.jpeg";
+import BI from "../assets/background.jpeg";
 import { motion, useAnimation } from "framer-motion";
 import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 import { useInView } from "react-intersection-observer";
@@ -187,13 +188,10 @@ const About = () => {
   return (
     <div className="min-h-screen bg-[#151515] text-white">
       {/* --- About Us Section with Background Image starting from the very top and extra margin from nav --- */}
-      <div
-        className="bg-cover bg-center h-[50vh] md:h-[60vh]"
-        style={{
-          backgroundImage:
-            "url('https://template.creativemox.com/webiso/wp-content/uploads/sites/23/2024/06/3d-black-paper-craft-cubic-patterned-background.jpg')",
-        }}
-      >
+       <div
+             className="relative min-h-[50vh] md:min-h-[60vh]  bg-cover bg-center"
+             style={{ backgroundImage: `url(${BI})` }}
+           >
         <section className="text-center py-32">
           <motion.h1
             className="text-4xl sm:text-6xl font-bold text-[#7CD7F9]"

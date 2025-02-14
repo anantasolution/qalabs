@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
 import { motion } from "framer-motion";
+import BI from "../assets/background.jpeg";
+
 
 //Importing icons
 import P1 from "../assets/product1.jpg";
@@ -73,13 +75,10 @@ function Project() {
 
   return (
     <div className="bg-[#151515]">
-      <div
-        className="relative min-h-[50vh] md:min-h-[60vh]  bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url('https://template.creativemox.com/webiso/wp-content/uploads/sites/23/2024/06/3d-black-paper-craft-cubic-patterned-background.jpg')",
-        }}
-      >
+     <div
+            className="relative min-h-[50vh] md:min-h-[60vh]  bg-cover bg-center"
+            style={{ backgroundImage: `url(${BI})` }}
+          >
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
           <motion.div
             className="space-y-8"
