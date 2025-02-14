@@ -3,7 +3,7 @@ import { Navigate, Outlet } from "react-router-dom";
 import axios from "axios";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { loginStart, loginSuccess, loginFailure } from "./redux/action/authAction";
+import { loginStart, loginSuccess, loginFailure } from "./redux/action/authAction"; 
 //Importing General
 import Login from "./pages/Login";
 
@@ -12,10 +12,12 @@ import Consultancy from "./pages/Consultancy";
 import ContactUs from "./pages/ContactUs";
 import MySuperDashboard from "./pages/MySuperDashBoard";
 import Blogs from "./pages/Blogs";
-import ForgotPassword from "./pages/ForgotPassword";
+import ForgotPassword from "./pages/ForgotPassword"; 
 import Categories from "./pages/Categories";
 import AddBlog from "./pages/AddBlog";
 import PreviewAndEditBlog from "./components/Blog/PreviewAndEditBlog";
+import Projects from "./pages/Projects";
+import PreviewAndEditProject from "./components/Project/PreviewAndEditProject";
 
 const ProtectedRoute = () => {
    const { user } = useSelector((state) => state.auth);
@@ -67,6 +69,8 @@ function App() {
                <Route path="blogs/preview" element={<PreviewAndEditBlog></PreviewAndEditBlog>}></Route>
                <Route path="contactus" element={<ContactUs></ContactUs>}></Route>
                <Route path="consultant" element={<Consultancy></Consultancy>}></Route>
+               <Route path="projects/allprojects" element={<Projects></Projects>}></Route>
+               <Route path="projects/preview" element={<PreviewAndEditProject></PreviewAndEditProject>}></Route>
             </Route>
          </Routes>
       </Router>

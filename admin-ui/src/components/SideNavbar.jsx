@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
-//Importing icons
+// Importing icons
 import SpaceDashboardOutlinedIcon from "@mui/icons-material/SpaceDashboardOutlined";
 import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
 import { Ellipsis, Users } from "lucide-react";
 import { SquarePen } from "lucide-react";
 import { Contact } from "lucide-react";
 import { Handshake } from "lucide-react";
+import { FolderOpenDot } from "lucide-react";
 import { ChevronDown } from "lucide-react";
 import { ChevronUp } from "lucide-react";
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
@@ -52,9 +53,8 @@ function SideNavbar({ toggle }) {
 
   return (
     <div
-      className={`${
-        toggle ? "w-[17%]" : "w-[6%]"
-      } md:block hidden overflow-y-hidden transition-all duration-300 h-full border`}
+      className={`${toggle ? "w-[17%]" : "w-[6%]"
+        } md:block hidden overflow-y-hidden transition-all duration-300 h-full border`}
     >
       <div className="h-20 px-4 w-full border-b flex justify-start items-center">
         {toggle ? (
@@ -71,9 +71,8 @@ function SideNavbar({ toggle }) {
       <div
         onMouseEnter={mouseIn}
         onMouseLeave={mouseOut}
-        className={`${
-          innerToggle ? "w-[200px] absolute" : "w-auto"
-        } h-[89%] flex bg-white flex-col z-50 transition-all duration-500 px-4 py-6`}
+        className={`${innerToggle ? "w-[200px] absolute" : "w-auto"
+          } h-[89%] flex bg-white flex-col z-50 transition-all duration-500 px-4 py-6`}
       >
         <div className="flex flex-col gap-4">
           {toggle || innerToggle ? (
@@ -88,9 +87,8 @@ function SideNavbar({ toggle }) {
           {toggle || innerToggle ? (
             <div
               onClick={() => handleNavigate("dashboard")}
-              className={`flex ${
-                isActive("dashboard") && "bg-gray-100"
-              } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
+              className={`flex ${isActive("dashboard") && "bg-gray-100"
+                } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
             >
               <span>
                 <SpaceDashboardOutlinedIcon
@@ -102,9 +100,8 @@ function SideNavbar({ toggle }) {
           ) : (
             <div
               onClick={() => handleNavigate("dashboard")}
-              className={`flex ${
-                isActive("dashboard") && "bg-gray-100"
-              } hover:bg-gray-100 cursor-pointer transition-all duration-300  p-1.5 rounded-md  justify-center items-center`}
+              className={`flex ${isActive("dashboard") && "bg-gray-100"
+                } hover:bg-gray-100 cursor-pointer transition-all duration-300  p-1.5 rounded-md  justify-center items-center`}
             >
               <span>
                 <SpaceDashboardOutlinedIcon
@@ -117,9 +114,8 @@ function SideNavbar({ toggle }) {
             <div className="flex flex-col gap-.5">
               <div
                 onClick={() => setBlogDropDown((prev) => !prev)}
-                className={`flex ${
-                  isActive("blogs") && "bg-gray-100"
-                } hover:bg-gray-100 cursor-pointer transition-all justify-between duration-300 rounded-md p-2 items-center gap-2`}
+                className={`flex ${isActive("blogs") && "bg-gray-100"
+                  } hover:bg-gray-100 cursor-pointer transition-all justify-between duration-300 rounded-md p-2 items-center gap-2`}
               >
                 <div className="flex items-center gap-2">
                   <span className="">
@@ -137,9 +133,8 @@ function SideNavbar({ toggle }) {
                 <div className="flex pl-10 flex-col py-2 gap-1">
                   <div
                     onClick={() => handleNavigate("blogs/allblogs")}
-                    className={`flex ${
-                      isActive("blogs/allblogs") && "bg-gray-100"
-                    } rounded-md cursor-pointer p-1 hover:bg-gray-100 items-center gap-1.5`}
+                    className={`flex ${isActive("blogs/allblogs") && "bg-gray-100"
+                      } rounded-md cursor-pointer p-1 hover:bg-gray-100 items-center gap-1.5`}
                   >
                     <span className="font-semibold">
                       <ListOutlinedIcon
@@ -150,9 +145,8 @@ function SideNavbar({ toggle }) {
                   </div>
                   <div
                     onClick={() => handleNavigate("blogs/category")}
-                    className={`flex ${
-                      isActive("blogs/category") && "bg-gray-100"
-                    } rounded-md cursor-pointer p-1 hover:bg-gray-100 items-center gap-1.5`}
+                    className={`flex ${isActive("blogs/category") && "bg-gray-100"
+                      } rounded-md cursor-pointer p-1 hover:bg-gray-100 items-center gap-1.5`}
                   >
                     <span className="font-semibold">
                       <CategoryOutlinedIcon
@@ -166,9 +160,8 @@ function SideNavbar({ toggle }) {
             </div>
           ) : (
             <div
-              className={`flex ${
-                isActive("blogs") && "bg-gray-100"
-              } hover:bg-gray-100 cursor-pointer transition-all duration-300  p-1.5 rounded-md  justify-center items-center`}
+              className={`flex ${isActive("blogs") && "bg-gray-100"
+                } hover:bg-gray-100 cursor-pointer transition-all duration-300  p-1.5 rounded-md  justify-center items-center`}
             >
               <span>
                 <SquarePen
@@ -180,9 +173,8 @@ function SideNavbar({ toggle }) {
           {toggle || innerToggle ? (
             <div
               onClick={() => handleNavigate("contactus")}
-              className={`flex ${
-                isActive("contactus") && "bg-gray-100"
-              } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
+              className={`flex ${isActive("contactus") && "bg-gray-100"
+                } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
             >
               <span>
                 <Contact style={{ fontSize: "1.4rem" }}></Contact>
@@ -192,9 +184,8 @@ function SideNavbar({ toggle }) {
           ) : (
             <div
               onClick={() => handleNavigate("contactus")}
-              className={`flex ${
-                isActive("contactus") && "bg-gray-100"
-              } hover:bg-gray-100 cursor-pointer transition-all duration-300  p-1.5 rounded-md  justify-center items-center`}
+              className={`flex ${isActive("contactus") && "bg-gray-100"
+                } hover:bg-gray-100 cursor-pointer transition-all duration-300  p-1.5 rounded-md  justify-center items-center`}
             >
               <span>
                 <Contact
@@ -206,9 +197,8 @@ function SideNavbar({ toggle }) {
           {toggle || innerToggle ? (
             <div
               onClick={() => handleNavigate("consultant")}
-              className={`flex ${
-                isActive("consultant") && "bg-gray-100"
-              } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
+              className={`flex ${isActive("consultant") && "bg-gray-100"
+                } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
             >
               <span>
                 <Handshake style={{ fontSize: "1.4rem" }}></Handshake>
@@ -218,14 +208,46 @@ function SideNavbar({ toggle }) {
           ) : (
             <div
               onClick={() => handleNavigate("consultant")}
-              className={`flex ${
-                isActive("consultant") && "bg-gray-100"
-              } hover:bg-gray-100 cursor-pointer transition-all duration-300  p-1.5 rounded-md  justify-center items-center`}
+              className={`flex ${isActive("consultant") && "bg-gray-100"
+                } hover:bg-gray-100 cursor-pointer transition-all duration-300  p-1.5 rounded-md  justify-center items-center`}
             >
               <span>
                 <Handshake
                   style={{ fontSize: "1.8rem", fontWeight: "200" }}
                 ></Handshake>
+              </span>
+            </div>
+          )}
+
+          {toggle || innerToggle ? (
+            <div
+            onClick={() => {
+              console.log("Navigating to projects/allprojects");
+              handleNavigate("projects/allprojects");
+            }}
+            
+              className={`flex ${isActive("projects/allprojects") && "bg-gray-100"
+                } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
+            >
+              <span>
+                <FolderOpenDot style={{ fontSize: "1.4rem" }}></FolderOpenDot>
+              </span>
+              <span className="text-sm font-semibold">Projects</span>
+            </div>
+          ) : (
+            <div
+            onClick={() => {
+              console.log("Navigating to projects/allprojects");
+              handleNavigate("projects/allprojects");
+            }}
+            
+              className={`flex ${isActive("projects/allprojects") && "bg-gray-100"
+                } hover:bg-gray-100 cursor-pointer transition-all duration-300  p-1.5 rounded-md  justify-center items-center`}
+            >
+              <span>
+                <FolderOpenDot
+                  style={{ fontSize: "1.8rem", fontWeight: "200" }}
+                ></FolderOpenDot>
               </span>
             </div>
           )}
