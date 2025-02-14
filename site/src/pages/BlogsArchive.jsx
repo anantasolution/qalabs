@@ -3,6 +3,8 @@ import BlogCardsPage from "../components/blogs/BlogCardsPage";
 import { useEffect } from 'react';
 import axios from "axios"
 import { useState } from 'react';
+import BI from "../assets/background.jpeg";
+
 
 // For formating date formate
 const formatTimestamp = (timestamp) => {
@@ -74,13 +76,10 @@ const BlogsArchive = ()=>{
 
     return (
         <>
-            <div
-                className="bg-cover bg-center bg-black/70 z-50"
-                style={{
-                    backgroundImage:
-                        "url('https://template.creativemox.com/webiso/wp-content/uploads/sites/23/2024/06/3d-black-paper-craft-cubic-patterned-background.jpg')",
-                }}
-            >
+             <div
+                   className="relative min-h-[50vh] md:min-h-[60vh]  bg-cover bg-center"
+                   style={{ backgroundImage: `url(${BI})` }}
+                 >
                 <section className="text-center py-32">
                     <motion.h1
                         className="text-4xl sm:text-6xl font-bold text-[#7CD7F9]"

@@ -14,7 +14,7 @@ const HeroForm = () => {
     message: "",
   });
 
-  const [formErrors, setFormErrors] = useState({}); // State for validation errors
+  const [formErrors, setFormErrors] = useState({});
   const [inView, setInView] = useState(false);
   const controls = useAnimation();
   const sectionRef = useRef(null);
@@ -41,13 +41,15 @@ const HeroForm = () => {
     };
   }, []);
 
-  // Validation Function
   const validateField = (id, value) => {
     let error = "";
-
+  
     switch (id) {
       case "name":
         if (!value.trim()) error = "Name is required.";
+        break;
+      case "company":
+        if (!value.trim()) error = "Company is required.";
         break;
       case "email":
         if (!value.trim()) error = "Email is required.";
@@ -63,39 +65,36 @@ const HeroForm = () => {
       default:
         break;
     }
-
+  
     setFormErrors((prevErrors) => ({
       ...prevErrors,
       [id]: error,
     }));
   };
+  
 
-  // Handle input change with live validation
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
       [id]: value,
     }));
-
     validateField(id, value);
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Check if any validation error exists
     const errors = {};
     Object.keys(formData).forEach((key) => {
       validateField(key, formData[key]);
       if (formErrors[key]) errors[key] = formErrors[key];
     });
 
-    if (Object.keys(errors).length > 0) return; // Stop submission if errors exist
+    if (Object.keys(errors).length > 0) return;
 
     try {
-      const response = await axios.post("http://localhost:8080/api/consulation/create", formData);
+      const response = await axios.post("http://localhost:8080/api/consulation", formData);
       toast.success(response.data.message);
 
       setFormData({ name: "", company: "", phone: "", email: "", message: "" });
@@ -127,58 +126,30 @@ const HeroForm = () => {
       </motion.div>
 
       <div className="relative w-[350px] md:w-[500px] flex justify-center md:block z-50">
-        <motion.div
-          className="md:absolute bottom-[-4.2rem] w-full max-w-md md:max-w-lg rounded-2xl"
-          initial={{ y: "150%" }}
-          animate={inView ? { y: 0 } : {}}
-          transition={{ duration: 1 }}
-        >
+        <motion.div className="md:absolute bottom-[-4.2rem] w-full max-w-md md:max-w-lg rounded-2xl" initial={{ y: "150%" }} animate={inView ? { y: 0 } : {}} transition={{ duration: 1 }}>
           <div className="bg-white rounded-lg p-6 md:p-8">
             <h2 className="text-2xl font-semibold mb-6">Free Consultations</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
-              {/** Name Input */}
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  className="w-full px-3 py-2 bg-[#E9E9E9] rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
-                  placeholder="Name"
-                />
-                {formErrors.name && <p className="text-red-500 text-sm">{formErrors.name}</p>}
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                  <input type="text" id="name" value={formData.name} onChange={handleChange} className="w-full px-3 py-2 bg-[#E9E9E9] rounded-md focus:ring-2 focus:ring-emerald-400" placeholder="Name" />
+                </div>
+                <div>
+                  <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">Company</label>
+                  <input type="text" id="company" value={formData.company} onChange={handleChange} className="w-full px-3 py-2 bg-[#E9E9E9] rounded-md focus:ring-2 focus:ring-emerald-400" placeholder="Company" />
+                </div>
               </div>
-
-              {/** Email Input */}
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className="w-full px-3 py-2 bg-[#E9E9E9] rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
-                  placeholder="Email"
-                />
-                {formErrors.email && <p className="text-red-500 text-sm">{formErrors.email}</p>}
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                  <input type="email" id="email" value={formData.email} onChange={handleChange} className="w-full px-3 py-2 bg-[#E9E9E9] rounded-md focus:ring-2 focus:ring-emerald-400" placeholder="Email" />
+                </div>
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                  <input type="tel" id="phone" value={formData.phone} onChange={handleChange} className="w-full px-3 py-2 bg-[#E9E9E9] rounded-md focus:ring-2 focus:ring-emerald-400" placeholder="Phone" />
+                </div>
               </div>
-
-              {/** Phone Input */}
-              <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
-                <input
-                  type="tel"
-                  id="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="w-full px-3 py-2 bg-[#E9E9E9] rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
-                  placeholder="Phone"
-                />
-                {formErrors.phone && <p className="text-red-500 text-sm">{formErrors.phone}</p>}
-              </div>
-
-              {/** Message Input */}
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">Message</label>
                 <textarea
@@ -191,10 +162,7 @@ const HeroForm = () => {
                 />
                 {formErrors.message && <p className="text-red-500 text-sm">{formErrors.message}</p>}
               </div>
-
-              <button type="submit" className="w-full bg-emerald-400 text-white py-3 px-4 rounded-md hover:bg-[#7AA93C] transition-colors duration-200">
-                Get an Appointment
-              </button>
+              <button type="submit" className="w-full bg-emerald-400 text-black py-3 px-4  hover:bg-[#7AA93C] rounded-full">Get an Appointment</button>
             </form>
           </div>
         </motion.div>

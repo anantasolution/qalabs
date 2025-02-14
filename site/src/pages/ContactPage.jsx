@@ -150,7 +150,7 @@ const ContactPage = () => {
             variants={downsideVariants}
           >
             <a
-              href="/contact"
+              href="/contact" 
               className="text-transparent bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text font-semibold text-4xl sm:text-6xl"
             >
               Contact us

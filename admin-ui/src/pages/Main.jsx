@@ -26,7 +26,9 @@ const Main = () => {
   useEffect(() => {
     const fetchLatestContacts = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/contact/latestcontact`);
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_BASE_URL}/contact/latestcontact`
+        );
 
         if (response.data.success) {
           const formattedRows = response.data.data.map((row, index) => ({
@@ -49,7 +51,6 @@ const Main = () => {
 
     fetchLatestContacts();
   }, []);
-
 
   const StatCard = ({ icon: Icon, title, value, color, progress }) => {
     return (
@@ -95,9 +96,13 @@ const Main = () => {
           ))}
         </div>
 
+       
+
         {/* Table Section */}
-        <div className="h-full w-full p-6 mt-6"> {/* Added mt-6 for spacing */}
+        <div className="h-full w-full relative pt-1 mt-8"> {/* Removed redundant margin-top */}
           <div className="h-full bg-white px-4 py-5 rounded-md shadow-md">
+          <h2 className="text-2xl font-bold text-gray-800">Latest Contacts</h2>
+          <br />
             <Box sx={{ height: "100%" }}>
               <DataGrid
                 rows={rows}
@@ -116,7 +121,6 @@ const Main = () => {
             </Box>
           </div>
         </div>
-
       </div>
     </div>
   );

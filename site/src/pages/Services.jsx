@@ -4,6 +4,8 @@ import Cards from "../components/Cards";
 import GetInTouch from "../components/GetInTouch";
 import WhyChooseUs from "../components/WhyChooseUs";
 import Questions from "../components/Questions";
+import BI from "../assets/background.jpeg";
+
 
 //Importing components
 import InovationDesign from "../components/InovationDesign";
@@ -26,21 +28,14 @@ const Services = () => {
       opacity: 1,
       transition: { duration: 0.8, ease: "easeOut" },
     },
-  };
+  }; 
 
   return (
     <div className="bg-[#151515]">
       <div
-        className="relative min-h-[50vh] md:min-h-[60vh]  bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url('https://template.creativemox.com/webiso/wp-content/uploads/sites/23/2024/06/3d-black-paper-craft-cubic-patterned-background.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "bottom center",
-          backgroundRepeat: "no-repeat",
-          filter: "brightness(70%)",
-        }}
-      >
+             className="relative min-h-[50vh] md:min-h-[60vh]  bg-cover bg-center"
+             style={{ backgroundImage: `url(${BI})` }}
+           >
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
           <motion.div
             className="space-y-8"
