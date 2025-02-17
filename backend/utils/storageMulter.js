@@ -13,8 +13,8 @@ const storage = multer.diskStorage({
       uploadPath = "uploads/contentofblog/photos"; // Blog content image
     } else if (file.fieldname === "photo") {
       uploadPath = "uploads/project/photos"; // Project cover image
-    } else if (file.fieldname === "projectContentImage") {
-      uploadPath = "uploads/project/content"; // Project content image
+    } else if (file.fieldname === "profilePicture") {
+      uploadPath = "uploads/feedback/photos"; // User profile picture
     } else {
       uploadPath = "uploads/photos";
     }
@@ -68,4 +68,9 @@ export const uploadContentImageOfBlog = multer({
 export const uploadImageOfProject = multer({
   storage,
   fileFilter,
-}).fields({ name: "photo", maxCount: 1 });
+}).single("photo");
+
+export const uploadProfilePicture = multer({
+  storage,
+  fileFilter,
+}).single("profilePicture");
