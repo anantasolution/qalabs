@@ -10,6 +10,7 @@ import { SquarePen } from "lucide-react";
 import { Contact } from "lucide-react";
 import { Handshake } from "lucide-react";
 import { FolderOpenDot } from "lucide-react";
+import { MessageSquareCode } from "lucide-react";
 import { ChevronDown } from "lucide-react";
 import { ChevronUp } from "lucide-react";
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
@@ -248,6 +249,39 @@ function SideNavbar({ toggle }) {
                 <FolderOpenDot
                   style={{ fontSize: "1.8rem", fontWeight: "200" }}
                 ></FolderOpenDot>
+              </span>
+            </div>
+          )}
+
+{toggle || innerToggle ? (
+            <div
+            onClick={() => {
+              console.log("Navigating to feedback");
+              handleNavigate("feedback");
+            }}
+            
+              className={`flex ${isActive("feedback") && "bg-gray-100"
+                } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
+            >
+              <span>
+                <MessageSquareCode style={{ fontSize: "1.4rem" }}></MessageSquareCode>
+              </span>
+              <span className="text-sm font-semibold">Feedback</span>
+            </div>
+          ) : (
+            <div
+            onClick={() => {
+              console.log("Navigating to feedback");
+              handleNavigate("feedback");
+            }}
+            
+              className={`flex ${isActive("feedback") && "bg-gray-100"
+                } hover:bg-gray-100 cursor-pointer transition-all duration-300  p-1.5 rounded-md  justify-center items-center`}
+            >
+              <span>
+                <MessageSquareCode
+                  style={{ fontSize: "1.8rem", fontWeight: "200" }}
+                ></MessageSquareCode>
               </span>
             </div>
           )}

@@ -7,12 +7,12 @@ import {
   deleteFeedback,
 } from "../Controller/feedbackController.js";
 
-const router = express.Router();
+const router = express.Router(); 
 
 // Configure Multer for file uploads
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "uploads/feedback");
+    cb(null, "uploads/feedback/photos");
   },
   filename: (req, file, cb) => {
     cb(null, Date.now() + "-" + file.originalname);

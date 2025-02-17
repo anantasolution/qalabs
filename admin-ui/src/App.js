@@ -22,6 +22,9 @@ import PreviewAndEditBlog from "./components/Blog/PreviewAndEditBlog";
 import Projects from "./pages/Projects";
 import PreviewAndEditProject from "./components/Project/PreviewAndEditProject";
 import AddProject from "./pages/AddProject";
+import Feedback from "./pages/Feedback";
+import AddFeedback from "./pages/AddFeedback";
+import PreviewAndEditFeedback from "./components/Feedback/PreviewAndEditFeedback";
 
 const ProtectedRoute = () => {
   const { user } = useSelector((state) => state.auth);
@@ -110,6 +113,18 @@ function App() {
           <Route
             path="projects/preview"
             element={<PreviewAndEditProject></PreviewAndEditProject>}
+          ></Route>
+          <Route
+            path="feedback"
+            element={<Feedback></Feedback>}
+          ></Route>
+            <Route
+            path="feedback/add_feedback"
+            element={<AddFeedback></AddFeedback>}
+          ></Route>
+            <Route
+            path="feedback/preview"
+            element={<PreviewAndEditFeedback></PreviewAndEditFeedback>}
           ></Route>
         </Route>
       </Routes>
