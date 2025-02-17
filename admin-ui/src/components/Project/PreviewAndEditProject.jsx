@@ -139,16 +139,20 @@ const PreviewAndEditProject = ({ placeholder }) => {
         }
     };
       console.log(location.state); 
+
+      console.log(project)
+
     // for getting project data
     const fetchData = async () => {
         try {
             const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/project/getproject/${location.state}`);
+            console.log(response.data);
             setProject({
-                title: response.data?.data?.title,
-                description: parse(response.data?.data?.description),
-                photo: response.data?.data?.photo?.filename,
+                title: response.data?.title,
+                description: parse(response.data?.description),
+                photo: response.data?.photo?.filename,
             });
-            setContent(response?.data?.data?.description);
+            setContent(response?.data?.description);
 
         } catch (error) {
             console.log(error);
@@ -167,6 +171,8 @@ const PreviewAndEditProject = ({ placeholder }) => {
         setDeletePopUp(false);
     }
 
+    console.log(process.env.REACT_APP_API_BASE_PROJECT)
+
     const onConfirm = async () => {
         try {
             const response = await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/project/deleteproject/${location.state}`);
@@ -177,6 +183,8 @@ const PreviewAndEditProject = ({ placeholder }) => {
             toast.error(error?.response?.data?.message || "Failed to delete project.");
         }
     }
+
+
 
     return (
         <>
@@ -224,7 +232,7 @@ const PreviewAndEditProject = ({ placeholder }) => {
                                     {project.photo ? (
                                         <div className="relative">
                                             <img
-                                                src={!project.photoPreview ? `${process.env.REACT_APP_API_BASE}/${project?.photo}` : `${project?.photoPreview}`}
+                                                src={!project.photoPreview ? `${process.env.REACT_APP_API_BASE_PROJECT}/${project?.photo}` : `${project?.photoPreview}`}
                                                 alt={project?.title}
                                                 className="max-h-64 mx-auto rounded-lg"
                                             />
@@ -257,7 +265,7 @@ const PreviewAndEditProject = ({ placeholder }) => {
                                         type="file"
                                         ref={fileInputRef}
                                         onChange={handleImageChange}
-                                        accept="photo/*"
+                                        accept="image/*"
                                         className="hidden"
                                     />
                                 </div>
@@ -346,7 +354,7 @@ const PreviewAndEditProject = ({ placeholder }) => {
                                         {project?.photo ? (
                                             <div className="relative">
                                                 <img
-                                                    src={`${process.env.REACT_APP_API_BASE}/${project?.photo}`}
+                                                    src={`${process.env.REACT_APP_API_BASE_PROJECT}/${project?.photo}`}
                                                     className="max-h-64 mx-auto rounded-lg"
                                                 />
                                             </div>
@@ -367,7 +375,7 @@ const PreviewAndEditProject = ({ placeholder }) => {
                                         <input
                                             type="file"
                                             ref={fileInputRef}
-                                            accept="photo/*"
+                                            accept="image/*"
                                             className="hidden"
                                         />
                                     </div>
