@@ -1,7 +1,7 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import { Autoplay,Pagination } from "swiper/modules";
+import { Autoplay } from "swiper/modules";
 
 //Importing images
 import PERSON from '../assets/person.jpg'
@@ -9,6 +9,7 @@ import PERSON from '../assets/person.jpg'
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import axios from "axios";
 
 
 const testimonials = [
@@ -73,9 +74,6 @@ const testimonials = [
     }
   ];
 
-  
-
-
 const TestimonialSlider = () => {
     const [swiperInstance, setSwiperInstance] = useState(null);
     const [activeIndex, setActiveIndex] = useState(0); // Track the active index
@@ -89,7 +87,23 @@ const TestimonialSlider = () => {
     const handleSlideActive = (swiper) => {
       setActiveIndex(swiper.activeIndex); // Update active index when slide changes
     };
-  
+
+    const [feedbacks, setFeedbacks] = useState([]);
+
+  useEffect(() => {
+    const getTestimonials = async ()=>{
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/feedback/Getallfeedback`);
+        console.log(response);
+        setFeedbacks(response?.data?.data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getTestimonials();
+    
+  }, [])
+  console.log(feedbacks)
     return (
       <section className="bg-[#151515] py-12 overflow-hidden">
         <div className="max-w-6xl mx-auto px-4">
@@ -123,17 +137,17 @@ const TestimonialSlider = () => {
             }}
             className="relative"
           >
-            {testimonials.map((testimonial, index) => (
+            {feedbacks.map((testimonial, index) => (
               <SwiperSlide key={index}>
                 <div className="bg-[#242424] rounded-lg p-6 shadow-md">
                   <p className="text-gray-400 mb-4 text-center">
-                    {testimonial.text}
+                    {testimonial?.reviewMessage}
                   </p>
                 </div>
-                <div>
-                  <div className="bg-[#151515] flex justify-center items-center">
-                    <div className="flex items-center">
-                      <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-gray-600">
+                <div className="w-full">
+                  <div className="bg-[#151515] flex justify-start px-3 items-center w-full">
+                    <div className="flex items-center justify-between">
+                      <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-gray-600 text-gray-300">
                         <img
                           src={testimonial.avatar}
                           alt={testimonial.name}
@@ -142,7 +156,7 @@ const TestimonialSlider = () => {
                       </div>
                       <div className="p-5">
                         <h3 className="text-white font-semibold">{testimonial.name}</h3>
-                        <p className="text-gray-400 text-sm">{testimonial.role}</p>
+                        <p className="text-gray-400 text-sm">{testimonial?.designation}</p>
                       </div>
                     </div>
                   </div>

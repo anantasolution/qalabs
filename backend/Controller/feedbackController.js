@@ -34,7 +34,7 @@ export const createFeedback = async (req, res) => {
 export const getAllFeedbacks = async (req, res) => {
   try {
     const feedbacks = await FEEDBACK.find();
-    res.status(200).json(feedbacks);
+    res.status(200).json({message : "feedbacks fetched successfully.", data : feedbacks});
   } catch (error) {
     res.status(500).json({ message: "Error fetching feedbacks", error });
   }
