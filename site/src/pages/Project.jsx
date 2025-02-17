@@ -109,9 +109,9 @@ function Project() {
         </div>
       </div>
       <FeaturedProjectSection />
-      <CompanySlider></CompanySlider>
-      <StartJourneySection></StartJourneySection>
-      <TestimonialSlider></TestimonialSlider>
+      <CompanySlider />
+      <StartJourneySection />
+      <TestimonialSlider />
     </div>
   );
 }

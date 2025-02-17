@@ -1,5 +1,4 @@
 import express from "express";
-import multer from "multer";
 import {
   createProject,
   getAllProjects,
@@ -7,26 +6,15 @@ import {
   updateProject,
   deleteProject,
 } from "../Controller/projectController.js";
+import { uploadBoth, uploadImageOfProject } from "../utils/storageMulter.js";
 
 const router = express.Router();
 
-// Configure Multer for file uploads
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "uploads/project/photos");
-  },
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + "-" + file.originalname);
-  },
-});
-
-const upload = multer({ storage });
-
 // Routes
-router.post("/createproject", upload.single("photo"), createProject);
+router.post("/createproject", uploadImageOfProject, createProject);
 router.get("/getallprojects", getAllProjects);
 router.get("/getproject/:id", getProjectById);
-router.put("/updateproject/:id", upload.single("photo"), updateProject);
+router.put("/updateproject/:id", uploadImageOfProject, updateProject);
 router.delete("/deleteproject/:id", deleteProject);
 
 export default router;

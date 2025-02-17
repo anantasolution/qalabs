@@ -4,7 +4,14 @@ import FEEDBACK from "../models/FEEDBACK.js";
 export const createFeedback = async (req, res) => {
   try {
     const { name, designation, reviewMessage } = req.body;
-    const profilePicture = req.file ? req.file.path : null;
+    const profilePicture = req.file
+      ? {
+          filetype: req.file.mimetype,
+          filename: req.file.filename,
+          filepath: req.file.path,
+          fileSize: `${req.file.size} bytes`,
+        }
+      : null;
 
     const feedback = new FEEDBACK({
       name,
@@ -27,7 +34,7 @@ export const createFeedback = async (req, res) => {
 export const getAllFeedbacks = async (req, res) => {
   try {
     const feedbacks = await FEEDBACK.find();
-    res.status(200).json(feedbacks);
+    res.status(200).json({message : "feedbacks fetched successfully.", data : feedbacks});
   } catch (error) {
     res.status(500).json({ message: "Error fetching feedbacks", error });
   }
@@ -50,7 +57,14 @@ export const getFeedbackById = async (req, res) => {
 export const updateFeedback = async (req, res) => {
   try {
     const { name, designation, reviewMessage } = req.body;
-    const profilePicture = req.file ? req.file.path : undefined; // Keep old picture if not updated
+    const profilePicture = req.file
+      ? {
+          filetype: req.file.mimetype,
+          filename: req.file.filename,
+          filepath: req.file.path,
+          fileSize: `${req.file.size} bytes`,
+        }
+      : undefined; // Keep old picture if not updated
 
     const updatedFeedback = await FEEDBACK.findByIdAndUpdate(
       req.params.id,
@@ -72,6 +86,7 @@ export const updateFeedback = async (req, res) => {
       .json({ message: "Feedback updated successfully", updatedFeedback });
   } catch (error) {
     res.status(500).json({ message: "Error updating feedback", error });
+    console.log(error);
   }
 };
 

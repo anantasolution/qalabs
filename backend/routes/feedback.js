@@ -1,11 +1,12 @@
 import express from "express";
-import multer from "multer";
 import {
   createFeedback,
   getAllFeedbacks,
+  getFeedbackById,
   updateFeedback,
   deleteFeedback,
 } from "../Controller/feedbackController.js";
+import { uploadProfilePicture } from "../utils/storageMulter.js";
 
 const router = express.Router(); 
 
@@ -21,14 +22,12 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
+
 // Routes
-router.post("/createfeedback", upload.single("profilePicture"), createFeedback);
-router.get("/Getallfeedback", getAllFeedbacks);
-router.put(
-  "/updatefeedback/:id",
-  upload.single("profilePicture"),
-  updateFeedback
-);
+router.post("/createfeedback", uploadProfilePicture, createFeedback);
+router.get("/getallfeedbacks", getAllFeedbacks);
+router.get("/getfeedback/:id", getFeedbackById);
+router.put("/updatefeedback/:id", uploadProfilePicture, updateFeedback);
 router.delete("/deletefeedback/:id", deleteFeedback);
 
 export default router;

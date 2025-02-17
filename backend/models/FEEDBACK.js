@@ -15,7 +15,10 @@ const feedbackSchema = new mongoose.Schema(
       required: true,
     },
     profilePicture: {
-      type: String, // URL or path to the profile picture
+      filetype: String,
+      filename: String,
+      filepath: String,
+      fileSize: String, // URL or path to the profile picture
     },
   },
   { timestamps: true }
