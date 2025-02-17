@@ -11,6 +11,8 @@ const Breadcrumbs = ({ setSearchQuery, setSelectedCategory, setIsOpen }) => {
   const isBlogPage = location.pathname.includes("/allblogs");
   const isCategoryPage = location.pathname.includes("/category");
   const isProjectPage = location.pathname.includes("/allprojects"); // Add this line
+  const isFeedbackPage = location.pathname.includes("feedback"); // Add this line
+
 
   // State for categories
   const [categories, setCategories] = useState([]);
@@ -123,6 +125,16 @@ const Breadcrumbs = ({ setSearchQuery, setSelectedCategory, setIsOpen }) => {
             className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm sm:text-base w-full sm:w-auto text-center"
           >
             Add Project
+          </Link>
+        )}
+
+          {/* Add Feedback Button - Only on /allfeedback */}
+          {isFeedbackPage && (
+          <Link
+            to="/admin/feedback/add_feedback"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm sm:text-base w-full sm:w-auto text-center"
+          >
+            Add Feedback
           </Link>
         )}
       </div>

@@ -118,15 +118,16 @@ const PreviewAndEditProject = ({ placeholder }) => {
                 headers: { "Content-Type": 'multipart/formdata' }
             });
 
+            console.log(response);
             // Setting updated data for preview
             setProject({
-                title: response.data?.data?.title,
-                description: parse(response.data?.data?.description),
-                photo: response.data?.data?.photo?.filename,
+                title: response.data?.updatedProject.title,
+                description:parse(response.data?.updatedProject.description),
+                photo: response.data?.updatedProject?.photo?.filename,
             });
 
             // Setting content empty for preview
-            setContent(response.data?.data?.description);
+            setContent(response.data?.updatedProject?.description);
 
             setIsEditing(false);
 
