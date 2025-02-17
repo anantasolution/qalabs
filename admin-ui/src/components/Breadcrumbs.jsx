@@ -10,6 +10,7 @@ const Breadcrumbs = ({ setSearchQuery, setSelectedCategory, setIsOpen }) => {
   const isDashboard = location.pathname.includes("/dashboard");
   const isBlogPage = location.pathname.includes("/allblogs");
   const isCategoryPage = location.pathname.includes("/category");
+  const isProjectPage = location.pathname.includes("/allprojects"); // Add this line
 
   // State for categories
   const [categories, setCategories] = useState([]);
@@ -42,7 +43,9 @@ const Breadcrumbs = ({ setSearchQuery, setSelectedCategory, setIsOpen }) => {
         {pathnames.map((name, index) => {
           const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
           const isLast = index === pathnames.length - 1;
-          const formattedName = name.replace(/-/g, " ").replace(/\b\w/g, (char) => char.toUpperCase());
+          const formattedName = name
+            .replace(/-/g, " ")
+            .replace(/\b\w/g, (char) => char.toUpperCase());
           return (
             <div key={routeTo} className="flex items-center">
               {!isLast ? (
@@ -52,7 +55,9 @@ const Breadcrumbs = ({ setSearchQuery, setSelectedCategory, setIsOpen }) => {
               ) : (
                 <span className="text-gray-400">{formattedName}</span>
               )}
-              {!isLast && <ChevronRight className="h-5 w-5 ms-2 text-gray-400" />}
+              {!isLast && (
+                <ChevronRight className="h-5 w-5 ms-2 text-gray-400" />
+              )}
             </div>
           );
         })}
@@ -109,6 +114,16 @@ const Breadcrumbs = ({ setSearchQuery, setSelectedCategory, setIsOpen }) => {
           >
             Add Category
           </button>
+        )}
+
+        {/* Add Project Button - Only on /allprojects */}
+        {isProjectPage && (
+          <Link
+            to="/admin/projects/add_project"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm sm:text-base w-full sm:w-auto text-center"
+          >
+            Add Project
+          </Link>
         )}
       </div>
     </div>
