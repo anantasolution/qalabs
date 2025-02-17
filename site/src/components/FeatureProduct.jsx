@@ -1,10 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useAnimation } from "framer-motion";
+import axios from "axios";
 
-//Importing icons
-import P1 from "../assets/product1.jpg";
-import P2 from "../assets/product2.jpg";
-import P3 from "../assets/product3.jpg";
 
 const ProjectCard = ({ id, image, title, description, controls }) => {
   const [hover, setHover] = useState(null);
@@ -24,12 +21,11 @@ const ProjectCard = ({ id, image, title, description, controls }) => {
       onMouseLeave={() => setHover(null)}
     >
       <div className="relative transition-[height] duration-300 ease-out h-[410px]">
-        <img src={image} alt={title} className="w-full h-full object-cover" />
+        <img src={`${process.env.REACT_APP_API_BASE_PROJECT}/${image}`} alt={title} className="w-full h-full object-cover" />
       </div>
       <div
-        className={`absolute ${
-          hover === id ? "bottom-0" : "-bottom-[3.8rem]"
-        } transition-all duration-300 bg-[#242424] p-6`}
+        className={`absolute w-full ${hover === id ? "bottom-0" : "-bottom-[3.8rem]"
+          } transition-all duration-300 bg-[#242424] p-6`}
       >
         <h3 className="text-white tracking-wide leading-10 text-3xl font-light mb-2">
           {title}
@@ -57,10 +53,10 @@ const FeaturedProjectSection = () => {
           setInView(true);
           controls.start("visible"); // Start animations when in view
         } else {
-            // controls.start("hidden"); // Optionally, reverse animations when out of view
+          // controls.start("hidden"); // Optionally, reverse animations when out of view
         }
       },
-      {  threshold: 0.1} // Trigger when 50% of the section is in view
+      { threshold: 0.1 } // Trigger when 50% of the section is in view
     );
 
     if (sectionRef.current) {
@@ -74,44 +70,65 @@ const FeaturedProjectSection = () => {
     };
   }, []);
 
-  const projects = [
-    {
-      image: P1,
-      title: "Man & Dance Company Perfume",
-      description:
-        "Vehicula magna morbi scelerisque phasellus neque facilisis quisque venenatis mauris curae ex donec dis bibendum.",
-    },
-    {
-      image: P2,
-      title: "Nancy Watch Promotional Landing page",
-      description:
-        "Vehicula magna morbi scelerisque phasellus neque facilisis quisque venenatis mauris curae ex donec dis bibendum.",
-    },
-    {
-      image: P3,
-      title: "Malika Perfume Funnel Landing Page",
-      description:
-        "Vehicula magna morbi scelerisque phasellus neque facilisis quisque venenatis mauris curae ex donec dis bibendum.",
-    },
-    {
-      image: P1,
-      title: "Man & Dance Company Perfume",
-      description:
-        "Vehicula magna morbi scelerisque phasellus neque facilisis quisque venenatis mauris curae ex donec dis bibendum.",
-    },
-    {
-      image: P2,
-      title: "Nancy Watch Promotional Landing page",
-      description:
-        "Vehicula magna morbi scelerisque phasellus neque facilisis quisque venenatis mauris curae ex donec dis bibendum.",
-    },
-    {
-      image: P3,
-      title: "Malika Perfume Funnel Landing Page",
-      description:
-        "Vehicula magna morbi scelerisque phasellus neque facilisis quisque venenatis mauris curae ex donec dis bibendum.",
-    },
-  ];
+  // const projects = [
+  //   {
+  //     image: P1,
+  //     title: "Man & Dance Company Perfume",
+  //     description:
+  //       "Vehicula magna morbi scelerisque phasellus neque facilisis quisque venenatis mauris curae ex donec dis bibendum.",
+  //   },
+  //   {
+  //     image: P2,
+  //     title: "Nancy Watch Promotional Landing page",
+  //     description:
+  //       "Vehicula magna morbi scelerisque phasellus neque facilisis quisque venenatis mauris curae ex donec dis bibendum.",
+  //   },
+  //   {
+  //     image: P3,
+  //     title: "Malika Perfume Funnel Landing Page",
+  //     description:
+  //       "Vehicula magna morbi scelerisque phasellus neque facilisis quisque venenatis mauris curae ex donec dis bibendum.",
+  //   },
+  //   {
+  //     image: P1,
+  //     title: "Man & Dance Company Perfume",
+  //     description:
+  //       "Vehicula magna morbi scelerisque phasellus neque facilisis quisque venenatis mauris curae ex donec dis bibendum.",
+  //   },
+  //   {
+  //     image: P2,
+  //     title: "Nancy Watch Promotional Landing page",
+  //     description:
+  //       "Vehicula magna morbi scelerisque phasellus neque facilisis quisque venenatis mauris curae ex donec dis bibendum.",
+  //   },
+  //   {
+  //     image: P3,
+  //     title: "Malika Perfume Funnel Landing Page",
+  //     description:
+  //       "Vehicula magna morbi scelerisque phasellus neque facilisis quisque venenatis mauris curae ex donec dis bibendum.",
+  //   },
+  // ];
+
+  const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+
+    const getProjects = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/project/getallprojects`);
+        setProjects(response?.data?.data);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    getProjects();
+  }, []);
 
   return (
     <section className="w-full bg-[#151515] min-h-screen" ref={sectionRef}>
@@ -132,16 +149,25 @@ const FeaturedProjectSection = () => {
 
         {/* Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-12 md:pb-24">
-          {projects.map((project, index) => (
-            <ProjectCard
-              key={index}
-              id={index}
-              image={project.image}
-              title={project.title}
-              description={project.description}
-              controls={controls}
-            />
-          ))}
+
+          {loading ?
+            <div className="w-full p-10 h-[500px] bg-black/90 flex justify-center items-center">
+              <div className="animate-spin border-e-2 border-green-500 h-14 w-14 rounded-full"></div>
+            </div>
+            :
+            projects.map((project, index) => (
+              <ProjectCard
+                key={index}
+                id={index}
+                image={project?.photo?.filename}
+                title={project.title}
+                description={project.description}
+                controls={controls}
+              />
+            ))
+
+          }
+
         </div>
       </div>
     </section>
