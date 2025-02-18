@@ -108,6 +108,7 @@ const Categories = () => {
       <Breadcrumbs
         setSearchQuery={setSearchQuery}
         setSelectedCategory={setSelectedCategory}
+        setIsOpen={setIsOpen}
       />
 
       <div className="p-6 h-full w-full">

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-const PopUp = ({ isOpen, onClose, onConfirm, blogTitle }) => {
+const PopUp = ({ isOpen, onClose, onConfirm, projectTitle }) => {
     useEffect(() => {
         // Handle escape key
         const handleEscape = (e) => {
@@ -51,12 +51,12 @@ const PopUp = ({ isOpen, onClose, onConfirm, blogTitle }) => {
                                 </svg>
                             </div>
                             <h2 className="text-xl font-semibold text-gray-900">
-                                Delete Blog Post
+                                Delete Project 
                             </h2>
                         </div>
                         <p className="mt-4 text-gray-600">
-                            Are you sure you want to delete "<span className="font-medium">{blogTitle}</span>"?
-                            This action cannot be undone and all data associated with this blog post will be permanently removed.
+                            Are you sure you want to delete "<span className="font-medium">{projectTitle}</span>"?
+                            This action cannot be undone and all data associated with this will be permanently removed.
                         </p>
                     </div>
 
