@@ -10,7 +10,7 @@ const PreviewAndEditFeedback = ({ placeholder }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const editor = useRef(null); 
-
+ 
   // State for the review message content (rich text)
   const [content, setContent] = useState('');
 
@@ -366,7 +366,7 @@ const PreviewAndEditFeedback = ({ placeholder }) => {
                       <div className="relative">
                         <img
                           src={`${process.env.REACT_APP_API_BASE_FEEDBACK}/${feedback?.profilePicture}`}
-                          className="max-h-64 mx-auto rounded-lg"
+                          className="max-h-64 mx-auto rounded-full"
                           alt={feedback.name}
                         />
                       </div>

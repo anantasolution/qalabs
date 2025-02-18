@@ -20,20 +20,42 @@ const Feedback = () => {
   const [feedbacks, setFeedbacks] = useState([]);
   const [isDeleting, setIsDeleting] = useState(false);
   const [selectedFeedback, setSelectedFeedback] = useState(null);
+  const [searchQuery, setSearchQuery] = useState(""); // Add searchQuery state
+  const [filteredFeedbacks, setFilteredFeedbacks] = useState([]); 
 
   const fetchData = async () => {
     try {
       const { data } = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/feedback/getallfeedbacks`);
       console.log(data);
       setFeedbacks(data.data);
+      setFilteredFeedbacks(data.data);
     } catch (error) {
       console.error("Error fetching feedbacks:", error);
       toast.error("Failed to fetch feedback.");
     }
   };
+
   useEffect(() => {
     fetchData();
   }, []);
+
+  useEffect(() => {
+    const filterData = () => {
+      let filteredData = feedbacks;
+
+      if (searchQuery) {
+        filteredData = filteredData.filter(
+          (feedback) =>
+            feedback.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            feedback.designation.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+      }
+
+      setFilteredFeedbacks(filteredData);
+    };
+
+    filterData();
+  }, [searchQuery, feedbacks]);
 
   const handleDelete = (feedback) => {
     setIsDeleting(true);
@@ -60,12 +82,12 @@ const Feedback = () => {
 
   return (
     <div className="min-h-screen w-full bg-gray-100 flex flex-col">
-      <Breadcrumbs />
+      <Breadcrumbs setSearchQuery={setSearchQuery} />
       <div className="p-6 h-full w-full">
         <div className="p-6 bg-white rounded-md">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {feedbacks.length > 0 ? (
-              feedbacks.map((feedback) => {
+            {filteredFeedbacks.length > 0 ? (
+              filteredFeedbacks.map((feedback) => {
                 const colors = generatePastelColor();
                 return (
                   <div
@@ -123,7 +145,7 @@ const Feedback = () => {
       {isDeleting && selectedFeedback && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
           <DeleteFeedback
-            onCancel={() => setIsDeleting(false)}
+            onCancel={() => setIsDeleting(false)} 
             feedbackName={selectedFeedback.name}
             onConfirm={onConfirm}
           />
