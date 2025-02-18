@@ -15,6 +15,15 @@ const AddFeedback = ({ placeholder }) => {
     imagePreview: "",
   });
 
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
+  const handleNameChange = (e) => {
+    const capitalized = capitalizeFirstLetter(e.target.value);
+    setFeedback((prev) => ({ ...prev, name: capitalized }));
+  };
+
   // Editor configurations
   const config = useMemo(
     () => ({
@@ -199,7 +208,8 @@ const AddFeedback = ({ placeholder }) => {
                     type="text"
                     id="name"
                     value={feedback.name}
-                    onChange={(e) => setFeedback((prev) => ({ ...prev, name: e.target.value }))}
+                    // onChange={(e) => setFeedback((prev) => ({ ...prev, name: e.target.value }))}
+                    onChange={handleNameChange}
                     className="w-full px-4 py-2 border rounded-lg"
                     placeholder="Enter your name"
                     required

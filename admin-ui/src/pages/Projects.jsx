@@ -58,11 +58,11 @@ const Projects = () => {
   
       console.log("API Response:", response.data); // Debugging line
   
-      if (!Array.isArray(response.data)) {
+      if (!Array.isArray(response.data.data)) {
         throw new Error("Invalid API response format: Expected an array");
       }
   
-      const projects = response.data.map((item) => ({
+      const projects = response.data.data.map((item) => ({
         ...item,
         updatedAt: formatTimestamp(item.updatedAt), // Format timestamp
         description: extractParagraphs(item.description),

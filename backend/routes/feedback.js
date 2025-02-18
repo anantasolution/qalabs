@@ -1,4 +1,5 @@
 import express from "express";
+import multer from "multer";
 import {
   createFeedback,
   getAllFeedbacks,
@@ -11,7 +12,7 @@ import { uploadProfilePicture } from "../utils/storageMulter.js";
 const router = express.Router(); 
 
 // Configure Multer for file uploads
-const storage = multer.diskStorage({
+const storage = multer.diskStorage({ 
   destination: (req, file, cb) => {
     cb(null, "uploads/feedback/photos");
   },
