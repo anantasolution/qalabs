@@ -26,7 +26,7 @@ const __dirname = path.dirname(__filename);
 // For importing routes
 
 // App configuration
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8040;
 
 dotenv.config();
 
