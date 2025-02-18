@@ -7,7 +7,7 @@ import Breadcrumbs from "../components/Breadcrumbs";
 
 const Feedback = () => {
   const navigate = useNavigate(); // Initialize useNavigate
-  const generatePastelColor = () => { 
+  const generatePastelColor = () => {
     const r = Math.floor(Math.random() * 55) + 200;
     const g = Math.floor(Math.random() * 55) + 200;
     const b = Math.floor(Math.random() * 55) + 200;
@@ -23,15 +23,14 @@ const Feedback = () => {
 
   const fetchData = async () => {
     try {
-      const { data } = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/feedback/Getallfeedback`);
-      console.log(data); 
-      setFeedbacks(data);
+      const { data } = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/feedback/getallfeedbacks`);
+      console.log(data);
+      setFeedbacks(data.data);
     } catch (error) {
       console.error("Error fetching feedbacks:", error);
       toast.error("Failed to fetch feedback.");
     }
   };
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -56,7 +55,7 @@ const Feedback = () => {
 
   // Handle navigation to the preview page
   const handleNavigatePreview = (id) => {
-    navigate("/admin/feedback/preview", { state:  id  }); // Passing feedback ID as state
+    navigate("/admin/feedback/preview", { state: id }); // Passing feedback ID as state
   };
 
   return (
@@ -77,16 +76,20 @@ const Feedback = () => {
                   >
                     <div className="flex items-center space-x-4">
                       <img
-                        src={feedback.profilePicture}
+                        src={`${process.env.REACT_APP_API_BASE_FEEDBACK}/${feedback.profilePicture?.filename}`}
                         alt="profile"
                         className="w-12 h-12 rounded-full border border-gray-300"
                       />
+
                       <div className="flex-grow">
                         <h3 className="text-lg font-bold">{feedback.name}</h3>
                         <p className="text-sm">{feedback.designation}</p>
                       </div>
                       <button
-                        onClick={() => handleDelete(feedback)}
+                        onClick={(e) => {
+                          e.stopPropagation(); // Prevent navigation when delete button is clicked
+                          handleDelete(feedback);
+                        }}
                         className="p-1.5 bg-red-500 hover:bg-red-600 text-white text-sm font-medium rounded-lg transition-colors duration-200"
                       >
                         <svg
@@ -105,6 +108,7 @@ const Feedback = () => {
                           <line x1="14" y1="11" x2="14" y2="17" />
                         </svg>
                       </button>
+
                     </div>
                     <p className="mt-3 text-sm">{feedback.reviewMessage}</p>
                   </div>
@@ -120,7 +124,7 @@ const Feedback = () => {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
           <DeleteFeedback
             onCancel={() => setIsDeleting(false)}
-            categoryName={selectedFeedback.name}
+            feedbackName={selectedFeedback.name}
             onConfirm={onConfirm}
           />
         </div>

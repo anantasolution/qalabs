@@ -9,7 +9,7 @@ import parse from "html-react-parser";
 const PreviewAndEditFeedback = ({ placeholder }) => {
   const location = useLocation();
   const navigate = useNavigate();
-  const editor = useRef(null);
+  const editor = useRef(null); 
 
   // State for the review message content (rich text)
   const [content, setContent] = useState('');
@@ -25,6 +25,15 @@ const PreviewAndEditFeedback = ({ placeholder }) => {
     profilePicture: '',
     profilePicturePreview: ''
   });
+
+  const capitalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
+  const handleNameChange = (e) => {
+    const capitalized = capitalizeFirstLetter(e.target.value);
+    setFeedback((prev) => ({ ...prev, name: capitalized }));
+  };
 
   // Editor configuration
   const config = useMemo(() => ({
@@ -72,7 +81,7 @@ const PreviewAndEditFeedback = ({ placeholder }) => {
     e.preventDefault();
     e.stopPropagation();
     const file = e.dataTransfer.files?.[0];
-    if (file && file.type.startsWith('profilePicture/')) {
+    if (file && file.type.startsWith('image/')) {
       const previewUrl = URL.createObjectURL(file);
       setFeedback(prev => ({
         ...prev,
@@ -146,13 +155,13 @@ const PreviewAndEditFeedback = ({ placeholder }) => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API_BASE_URL}/feedback/Getallfeedback/${location.state}`
+        `${process.env.REACT_APP_API_BASE_URL}/feedback/getfeedback/${location.state}`
       );
       setFeedback({
         name: response.data?.name,
         designation: response.data?.designation,
         reviewMessage: response.data?.reviewMessage,
-        profilePicture: response.data?.profilePicture,
+        profilePicture: response.data?.profilePicture?.filename,
         profilePicturePreview: ''
       });
       setContent(response.data?.reviewMessage);
@@ -267,7 +276,8 @@ const PreviewAndEditFeedback = ({ placeholder }) => {
                       type="text"
                       id="name"
                       value={feedback.name}
-                      onChange={(e) => setFeedback(prev => ({ ...prev, name: e.target.value }))}
+                      // onChange={(e) => setFeedback(prev => ({ ...prev, name: e.target.value }))}
+                      onChange={handleNameChange}
                       className="w-full px-4 py-2 border rounded-lg"
                       placeholder="Enter your name"
                       required
