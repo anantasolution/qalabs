@@ -217,13 +217,13 @@ const PreviewAndEditFeedback = ({ placeholder }) => {
                     {feedback.profilePicture ? (
                       <div className="relative">
                         <img
-                          src={
+                          src={ 
                             !feedback.profilePicturePreview
                               ? `${process.env.REACT_APP_API_BASE_FEEDBACK}/${feedback.profilePicture}`
                               : `${feedback.profilePicturePreview}`
                           }
                           alt={feedback.name}
-                          className="max-h-64 mx-auto rounded-lg"
+                          className="max-h-64 mx-auto rounded-full"
                         />
                         <button
                           type="button"
