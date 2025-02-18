@@ -96,12 +96,12 @@ export const loginAdmin = async (req, res, next) => {
     const user = await Loginmapping.findOne({ email });
 
     if (!user) {
-      return res.status(404).json({ message: "Invalid email address" });
+      return res.status(404).json({ message: "Email address is incorrect." });
     }
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
-      return res.status(401).json({ message: "Invalid password" });
+      return res.status(401).json({ message: "Password is incorrect." });
     }
 
     // Generate JWT token
