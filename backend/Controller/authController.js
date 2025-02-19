@@ -59,7 +59,7 @@ export const createAdmin = async (req, res) => {
 };
 
 // Validation function
-const validateAdmin = (username, email, password, mobileno) => {
+export const validateAdmin = (username, email, password, mobileno) => {
   const errors = [];
 
   if (!username || username.length < 3) {
