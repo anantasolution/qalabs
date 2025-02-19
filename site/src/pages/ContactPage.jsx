@@ -268,7 +268,7 @@ const ContactPage = () => {
               animation: "fadeInRight 0.8s ease-out forwards",
             }}
           >
-            <h2 className="text-3xl lg:text-4xl mb-2">Send us a message</h2>
+            <h2 className="text-3xl lg:text-4xl mb-4 text-[#F8F8F8]">Send us a message</h2>
             <p className="text-gray-400 mb-4">
               Auctor dictumst inceptos metus est ad himenaeos habitasse litora
               natoque libero nunc
@@ -279,7 +279,7 @@ const ContactPage = () => {
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-sm font-medium text-gray-700 mb-1"
+                    className="block text-sm font-medium text-gray-100 mb-1"
                   >
                     Name
                   </label>
@@ -288,7 +288,7 @@ const ContactPage = () => {
                     id="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 bg-[#E9E9E9]  text-black rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                    className="w-full px-3 py-2 bg-[#242424]  text-white rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
                     placeholder="Name"
                   />
                   {formErrors.name && (
@@ -298,7 +298,7 @@ const ContactPage = () => {
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-sm font-medium text-gray-700 mb-1"
+                    className="block text-sm font-medium text-gray-100 mb-1"
                   >
                     company
                   </label>
@@ -307,7 +307,7 @@ const ContactPage = () => {
                     id="company"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 bg-[#E9E9E9]  text-black rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                    className="w-full px-3 py-2  bg-[#242424]  text-white rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
                     placeholder="Company"
                   />
                   {formErrors.company && (
@@ -320,7 +320,7 @@ const ContactPage = () => {
                 <div>
                   <label
                     htmlFor="phone"
-                    className="block text-sm font-medium text-gray-700 mb-1"
+                    className="block text-sm font-medium text-gray-100 mb-1"
                   >
                     Phone
                   </label>
@@ -329,7 +329,7 @@ const ContactPage = () => {
                     id="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 bg-[#E9E9E9] text-black rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                    className="w-full px-3 py-2  bg-[#242424] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
                     placeholder="Phone"
                   />
                   {formErrors.phone && (
@@ -339,7 +339,7 @@ const ContactPage = () => {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 mb-1"
+                    className="block text-sm font-medium text-gray-100 mb-1"
                   >
                     Email
                   </label>
@@ -348,7 +348,7 @@ const ContactPage = () => {
                     id="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 bg-[#E9E9E9] text-black rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                    className="w-full px-3 py-2  bg-[#242424] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
                     placeholder="Email"
                   />
                   {formErrors.email && (
@@ -360,7 +360,7 @@ const ContactPage = () => {
               <div>
                 <label
                   htmlFor="subject"
-                  className="block text-sm font-medium text-gray-700 mb-1"
+                  className="block text-sm font-medium text-gray-100 mb-1"
                 >
                   Subject
                 </label>
@@ -369,7 +369,7 @@ const ContactPage = () => {
                   id="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 bg-[#E9E9E9] text-black rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                  className="w-full px-3 py-2 bg-[#242424] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
                   placeholder="subject"
                 />
                 {formErrors.subject && (
@@ -380,7 +380,7 @@ const ContactPage = () => {
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium text-gray-700 mb-1"
+                  className="block text-sm font-medium text-gray-100 mb-1"
                 >
                   Message
                 </label>
@@ -389,7 +389,7 @@ const ContactPage = () => {
                   rows={2}
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 bg-[#E9E9E9] text-black  rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                  className="w-full px-3 py-2  bg-[#242424] text-white  rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
                   placeholder="Message"
                 />
                 {formErrors.message && (
@@ -463,7 +463,7 @@ const ContactPage = () => {
             {/* Removed max-width limit */}
             <iframe
               className="w-full h-[500px] rounded-lg shadow-lg" // Keeping map height and width full
-              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d63467.022415707266!2d106.86193725497907!3d-6.1723914803575575!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1738742651281!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d5285.3433070451665!2d72.52950593200644!3d23.01546536690591!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1739956271051!5m2!1sen!2sin" 
               style={{ border: 0, margin: 0 }} // Removed border and margin
               allowFullScreen=""
               loading="lazy"

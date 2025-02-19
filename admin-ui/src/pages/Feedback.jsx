@@ -132,7 +132,7 @@ const Feedback = () => {
                       </button>
 
                     </div>
-                    <p className="mt-3 text-sm">{feedback.reviewMessage}</p>
+                    <p className="mt-3 text-sm" dangerouslySetInnerHTML={{ __html: feedback?.reviewMessage }} />
                   </div>
                 );
               })

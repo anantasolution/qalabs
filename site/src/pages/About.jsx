@@ -48,8 +48,8 @@ const HeroSection = () => {
           visible: { y: 0, opacity: 1, transition: { duration: 1.5 } },
         }}
       >
-        <div className="bg-[#151515]/80 p-8 md:p-12 rounded-lg max-w-2xl backdrop-blur-sm">
-          <h1 className="text-white text-4xl md:text-5xl font-semibold leading-tight mb-4">
+        <div className="bg-[#151515]/60 p-8 md:p-12 rounded-lg max-w-2xl backdrop-blur-sm">
+          <h1 className="text-white text-4xl leading-tight mb-4">
             Ready to Start? Let's Build
             <div className="bg-gradient-to-r from-[#7CD7F9] to-[#5CDA92] bg-clip-text text-transparent">
               Something Great
@@ -61,7 +61,7 @@ const HeroSection = () => {
             hendrerit vestibulum lobortis commodo lacus sagittis feugiat. Est
             sollicitudin convallis diam.
           </p>
-          <button className="bg-[#5CDA92] hover:bg-[#4bc583] text-black font-medium px-8 py-3 rounded-full transition-colors duration-300 text-sm md:text-base">
+          <button className="bg-[#71ECB6] text-black  hover:bg-[#BAFE6D] transition-colors font-medium px-8 py-3 rounded-full text-sm md:text-base">
             Start Your Journey
           </button>
         </div>
@@ -286,7 +286,7 @@ const About = () => {
             </div>
 
             <motion.button
-              className="bg-gradient-to-r from-[#00ff8a] to-[#00ccff] text-black px-6 py-3 rounded-lg hover:opacity-90 transition-all duration-300"
+              className="bg-[#71ECB6] text-black  hover:bg-[#BAFE6D] transition-colors px-6 py-3 rounded-full hover:opacity-90"
               initial={{ opacity: 0 }}
               animate={inView ? { opacity: 1 } : {}}
               transition={{ duration: 1, delay: 1.5 }}
@@ -352,7 +352,7 @@ const About = () => {
                   visible: { opacity: 1, transition: { duration: 1.5 } },
                 }}
               >
-                <div className="relative overflow-hidden rounded-lg bg-[#1A1A1A]">
+                <div className="relative overflow-hidden rounded-t-lg bg-[#1A1A1A]">
                   {/* Image Container */}
                   <div className="relative aspect-square">
                     <img
@@ -361,29 +361,29 @@ const About = () => {
                       className="w-full h-full object-cover transition-all duration-300 group-hover:filter-none filter grayscale"
                     />
                     {/* Social Media Overlay */}
-                    <div className="absolute top-4 right-4 flex flex-col space-y-2 transition-opacity duration-300">
+                    <div className="absolute top-2 right-2 flex flex-col space-y-2 transition-opacity duration-300 rounded-full p-2 bg-white">
                       <a
                         href="#"
-                        className="bg-[#151515] text-emerald-400 p-2 rounded-full hover:bg-emerald-400 hover:text-[#151515] transition-colors"
+                        className="bg-[#71ECB6]  hover:bg-[#BAFE6D] text-[#151515] p-2 rounded-full transition-colors"
                       >
                         <FaFacebookF className="w-4 h-4" />
                       </a>
                       <a
                         href="#"
-                        className="bg-[#151515] text-cyan-400 p-2 rounded-full hover:bg-cyan-400 hover:text-[#151515] transition-colors"
+                        className="bg-[#71ECB6]  hover:bg-[#BAFE6D] text-[#151515] p-2 rounded-full transition-colors"
                       >
                         <FaTwitter className="w-4 h-4" />
                       </a>
                       <a
                         href="#"
-                        className="bg-[#151515] text-emerald-400 p-2 rounded-full hover:bg-emerald-400 hover:text-[#151515] transition-colors"
+                        className="bg-[#71ECB6] hover:bg-[#BAFE6D] text-[#151515] p-2 rounded-full transition-colors"
                       >
                         <FaLinkedinIn className="w-4 h-4" />
                       </a>
                     </div>
                   </div>
                 </div>
-                <div className="mt-4 bg-[#1A1A1A] p-4 rounded-lg text-center">
+                <div className="bg-[#242424] p-4  text-center rounded-b-lg">
                   <h3 className="text-white text-lg font-medium">
                     {member.name}
                   </h3>

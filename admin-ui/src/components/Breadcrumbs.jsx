@@ -91,7 +91,7 @@ const Breadcrumbs = ({ setSearchQuery, setSelectedCategory, setIsOpen }) => {
               <option value="">All Categories</option>
               {categories.map((category) => (
                 <option key={category._id} value={category.category_name}>
-                  {category.category_name}
+                  {category?.category_name?.charAt(0).toUpperCase() + category?.category_name?.slice(1)}
                 </option>
               ))}
             </select>

@@ -35,7 +35,7 @@ const StartJourneySection = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="bg-black/60 backdrop-blur-sm rounded-lg p-6 md:p-8 lg:p-10 w-full max-w-lg md:max-w-2/3 lg:max-w-1/2 aspect-square md:aspect-auto flex flex-col justify-center"
         >
-          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
+          <h2 className="text-2xl md:text-4xl text-white mb-2 px-3">
             Ready to Start? Let's Build{" "}
             <span className="text-emerald-400">Something Great</span> Together!
           </h2>
@@ -46,7 +46,7 @@ const StartJourneySection = () => {
             sollicitudin convallis diam.
           </p>
 
-          <button className="bg-emerald-400 hover:bg-emerald-500 text-black font-semibold py-2 px-6 rounded-full transition-colors duration-200">
+          <button className="bg-[#71ECB6] text-black rounded-full hover:bg-[#BAFE6D] py-2 px-6 transition-colors duration-200">
             Start Your Journey
           </button>
         </motion.div>

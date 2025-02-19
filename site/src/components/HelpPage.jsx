@@ -52,8 +52,8 @@ const HelpPage = () => {
         />
         <motion.div
           className="relative w-full flex items-center justify-center md:pl-40 md:justify-start"
-          initial={{ y: "-150%" }}
-          animate={inView ? { y: 0 } : {}}
+          initial={{ y: "-150%", opacity:0 }}
+          animate={inView ? { y: 0, opacity:100 } : {}}
           transition={{ duration: 1 }}
         >
           <div className="p-8 bg-black bg-opacity-60 rounded-lg max-w-md text-center">
@@ -67,7 +67,7 @@ const HelpPage = () => {
               Maecenas tempor ligula phasellus per hac nisl. Facilisi curae nunc
               hendrerit vestibulum lobortis commodo lacus sagittis feugiat.
             </p>
-            <button className="mt-6 bg-green-500 text-black py-2 px-4 rounded-md hover:bg-green-400">
+            <button className="mt-6 bg-[#71ECB6] text-black rounded-full hover:bg-[#BAFE6D] py-2 px-4">
               Learn more
             </button>
           </div>

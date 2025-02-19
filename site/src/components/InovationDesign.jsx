@@ -52,12 +52,11 @@ function InovationDesign() {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
               tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
             </p>
-            <motion.button
-              className="bg-green-300 text-black px-4 py-2 rounded-full text-base px w-fit hover:bg-teal-500 transition duration-300"
-              whileHover={{ scale: 1.05 }}
+            <button
+              className="bg-[#71ECB6] text-black rounded-full hover:bg-[#BAFE6D] px-4 py-2 text-base px w-fit transition duration-300"
             >
               Learn more
-            </motion.button>
+            </button>
           </motion.div>
 
           {/* Right side stats */}

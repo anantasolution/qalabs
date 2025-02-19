@@ -27,24 +27,6 @@ const AddProject = ({ placeholder }) => {
         "bold",
         "italic",
         "underline",
-        "strikethrough",
-        "|",
-        "ul",
-        "ol",
-        "|",
-        "image",
-        "link",
-        "brush",
-        "|",
-        "align",
-        "font",
-        "fontsize",
-        "|",
-        "undo",
-        "redo",
-        "eraser",
-        "|",
-        "source",
       ],
       height: 400,
     }),
@@ -116,7 +98,7 @@ const AddProject = ({ placeholder }) => {
         }
       );
       toast.success("Project added successfully!");
-      // setProject({ title: "", description: "", image: null, imagePreview: "" });
+      setProject({ title: "", description: "", image: null, imagePreview: "" });
       setContent("");
     } catch (error) {
       toast.error(error?.response?.data?.message || "Failed to add project.");

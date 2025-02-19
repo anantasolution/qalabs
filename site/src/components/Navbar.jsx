@@ -42,7 +42,7 @@ function Navbar() {
             <div className="container mx-auto flex justify-between items-center">
                 {/* Logo */}
                 <div className="flex items-center justify-center">
-                    <img src={FOOTER} alt="Webiso" className="h-6 sm:h-8" />
+                    <span className="mx-auto md:mx-0 text-[#71ECB6] text-3xl" >Zyinex</span>
                 </div>
 
                 {/* Desktop Navigation */}
@@ -52,8 +52,8 @@ function Navbar() {
                             key={item.path}
                             to={item.path}
                             className={` transition-colors ${location.pathname === item.path
-                                ? 'text-[#BAFE6D]'
-                                : 'hover:text-[#BAFE6D] text-white'
+                                ? 'text-[#71ECB6]'
+                                : 'hover:text-[#71ECB6] text-white'
                                 }`}
                         >
                             {item.name}
@@ -63,7 +63,7 @@ function Navbar() {
 
                 {/* Desktop Get Started Button */}
                 <div className="hidden lg:flex items-center">
-                    <button className="bg-[#71ECB6] text-black px-6 py-2 rounded-full hover:bg-[#BAFE6D] transition-colors cursor-pointer">
+                    <button className="bg-[#71ECB6] text-black rounded-full hover:bg-[#BAFE6D]  px-6 py-2 transition-colors cursor-pointer">
                         Get Started
                     </button>
                 </div>
@@ -106,7 +106,7 @@ function Navbar() {
                             animate="open"
                             exit="closed"
                             variants={sidebarVariants}
-                            className="fixed inset-y-0 right-0 w-64 bg-gray-900 z-50 shadow-lg"
+                            className="fixed inset-y-0 right-0 w-64 bg-[#151515] z-50 shadow-lg"
                         >
                             <div className="flex flex-col p-6 pt-12 space-y-6">
                                 {menuItems.map((item) => (
@@ -114,7 +114,10 @@ function Navbar() {
                                         key={item.path}
                                         to={item.path}
                                         onClick={() => setIsMenuOpen(false)}
-                                        className="text-white text-lg hover:text-[#BAFE6D] transition-colors"
+                                        className={` transition-colors ${location.pathname === item.path
+                                            ? 'text-[#71ECB6]'
+                                            : 'hover:text-[#71ECB6] text-white'
+                                            }`}
                                     >
                                         {item.name}
                                     </Link>

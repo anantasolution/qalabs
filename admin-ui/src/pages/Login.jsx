@@ -53,9 +53,13 @@ const Login = () => {
   const handleChange = (e) =>{
      const {name, value} = e.target
      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
      if(name==="email" && !value) setError((prev)=>({...prev,[name]:"Email address is required."}))
      else if(name==="email" && !emailRegex.test(value)) setError((prev)=>({...prev,[name]:"Email address is invalid."}))
+     else setError(({email, ...rest})=>rest)
+
      if(name==="password" && !value) setError((prev)=>({...prev,[name]:'Password is required.'}))
+     else setError(({ password, ...rest }) => rest)
 
      setFormdata((prevData)=>({...prevData,[name]:value}))
   }
