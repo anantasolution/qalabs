@@ -1,4 +1,5 @@
 import React, { useState, useRef, useMemo, useEffect } from 'react';
+import {useNavigate} from "react-router-dom"
 import JoditEditor from 'jodit-react'; 
 import { ChevronRight } from 'lucide-react';
 import axios from 'axios';
@@ -78,17 +79,20 @@ const AddBlog = ({ placeholder }) => {
         }
     };
 
+    const navigate = useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
 
         if(!blogPost.category){
             toast.error("Select category before submiting");
+            setIsSubmitting(false);
             return;
         }
 
         if(!blogPost.content){
             toast.error("Content is Required.");
+            setIsSubmitting(false);
             return;
         }
 
@@ -106,8 +110,9 @@ const AddBlog = ({ placeholder }) => {
                 headers: {"Content-Type":'multipart/formdata'}
             });
 
-            toast.success("Blog created successfully!")
-           
+            toast.success("Blog created successfully!");
+
+            navigate("/admin/blogs/allblogs")            
             // Reset form
             setBlogPost({
                 title: '',

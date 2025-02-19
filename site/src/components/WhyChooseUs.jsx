@@ -22,7 +22,7 @@ const WhyChooseUs = () => {
           progressControls.start({ strokeDasharray: "97, 0" });
         }
       },
-      { threshold: 0.7 } // Trigger when 70% of the section is in view
+      { threshold: 0.3 } // Trigger when 30% of the section is in view
     );
 
     if (sectionRef.current) {

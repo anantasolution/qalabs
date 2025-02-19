@@ -47,8 +47,7 @@ const extractParagraphs = (htmlString) => {
 };
 
 const Blogs = () => {
-  const [loading, setLoading] = useState(false);
-  const [addForm, setAddForm] = useState(false);
+  
   const [blogs, setBlogs] = useState([]);
   const [searchQuery, setSearchQuery] = useState(""); // Add searchQuery state
   const [selectedCategory, setSelectedCategory] = useState(""); // Add selectedCategory state
@@ -65,7 +64,7 @@ const Blogs = () => {
           ...item,
           updatedAt: formatTimestamp(item.updatedAt), // Format timestamp
           category_name: item.category.category_name,
-          content: extractParagraphs(item.content),
+          content: extractParagraphs(item?.content),
         }))
       );
 
@@ -126,7 +125,13 @@ const Blogs = () => {
               },
             }}
           >
-            <BlogCards data={filteredBlogs} /> {/* Use filteredBlogs */}
+            {
+              filteredBlogs?.length <= 0 ?
+                (<div className="w-full p-10 h-full flex justify-center items-center">
+                  <span className="text-black text-2xl">No blogs currently.</span>
+                </div>)
+              :(<BlogCards data={filteredBlogs} />) 
+            }
           </Box>
         </div>
       </section>

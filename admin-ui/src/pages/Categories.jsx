@@ -103,7 +103,7 @@ const Categories = () => {
   }, [searchQuery, selectedCategory, category]);
 
   return (
-    <div className="min-h-screen w-full bg-gray-100 flex flex-col">
+    <div className="h-full w-full bg-gray-100 flex flex-col">
       {/* ✅ Pass setSearchQuery and setSelectedCategory as props to Breadcrumbs */}
       <Breadcrumbs
         setSearchQuery={setSearchQuery}
@@ -112,7 +112,7 @@ const Categories = () => {
       />
 
       <div className="p-6 h-full w-full">
-        <div className="p-6 bg-white rounded-md">
+        <div className="p-6 bg-white rounded-md h-full ">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* ✅ Use filteredCategories instead of category */}
             {filteredCategories.map((category, index) => (
@@ -127,7 +127,7 @@ const Categories = () => {
                       className="text-xl font-semibold"
                       style={{ color: category.colors.text }}
                     >
-                      {category.name}
+                      {category?.name?.charAt(0).toUpperCase() + category?.name?.slice(1)}
                     </h3>
                     <div
                       className="bg-white rounded-full px-3 py-1 text-sm font-medium shadow-sm"

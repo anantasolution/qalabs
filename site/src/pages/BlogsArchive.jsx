@@ -24,7 +24,7 @@ const formatTimestamp = (timestamp) => {
     return `${day} ${month} ${year}`;
 };
 
-const BlogsArchive = ()=>{
+const BlogsArchive = () => {
 
     const [blogs, setBlogs] = useState([]);
 
@@ -63,10 +63,10 @@ const BlogsArchive = ()=>{
 
     return (
         <>
-             <div
-                   className="relative min-h-[50vh] md:min-h-[60vh]  bg-cover bg-center"
-                   style={{ backgroundImage: `url(${BI})` }}
-                 >
+            <div
+                className="relative min-h-[50vh] md:min-h-[60vh]  bg-cover bg-center"
+                style={{ backgroundImage: `url(${BI})` }}
+            >
                 <section className="text-center py-32">
                     <motion.h1
                         className="text-4xl sm:text-6xl font-bold text-[#7CD7F9]"
@@ -87,12 +87,18 @@ const BlogsArchive = ()=>{
                 </section>
             </div>
             {
-                loading ? 
+                loading ?
                     <div className="w-full p-10 h-[500px] bg-black/90 flex justify-center items-center">
-                    <div className="animate-spin border-e-2 border-green-500 h-14 w-14 rounded-full"></div>
-                </div>
-                :
-                    <BlogCardsPage data={blogs} /> 
+                        <div className="animate-spin border-e-2 border-green-500 h-14 w-14 rounded-full"></div>
+                    </div>
+                    :
+                    (
+                        blogs?.length <= 0 ?
+                            <div className="w-full p-10 h-[500px] bg-black/90 flex justify-center items-center">
+                                <span className="text-white text-5xl">No blogs currently.</span>
+                            </div>
+                            : <BlogCardsPage data={blogs} />
+                    )
             }
         </>
     )

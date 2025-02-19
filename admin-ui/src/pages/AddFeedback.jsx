@@ -37,24 +37,6 @@ const AddFeedback = ({ placeholder }) => {
         "bold",
         "italic",
         "underline",
-        "strikethrough",
-        "|",
-        "ul",
-        "ol",
-        "|",
-        "image",
-        "link",
-        "brush",
-        "|",
-        "align",
-        "font",
-        "fontsize",
-        "|",
-        "undo",
-        "redo",
-        "eraser",
-        "|",
-        "source",
       ],
       height: 400,
     }),
@@ -114,9 +96,9 @@ const AddFeedback = ({ placeholder }) => {
 
     const formData = new FormData();
     formData.append("profilePicture", feedback.profilePicture);
-    formData.append("name", feedback.name);
-    formData.append("designation", feedback.designation);
-    formData.append("reviewMessage", feedback.reviewMessage); 
+    formData.append("name", feedback.name.trim());
+    formData.append("designation", feedback.designation.trim());
+    formData.append("reviewMessage", feedback.reviewMessage.trim()); 
 
     try {
       await axios.post(

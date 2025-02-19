@@ -23,7 +23,7 @@ const ProjectCards = ({ data }) => {
                     />
                     <div className="p-4 flex flex-col justify-center w-full">
                         <h2 className="text-xl font-semibold text-gray-800">{project?.title}</h2>
-                        <p className="text-gray-600 mt-2 w-11/12 line-clamp-3">{project?.description}</p>
+                        <p className="text-gray-600 mt-2 w-11/12 line-clamp-3" dangerouslySetInnerHTML={{__html:project?.description}} />
                         <div className="w-full flex justify-end">
                             <span className="text-gray-700">{project?.updatedAt}</span>
                         </div>

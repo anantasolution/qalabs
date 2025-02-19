@@ -30,9 +30,8 @@ const ProjectCard = ({ id, image, title, description, controls }) => {
         <h3 className="text-white tracking-wide leading-10 text-3xl font-light mb-2">
           {title}
         </h3>
-        <p className="text-gray-400 font-medium leading-6 text-sm mb-4">
-          {description}
-        </p>
+        <p className="text-gray-400 font-medium leading-6 text-sm mb-4" dangerouslySetInnerHTML={{ __html: description }} />
+          
         <button className="bg-emerald-400 text-black px-4 py-2 rounded-full text-sm transition-colors">
           Learn more
         </button>
@@ -56,7 +55,7 @@ const FeaturedProjectSection = () => {
           // controls.start("hidden"); // Optionally, reverse animations when out of view
         }
       },
-      { threshold: 0.1 } // Trigger when 50% of the section is in view
+      { threshold: 0.3 } // Trigger when 50% of the section is in view
     );
 
     if (sectionRef.current) {
@@ -148,27 +147,25 @@ const FeaturedProjectSection = () => {
         </div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-12 md:pb-24">
-
-          {loading ?
+        {
+          loading ? 
             <div className="w-full p-10 h-[500px] bg-black/90 flex justify-center items-center">
               <div className="animate-spin border-e-2 border-green-500 h-14 w-14 rounded-full"></div>
             </div>
-            :
-            projects.map((project, index) => (
-              <ProjectCard
-                key={index}
-                id={index}
-                image={project?.photo?.filename}
-                title={project.title}
-                description={project.description}
-                controls={controls}
-              />
-            ))
-
-          }
-
-        </div>
+           :
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-12 md:pb-24">
+              {projects.map((project, index) => (
+                <ProjectCard
+                  key={index}
+                  id={index}
+                  image={project?.photo?.filename}
+                  title={project.title}
+                  description={project.description}
+                  controls={controls}
+                />
+              ))}
+            </div>
+        }
       </div>
     </section>
   );

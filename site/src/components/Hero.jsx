@@ -161,7 +161,7 @@ const HeroSection = () => {
 
             {/* CTA Button */}
             <motion.button
-              className="bg-gradient-to-r from-[#00ff8a] to-[#00ccff] text-black px-6 py-3 rounded-lg hover:opacity-90 transition-all duration-300"
+              className="bg-[#71ECB6] text-black rounded-full hover:bg-[#BAFE6D] px-6 py-3 hover:opacity-90 transition-all duration-300"
               initial={{ opacity: 0 }}
               animate={inView ? { opacity: 1 } : {}}
               transition={{ duration: 1, delay: 1.5 }}

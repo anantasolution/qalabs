@@ -5,10 +5,11 @@ import FOOT from '../assets/footer.png';
 import { FacebookOutlined, YouTube } from '@mui/icons-material';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     const services = [
-        { name: 'Web Design', href: '#home' },
+        { name: 'Web Design', href: '/' },
         { name: 'Web Development', href: '#' },
         { name: 'SEO & Digital Marketing', href: '#' },
         { name: 'Branding & Visual Identity', href: '#' },
@@ -19,7 +20,7 @@ const Footer = () => {
     const support = [
         { name: 'Help Center', href: '#' },
         { name: 'Ticket Support', href: '#' },
-        { name: 'Contact us', href: '#' },
+        { name: 'Contact us', href: '/contactus' },
         { name: 'Customer Support', href: '#' },
         { name: 'Forum Community', href: '#' }
     ];
@@ -37,7 +38,8 @@ const Footer = () => {
             <div className="container mx-auto flex flex-col md:flex-row md:items-start md:justify-between space-y-12 md:space-y-0">
                 {/* Logo Section */}
                 <div className="text-center md:text-left md:w-1/4">
-                    <img src={FOOT} alt="Webiso" className="h-12 mx-auto md:mx-0" />
+                    <span className="mx-auto md:mx-0 text-[#71ECB6] text-3xl" >Zyinex</span>
+                    {/* <span className="mx-auto md:mx-0 text-blue-300 text-3xl" >ex</span> */}
                     <p className="text-[#717171] mt-2 text-sm">
                         402, Shangrila Arcade <br /> Ahmedabad - India
                     </p>
@@ -62,9 +64,9 @@ const Footer = () => {
                             <ul className="space-y-2">
                                 {section.links.map((item) => (
                                     <li key={item.name}>
-                                        <a href={item.href} className="text-sm text-[#717171] hover:text-[#BAFE6D] transition-colors">
+                                        <Link to={item.href}  className="text-sm text-[#717171] hover:text-[#BAFE6D] transition-colors">
                                             {item.name}
-                                        </a>
+                                        </Link>
                                     </li>
                                 ))}
                             </ul>

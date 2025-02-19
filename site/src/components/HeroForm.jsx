@@ -109,8 +109,8 @@ const HeroForm = () => {
       <ToastContainer />
       <motion.div
         className="w-full md:grid md:grid-cols-2 md:w-1/2 place-content-center z-50"
-        initial={{ y: "-150%" }}
-        animate={inView ? { y: 0 } : {}}
+        initial={{ y: "-150%", opacity :0 }}
+        animate={inView ? { y: 0, opacity: 100 } : {}}
         transition={{ duration: 1 }}
       >
         <div className="p-6 space-y-4">
@@ -162,7 +162,7 @@ const HeroForm = () => {
                 />
                 {formErrors.message && <p className="text-red-500 text-sm">{formErrors.message}</p>}
               </div>
-              <button type="submit" className="w-full bg-emerald-400 text-black py-3 px-4  hover:bg-[#7AA93C] rounded-full">Get an Appointment</button>
+              <button type="submit" className="w-full bg-[#71ECB6] text-black rounded-full hover:bg-[#BAFE6D] py-2 px-4">Get an Appointment</button>
             </form>
           </div>
         </motion.div>
