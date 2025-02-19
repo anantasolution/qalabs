@@ -56,14 +56,14 @@ const HelpPage = () => {
           animate={inView ? { y: 0, opacity:100 } : {}}
           transition={{ duration: 1 }}
         >
-          <div className="p-8 bg-black bg-opacity-60 rounded-lg max-w-md text-center">
+          <div className="p-8 bg-black bg-opacity-60 rounded-lg max-w-md">
             <h1 className="text-3xl font-bold text-white">
               See How We Can Help Your{" "}
               <span className="bg-gradient-to-r from-[#00ffff] via-[#00ccff] to-[#00ff8a] text-transparent bg-clip-text">
                 Business Grow.
               </span>
             </h1>
-            <p className="mt-4 text-gray-100 text-sm">
+            <p className="mt-4 text-gray-100 text-sm -tracking-tighter">
               Maecenas tempor ligula phasellus per hac nisl. Facilisi curae nunc
               hendrerit vestibulum lobortis commodo lacus sagittis feugiat.
             </p>

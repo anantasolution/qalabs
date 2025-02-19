@@ -12,7 +12,7 @@ const logos = [
 const CompanySlider = () => {
   return (
     <>
-      <div className="w-full py-7 md:py-10 bg-[#151515] flex justify-center px-10 border-t border-gray-300">
+      <div className="w-full py-7 md:py-10 bg-[#151515] flex justify-center px-10 border-t border-gray-600">
         <Swiper
           spaceBetween={20}
           loop={true}
@@ -31,7 +31,7 @@ const CompanySlider = () => {
         >
           {logos.map((logo, index) => (
             <SwiperSlide key={index} className="flex justify-center">
-              <img src={logo} alt="logo" className="h-10 brightness-0 invert" />
+              <img src={logo} alt="logo" className="h-10 brightness-0 invert opacity-70" />
             </SwiperSlide>
           ))}
         </Swiper>

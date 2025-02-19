@@ -117,6 +117,7 @@ const FeaturedProjectSection = () => {
       setLoading(true);
       try {
         const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/project/getallprojects`);
+        console.log(response);
         setProjects(response?.data?.data);
         setLoading(false);
       } catch (error) {
@@ -149,11 +150,11 @@ const FeaturedProjectSection = () => {
         {/* Cards Grid */}
         {
           loading ? 
-            <div className="w-full p-10 h-[500px] bg-black/90 flex justify-center items-center">
+           ( <div className="w-full p-10 h-[500px] bg-[#151515] flex justify-center items-center">
               <div className="animate-spin border-e-2 border-green-500 h-14 w-14 rounded-full"></div>
-            </div>
+            </div>)
            :
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-12 md:pb-24">
+           ( <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-12 md:pb-24">
               {projects.map((project, index) => (
                 <ProjectCard
                   key={index}
@@ -164,7 +165,7 @@ const FeaturedProjectSection = () => {
                   controls={controls}
                 />
               ))}
-            </div>
+            </div>)
         }
       </div>
     </section>
