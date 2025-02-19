@@ -26,10 +26,10 @@ const Footer = () => {
     ];
 
     const company = [
-        { name: 'About us', href: '#' },
+        { name: 'About us', href: '/aboutus' },
         { name: 'Leadership', href: '#' },
         { name: 'Careers', href: '#' },
-        { name: 'Article & News', href: '#' },
+        { name: 'Article & News', href: '/blogsArchive' },
         { name: 'Legal Notices', href: '#' }
     ];
 

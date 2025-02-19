@@ -39,7 +39,7 @@ function Navbar() {
 
     return (
         <nav className="absolute w-full z-50 px-4 sm:px-6 py-4">
-            <div className="container mx-auto flex justify-between items-center">
+            <div className="container mx-auto flex justify-between items-center md:px-16">
                 {/* Logo */}
                 <div className="flex items-center justify-center">
                     <span className="mx-auto md:mx-0 text-[#71ECB6] text-3xl" >Zyinex</span>
