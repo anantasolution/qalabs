@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useAnimation } from "framer-motion";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 
 const ProjectCard = ({ id, image, title, description, controls }) => {
@@ -31,10 +32,10 @@ const ProjectCard = ({ id, image, title, description, controls }) => {
           {title}
         </h3>
         <p className="text-gray-400 font-medium leading-6 text-sm mb-4" dangerouslySetInnerHTML={{ __html: description }} />
-          
-        <button className="bg-emerald-400 text-black px-4 py-2 rounded-full text-sm transition-colors">
+
+        {/* <button className="bg-emerald-400 text-black px-4 py-2 rounded-full text-sm transition-colors">
           Learn more
-        </button>
+        </button> */}
       </div>
     </motion.div>
   );
@@ -148,13 +149,13 @@ const FeaturedProjectSection = () => {
         </div>
 
         {/* Cards Grid */}
-        {
-          loading ? 
-           ( <div className="w-full p-10 h-[500px] bg-[#151515] flex justify-center items-center">
-              <div className="animate-spin border-e-2 border-green-500 h-14 w-14 rounded-full"></div>
-            </div>)
-           :
-           ( <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-12 md:pb-24">
+        {loading ?
+          (<div className="w-full p-10 h-[500px] bg-[#151515] flex justify-center items-center">
+            <div className="animate-spin border-e-2 border-green-500 h-14 w-14 rounded-full"></div>
+          </div>)
+          :
+          (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-10">
               {projects.map((project, index) => (
                 <ProjectCard
                   key={index}
@@ -165,8 +166,14 @@ const FeaturedProjectSection = () => {
                   controls={controls}
                 />
               ))}
-            </div>)
+            </div>
+          )
         }
+        <div className="w-full flex justify-center items-center">
+          <Link to={"/project"} className="bg-[#71ECB6] text-black rounded-full flex justify-center items-center hover:bg-[#BAFE6D] py-2 px-6 transition-colors duration-200 w-36">
+            Show More
+          </Link>
+        </div>
       </div>
     </section>
   );

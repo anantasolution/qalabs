@@ -207,12 +207,12 @@ const Cards = () => {
             <p className="text-sm sm:text-base">
               Netus condimentum erat vestibulum sollicitudin sem tempor lacinia.
             </p>
-            <button
+            {/* <button
               type="submit"
               className="bg-emerald-300 hover:bg-lime-300 text-gray-900 px-3 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium transition-colors duration-300 flex items-center gap-2 cursor-pointer rounded-full"
             >
               Get Started
-            </button>
+            </button> */}
           </motion.div>
         ))}
       </div>
