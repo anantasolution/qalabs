@@ -8,8 +8,7 @@ import Project from "./pages/Project.jsx";
 import BlogsArchive from "./pages/BlogsArchive.jsx";
 import BlogPage from "./pages/BlogPage.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
-import Temp from "./pages/Temp.jsx";
-
+import Temp from "./components/services/Temp.jsx"
 
 function App() {
   return (

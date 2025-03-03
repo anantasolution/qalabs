@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
-import BI from "../assets/background.jpeg";
+import BI from "../../assets/background.jpeg";
 import { motion, useAnimation } from "framer-motion";
 import { Check, ChevronDown } from "lucide-react";
-import IMAGE from "../assets/img_1.jpg";
+import IMAGE from "../../assets/img_1.jpg";
 
 const Temp = () => {
   const [openIndex, setOpenIndex] = useState(null);
