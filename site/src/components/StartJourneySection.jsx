@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 import callSupport from "../assets/customer-support.jpg";
+import { Link } from "react-router-dom";
 
 const StartJourneySection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -46,9 +47,9 @@ const StartJourneySection = () => {
             sollicitudin convallis diam.
           </p>
 
-          <button className="bg-[#71ECB6] text-black rounded-full hover:bg-[#BAFE6D] py-2 px-6 transition-colors duration-200">
+          <Link to={"/contactus"} className="bg-[#71ECB6] text-black rounded-full flex justify-center items-center hover:bg-[#BAFE6D] py-2 px-6 transition-colors duration-200">
             Start Your Journey
-          </button>
+          </Link>
         </motion.div>
       </div>
     </div>

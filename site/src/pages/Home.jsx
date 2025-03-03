@@ -15,6 +15,7 @@ import StartJourneySection from '../components/StartJourneySection';
 import WhyChooseUs from '../components/WhyChooseUs';
 import HeroForm from '../components/HeroForm';
 import Video from '../components/Video';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -62,7 +63,7 @@ const Home = () => {
                 <div className="relative z-20 container mx-auto px-4 sm:px-6 pt-16 sm:pt-24 md:pt-40 pb-16 sm:pb-24 md:pb-32">
                     <div className="max-w-4xl mx-auto text-center">
                         <motion.h1
-                            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 sm:mb-6"
+                            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 inline-block bg-gradient-to-r from-[#00ffff] via-[#00ccff] to-[#00ff8a] bg-clip-text text-transparent"
                             initial="initial"
                             animate="animate"
                             variants={fadeIn}
@@ -77,12 +78,11 @@ const Home = () => {
                             variants={fadeIn}
                             transition={{ delay: 0.2 }}
                         >
-                            <span className="text-blue-300">Online</span>{' '}
-                            <span className="text-green-400">Presence</span>
+                            <span className="inline-block bg-gradient-to-r from-[#00ffff] via-[#00ccff] to-[#00ff8a] bg-clip-text text-transparent">Online Presence</span>{' '}
                         </motion.h1>
 
                         <motion.h1
-                            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 sm:mb-8"
+                            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 sm:mb-8 inline-block bg-gradient-to-r from-[#00ffff] via-[#00ccff] to-[#00ff8a] bg-clip-text text-transparent"
                             initial="initial"
                             animate="animate"
                             variants={fadeIn}
@@ -116,11 +116,11 @@ const Home = () => {
                                 Get Started
                             </button>
 
-                            <button
+                            <Link to={"/project"}
                                 className="border-2 border-white text-white px-8 py-3 rounded-full hover:bg-[#BAFE6D] hover:border-[#BAFE6D] hover:text-black transition-colors w-full sm:w-auto"
                             >
                                 Explore Portfolio
-                            </button>
+                            </Link>
                         </motion.div>
                     </div>
                 </div>

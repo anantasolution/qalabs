@@ -67,9 +67,9 @@ const HelpPage = () => {
               Maecenas tempor ligula phasellus per hac nisl. Facilisi curae nunc
               hendrerit vestibulum lobortis commodo lacus sagittis feugiat.
             </p>
-            <button className="mt-6 bg-[#71ECB6] text-black rounded-full hover:bg-[#BAFE6D] py-2 px-4">
+            {/* <button className="mt-6 bg-[#71ECB6] text-black rounded-full hover:bg-[#BAFE6D] py-2 px-4">
               Learn more
-            </button>
+            </button> */}
           </div>
         </motion.div>
       </div>

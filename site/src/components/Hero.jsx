@@ -2,14 +2,15 @@ import React, { useEffect, useState, useRef } from "react";
 import { Check } from "lucide-react";
 import HERO from "../assets/hero-section.jpg";
 import { motion, useAnimation } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const services = [
-  "Custom Solutions",
-  "Cutting-Edge Design",
+  "QA & Automation",
+  " Computer hardware sales",
   "SEO Optimization",
-  "Responsive Design",
-  "Innovative Technology",
-  "Security and Reliability",
+  "Networking solutions",
+  "Web application development",
+  "Cloud services",
 ];
 
 const stats = [
@@ -166,7 +167,9 @@ const HeroSection = () => {
               animate={inView ? { opacity: 1 } : {}}
               transition={{ duration: 1, delay: 1.5 }}
             >
-              Discover more
+              <Link to={"/services"}>
+                Discover more
+              </Link>
             </motion.button>
           </div>
         </div>
