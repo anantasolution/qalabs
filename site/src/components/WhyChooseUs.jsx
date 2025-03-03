@@ -64,8 +64,10 @@ const WhyChooseUs = () => {
   ];
 
   return (
-    <div className="min-h-screen w-full bg-[#151515] text-white flex justify-end items-center py-14 md:py-16 overflow-hidden"
-    ref={sectionRef}>
+    <div
+      className="min-h-screen w-full bg-[#151515] text-white flex justify-end items-center py-14 md:py-16 overflow-hidden"
+      ref={sectionRef}
+    >
       <div className="w-full min-h-[70vh] md:min-h-[100vh] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 ">
         {/* Left Section */}
         <motion.div
@@ -142,13 +144,13 @@ const WhyChooseUs = () => {
         </motion.div>
 
         {/* Right Section - Larger Image */}
-        <motion.div
-          className="relative hidden overflow-hidden md:flex md:justify-center"
-        >
-          <motion.div className="absolute -right-10 rounded-lg w-full  h-full"
-          initial={{ x: "100%" }}
-          animate={{ x: inView ? "0%" : "100%" }}
-          transition={{ duration: 1 }}>
+        <motion.div className="relative hidden overflow-hidden md:flex md:justify-center">
+          <motion.div
+            className="absolute -right-10 rounded-lg w-full  h-full"
+            initial={{ x: "100%" }}
+            animate={{ x: inView ? "0%" : "100%" }}
+            transition={{ duration: 1 }}
+          >
             <img
               src={IMAGE}
               alt="Why Choose Us"
