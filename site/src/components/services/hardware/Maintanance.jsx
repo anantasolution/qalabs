@@ -1,16 +1,15 @@
 import React, { useState, useRef, useEffect } from "react";
 import BI from "../../../assets/background.jpeg";
 import { motion, useAnimation } from "framer-motion";
-import { Check, ChevronDown } from "lucide-react";
+import { Check } from "lucide-react";
 import IMAGE from "../../../assets/img_1.jpg";
 
-const Cloud = () => {
+const Maintanance = () => {
   const [openIndex, setOpenIndex] = useState(null);
   const [inView, setInView] = useState(false);
   const controls = useAnimation(); // Animation controls for Framer Motion
   const sectionRef = useRef(null);
   const progressControls = useAnimation(); // Animation controls for the progress circle
-
 
   const features = [
     {
@@ -73,12 +72,12 @@ const Cloud = () => {
       >
         <section className="text-center py-32">
           <motion.h1
-            className="text-4xl sm:text-6xl font-bold text-[#7CD7F9]"
+            className="text-4xl sm:text-6xl font-bold bg-gradient-to-r from-[#00ffff] via-[#00ccff] to-[#00ff8a] bg-clip-text text-transparent"
             initial={{ y: 100, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1.5 }}
           >
-            Cloud <span className="text-[#5CDA92]">Services</span>
+            Network Solutions
           </motion.h1>
           <motion.p
             className="text-lg sm:text-xl font-light mt-4"
@@ -327,4 +326,4 @@ const Cloud = () => {
   );
 };
 
-export default Cloud;
+export default Maintanance;

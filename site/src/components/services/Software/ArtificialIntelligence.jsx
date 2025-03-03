@@ -78,7 +78,7 @@ const ArtificialIntelligence = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1.5 }}
           >
-            About <span className="text-[#5CDA92]">Us</span>
+            Artificial <span className="text-[#5CDA92]">Intelligence</span>
           </motion.h1>
           <motion.p
             className="text-lg sm:text-xl font-light mt-4"
