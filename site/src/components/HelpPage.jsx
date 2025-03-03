@@ -22,7 +22,7 @@ const HelpPage = () => {
           controls.start("hidden"); // Optionally, reverse animations when out of view
         }
       },
-      { threshold: 0.5 } // Trigger when 50% of the section is in view
+      { threshold: 0.3 } // Trigger when 50% of the section is in view
     );
 
     if (sectionRef.current) {
