@@ -18,29 +18,11 @@ import Video from '../components/Video';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const fadeIn = {
         initial: { opacity: 0, y: 20 },
         animate: { opacity: 1, y: 0 },
         transition: { duration: 0.6 }
-    };
-
-    const mobileMenuVariants = {
-        closed: {
-            opacity: 0,
-            x: "100%",
-            transition: {
-                duration: 0.2
-            }
-        },
-        open: {
-            opacity: 1,
-            x: 0,
-            transition: {
-                duration: 0.3
-            }
-        }
     };
 
     return (

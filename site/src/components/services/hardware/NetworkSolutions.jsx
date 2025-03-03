@@ -1,12 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
-import BI from "../../assets/background.jpeg";
+import BI from "../../../assets/background.jpeg";
 import { motion, useAnimation } from "framer-motion";
 import { Check } from "lucide-react";
-import IMAGE from "../../assets/img_1.jpg";
+import IMAGE from "../../../assets/img_1.jpg";
 
-const QA = () => {
-    console.log("rendered");
-    
+const NetworkSolutions = () => {
+
     const [openIndex, setOpenIndex] = useState(null);
     const [inView, setInView] = useState(false);
     const controls = useAnimation(); // Animation controls for Framer Motion
@@ -80,7 +79,7 @@ const QA = () => {
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ duration: 1.5 }}
                     >
-                        QA & Automation
+                        Network Solutions
                     </motion.h1>
                     <motion.p
                         className="text-lg sm:text-xl font-light mt-4"
@@ -223,8 +222,8 @@ const QA = () => {
                                 <div
                                     key={index}
                                     className={`border-b ${openIndex === index
-                                            ? "border-green-500"
-                                            : "border-[#828282]"
+                                        ? "border-green-500"
+                                        : "border-[#828282]"
                                         } pb-4 transition-all duration-300`}
                                 >
                                     <button
@@ -243,8 +242,8 @@ const QA = () => {
                                             </div>
                                             <h3
                                                 className={`${openIndex === index
-                                                        ? "text-green-400"
-                                                        : "text-[#828282]"
+                                                    ? "text-green-400"
+                                                    : "text-[#828282]"
                                                     }`}
                                             >
                                                 {feature.title}
@@ -253,8 +252,8 @@ const QA = () => {
                                     </button>
                                     <div
                                         className={`overflow-hidden transition-all duration-500 ${openIndex === index
-                                                ? "max-h-[150px] opacity-100 mt-2"
-                                                : "max-h-0 opacity-0"
+                                            ? "max-h-[150px] opacity-100 mt-2"
+                                            : "max-h-0 opacity-0"
                                             }`}
                                     >
                                         <p className="text-[#828282] pl-10">
@@ -324,4 +323,4 @@ const QA = () => {
     );
 };
 
-export default QA;
+export default NetworkSolutions;
