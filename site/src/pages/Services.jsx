@@ -10,6 +10,7 @@ import BI from "../assets/background.jpeg";
 //Importing components
 import InovationDesign from "../components/InovationDesign";
 import Video from "../components/Video";
+import { Outlet } from "react-router-dom";
 
 const Services = () => {
   const upsideVariants = {
@@ -73,6 +74,7 @@ const Services = () => {
         <WhyChooseUs></WhyChooseUs>
       </div>
       <Questions></Questions>
+      <Outlet></Outlet>
     </div>
   );
 };

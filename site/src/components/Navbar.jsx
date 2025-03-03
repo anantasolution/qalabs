@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 
 function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -48,7 +48,7 @@ function Navbar() {
     const servicesData = [
         {
             name: "QA & Automation",
-            path: "/services",
+            path: "/services/qa",
             subCategories: []
         },
         {
@@ -125,7 +125,7 @@ function Navbar() {
                                                     {service.subCategories.length > 0 ? (
                                                         <div>
                                                             <button
-                                                                className="w-full text-left px-4 py-2 text-white hover:bg-[#222] hover:text-[#71ECB6] flex items-center justify-between"
+                                                                className="w-full text-left px-4 py-2 text-white hover:bg-[#222] hover:text-[#71ECB6] flex items-center justify-between "
                                                                 onClick={() => setActiveSubDropdown(activeSubDropdown === service.name ? null : service.name)}
                                                                 onMouseEnter={() => setActiveSubDropdown(service.name)}
                                                             >
@@ -140,7 +140,8 @@ function Navbar() {
                                                                         <Link
                                                                             key={subIndex}
                                                                             to={subCat.path}
-                                                                            className="block px-4 py-2 text-white hover:bg-[#222] hover:text-[#71ECB6]"
+                                                                            className={`block px-4 py-2 text-white hover:bg-[#222] hover:text-[#71ECB6]${location.pathname.includes(subCat) && "bg-[#222] text-[#71ECB6]"}`}
+                                                                            
                                                                             onClick={() => {
                                                                                 setActiveSubDropdown(null);
                                                                                 setActiveDropdown(null);

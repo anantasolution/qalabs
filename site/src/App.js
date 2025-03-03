@@ -9,18 +9,24 @@ import BlogsArchive from "./pages/BlogsArchive.jsx";
 import BlogPage from "./pages/BlogPage.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
 import Temp from "./components/services/Temp.jsx"
+import QA from "./components/services/QA.jsx";
+import ComputerHardwareSales from "./components/services/hardware/ComputerHardwareSales.jsx";
+import NetworkSolutions from "./components/services/hardware/NetworkSolutions.jsx";
 
 function App() {
   return (
     <Router>
-      <ScrollToTop/>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Main />} >
-           <Route index element={<Home></Home>}></Route>
-           <Route path="/aboutus" element={<About/>}></Route>
-           <Route path="/services" element={<Services/>}></Route>
-           <Route path="/project" element={<Project/>}></Route>
-           <Route path="/contactus" element={<ContactPage/>}></Route>
+          <Route index element={<Home></Home>}></Route>
+          <Route path="/aboutus" element={<About />}></Route>
+          <Route path="/services" element={<Services />} /> 
+          <Route path="/services/qa" element={<QA />} />
+          <Route path="/services/hardware/computer-hardware-sales" element={<ComputerHardwareSales />} />
+          <Route path="/services/hardware/networking-solutions" element={<NetworkSolutions />} />
+          <Route path="/project" element={<Project />}></Route>
+          <Route path="/contactus" element={<ContactPage />}></Route>
           <Route path="/blogsarchive" element={<BlogsArchive />}></Route>
           <Route path="/blogsarchive/blog" element={<BlogPage />}></Route>
           <Route path="/temp" element={<Temp />}></Route>
