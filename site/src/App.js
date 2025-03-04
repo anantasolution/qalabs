@@ -26,11 +26,13 @@ import WebApp from "./components/services/Software/WebApp.jsx";
 import ITInfra from "./components/services/hardware/ITInfra.jsx";
 import Maintanance from "./components/services/hardware/Maintanance.jsx";
 import Server from "./components/services/hardware/Server.jsx";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
     <Router>
       <ScrollToTop />
+      <ToastContainer />
       <Routes>
         <Route path="/" element={<Main />} >
           <Route index element={<Home />}></Route>

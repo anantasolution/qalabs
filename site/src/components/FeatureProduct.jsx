@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useAnimation } from "framer-motion";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 
 const ProjectCard = ({ id, image, title, description, controls }) => {
@@ -11,13 +11,15 @@ const ProjectCard = ({ id, image, title, description, controls }) => {
     visible: { opacity: 1 },
   };
 
+ 
+
   return (
-    <motion.div
+    <div
       className="bg-zinc-900 h-[600px] relative rounded-xl overflow-hidden group"
-      initial="hidden"
-      animate={controls}
-      variants={fadeIn}
-      transition={{ duration: 2, delay: id * 0.2 }} // Staggered effect
+      // initial="hidden"
+      // animate={controls}
+      // variants={fadeIn}
+      // transition={{ duration: 2, delay: id * 0.2 }} // Staggered effect
       onMouseEnter={() => setHover(id)}
       onMouseLeave={() => setHover(null)}
     >
@@ -37,7 +39,7 @@ const ProjectCard = ({ id, image, title, description, controls }) => {
           Learn more
         </button> */}
       </div>
-    </motion.div>
+    </div>
   );
 };
 
@@ -46,29 +48,34 @@ const FeaturedProjectSection = () => {
   const controls = useAnimation(); // Animation controls for Framer Motion
   const sectionRef = useRef(null);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          controls.start("visible"); // Start animations when in view
-        } else {
-          // controls.start("hidden"); // Optionally, reverse animations when out of view
-        }
-      },
-      { threshold: 0.3 } // Trigger when 50% of the section is in view
-    );
+  const locations = useLocation();
+  const isProjectPage = () => {
+    return locations.pathname.includes("projects");
+  }
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
+  // useEffect(() => {
+  //   const observer = new IntersectionObserver(
+  //     ([entry]) => {
+  //       if (entry.isIntersecting) {
+  //         setInView(true);
+  //         controls.start("visible"); // Start animations when in view
+  //       } else {
+  //         // controls.start("hidden"); // Optionally, reverse animations when out of view
+  //       }
+  //     },
+  //     { threshold: 0.3 } // Trigger when 50% of the section is in view
+  //   );
 
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
-  }, []);
+  //   if (sectionRef.current) {
+  //     observer.observe(sectionRef.current);
+  //   }
+
+  //   return () => {
+  //     if (sectionRef.current) {
+  //       observer.unobserve(sectionRef.current);
+  //     }
+  //   };
+  // }, []);
 
   // const projects = [
   //   {
@@ -164,16 +171,17 @@ const FeaturedProjectSection = () => {
                   title={project.title}
                   description={project.description}
                   controls={controls}
+                  ref={sectionRef}
                 />
               ))}
             </div>
           )
         }
-        <div className="w-full flex justify-center items-center">
+        {isProjectPage() && <div className="w-full flex justify-center items-center">
           <Link to={"/project"} className="bg-[#71ECB6] text-black rounded-full flex justify-center items-center hover:bg-[#BAFE6D] py-2 px-6 transition-colors duration-200 w-36">
             Show More
           </Link>
-        </div>
+        </div>}
       </div>
     </section>
   );
