@@ -16,8 +16,10 @@ import WhyChooseUs from '../components/WhyChooseUs';
 import HeroForm from '../components/HeroForm';
 import Video from '../components/Video';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
+    const navigate = useNavigate()
 
     const fadeIn = {
         initial: { opacity: 0, y: 20 },
@@ -93,16 +95,17 @@ const Home = () => {
                             transition={{ delay: 0.8 }}
                         >
                             <button
-                                className="bg-[#71ECB6] text-black  hover:bg-[#BAFE6D] transition-colors px-8 py-3 rounded-full w-full sm:w-auto"
+                                onClick={()=>navigate('/contactus')}
+                                className="cursor-pointer bg-[#71ECB6] text-black  hover:bg-[#BAFE6D] transition-colors px-8 py-3 rounded-full w-full sm:w-auto"
                             >
                                 Get Started
                             </button>
 
-                            <Link to={"/project"}
+                            <a href="#project"
                                 className="border-2 border-white text-white px-8 py-3 rounded-full hover:bg-[#BAFE6D] hover:border-[#BAFE6D] hover:text-black transition-colors w-full sm:w-auto"
                             >
                                 Explore Portfolio
-                            </Link>
+                            </a>
                         </motion.div>
                     </div>
                 </div>

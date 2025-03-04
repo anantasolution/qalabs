@@ -47,9 +47,9 @@ const StartJourneySection = () => {
             sollicitudin convallis diam.
           </p>
 
-          <Link to={"/contactus"} className="bg-[#71ECB6] text-black rounded-full flex justify-center items-center hover:bg-[#BAFE6D] py-2 px-6 transition-colors duration-200">
+          {/* <Link to={"/contactus"} className="bg-[#71ECB6] text-black rounded-full flex justify-center items-center hover:bg-[#BAFE6D] py-2 px-6 transition-colors duration-200">
             Start Your Journey
-          </Link>
+          </Link> */}
         </motion.div>
       </div>
     </div>
