@@ -132,7 +132,7 @@ const FeaturedProjectSection = () => {
   }, []);
 
   return (
-    <section className="w-full bg-[#151515] min-h-screen" ref={sectionRef}>
+    <section className="w-full bg-[#151515] min-h-screen" ref={sectionRef} id="project">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
         <div className="flex flex-col text-center py-12 md:py-24">

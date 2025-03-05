@@ -5,12 +5,13 @@ import { motion, useAnimation } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const services = [
-  "QA & Automation",
-  " Computer hardware sales",
-  "SEO Optimization",
-  "Networking solutions",
-  "Web application development",
-  "Cloud services",
+  "  Web app Development",
+  "CRM/ERP Development",
+  "mobile app development",
+  "Software Testing",
+  "Digital Marketing",
+  "AI / ML Solutions",
+  "Hardware Services",
 ];
 
 const stats = [
@@ -167,9 +168,7 @@ const HeroSection = () => {
               animate={inView ? { opacity: 1 } : {}}
               transition={{ duration: 1, delay: 1.5 }}
             >
-              <Link to={"/services"}>
-                Discover more
-              </Link>
+              <Link to={"/contactus"}>Connect now</Link>
             </motion.button>
           </div>
         </div>
