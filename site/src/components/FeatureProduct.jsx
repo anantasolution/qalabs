@@ -44,7 +44,6 @@ const ProjectCard = ({ id, image, title, description, controls }) => {
 };
 
 const FeaturedProjectSection = () => {
-  const [inView, setInView] = useState(false);
   const controls = useAnimation(); // Animation controls for Framer Motion
   const sectionRef = useRef(null);
 
