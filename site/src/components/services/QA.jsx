@@ -6,7 +6,7 @@ import IMAGE from "../../assets/img_1.jpg";
 
 const QA = () => {
     console.log("rendered");
-    
+
     const [openIndex, setOpenIndex] = useState(null);
     const [inView, setInView] = useState(false);
     const controls = useAnimation(); // Animation controls for Framer Motion
@@ -223,8 +223,8 @@ const QA = () => {
                                 <div
                                     key={index}
                                     className={`border-b ${openIndex === index
-                                            ? "border-green-500"
-                                            : "border-[#828282]"
+                                        ? "border-green-500"
+                                        : "border-[#828282]"
                                         } pb-4 transition-all duration-300`}
                                 >
                                     <button
@@ -243,8 +243,8 @@ const QA = () => {
                                             </div>
                                             <h3
                                                 className={`${openIndex === index
-                                                        ? "text-green-400"
-                                                        : "text-[#828282]"
+                                                    ? "text-green-400"
+                                                    : "text-[#828282]"
                                                     }`}
                                             >
                                                 {feature.title}
@@ -253,8 +253,8 @@ const QA = () => {
                                     </button>
                                     <div
                                         className={`overflow-hidden transition-all duration-500 ${openIndex === index
-                                                ? "max-h-[150px] opacity-100 mt-2"
-                                                : "max-h-0 opacity-0"
+                                            ? "max-h-[150px] opacity-100 mt-2"
+                                            : "max-h-0 opacity-0"
                                             }`}
                                     >
                                         <p className="text-[#828282] pl-10">
