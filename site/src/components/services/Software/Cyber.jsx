@@ -114,9 +114,6 @@ const Cyber = () => {
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
                 tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
               </p>
-              <button className="bg-[#71ECB6] text-black rounded-full hover:bg-[#BAFE6D] px-4 py-2 text-base px w-fit transition duration-300">
-                Learn more
-              </button>
             </motion.div>
 
             {/* Right side stats */}
