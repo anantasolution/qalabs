@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { Check } from "lucide-react";
 import TEAM from "../assets/TeamWork.jpeg";
 import BI from "../assets/background.jpeg";
@@ -61,9 +62,6 @@ const HeroSection = () => {
             hendrerit vestibulum lobortis commodo lacus sagittis feugiat. Est
             sollicitudin convallis diam.
           </p>
-          <button className="bg-[#71ECB6] text-black  hover:bg-[#BAFE6D] transition-colors font-medium px-8 py-3 rounded-full text-sm md:text-base">
-            Start Your Journey
-          </button>
         </div>
       </motion.div>
     </div>
@@ -72,17 +70,17 @@ const HeroSection = () => {
 
 const About = () => {
   const services = [
-    "Custom Solutions",
-    "Cutting-Edge Design",
-    "SEO Optimization",
-    "Responsive Design",
-    "Innovative Technology",
-    "Security and Reliability",
+    "Web app Development",
+    "CRM/ERP Development",
+    "mobile app development",
+    "Software Testing",
+    "AI / ML Solutions",
+    "Hardware Services",
   ];
 
   const [stats, setStats] = useState([
-    { value: 0, endValue: 27, label: "Project Done", suffix: "K+" },
-    { value: 0, endValue: 4, label: "Happy Client", suffix: "K+" },
+    { value: 0, endValue: 27, label: "Project Done", suffix: "+" },
+    { value: 0, endValue: 4, label: "Happy Client", suffix: "+" },
     { value: 0, endValue: 4.7, label: "Client Reviews", suffix: "+" },
   ]);
 
@@ -291,7 +289,7 @@ const About = () => {
               animate={inView ? { opacity: 1 } : {}}
               transition={{ duration: 1, delay: 1.5 }}
             >
-              Discover more
+              <Link to={'/contactus'}>Connect Now</Link>
             </motion.button>
           </motion.div>
         </div>

@@ -115,9 +115,6 @@ const Server = () => {
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
                                 tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
                             </p>
-                            <button className="bg-[#71ECB6] text-black rounded-full hover:bg-[#BAFE6D] px-4 py-2 text-base px w-fit transition duration-300">
-                                Learn more
-                            </button>
                         </motion.div>
 
                         {/* Right side stats */}
@@ -210,59 +207,18 @@ const Server = () => {
                             </span>
                             That Matter.
                         </h2>
-                        <p className="text-[#828282] text-md md:text-2xl">
+                        <p className="text-[#828282] text-md md:text-xl">
+                            Dictumst porta ultricies tristique hac vestibulum himenaeos
+                            ligula. Cubilia sapien torquent at finibus accumsan et
+                            pellentesque class lacinia tristique.
+                        </p>
+                        <p className="text-[#828282] text-md md:text-xl">
                             Dictumst porta ultricies tristique hac vestibulum himenaeos
                             ligula. Cubilia sapien torquent at finibus accumsan et
                             pellentesque class lacinia tristique.
                         </p>
 
-                        {/* Expandable Sections with Smooth Animation */}
-                        <div className="space-y-6">
-                            {features.map((feature, index) => (
-                                <div
-                                    key={index}
-                                    className={`border-b ${openIndex === index
-                                        ? "border-green-500"
-                                        : "border-[#828282]"
-                                        } pb-4 transition-all duration-300`}
-                                >
-                                    <button
-                                        className="flex items-center justify-between w-full text-md md:text-lg font-semibold focus:outline-none"
-                                        onClick={() => toggleDescription(index)}
-                                    >
-                                        <div className="flex items-center gap-3">
-                                            <div
-                                                className={`p-1 rounded-full transition-all duration-300 ${openIndex === index ? "bg-green-500" : "bg-[#828282]"
-                                                    }`}
-                                            >
-                                                <Check
-                                                    className={`w-5 h-5 transition-all ${openIndex === index ? "text-white" : "text-black"
-                                                        }`}
-                                                />
-                                            </div>
-                                            <h3
-                                                className={`${openIndex === index
-                                                    ? "text-green-400"
-                                                    : "text-[#828282]"
-                                                    }`}
-                                            >
-                                                {feature.title}
-                                            </h3>
-                                        </div>
-                                    </button>
-                                    <div
-                                        className={`overflow-hidden transition-all duration-500 ${openIndex === index
-                                            ? "max-h-[150px] opacity-100 mt-2"
-                                            : "max-h-0 opacity-0"
-                                            }`}
-                                    >
-                                        <p className="text-[#828282] pl-10">
-                                            {feature.description}
-                                        </p>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
+                       
                     </motion.div>
 
                     {/* Right Section - Larger Image */}

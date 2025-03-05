@@ -47,11 +47,6 @@ function Navbar() {
 
   const servicesData = [
     {
-      name: "QA & Automation",
-      path: "/services/qa",
-      subCategories: [],
-    },
-    {
       name: "Hardware",
       path: "/services/hardware",
       subCategories: [
@@ -170,6 +165,13 @@ function Navbar() {
                   {/* Main Services Dropdown */}
                   {activeDropdown === "services" && (
                     <div className="absolute left-0 mt-2 bg-[#151515] rounded shadow-lg w-56 py-2 z-50">
+                       <a
+                          href="https://qalabz.com/\" 
+                          target="_blank"
+                          className="block px-4 py-2 text-white hover:bg-[#222] hover:text-[#71ECB6]"
+                          >
+                              QA & Automation
+                      </a>
                       {servicesData.map((service, index) => (
                         <div key={index} className="relative">
                           {service.subCategories.length > 0 ? (
@@ -200,6 +202,7 @@ function Navbar() {
                               {/* Subcategories dropdown */}
                               {activeSubDropdown === service.name && (
                                 <div className="absolute left-full top-0 bg-[#151515] rounded shadow-lg w-64 py-2 z-50">
+                                  
                                   {service.subCategories.map(
                                     (subCat, subIndex) => (
                                       <Link
