@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Link, Outlet, useLocation } from "react-router-dom";
+import navlogo from "../assets/navlogo.png"
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -128,9 +129,7 @@ function Navbar() {
       <div className="container flex justify-between md:justify-stretch items-center md:px-16">
         {/* Logo */}
         <Link to={"/"} className="flex items-center justify-center">
-          <span className="mx-auto md:mx-0 text-[#71ECB6] text-3xl">
-            Zyinex
-          </span>
+          <img src={navlogo} alt="logo" className="h-20 w-24 object-contain" />
         </Link>
 
         {/* Desktop Navigation */}

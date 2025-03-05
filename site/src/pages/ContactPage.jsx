@@ -99,13 +99,17 @@ const ContactPage = () => {
     if (Object.keys(errors).length > 0) return;
 
     try {
-      const response = await axios.post("http://localhost:8080/api/contact/", formData);
-      toast.success(response.data.message);
+      setLoading(true);
+      const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/contact/`, formData);
+      toast.success("Message sent successfully.");
 
       setFormData({ name: "", company: "", phone: "", email: "", message: "" ,subject:""});
       setFormErrors({});
+      
     } catch (error) {
       toast.error(error.response?.data?.message || "Failed to submit consultation.");
+    }finally{
+      setLoading(false);
     }
   };
   return (
@@ -263,12 +267,12 @@ const ContactPage = () => {
 
           {/* Right Column - Contact Form */}
           <div
-            className="bg-neutral-900  w-full lg:w-[55%] border border-zinc-600 rounded-2xl py-6 sm:py-14 px-6 sm:px-8 lg:px-10 opacity-0"
+            className="bg-gray-100  w-full lg:w-[55%] border border-zinc-600 rounded-2xl py-6 sm:py-14 px-6 sm:px-8 lg:px-10 opacity-0 text-black"
             style={{
               animation: "fadeInRight 0.8s ease-out forwards",
             }}
           >
-            <h2 className="text-3xl lg:text-4xl mb-4 text-[#F8F8F8]">Send us a message</h2>
+            <h2 className="text-3xl lg:text-4xl mb-4 text-black">Send us a message</h2>
             <p className="text-gray-400 mb-4">
               Auctor dictumst inceptos metus est ad himenaeos habitasse litora
               natoque libero nunc
@@ -279,7 +283,7 @@ const ContactPage = () => {
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-sm font-medium text-gray-100 mb-1"
+                    className="block text-sm font-medium text-black mb-1"
                   >
                     Name
                   </label>
@@ -288,7 +292,7 @@ const ContactPage = () => {
                     id="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-3 py-2 bg-[#242424]  text-white rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                    className="w-full px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
                     placeholder="Name"
                   />
                   {formErrors.name && (
@@ -298,16 +302,16 @@ const ContactPage = () => {
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-sm font-medium text-gray-100 mb-1"
+                    className="block text-sm font-medium mb-1"
                   >
-                    company
+                    Company
                   </label>
                   <input
                     type="text"
                     id="company"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full px-3 py-2  bg-[#242424]  text-white rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                    className="w-full px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
                     placeholder="Company"
                   />
                   {formErrors.company && (
@@ -320,7 +324,7 @@ const ContactPage = () => {
                 <div>
                   <label
                     htmlFor="phone"
-                    className="block text-sm font-medium text-gray-100 mb-1"
+                    className="block text-sm font-medium mb-1"
                   >
                     Phone
                   </label>
@@ -329,7 +333,7 @@ const ContactPage = () => {
                     id="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-3 py-2  bg-[#242424] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                    className="w-full px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
                     placeholder="Phone"
                   />
                   {formErrors.phone && (
@@ -339,7 +343,7 @@ const ContactPage = () => {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-sm font-medium text-gray-100 mb-1"
+                    className="block text-sm font-medium mb-1"
                   >
                     Email
                   </label>
@@ -348,7 +352,7 @@ const ContactPage = () => {
                     id="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-3 py-2  bg-[#242424] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                    className="w-full px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
                     placeholder="Email"
                   />
                   {formErrors.email && (
@@ -360,7 +364,7 @@ const ContactPage = () => {
               <div>
                 <label
                   htmlFor="subject"
-                  className="block text-sm font-medium text-gray-100 mb-1"
+                  className="block text-sm font-medium mb-1"
                 >
                   Subject
                 </label>
@@ -369,7 +373,7 @@ const ContactPage = () => {
                   id="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 bg-[#242424] text-white rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                  className="w-full px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
                   placeholder="subject"
                 />
                 {formErrors.subject && (
@@ -380,7 +384,7 @@ const ContactPage = () => {
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium text-gray-100 mb-1"
+                  className="block text-sm font-medium mb-1"
                 >
                   Message
                 </label>
@@ -389,7 +393,7 @@ const ContactPage = () => {
                   rows={2}
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-3 py-2  bg-[#242424] text-white  rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                  className="w-full px-3 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-400"
                   placeholder="Message"
                 />
                 {formErrors.message && (
