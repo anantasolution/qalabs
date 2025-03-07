@@ -1,92 +1,91 @@
 import React from 'react';
-import FOOT from '../assets/footer.png';
-
-// Import icons
-import { FacebookOutlined, YouTube } from '@mui/icons-material';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import { Link } from 'react-router-dom';
+import { Facebook, Instagram, Linkedin, Mail, Phone, MapPin, ArrowUp } from 'lucide-react';
+import navlogo from "../assets/navlogo.png";
+import {Link} from "react-router-dom";
 
 const Footer = () => {
-    const services = [
-        { name: 'Web Design', href: '/' },
-        { name: 'Web Development', href: '#' },
-        { name: 'SEO & Digital Marketing', href: '#' },
-        { name: 'Branding & Visual Identity', href: '#' },
-        { name: 'Consultation & Strategy', href: '#' },
-        { name: 'Maintenance & Support', href: '#' }
-    ];
-
-    const support = [
-        { name: 'Help Center', href: '#' },
-        { name: 'Ticket Support', href: '#' },
-        { name: 'Contact us', href: '/contactus' },
-        { name: 'Customer Support', href: '#' },
-        { name: 'Forum Community', href: '#' }
-    ];
-
-    const company = [
-        { name: 'About us', href: '/aboutus' },
-        { name: 'Leadership', href: '#' },
-        { name: 'Careers', href: '#' },
-        { name: 'Article & News', href: '/blogsArchive' },
-        { name: 'Legal Notices', href: '#' }
-    ];
-
     return (
-        <footer className="bg-[#242424] text-gray-300 px-6 md:px-12 lg:px-24 pt-16">
-            <div className="container mx-auto flex flex-col md:flex-row md:items-start md:justify-between space-y-12 md:space-y-0">
-                {/* Logo Section */}
-                <div className="text-center md:text-left md:w-1/4">
-                    <span className="mx-auto md:mx-0 text-[#71ECB6] text-3xl" >Zyinex</span>
-                    {/* <span className="mx-auto md:mx-0 text-blue-300 text-3xl" >ex</span> */}
-                    <p className="text-[#717171] mt-2 text-sm">
-                        402, Shangrila Arcade <br /> Ahmedabad - India
-                    </p>
-                    {/* Social Media Icons */}
-                    <div className="flex justify-center md:justify-start space-x-4 mt-4">
-                        {[FacebookOutlined, InstagramIcon, TwitterIcon, YouTube].map((Icon, index) => (
-                            <span
-                                key={index}
-                                className="w-8 h-8 rounded-full bg-[#494949] flex items-center justify-center hover:bg-[#71ECB6] transition-colors cursor-pointer"
-                            >
-                                <Icon className="hover:text-black hover:scale-105" />
-                            </span>
-                        ))}
+        <footer className="bg-[#242424] text-white py-12 relative ">
+            <div className="container mx-auto px-4 w-9/12">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {/* Logo and Company Description */}
+                    <div className="flex flex-col items-start">
+                        <div className="mb-4">
+                           <img src={navlogo} alt='logo' className='h-20 w-24' />
+                        </div>
+                        <p className="text-gray-300 mb-6">
+                            Connecting Businesses with Cutting-Edge Technology.
+                        </p>
+                        <div className="flex space-x-2">
+                            <a href="#" className="bg-gray-700 p-2 rounded-md hover:bg-[#BEF264] transition">
+                                <Facebook size={20} />
+                            </a>
+                            <a href="#" className="bg-gray-700 p-2 rounded-md hover:bg-[#BEF264] transition">
+                                <Instagram size={20} />
+                            </a>
+                            <a href="#" className="bg-gray-700 p-2 rounded-md hover:bg-[#BEF264] transition">
+                                <Linkedin size={20} />
+                            </a>
+                        </div>
+                    </div>
+
+                    {/* Links */}
+                    <div>
+                        <h3 className="text-xl font-semibold mb-6">Link</h3>
+                        <ul className="space-y-4">
+                            <li><Link to="/aboutus" className="text-gray-300 hover:text-[#BEF264]">About Us</Link></li>
+                            <li><Link to="/contactus" className="text-gray-300 hover:text-[#BEF264]">Contact Us</Link></li>
+                            <li><a href="#" className="text-gray-300 hover:text-[#BEF264]">Term & Conditions</a></li>
+                            <li><a href="#" className="text-gray-300 hover:text-[#BEF264]">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+
+                    {/* Contact Information */}
+                    <div>
+                        <h3 className="text-xl font-semibold mb-6">Contacts</h3>
+                        <div className="space-y-4">
+                            <div>
+                                <h4 className="text-lg font-medium flex items-center">
+                                    <Phone className="text-[#BEF264] mr-4" size={30} />
+                                    Contact Us
+                                </h4>
+                                <p className="text-gray-300 ml-10">+91 63566 65365</p>
+                            </div>
+
+                            <div>
+                                <h4 className="text-lg font-medium flex items-center">
+                                    <Mail className="text-[#BEF264] mr-4" size={30} />
+                                    Mail Us
+                                </h4>
+                                <p className="text-gray-300 ml-10">info@anantasolution.com</p>
+                            </div>
+
+                            <div>
+                                <h4 className="text-lg font-medium flex items-center">
+                                    <MapPin className="text-[#BEF264] mr-4" size={30} />
+                                    Communication Address
+                                </h4>
+                                <p className="text-gray-300 ml-10">
+                                    402, Shangri-La arcade, 4th floor, near Shyamal cross road, Ahmedabad, Gujarat 380015
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                {/* Services, Support, and Company Sections in One Row for Desktop */}
-                <div className="flex flex-col md:flex-row md:w-3/4 justify-between text-center md:text-left">
-                    {[{ title: 'Services', links: services }, { title: 'Support', links: support }, { title: 'Company', links: company }].map((section) => (
-                        <div key={section.title} className="md:w-1/3">
-                            <h3 className="text-white font-semibold text-lg mb-4 pt-5 md:pt-0">{section.title}</h3>
-                            <ul className="space-y-2">
-                                {section.links.map((item) => (
-                                    <li key={item.name}>
-                                        <Link to={item.href}  className="text-sm text-[#717171] hover:text-[#BAFE6D] transition-colors">
-                                            {item.name}
-                                        </Link>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    ))}
-                </div>
-            </div>
 
-            {/* Divider Line */}
-            <div className="w-full border-t border-[#717171] mt-12"></div>
-
-            {/* Copyright and Policies */}
-            <div className="flex flex-col md:flex-row justify-between items-center w-full text-sm text-[#717171] space-y-4 md:space-y-0 mt-8 px-6 pb-5 sm:pb-10 ">
-                <p>Copyright ©️ 2024 Qalabz, All rights reserved.</p>
-                <div className="flex space-x-6">
-                    <a href="#" className="hover:text-white transition-colors">Term of Use</a>
-                    <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-                    <a href="#" className="hover:text-white transition-colors">Cookie Policy</a>
-                </div>
             </div>
+            {/* Copyright */}
+            <div className="mt-12 pt-6 border-t border-gray-700 text-center text-gray-400">
+                © 2025 Zyinex Powered by <a href="#" className="text-[#BEF264]">Zyinex</a>
+            </div>
+            {/* Scroll to top button */}
+            <a
+                href="#top"
+                className="absolute right-4 bottom-4 bg-[#BEF264] p-2 rounded text-white"
+            >
+                <ArrowUp size={20} />
+            </a>
         </footer>
     );
 };
