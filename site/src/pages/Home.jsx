@@ -96,20 +96,20 @@ const Home = () => {
                         >
                             <button
                                 onClick={()=>navigate('/contactus')}
-                                className="cursor-pointer bg-[#71ECB6] text-black  hover:bg-[#BAFE6D] transition-colors px-8 py-3 rounded-full w-full sm:w-auto"
+                                className="cursor-pointer bg-[#71ECB6] text-black  hover:bg-[#BAFE6D] transition-colors px-8 py-3 rounded-full w-full sm:w-auto z-50"
                             >
                                 Get Started
                             </button>
 
                             <a href="#project"
-                                className="border-2 border-white text-white px-8 py-3 rounded-full hover:bg-[#BAFE6D] hover:border-[#BAFE6D] hover:text-black transition-colors w-full sm:w-auto"
+                                className="border-2 border-white text-white px-8 py-3 rounded-full hover:bg-[#BAFE6D] hover:border-[#BAFE6D] hover:text-black transition-colors w-full sm:w-auto z-50"
                             >
                                 Explore Portfolio
                             </a>
                         </motion.div>
                     </div>
                 </div>
-                <div className='md:relative z-50'>
+                <div className='md:relative  border border-red-500'>
                     <HeroForm></HeroForm>
                 </div>
             </div>

@@ -24,16 +24,16 @@ const ProjectCard = ({ id, image, title, description, controls }) => {
       onMouseLeave={() => setHover(null)}
     >
       <div className="relative transition-[height] duration-300 ease-out h-[410px]">
-        <img src={`${process.env.REACT_APP_API_BASE_PROJECT}/${image}`} alt={title} className="w-full h-full object-cover" />
+        <img src={`${process.env.REACT_APP_API_BASE_PROJECT}/${image}`} alt={title} className="w-full h-[410px] object-cover" />
       </div>
       <div
         className={`absolute w-full ${hover === id ? "bottom-0" : "-bottom-[3.8rem]"
           } transition-all duration-300 bg-[#242424] p-6`}
       >
-        <h3 className="text-white tracking-wide leading-10 text-3xl font-light mb-2">
+        <h3 className="text-white tracking-wide leading-10 text-3xl font-light mb-2 line-clamp-2">
           {title}
         </h3>
-        <p className="text-gray-400 font-medium leading-6 text-sm mb-4" dangerouslySetInnerHTML={{ __html: description }} />
+        <p className="text-gray-400 font-medium leading-6 text-sm mb-4 line-clamp-6" dangerouslySetInnerHTML={{ __html: description }} />
 
         {/* <button className="bg-emerald-400 text-black px-4 py-2 rounded-full text-sm transition-colors">
           Learn more

@@ -94,7 +94,7 @@ const HeroForm = () => {
     if (Object.keys(errors).length > 0) return;
 
     try {
-      const response = await axios.post("http://localhost:8080/api/consulation", formData);
+      const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/consulation`, formData);
       toast.success(response.data.message);
 
       setFormData({ name: "", company: "", phone: "", email: "", message: "" });
@@ -105,15 +105,15 @@ const HeroForm = () => {
   };
 
   return (
-    <div className="bg-[#151515] p-4 md:p-8 md:py-24 flex flex-col-reverse md:flex-row items-end justify-center gap-8 z-50" ref={sectionRef}>
+    <div className="bg-[#151515] p-4 md:p-8 md:py-24 flex flex-col-reverse md:flex-row items-end justify-center gap-8" ref={sectionRef}>
       <ToastContainer />
       <motion.div
         className="w-full md:grid md:grid-cols-2 md:w-1/2 place-content-center z-50"
-        initial={{ y: "-150%", opacity :0 }}
+        initial={{ y: "-110%", opacity :0 }}
         animate={inView ? { y: 0, opacity: 100 } : {}}
         transition={{ duration: 1 }}
       >
-        <div className="p-6 space-y-4">
+        <div className="p-6 space-y-4 ">
           <Globe className="w-12 h-12 text-emerald-400" />
           <h2 className="text-2xl text-white">Design & Development</h2>
           <p className="text-gray-400">Focusing on user experience and interface design.</p>

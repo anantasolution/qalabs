@@ -16,10 +16,10 @@ const CompanySlider = () => {
         <Swiper
           spaceBetween={20}
           loop={true}
-          autoplay={{ delay: 0, disableOnInteraction: false }}
-          speed={6000} // Slow, smooth scrolling
+          autoplay={{ delay: 0 }}
+          speed={1500} // Slow, smooth scrolling
           freeMode={true} // Enables seamless motion
-          modules={[Autoplay, FreeMode]}
+          modules={[Autoplay]}
           breakpoints={{
             320: { slidesPerView: 2, spaceBetween: 10 }, // Mobile
             480: { slidesPerView: 3, spaceBetween: 15 }, // Small tablets
