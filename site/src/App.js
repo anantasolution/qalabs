@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Main from "./pages/Main.jsx";
 import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
@@ -8,7 +13,7 @@ import Project from "./pages/Project.jsx";
 import BlogsArchive from "./pages/BlogsArchive.jsx";
 import BlogPage from "./pages/BlogPage.jsx";
 import ScrollToTop from "./components/ScrollToTop.jsx";
-import Temp from "./components/services/Temp.jsx"
+import Temp from "./components/services/Temp.jsx";
 import QA from "./components/services/QA.jsx";
 import ComputerHardwareSales from "./components/services/hardware/ComputerHardwareSales.jsx";
 import NetworkSolutions from "./components/services/hardware/NetworkSolutions.jsx";
@@ -26,35 +31,88 @@ import WebApp from "./components/services/Software/WebApp.jsx";
 import ITInfra from "./components/services/hardware/ITInfra.jsx";
 import Maintanance from "./components/services/hardware/Maintanance.jsx";
 import Server from "./components/services/hardware/Server.jsx";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import ManualTesting from "./components/services/Software/ManualTesting.jsx";
+import AutomationTesting from "./components/services/Software/AutomationTesting.jsx";
+
 
 function App() {
   return (
     <Router>
       <ScrollToTop />
-      <ToastContainer />
+      <ToastContainer style={{zIndex : 9999}} />
       <Routes>
-        <Route path="/" element={<Main />} >
+        <Route path="/" element={<Main />}>
           <Route index element={<Home />}></Route>
           <Route path="/aboutus" element={<About />}></Route>
-          <Route path="/services" element={<Services />} /> 
+          <Route path="/services" element={<Services />} />
           <Route path="/services/qa" element={<QA />} />
-          <Route path="/services/hardware/computer-hardware-sales" element={<ComputerHardwareSales />} />
-          <Route path="/services/hardware/networking-solutions" element={<NetworkSolutions />} />
-          <Route path="/services/hardware/server-installation" element={<Server />} />
-          <Route path="/services/hardware/it-infrastructure-management" element={<ITInfra />} />
-          <Route path="/services/hardware/annual-maintenance-contracts" element={<Maintanance />} />
-          <Route path="/services/software/bespoke-developement" element={<Bespoke />} />
-          <Route path="/services/software/web-application-development" element={<WebApp />} />
-          <Route path="/services/software/mobile-application-development" element={<MobileApp />} />
-          <Route path="/services/software/software-development-outsourcing" element={<SoftwareDev />} />
-          <Route path="/services/software/digital-transformation" element={<Digital />} />
+          <Route
+            path="/services/hardware/computer-hardware-sales"
+            element={<ComputerHardwareSales />}
+          />
+          <Route
+            path="/services/hardware/networking-solutions"
+            element={<NetworkSolutions />}
+          />
+          <Route
+            path="/services/hardware/server-installation"
+            element={<Server />}
+          />
+          <Route
+            path="/services/hardware/it-infrastructure-management"
+            element={<ITInfra />}
+          />
+          <Route
+            path="/services/hardware/annual-maintenance-contracts"
+            element={<Maintanance />}
+          />
+          <Route
+            path="/services/software/bespoke-developement"
+            element={<Bespoke />}
+          />
+          <Route
+            path="/services/software/web-application-development"
+            element={<WebApp />}
+          />
+          <Route
+            path="/services/software/mobile-application-development"
+            element={<MobileApp />}
+          />
+          <Route
+            path="/services/software/software-development-outsourcing"
+            element={<SoftwareDev />}
+          />
+          <Route
+            path="/services/software/digital-transformation"
+            element={<Digital />}
+          />
           <Route path="/services/software/cloud-services" element={<Cloud />} />
           <Route path="/services/software/cybersecurity" element={<Cyber />} />
-          <Route path="/services/software/data-analytics" element={<DataAnalytics />} />
-          <Route path="/services/software/artificial-intelligence-solutions" element={<ArtificialIntelligence />} />
-          <Route path="/services/software/software-licensing" element={<SoftwareLicense />} />
-          <Route path="/services/software/it-consulting" element={<Councelling />} />
+          <Route
+            path="/services/software/data-analytics"
+            element={<DataAnalytics />}
+          />
+          <Route
+            path="/services/software/artificial-intelligence-solutions"
+            element={<ArtificialIntelligence />}
+          />
+          <Route
+            path="/services/software/software-licensing"
+            element={<SoftwareLicense />}
+          />
+          <Route
+            path="/services/software/it-consulting"
+            element={<Councelling />}
+          />
+          <Route
+            path="/services/software/manual-testing"
+            element={<ManualTesting />}
+          />
+          <Route
+            path="/services/software/automation-testing"
+            element={<AutomationTesting />}
+          />
           <Route path="/project" element={<Project />}></Route>
           <Route path="/contactus" element={<ContactPage />}></Route>
           <Route path="/blogsarchive" element={<BlogsArchive />}></Route>

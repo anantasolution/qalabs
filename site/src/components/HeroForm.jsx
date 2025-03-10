@@ -125,7 +125,7 @@ const HeroForm = () => {
         </div>
       </motion.div>
 
-      <div className="relative w-[350px] md:w-[500px] flex justify-center md:block z-50">
+      <div className="relative w-[350px] md:w-[500px] flex justify-center md:block z-40">
         <motion.div className="md:absolute bottom-[-4.2rem] w-full max-w-md md:max-w-lg rounded-2xl" initial={{ y: "150%", opacity:0 }} animate={inView ? { y: 0, opacity : 100 } : {}} transition={{ duration: 1 }}>
           <div className="bg-white rounded-lg p-6 md:p-8">
             <h2 className="text-2xl font-semibold mb-6">Free Consultations</h2>
