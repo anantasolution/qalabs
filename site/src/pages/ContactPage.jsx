@@ -100,15 +100,26 @@ const ContactPage = () => {
 
     try {
       setLoading(true);
-      const response = await axios.post(`${process.env.REACT_APP_API_BASE_URL}/contact/`, formData);
-      toast.success("Message sent successfully.");
-
-      setFormData({ name: "", company: "", phone: "", email: "", message: "" ,subject:""});
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_BASE_URL}/contact/`,
+        formData
+      );
+      console.log(response);
+      setFormData({
+        name: "",
+        company: "",
+        phone: "",
+        email: "",
+        message: "",
+        subject: "",
+      });
       setFormErrors({});
-      
+      toast.success("Message Sent successfully", { position: "top-right"});
     } catch (error) {
-      toast.error(error.response?.data?.message || "Failed to submit consultation.");
-    }finally{
+      toast.error(
+        error.response?.data?.message || "Failed to submit consultation."
+      );
+    } finally {
       setLoading(false);
     }
   };
@@ -127,7 +138,7 @@ const ContactPage = () => {
             variants={downsideVariants}
           >
             <a
-              href="/contact" 
+              href="/contact"
               className="text-transparent bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text font-semibold text-4xl sm:text-6xl"
             >
               Contact us
@@ -272,7 +283,9 @@ const ContactPage = () => {
               animation: "fadeInRight 0.8s ease-out forwards",
             }}
           >
-            <h2 className="text-3xl lg:text-4xl mb-4 text-black">Send us a message</h2>
+            <h2 className="text-3xl lg:text-4xl mb-4 text-black">
+              Send us a message
+            </h2>
             <p className="text-gray-400 mb-4">
               Auctor dictumst inceptos metus est ad himenaeos habitasse litora
               natoque libero nunc
@@ -467,7 +480,7 @@ const ContactPage = () => {
             {/* Removed max-width limit */}
             <iframe
               className="w-full h-[500px] rounded-lg shadow-lg" // Keeping map height and width full
-              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d5285.3433070451665!2d72.52950593200644!3d23.01546536690591!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1739956271051!5m2!1sen!2sin" 
+              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d5285.3433070451665!2d72.52950593200644!3d23.01546536690591!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1739956271051!5m2!1sen!2sin"
               style={{ border: 0, margin: 0 }} // Removed border and margin
               allowFullScreen=""
               loading="lazy"

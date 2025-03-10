@@ -108,7 +108,17 @@ function Navbar() {
           name: "Software licensing",
           path: "/services/software/software-licensing",
         },
-        { name: "IT consulting", path: "/services/software/it-consulting" },
+        { name: "IT consulting",
+          path: "/services/software/it-consulting" 
+        },
+        {
+          name : "Manual Testing",
+          path : "/services/software/manual-testing"
+        },
+        {
+          name : "Automation Testing",
+          path : "/services/software/automation-testing"
+        }
       ],
     },
   ];
@@ -129,7 +139,7 @@ function Navbar() {
       <div className="container flex justify-between md:justify-stretch items-center md:px-16">
         {/* Logo */}
         <Link to={"/"} className="flex items-center justify-center">
-          <img src={navlogo} alt="logo" className="h-20 w-24 object-contain" />
+          <img src={navlogo} alt="logo" className="h-16 w-16 md:h-20 md:w-24 object-contain" />
         </Link>
 
         {/* Desktop Navigation */}
