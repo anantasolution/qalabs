@@ -136,7 +136,7 @@ function Navbar() {
 
   return (
     <nav className="absolute w-full z-50 px-4 sm:px-6 py-4">
-      <div className="container flex justify-between md:justify-stretch items-center md:px-16">
+      <div className="container w-full flex justify-between md:justify-stretch items-center md:px-16">
         {/* Logo */}
         <Link to={"/"} className="flex items-center justify-center">
           <img src={navlogo} alt="logo" className="h-16 w-16 md:h-20 md:w-24 object-contain" />
@@ -144,7 +144,7 @@ function Navbar() {
 
         {/* Desktop Navigation */}
         <div
-          className="hidden lg:flex items-center space-x-8 z-50"
+          className="hidden md:flex md:w-full justify-center items-center space-x-8 z-50"
           ref={dropdownRef}
         >
           {menuItems.map((item) => (
