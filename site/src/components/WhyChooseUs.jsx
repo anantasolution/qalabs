@@ -42,24 +42,24 @@ const WhyChooseUs = () => {
 
   const features = [
     {
-      title: "Expertise and Experience",
+      title: "Proven Expertise",
       description:
-        "Our team of seasoned professionals brings over 25 years of experience in web design and SEO, ensuring top-notch quality and innovative solutions for your business.",
+        "With extensive experience in web development and digital marketing, we create solutions that drive real results.",
     },
     {
-      title: "Comprehensive Services",
+      title: "Comprehensive Digital Services",
       description:
-        "We provide complete digital solutions from website development to SEO optimization.",
+        "From website design to online marketing, we offer end-to-end digital solutions to help your business thrive.",
     },
     {
-      title: "Client-Centric Approach",
+      title: "Client-Focused Approach",
       description:
-        "We tailor our services to meet your specific business needs, ensuring maximum satisfaction.",
+        "We prioritise your goals and craft custom strategies that align with your vision and objectives.",
     },
     {
-      title: "Increased Conversion Rates",
+      title: "Maximised Growth & Reach",
       description:
-        "Our strategies help in improving user engagement and lead conversion.",
+        "Our strategies are designed to improve engagement, strengthen brand authority, and drive measurable success.",
     },
   ];
 
@@ -80,17 +80,16 @@ const WhyChooseUs = () => {
             WHY CHOOSE US
           </h3>
           <h2 className="text-3xl md:text-5xl font-bold leading-tight">
-            Crafting
+            Shaping
             <span className="text-transparent bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text font-semibold">
               {" "}
               Digital Experiences{" "}
             </span>
-            That Matter.
+            That Make an Impact
           </h2>
           <p className="text-[#828282] text-md md:text-2xl">
-            Dictumst porta ultricies tristique hac vestibulum himenaeos ligula.
-            Cubilia sapien torquent at finibus accumsan et pellentesque class
-            lacinia tristique.
+            Good design is not just how something looks. It links, involves
+            and produces results. Solutions build to ensure you stay ahead.
           </p>
 
           {/* Expandable Sections with Smooth Animation */}

@@ -11,7 +11,6 @@ const SoftwareDev = () => {
   const sectionRef = useRef(null);
   const progressControls = useAnimation(); // Animation controls for the progress circle
 
-
   const features = [
     {
       title: "Expertise and Experience",
@@ -105,14 +104,16 @@ const SoftwareDev = () => {
               transition={{ duration: 1 }}
             >
               <h2 className="text-4xl md:text-[40px] leading-tight text-white">
-                Innovative Design for{" "}
+                Software Development Outsourcing for{" "}
                 <span className="text-4xl md:text-[40px] text-transparent bg-gradient-to-r from-blue-300 to-green-400 bg-clip-text">
-                  Modern Businesses.
+                  Scalable Growth.
                 </span>
               </h2>
               <p className="text-gray-400 text-md leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+                Maximise efficiency and reduce costs with dedicated software
+                development teams tailored to your business needs. At ZyinexWeb,
+                we provide custom software solutions that align with your goals,
+                ensuring seamless integration and performance.
               </p>
             </motion.div>
 
@@ -199,22 +200,24 @@ const SoftwareDev = () => {
               WHY CHOOSE US
             </h3>
             <h2 className="text-3xl md:text-5xl font-bold leading-tight">
-              Crafting
+              Reliable & Cost-Effective
               <span className="text-transparent bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text font-semibold">
                 {" "}
-                Digital Experiences{" "}
+                Software{" "}
               </span>
-              That Matter.
+              Solutions.
             </h2>
             <p className="text-[#828282] text-md md:text-xl">
-              Dictumst porta ultricies tristique hac vestibulum himenaeos
-              ligula. Cubilia sapien torquent at finibus accumsan et
-              pellentesque class lacinia tristique.
+              Outsourcing software development allows businesses to scale
+              quickly without compromising quality. Our dedicated teams deliver
+              high-performance applications with end-to-end development,
+              testing, and deployment.
             </p>
             <p className="text-[#828282] text-md md:text-xl">
-              Dictumst porta ultricies tristique hac vestibulum himenaeos
-              ligula. Cubilia sapien torquent at finibus accumsan et
-              pellentesque class lacinia tristique.
+              We ensure agile methodologies, transparent communication, and
+              flexible engagement models to keep your business ahead in a
+              competitive market. Our expert developers create scalable, secure
+              software solutions tailored to your business objectives.
             </p>
           </motion.div>
 

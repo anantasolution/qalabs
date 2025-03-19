@@ -11,7 +11,6 @@ const MobileApp = () => {
   const sectionRef = useRef(null);
   const progressControls = useAnimation(); // Animation controls for the progress circle
 
-
   const features = [
     {
       title: "Expertise and Experience",
@@ -105,14 +104,16 @@ const MobileApp = () => {
               transition={{ duration: 1 }}
             >
               <h2 className="text-4xl md:text-[40px] leading-tight text-white">
-                Innovative Design for{" "}
+                Mobile App Development for Seamless{" "}
                 <span className="text-4xl md:text-[40px] text-transparent bg-gradient-to-r from-blue-300 to-green-400 bg-clip-text">
-                  Modern Businesses.
+                  User Engagement.
                 </span>
               </h2>
               <p className="text-gray-400 text-md leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+                Reach your audience anytime, anywhere with feature-rich mobile
+                applications that deliver seamless display. At ZyinexWeb, we
+                build custom iOS and Android applications for user engagement
+                and business growth.
               </p>
             </motion.div>
 
@@ -199,22 +200,24 @@ const MobileApp = () => {
               WHY CHOOSE US
             </h3>
             <h2 className="text-3xl md:text-5xl font-bold leading-tight">
-              Crafting
+              High-Performance
               <span className="text-transparent bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text font-semibold">
                 {" "}
-                Digital Experiences{" "}
+                Mobile Apps for{" "}
               </span>
-              That Matter.
+              Enhanced Reach.
             </h2>
             <p className="text-[#828282] text-md md:text-xl">
-              Dictumst porta ultricies tristique hac vestibulum himenaeos
-              ligula. Cubilia sapien torquent at finibus accumsan et
-              pellentesque class lacinia tristique.
+              A well-designed mobile app enhances customer experience, brand
+              loyalty, and revenue. We create custom mobile applications that
+              offer smooth navigation, robust security, and innovative features.
             </p>
             <p className="text-[#828282] text-md md:text-xl">
-              Dictumst porta ultricies tristique hac vestibulum himenaeos
-              ligula. Cubilia sapien torquent at finibus accumsan et
-              pellentesque class lacinia tristique.
+              From e-commerce apps to business process automation, we ensure
+              flawless functionality, intuitive design, and cross-platform
+              compatibility. With cutting-edge development, cloud integration,
+              and regular updates, our mobile apps keep your business ahead of
+              the competition.
             </p>
           </motion.div>
 
