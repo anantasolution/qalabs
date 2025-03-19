@@ -144,7 +144,7 @@ function Navbar() {
 
         {/* Desktop Navigation */}
         <div
-          className="hidden md:flex md:w-full justify-center items-center space-x-8 z-50"
+          className="hidden  md:flex md:w-full justify-end items-center space-x-8 z-50"
           ref={dropdownRef}
         >
           {menuItems.map((item) => (
@@ -272,6 +272,8 @@ function Navbar() {
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
+
+        
       </div>
 
       {/* Mobile Sidebar Menu */}
