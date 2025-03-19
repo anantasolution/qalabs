@@ -104,14 +104,17 @@ const Maintanance = () => {
               transition={{ duration: 1 }}
             >
               <h2 className="text-4xl md:text-[40px] leading-tight text-white">
-                Innovative Design for{" "}
+                Hassle-Free IT Maintenance with{" "}
                 <span className="text-4xl md:text-[40px] text-transparent bg-gradient-to-r from-blue-300 to-green-400 bg-clip-text">
-                  Modern Businesses.
+                  Annual Contracts.
                 </span>
               </h2>
               <p className="text-gray-400 text-md leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+                Keep your business running efficiently with reliable IT
+                maintenance services that prevent downtime and optimise the
+                overall performance. At ZyinexWeb, our Annual Maintenance
+                Contracts (AMC) ensures that your IT hardware and software are
+                secured, updated and fully functioning.
               </p>
             </motion.div>
 
@@ -198,27 +201,26 @@ const Maintanance = () => {
               WHY CHOOSE US
             </h3>
             <h2 className="text-3xl md:text-5xl font-bold leading-tight">
-              Crafting
+              Prevent
               <span className="text-transparent bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text font-semibold">
                 {" "}
-                Digital Experiences{" "}
+                Downtime With Active{" "}
               </span>
-              That Matter.
+              IT Maintenance.
             </h2>
             <p className="text-[#828282] text-md md:text-xl">
-              Dictumst porta ultricies tristique hac vestibulum himenaeos
-              ligula. Cubilia sapien torquent at finibus accumsan et
-              pellentesque class lacinia tristique.
+              Avoid unexpected IT failures with regular check-ups, timely
+              upgrades and rapid issue resolution. Our comprehensive AMC
+              packages cover hardware troubleshooting, software updates,
+              security patches and on-demand technical support.
             </p>
 
             <p className="text-[#828282] text-md md:text-xl">
-              Dictumst porta ultricies tristique hac vestibulum himenaeos
-              ligula. Cubilia sapien torquent at finibus accumsan et
-              pellentesque class lacinia tristique.
+              By ensuring cost-efficiency and long-term IT stability, we provide
+              corresponding maintenance plans to meet your professional
+              requirements. With 24/7 support, priority service and specialist
+              maintenance, we help you to be productive without interruption.
             </p>
-
-
-
           </motion.div>
 
           {/* Right Section - Larger Image */}

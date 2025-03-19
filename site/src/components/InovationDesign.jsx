@@ -43,14 +43,16 @@ function InovationDesign() {
             transition={{ duration: 1 }}
           >
             <h2 className="text-4xl md:text-[40px] leading-tight text-white">
-              Innovative Design for{" "}
+              Modern design for
               <span className="text-4xl md:text-[40px] text-transparent bg-gradient-to-r from-blue-300 to-green-400 bg-clip-text">
-                Modern Businesses.
+                {" "}
+                Competitive edges
               </span>
             </h2>
             <p className="text-gray-400 text-md leading-relaxed">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-              tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+              We create visually spectacular and strategically built websites
+              that increase the credibility of the brand and drive customer
+              engagement.
             </p>
             {/* <button
               className="bg-[#71ECB6] text-black rounded-full hover:bg-[#BAFE6D] px-4 py-2 text-base px w-fit transition duration-300"
@@ -94,7 +96,7 @@ function InovationDesign() {
 
             <motion.div
               className="bg-black p-8 rounded-xl border border-gray-700"
-              initial={{ x : "150%" }}
+              initial={{ x: "150%" }}
               animate={inView ? { x: 0 } : {}}
               transition={{ duration: 1 }}
             >

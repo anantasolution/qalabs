@@ -11,7 +11,6 @@ const AutomationTesting = () => {
   const sectionRef = useRef(null);
   const progressControls = useAnimation(); // Animation controls for the progress circle
 
-
   const features = [
     {
       title: "Expertise and Experience",
@@ -105,14 +104,16 @@ const AutomationTesting = () => {
               transition={{ duration: 1 }}
             >
               <h2 className="text-4xl md:text-[40px] leading-tight text-white">
-                Innovative Design for{" "}
+                Automation Testing for Faster &{" "}
                 <span className="text-4xl md:text-[40px] text-transparent bg-gradient-to-r from-blue-300 to-green-400 bg-clip-text">
-                  Modern Businesses.
+                  Reliable Software Deployment.
                 </span>
               </h2>
               <p className="text-gray-400 text-md leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+                Accelerate your software development cycle with cutting-edge
+                automation testing. ZyinexWeb provides scripted and AI-driven
+                testing frameworks to enhance speed, efficiency, and test
+                accuracy.
               </p>
             </motion.div>
 
@@ -199,26 +200,26 @@ const AutomationTesting = () => {
               WHY CHOOSE US
             </h3>
             <h2 className="text-3xl md:text-5xl font-bold leading-tight">
-              Crafting
+              High-Speed
               <span className="text-transparent bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text font-semibold">
                 {" "}
-                Digital Experiences{" "}
+                Testing for Unmatched{" "}
               </span>
-              That Matter.
+              Efficiency.
             </h2>
             <p className="text-[#828282] text-md md:text-xl">
-              Dictumst porta ultricies tristique hac vestibulum himenaeos
-              ligula. Cubilia sapien torquent at finibus accumsan et
-              pellentesque class lacinia tristique.
+              Automation testing ensures faster test execution, high
+              scalability, and reduced human error. Our experts design custom
+              test scripts, regression testing, and performance analysis to
+              streamline your software development lifecycle.
             </p>
 
             <p className="text-[#828282] text-md md:text-xl">
-              Dictumst porta ultricies tristique hac vestibulum himenaeos
-              ligula. Cubilia sapien torquent at finibus accumsan et
-              pellentesque class lacinia tristique.
+              With automated test suites, we help businesses achieve continuous
+              integration, reduced costs, and rapid go-to-market strategies. Our
+              solutions guarantee consistent software quality across multiple
+              platforms and devices.
             </p>
-
-            
           </motion.div>
 
           {/* Right Section - Larger Image */}

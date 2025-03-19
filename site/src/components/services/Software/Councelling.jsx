@@ -11,7 +11,6 @@ const Councelling = () => {
   const sectionRef = useRef(null);
   const progressControls = useAnimation(); // Animation controls for the progress circle
 
-
   const features = [
     {
       title: "Expertise and Experience",
@@ -105,14 +104,15 @@ const Councelling = () => {
               transition={{ duration: 1 }}
             >
               <h2 className="text-4xl md:text-[40px] leading-tight text-white">
-                Innovative Design for{" "}
+                Expert IT Consulting For{" "}
                 <span className="text-4xl md:text-[40px] text-transparent bg-gradient-to-r from-blue-300 to-green-400 bg-clip-text">
-                  Modern Businesses.
+                  Strategic Growth.
                 </span>
               </h2>
               <p className="text-gray-400 text-md leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+                Make informed technology decisions with expert IT consulting.
+                ZyinexWeb provides custom IT strategies, technology roadmaps,
+                and risk assessments to help businesses stay competitive.
               </p>
             </motion.div>
 
@@ -199,22 +199,22 @@ const Councelling = () => {
               WHY CHOOSE US
             </h3>
             <h2 className="text-3xl md:text-5xl font-bold leading-tight">
-              Crafting
+              Technology That Drives
               <span className="text-transparent bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text font-semibold">
                 {" "}
-                Digital Experiences{" "}
+                Business Success{" "}
               </span>
-              That Matter.
             </h2>
             <p className="text-[#828282] text-md md:text-xl">
-              Dictumst porta ultricies tristique hac vestibulum himenaeos
-              ligula. Cubilia sapien torquent at finibus accumsan et
-              pellentesque class lacinia tristique.
+              From infrastructure optimisation to cloud migration and
+              cybersecurity planning, we help businesses implement
+              cost-effective, scalable, and future-ready IT solutions.
             </p>
             <p className="text-[#828282] text-md md:text-xl">
-              Dictumst porta ultricies tristique hac vestibulum himenaeos
-              ligula. Cubilia sapien torquent at finibus accumsan et
-              pellentesque class lacinia tristique.
+              Our consultants offer tailored IT strategies, ensuring businesses
+              leverage the best technologies for growth and innovation. Whether
+              it’s system upgrades, IT investments, or risk management, we guide
+              businesses towards the right solutions.
             </p>
           </motion.div>
 

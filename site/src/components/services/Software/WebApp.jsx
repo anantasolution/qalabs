@@ -11,7 +11,6 @@ const WebApp = () => {
   const sectionRef = useRef(null);
   const progressControls = useAnimation(); // Animation controls for the progress circle
 
-
   const features = [
     {
       title: "Expertise and Experience",
@@ -105,14 +104,16 @@ const WebApp = () => {
               transition={{ duration: 1 }}
             >
               <h2 className="text-4xl md:text-[40px] leading-tight text-white">
-                Innovative Design for{" "}
+                Web Applications That Redefine{" "}
                 <span className="text-4xl md:text-[40px] text-transparent bg-gradient-to-r from-blue-300 to-green-400 bg-clip-text">
-                  Modern Businesses.
+                  Digital Presence.
                 </span>
               </h2>
               <p className="text-gray-400 text-md leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+                Strengthen your digital footprint with high-performance web
+                applications that provide seamless user experiences. ZyinexWeb
+                develops secure, scalable, and user-friendly web applications
+                that suit your business needs.
               </p>
             </motion.div>
 
@@ -199,22 +200,25 @@ const WebApp = () => {
               WHY CHOOSE US
             </h3>
             <h2 className="text-3xl md:text-5xl font-bold leading-tight">
-              Crafting
+              Scalable and Secure
               <span className="text-transparent bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text font-semibold">
                 {" "}
-                Digital Experiences{" "}
+                Web Apps For{" "}
               </span>
-              That Matter.
+              Business Growth .
             </h2>
             <p className="text-[#828282] text-md md:text-xl">
-              Dictumst porta ultricies tristique hac vestibulum himenaeos
-              ligula. Cubilia sapien torquent at finibus accumsan et
-              pellentesque class lacinia tristique.
+              Your website is the digital front door of your business. We create
+              custom web applications that provide fast loading speeds,
+              intuitive research and high-level security to enhance the user's
+              engagement.
             </p>
             <p className="text-[#828282] text-md md:text-xl">
-              Dictumst porta ultricies tristique hac vestibulum himenaeos
-              ligula. Cubilia sapien torquent at finibus accumsan et
-              pellentesque class lacinia tristique.
+              Our experienced developers create a high-performance application
+              that responds with seamless e-CE Mars, CMS and enterprise system
+              integration. With SEO-friendly design, cloud compatibility and
+              ongoing support, we make sure your web applications run growth and
+              engagement.
             </p>
           </motion.div>
 

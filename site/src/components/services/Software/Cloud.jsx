@@ -11,7 +11,6 @@ const Cloud = () => {
   const sectionRef = useRef(null);
   const progressControls = useAnimation(); // Animation controls for the progress circle
 
-
   const features = [
     {
       title: "Expertise and Experience",
@@ -105,14 +104,16 @@ const Cloud = () => {
               transition={{ duration: 1 }}
             >
               <h2 className="text-4xl md:text-[40px] leading-tight text-white">
-                Innovative Design for{" "}
+                Cloud Solutions for Secure and Scalable{" "}
                 <span className="text-4xl md:text-[40px] text-transparent bg-gradient-to-r from-blue-300 to-green-400 bg-clip-text">
-                  Modern Businesses.
+                  IT Infrastructure.
                 </span>
               </h2>
               <p className="text-gray-400 text-md leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+                Leverage the power of cloud computing to enhance agility and
+                reduce operational costs. ZyinexWeb provides cloud storage,
+                hosting, and computing solutions designed to support businesses
+                of all sizes with reliability and security.
               </p>
             </motion.div>
 
@@ -199,24 +200,25 @@ const Cloud = () => {
               WHY CHOOSE US
             </h3>
             <h2 className="text-3xl md:text-5xl font-bold leading-tight">
-              Crafting
+              Flexible & Secure
               <span className="text-transparent bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text font-semibold">
                 {" "}
-                Digital Experiences{" "}
+                Cloud Computing{" "}
               </span>
-              That Matter.
+              Services.
             </h2>
             <p className="text-[#828282] text-md md:text-xl">
-              Dictumst porta ultricies tristique hac vestibulum himenaeos
-              ligula. Cubilia sapien torquent at finibus accumsan et
-              pellentesque class lacinia tristique.
+              Our cloud experts ensure seamless migration, security, and
+              management of your data and applications. With multi-layer
+              encryption, scalable storage, and 24/7 support, we help businesses
+              unlock the full potential of cloud technology.
             </p>
             <p className="text-[#828282] text-md md:text-xl">
-              Dictumst porta ultricies tristique hac vestibulum himenaeos
-              ligula. Cubilia sapien torquent at finibus accumsan et
-              pellentesque class lacinia tristique.
+              Whether you need public, private, or hybrid cloud solutions, we
+              deliver tailored services that align with your business
+              objectives. Our secure cloud platforms enhance data accessibility
+              while ensuring compliance with industry standards.
             </p>
-
           </motion.div>
 
           {/* Right Section - Larger Image */}

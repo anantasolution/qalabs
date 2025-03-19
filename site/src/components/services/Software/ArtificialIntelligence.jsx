@@ -11,7 +11,6 @@ const ArtificialIntelligence = () => {
   const sectionRef = useRef(null);
   const progressControls = useAnimation(); // Animation controls for the progress circle
 
-
   const features = [
     {
       title: "Expertise and Experience",
@@ -105,14 +104,16 @@ const ArtificialIntelligence = () => {
               transition={{ duration: 1 }}
             >
               <h2 className="text-4xl md:text-[40px] leading-tight text-white">
-                Innovative Design for{" "}
+                AI-Powered Solutions For{" "}
                 <span className="text-4xl md:text-[40px] text-transparent bg-gradient-to-r from-blue-300 to-green-400 bg-clip-text">
                   Modern Businesses.
                 </span>
               </h2>
               <p className="text-gray-400 text-md leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+                Integrate Artificial Intelligence (AI) into your business
+                processes to enhance productivity and efficiency. ZyinexWeb
+                develops AI-driven applications that automate repetitive tasks,
+                personalise customer interactions, and improve decision-making.
               </p>
             </motion.div>
 
@@ -199,26 +200,25 @@ const ArtificialIntelligence = () => {
               WHY CHOOSE US
             </h3>
             <h2 className="text-3xl md:text-5xl font-bold leading-tight">
-              Crafting
+              Cutting-edge AI
               <span className="text-transparent bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text font-semibold">
                 {" "}
-                Digital Experiences{" "}
+                For Business{" "}
               </span>
-              That Matter.
+              Innovation.
             </h2>
             <p className="text-[#828282] text-md md:text-xl">
-              Dictumst porta ultricies tristique hac vestibulum himenaeos
-              ligula. Cubilia sapien torquent at finibus accumsan et
-              pellentesque class lacinia tristique.
+              Our custom AI models ensure seamless integration into existing
+              workflows, from chatbots and machine learning algorithms to image
+              recognition and natural language processing.
             </p>
 
             <p className="text-[#828282] text-md md:text-xl">
-              Dictumst porta ultricies tristique hac vestibulum himenaeos
-              ligula. Cubilia sapien torquent at finibus accumsan et
-              pellentesque class lacinia tristique.
+              We specialise in AI-driven automation, smart assistants, and deep
+              learning models that enhance efficiency and innovation. Our AI
+              solutions help businesses streamline processes, reduce costs, and
+              gain a competitive edge.
             </p>
-
-            
           </motion.div>
 
           {/* Right Section - Larger Image */}

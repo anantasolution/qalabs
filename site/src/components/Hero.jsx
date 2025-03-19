@@ -117,14 +117,14 @@ const HeroSection = () => {
             <div className="text-[#00ff8a] mb-4">WHO WE ARE</div>
 
             <motion.h1
-              className="text-4xl lg:text-5xl font-bold"
+              className="text-4xl lg:text-5xl font-bold py-1"
               initial={{ x: "150%" }}
               animate={inView ? { x: 0 } : {}}
               transition={{ duration: 1 }}
             >
-              Innovative Solutions for Your{" "}
+              Smart Innovation to Fuel
               <span className="inline-block bg-gradient-to-r from-[#00ffff] via-[#00ccff] to-[#00ff8a] bg-clip-text text-transparent">
-                Online Success.
+                Digital Success
               </span>
             </motion.h1>
 
@@ -134,9 +134,10 @@ const HeroSection = () => {
               animate={inView ? { x: 0 } : {}}
               transition={{ duration: 1, delay: 0.5 }}
             >
-              Sem iaculis facilisis convallis ex aliquam massa a venenatis
-              blandit pede rhoncus. Euismod consectetuer nostra etiam lectus
-              potenti accumsan pellentesque venenatis.
+              ZyinexWeb is where ideas transform into impactful digital
+              experiences. Our team blends creativity and technology to develop
+              seamless, high-performance web solutions to suit your professional
+              goals.
             </motion.p>
 
             {/* Stats Section */}
@@ -154,7 +155,7 @@ const HeroSection = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 1, type: "spring" }}
                   >
-                    {counts[index]}K+
+                    {counts[index]}+
                   </motion.div>
                   <div className="text-gray-400 text-sm">{stat.label}</div>
                 </div>

@@ -114,7 +114,7 @@ const ContactPage = () => {
         subject: "",
       });
       setFormErrors({});
-      toast.success("Message Sent successfully", { position: "top-right"});
+      toast.success("Message Sent successfully", { position: "top-right" });
     } catch (error) {
       toast.error(
         error.response?.data?.message || "Failed to submit consultation."
@@ -154,8 +154,8 @@ const ContactPage = () => {
             variants={upsideVariants}
           >
             <p className="text-white text-[25px] opacity-100 text-lg sm:text-xl">
-              Start the conversation to establish a good <br /> relationship and
-              business.
+              Let’s connect and create innovative solutions customised to <br />{" "}
+              Your business needs.
             </p>
           </motion.div>
         </div>
@@ -175,16 +175,17 @@ const ContactPage = () => {
                 GET IN TOUCH
               </h2>
               <h1 className="bg-clip-text text-white font-semibold text-2xl sm:text-3xl md:text-[35px]">
-                Seamless Communication,
+                Smooth Collaboration,
                 <br />
                 <span className="text-transparent bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text font-semibold text-2xl sm:text-3xl md:text-[35px]">
-                  Global Impact <span className="text-white">.</span>
+                  Global Reach<span className="text-white">.</span>
                 </span>
               </h1>
               <br />
               <p className="text-gray-400">
-                Auctor dictumst inceptos metus est ad himenaeos habitasse litora
-                natoque libero nunc
+                Engage with ZyinexWeb for seamless communication and impactful
+                digital solutions. Together, we can drive innovation and achieve
+                success.
               </p>
               <br />
               <div className="max-w-md w-full sm:w-300">
@@ -287,8 +288,9 @@ const ContactPage = () => {
               Send us a message
             </h2>
             <p className="text-gray-400 mb-4">
-              Auctor dictumst inceptos metus est ad himenaeos habitasse litora
-              natoque libero nunc
+              Engage with ZyinexWeb for seamless communication and impactful
+              digital solutions. Together, we can drive innovation and achieve
+              success.
             </p>
 
             <form className="space-y-4" onSubmit={handleSubmit}>

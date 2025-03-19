@@ -52,20 +52,21 @@ const HelpPage = () => {
         />
         <motion.div
           className="relative w-full flex items-center justify-center md:pl-40 md:justify-start"
-          initial={{ y: "-150%", opacity:0 }}
-          animate={inView ? { y: 0, opacity:100 } : {}}
+          initial={{ y: "-150%", opacity: 0 }}
+          animate={inView ? { y: 0, opacity: 100 } : {}}
           transition={{ duration: 1 }}
         >
           <div className="p-8 bg-black bg-opacity-60 rounded-lg max-w-md">
             <h1 className="text-3xl font-bold text-white">
-              See How We Can Help Your{" "}
+              Looking for Impactful Digital Solutions?
               <span className="bg-gradient-to-r from-[#00ffff] via-[#00ccff] to-[#00ff8a] text-transparent bg-clip-text">
-                Business Grow.
+                {" "}
+                Let’s Get Started!
               </span>
             </h1>
             <p className="mt-4 text-gray-100 text-sm -tracking-tighter">
-              Maecenas tempor ligula phasellus per hac nisl. Facilisi curae nunc
-              hendrerit vestibulum lobortis commodo lacus sagittis feugiat.
+              From strategy to execution, create experiences that stand out.
+              Connect with us and bring your vision to life.
             </p>
             {/* <button className="mt-6 bg-[#71ECB6] text-black rounded-full hover:bg-[#BAFE6D] py-2 px-4">
               Learn more
