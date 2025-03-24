@@ -111,7 +111,7 @@ function SideNavbar({ toggle }) {
               </span>
             </div>
           )}
-          {toggle || innerToggle ? (
+          {/* {toggle || innerToggle ? (
             <div className="flex flex-col gap-.5">
               <div
                 onClick={() => setBlogDropDown((prev) => !prev)}
@@ -170,7 +170,7 @@ function SideNavbar({ toggle }) {
                 ></SquarePen>
               </span>
             </div>
-          )}
+          )} */}
           {toggle || innerToggle ? (
             <div
               onClick={() => handleNavigate("contactus")}

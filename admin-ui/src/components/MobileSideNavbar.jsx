@@ -5,7 +5,7 @@ import { useLocation } from "react-router-dom";
 //Importing icons
 import SpaceDashboardOutlinedIcon from "@mui/icons-material/SpaceDashboardOutlined";
 import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
-import { SquarePen } from "lucide-react";
+import { FolderOpenDot, MessageSquareCode, SquarePen } from "lucide-react";
 import { Contact } from "lucide-react";
 import { Handshake } from "lucide-react";
 import { ChevronDown } from "lucide-react";
@@ -72,7 +72,7 @@ function MobileSideNavbar({ toggle, ref }) {
           </div>
 
           {/* Blog section */}
-          <div className="flex flex-col gap-.5">
+          {/* <div className="flex flex-col gap-.5">
             <div
               onClick={() => setBlogDropDown((prev) => !prev)}
               className={`flex ${
@@ -121,7 +121,7 @@ function MobileSideNavbar({ toggle, ref }) {
                 </div>
               </div>
             )}
-          </div>
+          </div> */}
 
           {/* contact  */}
           <div
@@ -147,6 +147,28 @@ function MobileSideNavbar({ toggle, ref }) {
               <Handshake style={{ fontSize: "1.4rem" }}></Handshake>
             </span>
             <span className="text-sm font-semibold">Consultancy</span>
+          </div>
+          <div
+            onClick={() => handleNavigate("projects/allprojects")}
+            className={`flex ${
+              isActive("projects") && "bg-gray-100"
+            } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
+          >
+            <span>
+              <FolderOpenDot style={{ fontSize: "1.4rem" }}></FolderOpenDot>
+            </span>
+            <span className="text-sm font-semibold">Projects</span>
+          </div>
+          <div
+            onClick={() => handleNavigate("feedback")}
+            className={`flex ${
+              isActive("feedback") && "bg-gray-100"
+            } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
+          >
+            <span>
+              <MessageSquareCode style={{ fontSize: "1.4rem" }}></MessageSquareCode>
+            </span>
+            <span className="text-sm font-semibold">Feedback</span>
           </div>
         </div>
       </div>
