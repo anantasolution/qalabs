@@ -87,7 +87,7 @@ function App() {
         {/* Protected route */}
         <Route path="/admin" element={<ProtectedRoute />}>
           <Route path="dashboard" element={<Main></Main>}></Route>
-          <Route path="blogs/allblogs" element={<Blogs />} />
+          {/* <Route path="blogs/allblogs" element={<Blogs />} />
           <Route
             path="blogs/category"
             element={<Categories></Categories>}
@@ -96,7 +96,7 @@ function App() {
           <Route
             path="blogs/preview"
             element={<PreviewAndEditBlog></PreviewAndEditBlog>}
-          ></Route>
+          ></Route> */}
           <Route path="contactus" element={<ContactUs></ContactUs>}></Route>
           <Route
             path="consultant"

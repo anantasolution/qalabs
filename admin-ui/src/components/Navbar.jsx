@@ -6,7 +6,8 @@ import { useNavigate } from 'react-router-dom'
 import { ListCollapse } from 'lucide-react';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import axios from 'axios';
-import { toast } from 'react-toastify'
+import { toast } from 'react-toastify';
+import user from "../user.jpg"
 
 const useIsMobile = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -71,12 +72,12 @@ function Navbar({ toggle, setToggle }) {
           : toggle ? <ListCollapse style={{ fontSize: '1.8rem' }} onClick={() => setToggle(false)} className='cursor-pointer'></ListCollapse> : <ArrowRightAltIcon style={{ fontSize: '1.8rem' }} onClick={() => setToggle(true)} className='cursor-pointer'></ArrowRightAltIcon>
       }
       <div className="relative flex justify-center items-center px-10">
-        <img onClick={() => setIsVisible((prev) => (!prev))} src={"https://static.toiimg.com/photo/80387978.cms"} alt='profile' className='w-10 h-10 rounded-full cursor-pointer'></img>
+        <img onClick={() => setIsVisible((prev) => (!prev))} src={user} alt='profile' className='w-10 h-10 rounded-full cursor-pointer'></img>
         {
           isVisible &&
           <div ref={popupRef} className='absolute right-0 top-[120%] flex flex-col bg-white w-[200px] shadow border rounded-md'>
             <div className='flex items-center gap-2 border-b p-2'>
-              <img src={"https://static.toiimg.com/photo/80387978.cms"} alt='profile' className='w-10 h-10 rounded-full cursor-pointer'></img>
+              <img src={user} alt='profile' className='w-10 h-10 rounded-full cursor-pointer'></img>
               <div className='flex flex-col'>
                 <h1>Harhit Gadhiya</h1>
                 <span className='text-sm text-blue-600'>Admin</span>
