@@ -6,6 +6,7 @@ import {
   getFeedbackById,
   updateFeedback,
   deleteFeedback,
+  feedBackCount,
 } from "../Controller/feedbackController.js";
 import { uploadProfilePicture } from "../utils/storageMulter.js";
 
@@ -30,5 +31,6 @@ router.get("/getallfeedbacks", getAllFeedbacks);
 router.get("/getfeedback/:id", getFeedbackById);
 router.put("/updatefeedback/:id", uploadProfilePicture, updateFeedback);
 router.delete("/deletefeedback/:id", deleteFeedback);
+router.get("/getcounts",feedBackCount);
 
 export default router;

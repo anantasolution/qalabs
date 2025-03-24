@@ -7,7 +7,7 @@ const API_URLS = [
   `${process.env.REACT_APP_API_BASE_URL}/blogs/getcounts`,      
   `${process.env.REACT_APP_API_BASE_URL}/contact/getcounts`,     
   `${process.env.REACT_APP_API_BASE_URL}/consulation/getcounts`, 
-  `${process.env.REACT_APP_API_BASE_URL}/category/getcounts`
+  `${process.env.REACT_APP_API_BASE_URL}/feedback/getcounts`
 ];
 
 const useDashboardData = () => {
@@ -23,6 +23,7 @@ const useDashboardData = () => {
       try {
         const responses = await Promise.all(API_URLS.map(url => axios.get(url)));
         const newValues = responses.map(response => response.data?.data || 0);
+        console.log(responses);
         
         setDashboardData(prevData => prevData.map((item, index) => ({
           value: newValues[index]
@@ -52,13 +53,13 @@ export const DashboardCards = () => {
   };
 
   return [
-    {
-      icon: BookMarked,
-      title: "Blogs",
-      value: dashboardValues[0]?.value || "0",
-      color: "bg-blue-600",
-      progress: calculateProgress(dashboardValues[0]?.value || 0)
-    },
+    // {
+    //   icon: BookMarked,
+    //   title: "Blogs",
+    //   value: dashboardValues[0]?.value || "0",
+    //   color: "bg-blue-600",
+    //   progress: calculateProgress(dashboardValues[0]?.value || 0)
+    // },
     {
       icon: SquareUserRound,
       title: "Contacts",
@@ -75,7 +76,7 @@ export const DashboardCards = () => {
     },
     {
       icon: BarChart,
-      title: "Categories",
+      title: "Feedback",
       value: dashboardValues[3]?.value || "0",
       color: "bg-red-500",
       progress: calculateProgress(dashboardValues[3]?.value || 0)
