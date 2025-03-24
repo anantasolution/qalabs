@@ -90,7 +90,7 @@ const Main = () => {
     <div className="bg-gray-50 min-h-screen">
       <Breadcrumbs />
       <div className="p-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {dashboardCards.map((stat, index) => (
             <StatCard key={index} {...stat} />
           ))}
