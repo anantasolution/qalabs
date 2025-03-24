@@ -12,7 +12,10 @@ const Video = () => {
     <div className="absolute flex flex-col items-center justify-center bg-black/20 w-full h-full overflow-hidden">
       <div className="bg-zinc-950/50 py-4 md:py-10 px-4 flex flex-col items-center">
         {/* Animated Button Container */}
-        <div className="relative flex items-center justify-center" onClick={() => setIsPlaying(true)}>
+        <div
+          className="relative flex items-center justify-center"
+          onClick={() => setIsPlaying(true)}
+        >
           {/* Pulsating Effect */}
           <div className="pulsating-circle"></div>
           <div className="pulsating-circle1"></div>
@@ -26,9 +29,9 @@ const Video = () => {
 
         <h2 className="text-xl md:text-4xl mt-6 text-center max-w-2xl text-white">
           <span className="text-transparent bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text font-normal">
-            Innovative Solutions
+            Drive Growth
           </span>{" "}
-          for Your <br /> Online Success
+          with Innovative and <br /> Strategic Solutions
         </h2>
       </div>
     </div>

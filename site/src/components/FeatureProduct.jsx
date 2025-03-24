@@ -146,11 +146,14 @@ const FeaturedProjectSection = () => {
             FEATURED PROJECT
           </p>
           <h1 className="text-2xl md:text-4xl text-white">
-            Inspired by{" "}
+          Love What You See? 
+
             <span className="bg-gradient-to-r from-[#00ffff] via-[#00ccff] to-[#00ff8a] bg-clip-text text-transparent">
-              Our Projects?
+            {" "}Let’s Build {" "}
             </span>{" "}
-            Let's <br /> Create Yours!
+            <br />
+            {/* Let's <br /> Create Yours! */}
+            Something Amazing for You!
           </h1>
         </div>
 

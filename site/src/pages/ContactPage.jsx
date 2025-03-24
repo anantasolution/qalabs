@@ -220,8 +220,8 @@ const ContactPage = () => {
                   <h3 className="font-semibold text-lg sm:text-xl">
                     Head Office
                   </h3>
-                  <p className="text-gray-400">Jalan Cempaka Wangi No 22</p>
-                  <p className="text-gray-400">Jakarta - Indonesia</p>
+                  <p className="text-gray-400">101, Arihant dp-6, Swara Sanidhya Lane, B/H Shah Hospitals,</p>
+                  <p className="text-gray-400">Usmanpura, Ahmedabad, 380013</p>
                 </div>
               </div>
 
@@ -245,8 +245,8 @@ const ContactPage = () => {
                   <h3 className="font-semibold text-lg sm:text-xl">
                     Email Support
                   </h3>
-                  <p className="text-gray-400">support@yourdomain.tld</p>
-                  <p className="text-gray-400">hello@yourdomain.tld</p>
+                  <p className="text-gray-400">kinjal@zyinexweb.com</p>
+                  {/* <p className="text-gray-400">hello@yourdomain.tld</p> */}
                 </div>
               </div>
 
@@ -270,8 +270,8 @@ const ContactPage = () => {
                   <h3 className="font-semibold text-lg sm:text-xl">
                     Let's Talk
                   </h3>
-                  <p className="text-gray-400">Phone : +6221.2002.2012</p>
-                  <p className="text-gray-400">Fax : +6221.2002.2013</p>
+                  <p className="text-gray-400">Phone : +91 99984 18345</p>
+                  {/* <p className="text-gray-400">Fax : +6221.2002.2013</p> */}
                 </div>
               </div>
             </div>
