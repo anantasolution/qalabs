@@ -247,7 +247,7 @@ const HeroForm = () => {
               >
                 {loading ? (
                   <span className="flex gap-2 justify-center">
-                    <LoaderCircle /> loading....
+                    <LoaderCircle className="animate-spin"/> loading....
                   </span>
                 ) : (
                   "Get an Appointment"
