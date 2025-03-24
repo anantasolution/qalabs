@@ -11,7 +11,6 @@ const DataAnalytics = () => {
   const sectionRef = useRef(null);
   const progressControls = useAnimation(); // Animation controls for the progress circle
 
-
   const features = [
     {
       title: "Expertise and Experience",
@@ -105,14 +104,16 @@ const DataAnalytics = () => {
               transition={{ duration: 1 }}
             >
               <h2 className="text-4xl md:text-[40px] leading-tight text-white">
-                Innovative Design for{" "}
+                Data Analytics for Smarter{" "}
                 <span className="text-4xl md:text-[40px] text-transparent bg-gradient-to-r from-blue-300 to-green-400 bg-clip-text">
-                  Modern Businesses.
+                  Business Decisions.
                 </span>
               </h2>
               <p className="text-gray-400 text-md leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+                Transform raw data into meaningful insights with advanced data
+                analytics. ZyinexWeb helps businesses leverage data-driven
+                strategies to improve decision-making, optimise operations, and
+                enhance customer experiences.
               </p>
             </motion.div>
 
@@ -199,22 +200,23 @@ const DataAnalytics = () => {
               WHY CHOOSE US
             </h3>
             <h2 className="text-3xl md:text-5xl font-bold leading-tight">
-              Crafting
+              Insight-Driven
               <span className="text-transparent bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text font-semibold">
                 {" "}
-                Digital Experiences{" "}
+                Strategies For{" "}
               </span>
-              That Matter.
+              Business Growth.
             </h2>
             <p className="text-[#828282] text-md md:text-xl">
-              Dictumst porta ultricies tristique hac vestibulum himenaeos
-              ligula. Cubilia sapien torquent at finibus accumsan et
-              pellentesque class lacinia tristique.
+              With AI-powered analytics, predictive modelling, and real-time
+              dashboards, we enable businesses to identify trends, optimise
+              marketing strategies, and boost operational efficiency.
             </p>
             <p className="text-[#828282] text-md md:text-xl">
-              Dictumst porta ultricies tristique hac vestibulum himenaeos
-              ligula. Cubilia sapien torquent at finibus accumsan et
-              pellentesque class lacinia tristique.
+              Our custom data solutions ensure accurate reporting and trend
+              analysis for strategic planning. Whether it’s customer behaviour
+              analysis, sales forecasting, or risk assessment, we provide
+              actionable insights that drive business success.
             </p>
           </motion.div>
 

@@ -104,14 +104,16 @@ const ManualTesting = () => {
               transition={{ duration: 1 }}
             >
               <h2 className="text-4xl md:text-[40px] leading-tight text-white">
-                Innovative Design for{" "}
+                Manual Testing for Flawless{" "}
                 <span className="text-4xl md:text-[40px] text-transparent bg-gradient-to-r from-blue-300 to-green-400 bg-clip-text">
-                  Modern Businesses.
+                  Software Performance.
                 </span>
               </h2>
               <p className="text-gray-400 text-md leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+                Ensure the highest software quality with rigorous manual
+                testing. ZyinexWeb offers detailed test case execution to
+                identify bugs, usability issues, and functionality gaps before
+                deployment.
               </p>
             </motion.div>
 
@@ -198,23 +200,26 @@ const ManualTesting = () => {
               WHY CHOOSE US
             </h3>
             <h2 className="text-3xl md:text-5xl font-bold leading-tight">
-              Crafting
+              Precision Testing
               <span className="text-transparent bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text font-semibold">
                 {" "}
-                Digital Experiences{" "}
+                for a Seamless{" "}
               </span>
-              That Matter.
+              User Experience.
             </h2>
             <p className="text-[#828282] text-md md:text-xl">
-              Dictumst porta ultricies tristique hac vestibulum himenaeos
-              ligula. Cubilia sapien torquent at finibus accumsan et
-              pellentesque class lacinia tristique.
+              Manual testing allows human-driven insights to detect UI/UX
+              inconsistencies, functionality defects, and performance issues
+              that automated tools might miss. Our experts ensure in-depth
+              exploratory testing, user acceptance testing (UAT), and
+              compatibility checks.
             </p>
 
             <p className="text-[#828282] text-md md:text-xl">
-              Dictumst porta ultricies tristique hac vestibulum himenaeos
-              ligula. Cubilia sapien torquent at finibus accumsan et
-              pellentesque class lacinia tristique.
+              By combining industry best practices with meticulous test
+              execution, we ensure that your software meets high-quality
+              standards, providing an intuitive and error-free experience for
+              end users.
             </p>
           </motion.div>
 

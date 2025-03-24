@@ -11,7 +11,6 @@ const Bespoke = () => {
   const sectionRef = useRef(null);
   const progressControls = useAnimation(); // Animation controls for the progress circle
 
-
   const features = [
     {
       title: "Expertise and Experience",
@@ -78,7 +77,7 @@ const Bespoke = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1.5 }}
           >
-           Bespoke <span className="text-[#5CDA92]"> Developement</span>
+            Bespoke <span className="text-[#5CDA92]"> Developement</span>
           </motion.h1>
           <motion.p
             className="text-lg sm:text-xl font-light mt-4"
@@ -105,14 +104,16 @@ const Bespoke = () => {
               transition={{ duration: 1 }}
             >
               <h2 className="text-4xl md:text-[40px] leading-tight text-white">
-                Innovative Design for{" "}
+                Custom Software Development For{" "}
                 <span className="text-4xl md:text-[40px] text-transparent bg-gradient-to-r from-blue-300 to-green-400 bg-clip-text">
-                  Modern Businesses.
+                  Business Innovation.
                 </span>
               </h2>
               <p className="text-gray-400 text-md leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+                Transform your business with tailor-made software solutions
+                designed for efficiency, automation, and scalability. At
+                ZyinexWeb, we develop custom software that aligns perfectly with
+                your business goals.
               </p>
             </motion.div>
 
@@ -199,25 +200,27 @@ const Bespoke = () => {
               WHY CHOOSE US
             </h3>
             <h2 className="text-3xl md:text-5xl font-bold leading-tight">
-              Crafting
+              Bespoke Software
               <span className="text-transparent bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text font-semibold">
                 {" "}
-                Digital Experiences{" "}
+                For Your Unique{" "}
               </span>
-              That Matter.
+              Business Needs.
             </h2>
             <p className="text-[#828282] text-md md:text-xl">
-              Dictumst porta ultricies tristique hac vestibulum himenaeos
-              ligula. Cubilia sapien torquent at finibus accumsan et
-              pellentesque class lacinia tristique.
-            </p>
-            
-            <p className="text-[#828282] text-md md:text-xl">
-              Dictumst porta ultricies tristique hac vestibulum himenaeos
-              ligula. Cubilia sapien torquent at finibus accumsan et
-              pellentesque class lacinia tristique.
+              Off-the-shelf software doesn’t always fit your needs. We create
+              bespoke applications that improve workflows, enhance user
+              experience, and drive business growth.
             </p>
 
+            <p className="text-[#828282] text-md md:text-xl">
+              Our expert software developers work closely with you to design
+              secure, scalable, and high-performance solutions, whether for ERP
+              systems, automation tools, or business intelligence platforms.
+              With cutting-edge technology, seamless integration, and dedicated
+              support, we ensure your software remains future-ready and
+              competitive.
+            </p>
           </motion.div>
 
           {/* Right Section - Larger Image */}

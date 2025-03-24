@@ -54,8 +54,8 @@ const Cards = () => {
         </svg>
       ),
       title: "Web Design",
-      description:
-        "Auctor dictumst inceptos metus est ad himenaeos habitasse litora natoque libero nunc",
+      description: "Designed to engage, captivate, and drive action.",
+      text: "Creativity and functionality come together to deliver an intuitive, engaging, and seamless user experience.",
     },
     {
       icon: (
@@ -75,8 +75,8 @@ const Cards = () => {
         </svg>
       ),
       title: "Web Development",
-      description:
-        "Auctor dictumst inceptos metus est ad himenaeos habitasse litora natoque libero nunc",
+      description: "Built for security, speed, and seamless performance.",
+      text: "Fast, scalable, and optimised solutions ensure long-term success with high performance and security.",
     },
     {
       icon: (
@@ -96,8 +96,8 @@ const Cards = () => {
         </svg>
       ),
       title: "Digital Marketing",
-      description:
-        "Auctor dictumst inceptos metus est ad himenaeos habitasse litora natoque libero nunc",
+      description: "Focused on visibility, conversions, and lasting impact.",
+      text: "Beyond rankings, strategic marketing drives real engagement, brand visibility, and meaningful customer connections.",
     },
     {
       icon: (
@@ -116,9 +116,9 @@ const Cards = () => {
           />
         </svg>
       ),
-      title: "Visual Identity",
-      description:
-        "Auctor dictumst inceptos metus est ad himenaeos habitasse litora natoque libero nunc",
+      title: "Brand Identity & Design",
+      description: "Crafted for consistency, recognition, and lasting appeal.",
+      text: "Distinctive, memorable visuals enhance brand identity, ensuring strong recognition and lasting impact.",
     },
     {
       icon: (
@@ -137,9 +137,9 @@ const Cards = () => {
           />
         </svg>
       ),
-      title: "Consultation",
-      description:
-        "Auctor dictumst inceptos metus est ad himenaeos habitasse litora natoque libero nunc",
+      title: "Consulting & Strategy",
+      description: "Strategies designed to adapt and outperform competitors.",
+      text: "Data-driven insights and strategies empower businesses to adapt, grow, and outperform competitors.",
     },
     {
       icon: (
@@ -163,9 +163,9 @@ const Cards = () => {
           />
         </svg>
       ),
-      title: "Web Maintenance",
-      description:
-        "Auctor dictumst inceptos metus est ad himenaeos habitasse litora natoque libero nunc",
+      title: "Website Maintenance",
+      description: "Ensuring fast, reliable, and fully optimised websites.",
+      text: "Regular updates and monitoring keep websites secure, optimised, and running at peak performance.",
     },
   ];
 
@@ -205,7 +205,7 @@ const Cards = () => {
             </div>
             <div className="border-t border-gray-500 my-2 sm:my-4"></div>
             <p className="text-sm sm:text-base">
-              Netus condimentum erat vestibulum sollicitudin sem tempor lacinia.
+              {service.text}
             </p>
             {/* <button
               type="submit"

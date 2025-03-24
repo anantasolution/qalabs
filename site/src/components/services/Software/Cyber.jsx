@@ -11,7 +11,6 @@ const Cyber = () => {
   const sectionRef = useRef(null);
   const progressControls = useAnimation(); // Animation controls for the progress circle
 
-
   const features = [
     {
       title: "Expertise and Experience",
@@ -105,14 +104,16 @@ const Cyber = () => {
               transition={{ duration: 1 }}
             >
               <h2 className="text-4xl md:text-[40px] leading-tight text-white">
-                Innovative Design for{" "}
+                Cybersecurity Solutions to Protect Your{" "}
                 <span className="text-4xl md:text-[40px] text-transparent bg-gradient-to-r from-blue-300 to-green-400 bg-clip-text">
-                  Modern Businesses.
+                  Digital Assets.
                 </span>
               </h2>
               <p className="text-gray-400 text-md leading-relaxed">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
+                Stay protected against cyber threats with advanced security
+                measures that safeguard your business. ZyinexWeb provides
+                firewall protection, risk assessments, and real-time threat
+                detection to prevent data breaches.
               </p>
             </motion.div>
 
@@ -199,22 +200,24 @@ const Cyber = () => {
               WHY CHOOSE US
             </h3>
             <h2 className="text-3xl md:text-5xl font-bold leading-tight">
-              Crafting
+              Robust Security
               <span className="text-transparent bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text font-semibold">
                 {" "}
-                Digital Experiences{" "}
+                For Unmatched{" "}
               </span>
-              That Matter.
+              Protection.
             </h2>
             <p className="text-[#828282] text-md md:text-xl">
-              Dictumst porta ultricies tristique hac vestibulum himenaeos
-              ligula. Cubilia sapien torquent at finibus accumsan et
-              pellentesque class lacinia tristique.
+              Our cybersecurity experts implement next-generation security
+              solutions, ensuring compliance with data protection laws and
+              shielding your business from cyber risks, malware, and phishing
+              attacks.
             </p>
             <p className="text-[#828282] text-md md:text-xl">
-              Dictumst porta ultricies tristique hac vestibulum himenaeos
-              ligula. Cubilia sapien torquent at finibus accumsan et
-              pellentesque class lacinia tristique.
+              We offer proactive monitoring, encryption services, and intrusion
+              detection systems to safeguard your IT infrastructure. Our
+              security solutions help businesses prevent cyberattacks, protect
+              customer data, and maintain regulatory compliance.
             </p>
           </motion.div>
 

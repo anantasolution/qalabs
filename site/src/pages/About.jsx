@@ -51,16 +51,16 @@ const HeroSection = () => {
       >
         <div className="bg-[#151515]/60 p-8 md:p-12 rounded-lg max-w-2xl backdrop-blur-sm">
           <h1 className="text-white text-4xl leading-tight mb-4">
-            Ready to Start? Let's Build
-            <div className="bg-gradient-to-r from-[#7CD7F9] to-[#5CDA92] bg-clip-text text-transparent">
-              Something Great
-            </div>
-            Together!
+            Ready to Transform Your Digital Presence?
+            <span className="bg-gradient-to-r from-[#7CD7F9] to-[#5CDA92] bg-clip-text text-transparent">
+              {" "}
+              Let’s Build
+            </span>{" "}
+            Something Remarkable Together!
           </h1>
           <p className="text-gray-400 text-base md:text-lg leading-relaxed mb-8 max-w-xl">
-            Maecenas tempor ligula phasellus per hac nisi. Facilisi curae nunc
-            hendrerit vestibulum lobortis commodo lacus sagittis feugiat. Est
-            sollicitudin convallis diam.
+            Partner with ZyinexWeb to create cutting-edge digital solutions that
+            drive results. Contact us today to bring your vision to life!
           </p>
         </div>
       </motion.div>
@@ -186,10 +186,10 @@ const About = () => {
   return (
     <div className="min-h-screen bg-[#151515] text-white">
       {/* --- About Us Section with Background Image starting from the very top and extra margin from nav --- */}
-       <div
-             className="relative min-h-[50vh] md:min-h-[60vh]  bg-cover bg-center"
-             style={{ backgroundImage: `url(${BI})` }}
-           >
+      <div
+        className="relative min-h-[50vh] md:min-h-[60vh]  bg-cover bg-center"
+        style={{ backgroundImage: `url(${BI})` }}
+      >
         <section className="text-center py-32">
           <motion.h1
             className="text-4xl sm:text-6xl font-bold text-[#7CD7F9]"
@@ -205,7 +205,7 @@ const About = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1.5 }}
           >
-            Your Partner in Innovative Web Design.
+            Your Digital Partner for Future-Ready Solutions
           </motion.p>
         </section>
       </div>
@@ -243,7 +243,7 @@ const About = () => {
             <img
               src={TEAM || "/placeholder.svg"}
               alt="Team working together"
-              className="rounded-lg grayscale hover:grayscale-0 transition-all duration-500"
+              className="rounded-lg grayscale hover:grayscale-0 transition-all duration-500 h-[85vh] bg-cover"
             />
           </motion.div>
 
@@ -258,15 +258,31 @@ const About = () => {
           >
             <h3 className="text-emerald-400 font-medium mb-4">WHO WE ARE</h3>
             <h2 className="text-4xl lg:text-5xl font-bold mb-4">
-              <span className="text-white">Innovative Solutions for Your </span>
+              <span className="text-white">Empowering Businesses with </span>
               <span className="bg-gradient-to-r from-[#00ffff] via-[#00ccff] to-[#00ff8a] bg-clip-text text-transparent">
-                Online Success.
+                Cutting-Edge Technology.
               </span>
             </h2>
-            <p className="text-gray-400 mb-8">
-              Sem iaculis facilisis convallis ex aliquam massa a venenatis
-              blandit pede rhoncus. Euismod consectetuer nostra etiam lectus
-              potenti accumsan pellentesque venenatis.
+            <p className="text-gray-400 mb-8 flex flex-col gap-3">
+              <p>
+                At ZyinexWeb, we specialise in crafting innovative, scalable,
+                high-performance digital solutions tailored to your business
+                needs. From web development to AI-driven applications, we
+                empower brands with technology that drives success.
+              </p>
+              <p>
+                We are a team of passionate tech experts dedicated to
+                transforming ideas into reality. With a deep understanding of
+                emerging technologies, we deliver solutions that optimise
+                efficiency, enhance user experiences, and drive growth.
+              </p>
+              <p>
+                With years of experience and a customer-first approach, we
+                ensure that every project we undertake meets the highest
+                standards of quality, security, and performance. From startups
+                to enterprises, we help businesses navigate the digital
+                landscape with confidence.
+              </p>
             </p>
 
             <div className="grid grid-cols-3 gap-8 mb-8">
@@ -289,7 +305,7 @@ const About = () => {
               animate={inView ? { opacity: 1 } : {}}
               transition={{ duration: 1, delay: 1.5 }}
             >
-              <Link to={'/contactus'}>Connect Now</Link>
+              <Link to={"/contactus"}>Connect Now</Link>
             </motion.button>
           </motion.div>
         </div>
