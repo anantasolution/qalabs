@@ -147,8 +147,7 @@ const ITInfra = () => {
                 <h4 className="text-gray-400 text-xl mb-4">Traffic Increase</h4>
                 <div className="h-px bg-gray-500 mb-4"></div>
                 <p className="text-gray-400 text-base leading-relaxed">
-                  By optimizing your website for search engines and enhancing
-                  user experience.
+                Turn visitors into loyal customers with engaging and optimised digital solutions.
                 </p>
               </motion.div>
 
@@ -177,8 +176,8 @@ const ITInfra = () => {
                 <h4 className="text-gray-400 text-xl mb-4">Revenue Increase</h4>
                 <div className="h-px bg-zinc-700 mb-4"></div>
                 <p className="text-gray-400 text-base leading-relaxed">
-                  Rise in revenue as more visitors convert into paying
-                  customers.
+                  Enhance your online presence with data-driven strategies and
+                  seamless user experience.
                 </p>
               </motion.div>
             </div>

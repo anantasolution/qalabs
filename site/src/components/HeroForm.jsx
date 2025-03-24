@@ -4,6 +4,7 @@ import { motion, useAnimation } from "framer-motion";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { LoaderCircle } from "lucide-react";
 
 const HeroForm = () => {
   const [formData, setFormData] = useState({
@@ -18,6 +19,7 @@ const HeroForm = () => {
   const [inView, setInView] = useState(false);
   const controls = useAnimation();
   const sectionRef = useRef(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -84,6 +86,7 @@ const HeroForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     const errors = {};
     Object.keys(formData).forEach((key) => {
@@ -106,6 +109,8 @@ const HeroForm = () => {
       toast.error(
         error.response?.data?.message || "Failed to submit consultation."
       );
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -238,8 +243,15 @@ const HeroForm = () => {
               <button
                 type="submit"
                 className="w-full bg-[#71ECB6] text-black rounded-full hover:bg-[#BAFE6D] py-2 px-4"
+                disabled={loading}
               >
-                Get an Appointment
+                {loading ? (
+                  <span className="flex gap-2 justify-center">
+                    <LoaderCircle /> loading....
+                  </span>
+                ) : (
+                  "Get an Appointment"
+                )}
               </button>
             </form>
           </div>
