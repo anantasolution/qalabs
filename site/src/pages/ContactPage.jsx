@@ -5,7 +5,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useEffect } from "react";
 import { LoaderCircle } from "lucide-react";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const ContactPage = () => {
@@ -53,7 +53,9 @@ const ContactPage = () => {
         else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))
           error = "Invalid email format.";
         break;
-
+      case "company":
+        if (!value.trim()) error = "Company is required.";
+        break;
       case "phone":
         if (!value.trim()) error = "Phone number is required.";
         else if (!/^\d{10}$/.test(value)) error = "Phone must be 10 digits.";
@@ -126,6 +128,7 @@ const ContactPage = () => {
   return (
     <>
       {/* Title */}
+      <ToastContainer />
       <div
         className="relative min-h-[50vh] md:min-h-[60vh]  bg-cover bg-center"
         style={{ backgroundImage: `url(${BI})` }}
