@@ -153,7 +153,7 @@ const Login = () => {
             {isLoading ? (
               <span className="flex gap-2 justify-center items-center">
                 {" "}
-                <LoaderCircle /> Loaing{" "}
+                <LoaderCircle className="animate-spin" /> Loaing{" "}
               </span>
             ) : (
               <span>Submit</span>

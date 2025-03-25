@@ -73,28 +73,39 @@ const HeroForm = () => {
       ...prevErrors,
       [id]: error,
     }));
+
+    return error; // Return the error to be used in handleSubmit
   };
 
   const handleChange = (e) => {
     const { id, value } = e.target;
+
+    validateField(id, value);
     setFormData((prevData) => ({
       ...prevData,
       [id]: value,
     }));
-    validateField(id, value);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
-    const errors = {};
+    let hasError = false;
+    const newErrors = {};
+
     Object.keys(formData).forEach((key) => {
-      validateField(key, formData[key]);
-      if (formErrors[key]) errors[key] = formErrors[key];
+      const error = validateField(key, formData[key]);
+      if (error) {
+        newErrors[key] = error;
+        hasError = true;
+      }
     });
 
-    if (Object.keys(errors).length > 0) return;
+    if (hasError) {
+      setLoading(false);
+      return;
+    }
 
     try {
       const response = await axios.post(
@@ -119,7 +130,6 @@ const HeroForm = () => {
       className="bg-[#151515] p-4 md:p-8 md:py-24 flex flex-col-reverse md:flex-row items-end justify-center gap-8"
       ref={sectionRef}
     >
-      <ToastContainer />
       <motion.div
         className="w-full md:grid md:grid-cols-2 md:w-1/2 place-content-center z-50"
         initial={{ y: "-110%", opacity: 0 }}
@@ -169,6 +179,9 @@ const HeroForm = () => {
                     className="w-full px-3 py-2 bg-[#E9E9E9] rounded-md focus:ring-2 focus:ring-emerald-400"
                     placeholder="Name"
                   />
+                  {formErrors.name && (
+                    <p className="text-red-500 text-sm">{formErrors.name}</p>
+                  )}
                 </div>
                 <div>
                   <label
@@ -185,6 +198,9 @@ const HeroForm = () => {
                     className="w-full px-3 py-2 bg-[#E9E9E9] rounded-md focus:ring-2 focus:ring-emerald-400"
                     placeholder="Company"
                   />
+                  {formErrors.company && (
+                    <p className="text-red-500 text-sm">{formErrors.company}</p>
+                  )}
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4">
@@ -203,6 +219,9 @@ const HeroForm = () => {
                     className="w-full px-3 py-2 bg-[#E9E9E9] rounded-md focus:ring-2 focus:ring-emerald-400"
                     placeholder="Email"
                   />
+                  {formErrors.email && (
+                    <p className="text-red-500 text-sm">{formErrors.email}</p>
+                  )}
                 </div>
                 <div>
                   <label
@@ -219,6 +238,9 @@ const HeroForm = () => {
                     className="w-full px-3 py-2 bg-[#E9E9E9] rounded-md focus:ring-2 focus:ring-emerald-400"
                     placeholder="Phone"
                   />
+                  {formErrors.phone && (
+                    <p className="text-red-500 text-sm">{formErrors.phone}</p>
+                  )}
                 </div>
               </div>
               <div>
@@ -247,7 +269,7 @@ const HeroForm = () => {
               >
                 {loading ? (
                   <span className="flex gap-2 justify-center">
-                    <LoaderCircle className="animate-spin"/> loading....
+                    <LoaderCircle className="animate-spin" /> loading....
                   </span>
                 ) : (
                   "Get an Appointment"
