@@ -15,6 +15,9 @@ import { ChevronDown } from "lucide-react";
 import { ChevronUp } from "lucide-react";
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
 
+//Importing image
+import LOGO from '../assets/navlogo.png'
+
 function SideNavbar({ toggle }) {
   const navigate = useNavigate();
   const location = useLocation();
@@ -59,12 +62,12 @@ function SideNavbar({ toggle }) {
     >
       <div className="h-20 px-4 w-full border-b flex justify-start items-center">
         {toggle ? (
-          <h1 className="font-bold font-mono text-3xl">Qalabz</h1>
+          <div className="flex p-1 bg-black justify-center items-center">
+            <img src={LOGO} className="w-32 h-16"></img>
+          </div>
         ) : (
-          <div className="w-full flex justify-center items-center">
-            <span className="font-mono bg-blue-500 text-white font-bold text-2xl w-10 h-10 flex justify-center items-center rounded-md">
-              Q
-            </span>
+          <div className="w-full p-1 bg-black flex justify-center items-center">
+            <img src={LOGO} className="w-20 h-10"></img>
           </div>
         )}
       </div>

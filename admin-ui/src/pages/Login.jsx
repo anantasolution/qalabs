@@ -6,6 +6,9 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { LoaderCircle } from "lucide-react";
 
+//Importing images
+import LOGO from '../assets/navlogo.png'
+
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -73,19 +76,13 @@ const Login = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50 flex items-center justify-center p-4">
       <div className="max-w-md w-full bg-white p-8 rounded-xl shadow-lg relative border border-gray-100">
-        <div className="flex justify-center mb-6">
-          <div className="bg-gradient-to-br from-blue-100 to-purple-100 p-4 rounded-full shadow-md">
-            <div className="bg-white p-3 rounded-full shadow-inner">
-              <Bug className="w-12 h-12 text-blue-500 animate-bounce" />
-            </div>
-          </div>
+        <div className="w-full bg-black py-4 px-2 flex justify-center mb-6">
+                 <img src={LOGO} className="w-24 h-20"></img>
         </div>
-        <h2 className="text-center text-3xl font-bold text-gray-800 mb-2">
-          QA Testing Portal
-        </h2>
-        <p className="text-center text-gray-500 font-medium">
-          Debug. Test. Deploy.
-        </p>
+       
+       <div className="flex justify-center items-center">
+         <h1 className="text-2xl font-semibold">Welcom Back!</h1>
+       </div>
 
         <form onSubmit={handleSubmit} className="mt-8 space-y-6">
           <div>
