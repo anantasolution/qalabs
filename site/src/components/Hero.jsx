@@ -5,9 +5,9 @@ import { motion, useAnimation } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const services = [
-  "  Web app Development",
+  "Web App Development",
   "CRM/ERP Development",
-  "mobile app development",
+  "Mobile App Development",
   "Software Testing",
   "Digital Marketing",
   "AI / ML Solutions",

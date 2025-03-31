@@ -70,9 +70,9 @@ const HeroSection = () => {
 
 const About = () => {
   const services = [
-    "Web app Development",
+    "Web App Development",
     "CRM/ERP Development",
-    "mobile app development",
+    "Mobile App development",
     "Software Testing",
     "AI / ML Solutions",
     "Hardware Services",
@@ -265,7 +265,7 @@ const About = () => {
             </h2>
             <p className="text-gray-400 mb-8 flex flex-col gap-3">
               <p>
-                At ZyinexWeb, we specialise in crafting innovative, scalable,
+                At ZyinexWeb, we specialize in crafting innovative, scalable,
                 high-performance digital solutions tailored to your business
                 needs. From web development to AI-driven applications, we
                 empower brands with technology that drives success.

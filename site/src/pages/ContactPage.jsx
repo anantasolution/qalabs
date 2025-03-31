@@ -291,9 +291,7 @@ const ContactPage = () => {
               Send us a message
             </h2>
             <p className="text-gray-400 mb-4">
-              Engage with ZyinexWeb for seamless communication and impactful
-              digital solutions. Together, we can drive innovation and achieve
-              success.
+            We’d love to hear from you! Whether you have a question, feedback, or need assistance, feel free to reach out.
             </p>
 
             <form className="space-y-4" onSubmit={handleSubmit}>
@@ -485,7 +483,7 @@ const ContactPage = () => {
             {/* Removed max-width limit */}
             <iframe
               className="w-full h-[500px] rounded-lg shadow-lg" // Keeping map height and width full
-              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d5285.3433070451665!2d72.52950593200644!3d23.01546536690591!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1739956271051!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.2072300167056!2d72.56668487554445!3d23.05286297915262!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e85469a0465fd%3A0xffdc315358729d32!2sArihant%20dp%206!5e0!3m2!1sen!2sin!4v1743400653813!5m2!1sen!2sin"
               style={{ border: 0, margin: 0 }} // Removed border and margin
               allowFullScreen=""
               loading="lazy"

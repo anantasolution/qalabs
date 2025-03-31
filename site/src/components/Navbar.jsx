@@ -52,23 +52,23 @@ function Navbar() {
       path: "/services/hardware",
       subCategories: [
         {
-          name: "Computer hardware sales",
+          name: "Computer Hardware Sales",
           path: "/services/hardware/computer-hardware-sales",
         },
         {
-          name: "Networking solutions",
+          name: "Networking Solutions",
           path: "/services/hardware/networking-solutions",
         },
         {
-          name: "Server installation",
+          name: "Server Installation",
           path: "/services/hardware/server-installation",
         },
         {
-          name: "IT infrastructure management",
+          name: "IT Infrastructure Management",
           path: "/services/hardware/it-infrastructure-management",
         },
         {
-          name: "Annual maintenance contracts",
+          name: "Annual Maintenance Contracts",
           path: "/services/hardware/annual-maintenance-contracts",
         },
       ],
@@ -78,37 +78,37 @@ function Navbar() {
       path: "/services/software",
       subCategories: [
         {
-          name: "Bespoke software development",
+          name: "Bespoke Software Development",
           path: "/services/software/bespoke-developement",
         },
         {
-          name: "Web application development",
+          name: "Web Application Development",
           path: "/services/software/web-application-development",
         },
         {
-          name: "Mobile application development",
+          name: "Mobile Application Development",
           path: "/services/software/mobile-application-development",
         },
         {
-          name: "Software development outsourcing",
+          name: "Software Development Outsourcing",
           path: "/services/software/software-development-outsourcing",
         },
         {
-          name: "Digital transformation",
+          name: "Digital Transformation",
           path: "/services/software/digital-transformation",
         },
-        { name: "Cloud services", path: "/services/software/cloud-services" },
+        { name: "Cloud Services", path: "/services/software/cloud-services" },
         { name: "Cybersecurity", path: "/services/software/cybersecurity" },
-        { name: "Data analytics", path: "/services/software/data-analytics" },
+        { name: "Data Analytics", path: "/services/software/data-analytics" },
         {
-          name: "Artificial intelligence solutions",
+          name: "Artificial Intelligence Solutions",
           path: "/services/software/artificial-intelligence-solutions",
         },
         {
-          name: "Software licensing",
+          name: "Software Licensing",
           path: "/services/software/software-licensing",
         },
-        { name: "IT consulting",
+        { name: "IT Consulting",
           path: "/services/software/it-consulting" 
         },
         {
@@ -126,8 +126,8 @@ function Navbar() {
   const menuItems = [
     { name: "Services", path: "/services", hasDropdown: true },
     { name: "Project", path: "/project" },
-    { name: "About us", path: "/aboutus" },
-    { name: "Contact us", path: "/contactus" },
+    { name: "About Us", path: "/aboutus" },
+    { name: "Contact Us", path: "/contactus" },
   ];
 
   // Handle dropdown for mobile view

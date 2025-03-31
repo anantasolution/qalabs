@@ -34,7 +34,8 @@ import Server from "./components/services/hardware/Server.jsx";
 import { ToastContainer, toast } from "react-toastify";
 import ManualTesting from "./components/services/Software/ManualTesting.jsx";
 import AutomationTesting from "./components/services/Software/AutomationTesting.jsx";
-
+import TAC from "./pages/TAC.jsx";
+import Privacy from "./pages/Privacy.jsx";
 
 function App() {
   return (
@@ -97,6 +98,14 @@ function App() {
             path="/services/software/artificial-intelligence-solutions"
             element={<ArtificialIntelligence />}
           />
+          <Route 
+          path="terms-conditions"
+          element={<TAC></TAC>}
+          ></Route>
+          <Route 
+          path="privacy-policy"
+          element={<Privacy></Privacy>}
+          ></Route>
           <Route
             path="/services/software/software-licensing"
             element={<SoftwareLicense />}

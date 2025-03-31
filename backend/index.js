@@ -66,8 +66,8 @@ const corsOptions = {
     const allowedOrigins = [
       "http://localhost:3000",
       "http://localhost:3001",
-      "https://zyinex.stylic.ai",
-      "https://zyinexadmin.stylic.ai"
+      "https://admin.zyinexweb.com",
+      "https://zyinexweb.com"
     ];
     // Allow requests with no origin (like mobile apps or CURL)
     if (!origin || allowedOrigins.includes(origin)) {
