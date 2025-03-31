@@ -67,14 +67,18 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-[#BEF264]">
-                  Term & Conditions
-                </a>
+                <Link to={'terms-conditions'}>
+                <span className="text-gray-300 hover:text-[#BEF264]">
+                  Terms & Conditions
+                </span>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-gray-300 hover:text-[#BEF264]">
+                <Link to={'privacy-policy'}>
+                <sapn className="text-gray-300 cursor-pointer hover:text-[#BEF264]">
                   Privacy Policy
-                </a>
+                </sapn>
+                </Link>
               </li>
             </ul>
           </div>
@@ -115,9 +119,9 @@ const Footer = () => {
       </div>
       {/* Copyright */}
       <div className="mt-12 pt-6 border-t border-gray-700 text-center text-gray-400">
-        © 2025 Zyinex Powered by{" "}
+        © 2025 Powered by{" "}
         <a href="#" className="text-[#BEF264]">
-          Ananta Solution
+          Zyinex Web PVT LTD
         </a>
       </div>
       {/* Scroll to top button */}

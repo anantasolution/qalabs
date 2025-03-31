@@ -77,7 +77,7 @@ const Maintanance = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 1.5 }}
           >
-           Annual Maintanance
+           Annual Maintenance
           </motion.h1>
           <motion.p
             className="text-lg sm:text-xl font-light mt-4"
