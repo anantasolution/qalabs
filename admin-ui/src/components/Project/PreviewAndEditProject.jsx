@@ -118,11 +118,10 @@ const PreviewAndEditProject = ({ placeholder }) => {
                 headers: { "Content-Type": 'multipart/formdata' }
             });
 
-            console.log(response);
             // Setting updated data for preview
             setProject({
                 title: response.data?.updatedProject.title,
-                description:parse(response.data?.updatedProject.description),
+                description: parse(response.data?.updatedProject.description),
                 photo: response.data?.updatedProject?.photo?.filename,
             });
 
@@ -139,9 +138,9 @@ const PreviewAndEditProject = ({ placeholder }) => {
             setIsSubmitting(false);
         }
     };
-      console.log(location.state); 
+    console.log(location.state);
 
-      console.log(project)
+    console.log(project)
 
     // for getting project data
     const fetchData = async () => {
@@ -212,10 +211,7 @@ const PreviewAndEditProject = ({ placeholder }) => {
                     <div className="bg-white rounded-lg shadow-lg p-6 w-full">
                         <div className='flex w-full justify-between items-center mb-8'>
                             <h1 className="text-2xl sm:text-3xl font-bold text-center">{isEditing ? "Edit Project" : "Project"}</h1>
-                            <div className='flex gap-5'>
-                                <button className={`px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors border ${isEditing ? "bg-red-500 hover:bg-red-600" : ""}`} onClick={() => setIsEditing(!isEditing)}>{isEditing ? "Disable Edit" : "Edit"} </button>
-                                <button onClick={() => setDeletePopUp(true)} className='px-6 py-2 text-white rounded transition-colors border bg-red-500 hover:bg-red-700'>Delete</button>
-                            </div>
+                            <button className={`px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors border ${isEditing ? "bg-red-500 hover:bg-red-600" : ""}`} onClick={() => setIsEditing(!isEditing)}>{isEditing ? "Disable Edit" : "Edit"} </button>
                         </div>
 
                         <form onSubmit={handleSubmit} className="space-y-9">
@@ -340,7 +336,10 @@ const PreviewAndEditProject = ({ placeholder }) => {
                         <div className="bg-white rounded-lg shadow-lg p-6 w-full">
                             <div className='flex w-full justify-between items-center mb-8'>
                                 <h1 className="text-2xl sm:text-3xl font-bold text-center">{isEditing ? "Edit Project" : "Project"}</h1>
-                                <button className={`px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors border ${isEditing ? "bg-red-500 hover:bg-red-600" : ""}`} onClick={() => setIsEditing(!isEditing)}>{isEditing ? "Disable Edit" : "Edit"} </button>
+                                <div className='flex gap-5'>
+                                    <button className={`px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors border ${isEditing ? "bg-red-500 hover:bg-red-600" : ""}`} onClick={() => setIsEditing(!isEditing)}>{isEditing ? "Disable Edit" : "Edit"} </button>
+                                    <button onClick={() => setDeletePopUp(true)} className='px-6 py-2 text-white rounded transition-colors border bg-red-500 hover:bg-red-700'>Delete</button>
+                                </div>
                             </div>
 
                             <form className="space-y-9">
