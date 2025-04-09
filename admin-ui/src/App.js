@@ -25,6 +25,7 @@ import AddProject from "./pages/AddProject";
 import Feedback from "./pages/Feedback";
 import AddFeedback from "./pages/AddFeedback";
 import PreviewAndEditFeedback from "./components/Feedback/PreviewAndEditFeedback";
+import Admin from "./pages/Admin";
 
 const ProtectedRoute = () => {
   const { user } = useSelector((state) => state.auth);
@@ -125,6 +126,10 @@ function App() {
             <Route
             path="feedback/preview"
             element={<PreviewAndEditFeedback></PreviewAndEditFeedback>}
+          ></Route>
+           <Route
+            path="admin"
+            element={<Admin></Admin>}
           ></Route>
         </Route>
       </Routes>

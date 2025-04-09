@@ -14,6 +14,7 @@ import { MessageSquareCode } from "lucide-react";
 import { ChevronDown } from "lucide-react";
 import { ChevronUp } from "lucide-react";
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
+import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 
 //Importing image
 import LOGO from '../assets/navlogo.png'
@@ -285,6 +286,39 @@ function SideNavbar({ toggle }) {
                 <MessageSquareCode
                   style={{ fontSize: "1.8rem", fontWeight: "200" }}
                 ></MessageSquareCode>
+              </span>
+            </div>
+          )}
+
+{toggle || innerToggle ? (
+            <div
+            onClick={() => {
+              console.log("Navigating to admin");
+              handleNavigate("admin");
+            }}
+            
+              className={`flex ${isActive("admin") && "bg-gray-100"
+                } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
+            >
+              <span>
+                <PersonOutlineOutlinedIcon style={{ fontSize: "1.4rem" }}></PersonOutlineOutlinedIcon>
+              </span>
+              <span className="text-sm font-semibold">Admin</span>
+            </div>
+          ) : (
+            <div
+            onClick={() => {
+              console.log("Navigating to admin");
+              handleNavigate("admin");
+            }}
+            
+              className={`flex ${isActive("admin") && "bg-gray-100"
+                } hover:bg-gray-100 cursor-pointer transition-all duration-300  p-1.5 rounded-md  justify-center items-center`}
+            >
+              <span>
+                <PersonOutlineOutlinedIcon
+                  style={{ fontSize: "1.8rem", fontWeight: "200" }}
+                ></PersonOutlineOutlinedIcon>
               </span>
             </div>
           )}
