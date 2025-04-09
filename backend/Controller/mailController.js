@@ -1,4 +1,5 @@
 import Admin from "../models/ADMIN.js";
+import Loginmapping from "../models/LOGINMAPPING.js";
 import nodemailer from "nodemailer";
 import jwt from "jsonwebtoken";
 // import Admin from "./models/Admin";
@@ -105,6 +106,7 @@ export const verifyToken = async (req, res) => {
 };
 
 // reset the password thing...
+
 export const resetPassword = async (req, res) => {
   const { id } = req.params;
   const { password } = req.body;
@@ -121,6 +123,13 @@ export const resetPassword = async (req, res) => {
     // Update the user's password
     user.password = hashedPassword;
     await user.save();
+
+    // Also update the password in loginmapping
+    const loginRecord = await Loginmapping.findOne({ mongoid: id });
+    if (loginRecord) {
+      loginRecord.password = hashedPassword;
+      await loginRecord.save();
+    }
 
     return res.status(200).json({ message: "Password reset successfully" });
   } catch (error) {
