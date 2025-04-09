@@ -106,7 +106,8 @@ export const verifyToken = async (req, res) => {
 
 // reset the password thing...
 export const resetPassword = async (req, res) => {
-  const { id, password } = req.body;
+  const { id } = req.params;
+  const { password } = req.body;
 
   try {
     const user = await Admin.findById(id);
@@ -115,7 +116,7 @@ export const resetPassword = async (req, res) => {
     }
 
     // Hash the new password
-    const hashedPassword = await bcryptjs.hash(password, 10);
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     // Update the user's password
     user.password = hashedPassword;
