@@ -6,7 +6,7 @@ export default function ResetPasswordPopUp({ setIsOpen, selectedAdmin, handleRes
   const [errors, setErrors] = useState({});
 
   const [formData, setFormData] = useState({
-    new_password: "",
+    newpassword: "",
   });
 
   const validateData = (name, value) => {
@@ -41,7 +41,7 @@ export default function ResetPasswordPopUp({ setIsOpen, selectedAdmin, handleRes
     if (!isValid) return;
 
     try {
-      await handleResetPasswordAdmin(selectedAdmin._id,  formData.new_password);
+      await handleResetPasswordAdmin(selectedAdmin._id,  formData.newpassword);
     } catch (error) {
       console.error("Reset password failed:", error);
     }
@@ -63,12 +63,12 @@ export default function ResetPasswordPopUp({ setIsOpen, selectedAdmin, handleRes
               <input
                 type={newPasswordVisible ? "text" : "password"}
                 className="w-full p-2 border border-gray-300 rounded pr-10"
-                name="new_password"
-                value={formData.new_password}
+                name="newpassword"
+                value={formData.newpassword}
                 onChange={handleChange}
               />
-              {errors.new_password && (
-                <span className="text-xs text-red-500">{errors.new_password}</span>
+              {errors.newpassword && (
+                <span className="text-xs text-red-500">{errors.newpassword}</span>
               )}
               <button
                 type="button"
