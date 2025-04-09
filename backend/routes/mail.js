@@ -12,6 +12,6 @@ router.post("/send-mail", sendVerificationMail);
 router.get("/verify-token/:token", verifyToken);
 
 // Route to reset password
-router.post("/reset-password", resetPassword);
+router.post("/reset-password/:id", resetPassword);
 
 export default router;
