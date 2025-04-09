@@ -1,8 +1,10 @@
-import Admin from "./ADMIN.js";
+import Admin from "../models/ADMIN.js";
+import Loginmapping from "../models/LOGINMAPPING.js";
 import nodemailer from "nodemailer";
 import jwt from "jsonwebtoken";
 // import Admin from "./models/Admin";
 import dotenv from "dotenv";
+import bcryptjs from "bcryptjs";
 dotenv.config();
 
 // // Send email with the token link
@@ -59,7 +61,7 @@ export const sendVerificationMail = async (req, res) => {
             <h2>Password Reset Request</h2>
             <p>Hello,</p>
             <p>Click the button below to reset your password:</p>
-            <a class="button" href="http://localhost:8080/verify-token/${token}">Reset Password</a>
+            <a class="button" href="${process.env.FRONT_URL}/verify-token/${token}">Reset Password</a>
             <p>If you didn't request this, ignore this email.</p>
           </div>
         </body>
@@ -100,5 +102,38 @@ export const verifyToken = async (req, res) => {
   } catch (error) {
     console.error(error);
     return res.status(400).json({ message: "Invalid or expired token" });
+  }
+};
+
+// reset the password thing...
+
+export const resetPassword = async (req, res) => {
+  const { id } = req.params;
+  const { password } = req.body;
+
+  try {
+    const user = await Admin.findById(id);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Hash the new password
+    const hashedPassword = await bcryptjs.hash(password, 10);
+
+    // Update the user's password
+    user.password = hashedPassword;
+    await user.save();
+
+    // Also update the password in loginmapping
+    const loginRecord = await Loginmapping.findOne({ mongoid: id });
+    if (loginRecord) {
+      loginRecord.password = hashedPassword;
+      await loginRecord.save();
+    }
+
+    return res.status(200).json({ message: "Password reset successfully" });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Something went wrong" });
   }
 };
