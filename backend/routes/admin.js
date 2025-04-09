@@ -5,6 +5,7 @@ import {
   updateAdmin,
   disableAdmin,
   enableAdmin,
+  changePassword,
 } from "../Controller/adminController.js";
 
 const router = express.Router();
@@ -18,5 +19,8 @@ router.put("/updateAdmin/:id", updateAdmin);
 router.put("/enableAdmins", enableAdmin);
 //disableAdmin Admin
 router.put("/disableAdmins", disableAdmin);
+
+// change anyones password by anyone
+router.put("/changePassword/:adminId", changePassword);
 
 export default router;
