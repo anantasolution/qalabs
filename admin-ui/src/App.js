@@ -25,6 +25,8 @@ import AddProject from "./pages/AddProject";
 import Feedback from "./pages/Feedback";
 import AddFeedback from "./pages/AddFeedback";
 import PreviewAndEditFeedback from "./components/Feedback/PreviewAndEditFeedback";
+import VerifyEmail from "./pages/VerifyEmail";
+import ConfirmPassword from "./pages/ConfirmPassword";
 
 const ProtectedRoute = () => {
   const { user } = useSelector((state) => state.auth);
@@ -73,6 +75,8 @@ function App() {
             )
           }
         ></Route>
+        <Route path="/forgot-password" element={<VerifyEmail />} />
+        <Route path="/verify-token/:token" element={!user ? <ConfirmPassword /> : <Navigate to={"/admin/dashboard"}/>} />
         <Route
           path="/forget-password"
           element={

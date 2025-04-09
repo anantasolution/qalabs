@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { EyeClosed, Bug, Eye } from "lucide-react";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { LoaderCircle } from "lucide-react";
 
@@ -157,6 +157,7 @@ const Login = () => {
             )}
           </button>
         </form>
+        <Link to={"/forgot-password"} className="cursor-pointer w-full flex justify-end items-center mt-2 text-blue-500 hover:text-blue-600 underline">Forgot password ?</Link>
       </div>
     </div>
   );
