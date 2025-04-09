@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { AlertCircle, X, CheckCircle, Trash2 } from "lucide-react";
 
-const ConfirmPopUp = ({ setIsOpen, onConfirm }) => { 
+const AdminDeletePopUp = ({ setIsOpen, onConfirm }) => { 
     const [modalState, setModalState] = useState("confirm"); // 'confirm', 'cancelled', 'deleted'
 
     const handleClose = () => {
@@ -66,7 +66,7 @@ const ConfirmPopUp = ({ setIsOpen, onConfirm }) => {
                                 </motion.div>
                                 <div className="text-center space-y-2">
                                     <h2 className="text-2xl font-semibold text-gray-800">Cancelled</h2>
-                                    <p className="text-gray-600">Your contact is safe!</p>
+                                    <p className="text-gray-600">Your Admin is safe!</p>
                                 </div>
                             </div>
                         )}
@@ -77,4 +77,4 @@ const ConfirmPopUp = ({ setIsOpen, onConfirm }) => {
     );
 };
 
-export default ConfirmPopUp;
+export default AdminDeletePopUp;

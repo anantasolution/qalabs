@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { ChevronRight, Filter } from "lucide-react";
 import SearchIcon from "@mui/icons-material/Search";
 import axios from "axios";
+import AddAdmin from "../pages/AddAdmin"; // Adjust path as needed
 
 const Breadcrumbs = ({ setSearchQuery, setSelectedCategory, setIsOpen }) => {
   const location = useLocation();
@@ -12,10 +13,14 @@ const Breadcrumbs = ({ setSearchQuery, setSelectedCategory, setIsOpen }) => {
   const isCategoryPage = location.pathname.includes("/category");
   const isProjectPage = location.pathname.includes("/allprojects"); // Add this line
   const isFeedbackPage = location.pathname.includes("feedback"); // Add this line
+  const isAdminPage = location.pathname.includes("/admin/admin");
+
 
 
   // State for categories
   const [categories, setCategories] = useState([]);
+  const [isAddAdminOpen, setIsAddAdminOpen] = useState(false);
+
 
   // Fetch categories from API on mount
   useEffect(() => {
@@ -128,8 +133,8 @@ const Breadcrumbs = ({ setSearchQuery, setSelectedCategory, setIsOpen }) => {
           </Link>
         )}
 
-          {/* Add Feedback Button - Only on /allfeedback */}
-          {isFeedbackPage && (
+        {/* Add Feedback Button - Only on /allfeedback */}
+        {isFeedbackPage && (
           <Link
             to="/admin/feedback/add_feedback"
             className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm sm:text-base w-full sm:w-auto text-center"
@@ -137,6 +142,25 @@ const Breadcrumbs = ({ setSearchQuery, setSelectedCategory, setIsOpen }) => {
             Add Feedback
           </Link>
         )}
+
+        {isAdminPage && (
+          <button
+            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm sm:text-base w-full sm:w-auto text-center"
+            onClick={() => setIsAddAdminOpen(true)}
+          >
+            Add Admin
+          </button>
+        )}
+
+        <AddAdmin
+          isOpen={isAddAdminOpen}
+          onClose={() => setIsAddAdminOpen(false)}
+          setAdmins={() => { }}
+          userId={null}
+        />
+
+
+
       </div>
     </div>
   );
