@@ -60,7 +60,7 @@ export const sendVerificationMail = async (req, res) => {
             <h2>Password Reset Request</h2>
             <p>Hello,</p>
             <p>Click the button below to reset your password:</p>
-            <a class="button" href="http://localhost:8080/verify-token/${token}">Reset Password</a>
+            <a class="button" href="${process.env.FRONT_URL}/verify-token/${token}">Reset Password</a>
             <p>If you didn't request this, ignore this email.</p>
           </div>
         </body>
