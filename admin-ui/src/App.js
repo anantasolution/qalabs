@@ -133,7 +133,7 @@ function App() {
             element={<PreviewAndEditFeedback></PreviewAndEditFeedback>}
           ></Route>
            <Route
-            path="admin"
+            path="user"
             element={<Admin></Admin>}
           ></Route>
         </Route>
