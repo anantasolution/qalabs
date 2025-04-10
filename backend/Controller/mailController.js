@@ -2,28 +2,22 @@ import Admin from "../models/ADMIN.js";
 import Loginmapping from "../models/LOGINMAPPING.js";
 import nodemailer from "nodemailer";
 import jwt from "jsonwebtoken";
-// import Admin from "./models/Admin";
 import dotenv from "dotenv";
 import bcryptjs from "bcryptjs";
 dotenv.config();
 
-// // Send email with the token link
-// const transporter = nodemailer.createTransport({
-//   host: "smtp.gmail.com",
-//   port: 587,
-//   secure: false, // true for port 465, false for other ports
-//   auth: {
-//     user: "prentice.ryerson@filesaved.org",
-//     pass: "zurbk6Q&",
-//   },
-// });
+// Send email with the token link
 
-// Create a transporter using Gmail with minimal authentication
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "email-smtp.us-east-1.amazonaws.com", // Replace with your SES SMTP endpoint
+  port: 587, // For secure connection
+  secure: false, // Use TLS
   auth: {
-    user: "darshilp200300@gmail.com",
-    pass: "urvuqvcmjcuicevq", // Use an App Password if 2FA is enabled
+    user: process.env.USER_USERNAME, // SES SMTP username
+    pass: process.env.USER_APP_PASS, // SES SMTP password
+  },
+  tls: {
+    rejectUnauthorized: true,
   },
 });
 
@@ -44,7 +38,7 @@ export const sendVerificationMail = async (req, res) => {
     });
 
     const mailOptions = {
-      from: "darshilp2000300@gmail.com",
+      from: process.env.USER_MAIL,
       to: email, // Send email to this fixed recipient
       subject: "Password Reset Request",
       html: `
@@ -81,6 +75,7 @@ export const sendVerificationMail = async (req, res) => {
       .json({ message: "Something went wrong, please try again later." });
   }
 };
+
 // Function to verify the token and reset password
 export const verifyToken = async (req, res) => {
   const { token } = req.params;
