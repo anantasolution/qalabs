@@ -4,6 +4,7 @@ import {
   deleteConsultation,
   ConsulationCount,
   getAllConsultations,
+  sendMail,
 } from "../Controller/consulationController.js";
 
 const router = express.Router();
@@ -18,6 +19,10 @@ router.get("/getcounts",ConsulationCount)
 
 
 router.delete("/delete/:id",deleteConsultation);
+
+
+// To mail Each and Every Admin
+router.post('/send-mail', sendMail);
 
 
 export default router;

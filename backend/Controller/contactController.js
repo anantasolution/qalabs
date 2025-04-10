@@ -1,4 +1,7 @@
+import dotenv from 'dotenv';
+import nodemailer from 'nodemailer';
 import CONTACTS from "../models/CONTACTS.js";
+import Admin from "../models/ADMIN.js";
 
 export const allContacts = async (req, res, next) => {
   try {
@@ -89,3 +92,60 @@ export const getLatestcontact = async (req, res) => {
     });
   }
 };
+
+
+// to send mail to all admins when form is submitted...
+export const sendMail = async (req, res) => {
+  try {
+    const formData = req.body;
+
+    // Get all admin emails
+    const admins = await Admin.find({});
+    if (admins.length === 0) {
+      return res.status(404).json({ message: "No admins found" });
+    }
+
+    const toEmail = admins[0].email;
+    const ccEmails = admins.slice(1).map((admin) => admin.email);
+
+    const emailBody = `
+      <h2>New Form Submission</h2>
+      <p><strong>Name:</strong> ${formData.name}</p>
+      <p><strong>Company:</strong> ${formData.company}</p>
+      <p><strong>Phone:</strong> ${formData.phone}</p>
+      <p><strong>Email:</strong> ${formData.email}</p>
+      <p><strong>Subject:</strong> ${formData.subject}</p>
+      <p><strong>Message:</strong> ${formData.message}</p>
+    `;
+
+    const transporter = nodemailer.createTransport({
+      host: "email-smtp.us-east-1.amazonaws.com", // Replace with your SES SMTP endpoint
+      port: 587, // For secure connection
+      secure: false, // Use TLS
+      auth: {
+        user: process.env.USER_USERNAME, // SES SMTP username
+        pass: process.env.USER_APP_PASS, // SES SMTP password
+      },
+      tls: {
+        rejectUnauthorized: true,
+      },
+    });
+    
+
+    const mailOptions = {
+      from: process.env.USER_MAIL,
+      to: toEmail,
+      cc: ccEmails,
+      subject: "New Form Submission",
+      html: emailBody,
+    };
+
+    await transporter.sendMail(mailOptions);
+    res.status(200).json({ message: "Email sent successfully" });
+
+  } catch (error) {
+    console.error("Error sending email:", error);
+    res.status(500).json({ message: "Failed to send email", error: error.message });
+  }
+};
+

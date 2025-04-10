@@ -1,4 +1,6 @@
+import nodemailer from "nodemailer";
 import CONSULATIONS from "../models/CONSULATIONS.js";
+import Admin from "../models/ADMIN.js";
 
 export const allConsulations = async (req, res, next) => {
   try {
@@ -74,3 +76,56 @@ export const ConsulationCount = async (req, res, next) => {
   }
 };
 
+// to send mail to all admins when consulatation form is submitted
+export const sendMail = async (req, res) => {
+  try {
+    const formData = req.body;
+
+    // Get all admin emails
+    const admins = await Admin.find({});
+    if (admins.length === 0) {
+      return res.status(404).json({ message: "No admins found" });
+    }
+
+    const toEmail = admins[0].email;
+    const ccEmails = admins.slice(1).map((admin) => admin.email);
+
+    const emailBody = `
+      <h2>Consultation Form Submission</h2>
+      <p><strong>Name:</strong> ${formData.name}</p>
+      <p><strong>Company:</strong> ${formData.company}</p>
+      <p><strong>Phone:</strong> ${formData.phone}</p>
+      <p><strong>Email:</strong> ${formData.email}</p>
+      <p><strong>Message:</strong> ${formData.message}</p>
+    `;
+
+    const transporter = nodemailer.createTransport({
+      host: "email-smtp.us-east-1.amazonaws.com",
+      port: 587,
+      secure: false,
+      auth: {
+        user: process.env.USER_USERNAME,
+        pass: process.env.USER_APP_PASS,
+      },
+      tls: {
+        rejectUnauthorized: true,
+      },
+    });
+    
+
+    const mailOptions = {
+      from: process.env.USER_MAIL,
+      to: toEmail,
+      cc: ccEmails,
+      subject: "New Consultation Form Submission",
+      html: emailBody,
+    };
+
+    await transporter.sendMail(mailOptions);
+    res.status(200).json({ message: "Email sent successfully" });
+
+  } catch (error) {
+    console.error("Error sending email:", error);
+    res.status(500).json({ message: "Failed to send email", error: error.message });
+  }
+};

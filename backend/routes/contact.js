@@ -1,6 +1,6 @@
 import express from "express";
 
-import { allContacts, deleteContact , ContactCount, getAllContacts,getLatestcontact } from "../Controller/contactController.js";
+import { allContacts, deleteContact , ContactCount, getAllContacts,getLatestcontact, sendMail } from "../Controller/contactController.js";
  
 const router = express.Router();
 
@@ -12,6 +12,9 @@ router.delete("/delete/:id",deleteContact);
 router.get("/getcounts",ContactCount);
 
 router.get("/latestcontact",getLatestcontact)
+
+// To mail Each and Every Admin
+router.post('/send-mail', sendMail);
 
 
 export default router;
