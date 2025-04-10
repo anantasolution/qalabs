@@ -1,15 +1,12 @@
 import React, { useState,useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { EyeIcon, EyeOffIcon } from "lucide-react";
 
 const AdminEditPopup = ({ setIsOpen, selectedAdmin, handleEditAdmin }) => {
-    const [showPassword, setShowPassword] = useState(false);
 
     const [formData, setFormData] = useState({
         username: selectedAdmin?.username || "",
         email: selectedAdmin?.email || "",     
         mobileno: selectedAdmin?.mobileno || "",
-        password: selectedAdmin?.password || "",
     });
 
     useEffect(() => {
@@ -18,7 +15,6 @@ const AdminEditPopup = ({ setIsOpen, selectedAdmin, handleEditAdmin }) => {
                 username: selectedAdmin.username || "",
                 email: selectedAdmin.email || "",
                 mobileno: selectedAdmin.mobileno || "",
-                password: selectedAdmin.password || "",
             });
         }
     }, [selectedAdmin]);
@@ -70,25 +66,7 @@ const AdminEditPopup = ({ setIsOpen, selectedAdmin, handleEditAdmin }) => {
                             
                         </div>
 
-                        <div className="relative">
-                            <label className="block text-sm font-medium text-black">Password</label>
-                            <div className="relative">
-                                <input
-                                    type={showPassword ? "text" : "password"}
-                                    name="password"
-                                    value={formData.password}
-                                    className="border p-2 rounded w-full pr-10" // Add padding to prevent icon overlap
-                                    onChange={handleChange}
-                                />
-                                <button
-                                    type="button"
-                                    className="absolute inset-y-0 right-3 flex items-center text-black"
-                                    onClick={() => setShowPassword((prev) => !prev)}
-                                >
-                                    {showPassword ? <EyeIcon size={20} /> : <EyeOffIcon size={20} />}
-                                </button>
-                            </div>
-                        </div>
+                       
 
                         <div className="flex justify-center gap-4 mt-4">
                             <button type="button" className="px-6 py-2 rounded bg-gray-500 text-white cursor-pointer" onClick={() => setIsOpen(false)}>Cancel</button>

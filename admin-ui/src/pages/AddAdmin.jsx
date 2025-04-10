@@ -4,7 +4,7 @@ import { Eye, EyeOff } from "lucide-react";
 import { toast } from "react-toastify";
 import axios from "axios";
 
-export default function AddAdmin({ isOpen, onClose, setAdmins }) {
+export default function AddAdmin({ isOpen, onClose, setAdmins, setFilterData, searchQuery, fetchAdmins }) {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
@@ -59,7 +59,10 @@ export default function AddAdmin({ isOpen, onClose, setAdmins }) {
       );
 
       if (response?.status === 201) {
-        setAdmins((prev) => [...prev, response.data.admin]);
+        fetchAdmins(); // Fetch updated admins list
+        // Update admins and filterData states
+
+
         setFormData({ username: "", email: "", mobileno: "", password: "" });
         setErrors({});
         onClose();
