@@ -75,91 +75,97 @@ export default function AddAdmin({ isOpen, onClose, setAdmins }) {
 
   return (
     isOpen && (
-      <div className="fixed inset-0 flex items-center justify-center bg-black/80 z-50">
-        <div className="bg-white p-6 rounded-lg w-full max-w-lg shadow-lg">
-          <h2 className="text-2xl font-semibold mb-4 text-center">Register Admin</h2>
-          <form className="space-y-4" onSubmit={handleSubmit}>
-            <div className="flex flex-col gap-1">
-              <label className="block text-sm font-medium">
-                Admin Name <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                className="w-full p-2 border border-bb rounded outline-none"
-                name="username"
-                value={formData.username}
-                onChange={handleChange}
-              />
-              {errors.username && <span className="text-xs text-red-500">{errors.username}</span>}
-            </div>
+      <div className="fixed inset-0 z-50">
+        {/* Backdrop */}
+        <div className="fixed inset-0 bg-black bg-opacity-80 z-40" />
 
-            <div className="flex flex-col gap-1">
-              <label className="block text-sm font-medium">
-                Email <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="email"
-                className="w-full p-2 border border-bb rounded outline-none"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-              />
-              {errors.email && <span className="text-xs text-red-500">{errors.email}</span>}
-            </div>
-
-            <div className="flex flex-col gap-1">
-              <label className="block text-sm font-medium">
-                Mobile No <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                className="w-full p-2 border border-bb rounded outline-none"
-                name="mobileno"
-                value={formData.mobileno}
-                onChange={handleChange}
-              />
-              {errors.mobileno && <span className="text-xs text-red-500">{errors.mobileno}</span>}
-            </div>
-
-            <div className="flex flex-col gap-1">
-              <label className="block text-sm font-medium">
-                Password <span className="text-red-500">*</span>
-              </label>
-              <div className="relative">
+        {/* Modal Container */}
+        <div className="fixed inset-0 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-lg w-full max-w-lg shadow-lg z-50">
+            <h2 className="text-2xl font-semibold mb-4 text-center">Register Admin</h2>
+            <form className="space-y-4" onSubmit={handleSubmit}>
+              <div className="flex flex-col gap-1">
+                <label className="block text-sm font-medium">
+                  Admin Name <span className="text-red-500">*</span>
+                </label>
                 <input
-                  type={passwordVisible ? "text" : "password"}
-                  className="w-full p-2 border border-bb rounded pr-10"
-                  name="password"
-                  value={formData.password}
+                  type="text"
+                  className="w-full p-2 border border-gray-300 rounded outline-none"
+                  name="username"
+                  value={formData.username}
                   onChange={handleChange}
                 />
+                {errors.username && <span className="text-xs text-red-500">{errors.username}</span>}
+              </div>
+
+              <div className="flex flex-col gap-1">
+                <label className="block text-sm font-medium">
+                  Email <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="email"
+                  className="w-full p-2 border border-gray-300 rounded outline-none"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                />
+                {errors.email && <span className="text-xs text-red-500">{errors.email}</span>}
+              </div>
+
+              <div className="flex flex-col gap-1">
+                <label className="block text-sm font-medium">
+                  Mobile No <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  className="w-full p-2 border border-gray-300 rounded outline-none"
+                  name="mobileno"
+                  value={formData.mobileno}
+                  onChange={handleChange}
+                />
+                {errors.mobileno && <span className="text-xs text-red-500">{errors.mobileno}</span>}
+              </div>
+
+              <div className="flex flex-col gap-1">
+                <label className="block text-sm font-medium">
+                  Password <span className="text-red-500">*</span>
+                </label>
+                <div className="relative">
+                  <input
+                    type={passwordVisible ? "text" : "password"}
+                    className="w-full p-2 border border-gray-300 rounded pr-10"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                  />
+                  <button
+                    type="button"
+                    className="absolute inset-y-0 right-2 flex items-center"
+                    onClick={() => setPasswordVisible(!passwordVisible)}
+                  >
+                    {passwordVisible ? <Eye size={20} /> : <EyeOff size={20} />}
+                  </button>
+                </div>
+                {errors.password && <span className="text-xs text-red-500">{errors.password}</span>}
+              </div>
+
+              <div className="flex justify-center gap-4 pt-4">
                 <button
                   type="button"
-                  className="absolute inset-y-0 right-2 flex items-center"
-                  onClick={() => setPasswordVisible(!passwordVisible)}
+                  onClick={onClose}
+                  className="px-4 py-2 bg-gray-500 text-white rounded"
                 >
-                  {passwordVisible ? <Eye size={20} /> : <EyeOff size={20} />}
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-blue-600 text-white rounded"
+                >
+                  Register
                 </button>
               </div>
-              {errors.password && <span className="text-xs text-red-500">{errors.password}</span>}
-            </div>
-
-            <div className="flex justify-center gap-4 pt-4">
-              <button
-                type="button"
-                onClick={onClose}
-                className="px-4 py-2 bg-gray-500 text-white rounded"
-              >
-                Cancel
-              </button>
-              <button
-                type="submit"
-                className="px-4 py-2 bg-blue-600 text-white rounded"
-              >
-                Register
-              </button>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     )
