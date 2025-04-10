@@ -51,7 +51,7 @@ const Admin = () => {
                 setFilterData(admins);
             } else {
                 const filteredData = admins.filter((admin) => {
-                    const nameMatch = admin.name
+                    const usernameMatch = admin.username
                         .toString()
                         .toLowerCase()
                         .includes(searchQuery.toLowerCase());
@@ -59,7 +59,7 @@ const Admin = () => {
                         .toString()
                         .toLowerCase()
                         .includes(searchQuery.toLowerCase());
-                    return nameMatch || emailMatch;
+                    return usernameMatch || emailMatch;
                 });
                 setFilterData(filteredData);
             }
@@ -117,7 +117,7 @@ const Admin = () => {
                 }
             );
 
-            toast.success("Password reset successfully!");
+            toast.success("Password reset successfully!"); 
             setResetPasswordPopUp(false);
             setSelectedAdmin(null);
         }
