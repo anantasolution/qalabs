@@ -77,8 +77,11 @@ const Admin = () => {
 
                 setConfirmPopUp(false);
                 setSelectedAdmin(null);
+                toast.success("Admin deleted successfully");
             } catch (error) {
                 console.error("Error deleting admin:", error);
+                toast.error("Failed to delete admin. Please try again.");
+
             }
         }
     };
@@ -105,22 +108,30 @@ const Admin = () => {
         }
     };
 
-    const handleResetPasswordAdmin = async (adminId, new_password) => {
+    const handleResetPasswordAdmin = async (adminId, newpassword) => {
         try {
             const { data } = await axios.put(
-                `${process.env.REACT_APP_API_BASE_URL}/admin/resetPassword/${adminId}`,
+                `${process.env.REACT_APP_API_BASE_URL}/admin/changePassword/${adminId}`,
                 {
-                    new_password,
+                    newpassword,
                 }
             );
 
             toast.success("Password reset successfully!");
             setResetPasswordPopUp(false);
             setSelectedAdmin(null);
-        } catch (error) {
-            console.error("Error resetting password:", error);
-            toast.error("Failed to reset password. Please try again.");
         }
+        catch (error) {
+            console.error("Error deleting admin:", error); 
+          
+            if (error.response) {
+              console.error("Response Data:", error.response.data); 
+              console.error("Status Code:", error.response.status);
+              console.error("Headers:", error.response.headers);
+            }
+          
+            toast.error("Failed to delete admin. Please try again.");
+          }
     };
 
 

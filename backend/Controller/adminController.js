@@ -1,5 +1,6 @@
 import Admin from "../models/ADMIN.js";
 import Loginmapping from "../models/LOGINMAPPING.js";
+import bcryptjs from "bcryptjs";
 
 //Get All Admin
 export const getAllAdmin = async (req, res) => {
@@ -100,16 +101,13 @@ export const enableAdmin = async (req, res) => {
   }
 };
 
-// to change password willingly
 export const changePassword = async (req, res, next) => {
   try {
     const { adminId } = req.params;
     const { newpassword } = req.body;
 
     if (!newpassword) {
-      return res
-        .status(400)
-        .json({ message: "new password both are required" });
+      return res.status(400).json({ message: "New password is required" });
     }
 
     // Step 1: Find admin and login mapping
@@ -123,31 +121,24 @@ export const changePassword = async (req, res, next) => {
       });
     }
 
-    // Compare old password (hashed in DB) with  new password
-    const isMatch = await bcryptjs.compare(
+    // Optional: prevent reusing the same password
+    const isSamePassword = await bcryptjs.compare(
       newpassword,
       findloginmapping.password
     );
 
-    if (!isMatch) {
-      return res.status(401).json({
-        message: "Old password is incorrect",
-        status: 401,
+    if (isSamePassword) {
+      return res.status(400).json({
+        message: "New password must be different from the old password",
+        status: 400,
       });
     }
 
-    if (isMatch === newpassword) {
-      return res.status(401).json({
-        message: "new Password same as old password, cannot be changed",
-        status: 401,
-      });
-    }
-
-    // Step 3: Hash new password
+    // Step 2: Hash new password
     const newpasswordhash = await bcryptjs.hash(newpassword, 10);
 
-    // Step 4: Update password
-    const updatedLogin = await Loginmapping.findOneAndUpdate(
+    // Step 3: Update password
+    await Loginmapping.findOneAndUpdate(
       { mongoid: adminId },
       { password: newpasswordhash },
       { new: true }
@@ -162,6 +153,8 @@ export const changePassword = async (req, res, next) => {
   }
 };
 
+
+
 // Delete Admin
 export const deleteAdmin = async (req, res) => {
   try {
@@ -173,6 +166,7 @@ export const deleteAdmin = async (req, res) => {
         data: [],
       });
     }
+    await Loginmapping.findOneAndDelete({ mongoid: id });
     return res.status(200).json({
       message: "Admin Deleted Successfully",
       data: deletedAdmin,
