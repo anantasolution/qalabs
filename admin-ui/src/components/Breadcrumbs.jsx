@@ -5,7 +5,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import axios from "axios";
 import AddAdmin from "../pages/AddAdmin"; // Adjust path as needed
 
-const Breadcrumbs = ({ setSearchQuery, setSelectedCategory, setIsOpen }) => {
+const Breadcrumbs = ({ fetchAdmins, searchQuery , setSearchQuery, setSelectedCategory, setIsOpen }) => {
   const location = useLocation();
   const pathnames = location.pathname.split("/").filter((x) => x);
   const isDashboard = location.pathname.includes("/dashboard");
@@ -20,6 +20,9 @@ const Breadcrumbs = ({ setSearchQuery, setSelectedCategory, setIsOpen }) => {
   // State for categories
   const [categories, setCategories] = useState([]);
   const [isAddAdminOpen, setIsAddAdminOpen] = useState(false);
+  const [admins, setAdmins] = useState([]);
+  const [filterData, setFilterData] = useState([]);
+  
 
 
   // Fetch categories from API on mount
@@ -155,8 +158,11 @@ const Breadcrumbs = ({ setSearchQuery, setSelectedCategory, setIsOpen }) => {
         <AddAdmin
           isOpen={isAddAdminOpen}
           onClose={() => setIsAddAdminOpen(false)}
-          setAdmins={() => { }}
+          setAdmins={setAdmins}
           userId={null}
+          setFilterData={setFilterData}
+          searchQuery={searchQuery} 
+          fetchAdmins={fetchAdmins}
         />
 
 

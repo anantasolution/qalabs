@@ -8,7 +8,7 @@ import Tooltip from "@mui/material/Tooltip";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/Edit";
 import LockResetIcon from '@mui/icons-material/LockReset';
-import axios from "axios";
+import axios from "axios"; 
 import AdminEditPopup from "../components/AdminEditPopUp";
 import ResetPasswordPopUp from "../components/ResetPasswordPopUp"; // Import ResetPasswordPopUp component
 import { toast } from "react-toastify"; // Import toast for notifications
@@ -23,25 +23,25 @@ const Admin = () => {
     const [resetPasswordPopUp, setResetPasswordPopUp] = useState(false);
     const [selectedAdmin, setSelectedAdmin] = useState(null); // State for selected contact
 
-    useEffect(() => {
-        const fetchAdmins = async () => {
-            setLoading(true);
-            try {
-                const data = await getAllAdmin();
-                if (!data || !Array.isArray(data)) {
-                    console.error("Invalid data received:", data);
-                    setAdmins([]); // Set empty array to avoid errors
-                } else {
-                    setAdmins(data);
+    const fetchAdmins = async () => {
+        setLoading(true);
+        try {
+            const data = await getAllAdmin();
+            if (!data || !Array.isArray(data)) {
+                console.error("Invalid data received:", data);
+                setAdmins([]); // Set empty array to avoid errors
+            } else {
+                setAdmins(data);
 
-                }
-            } catch (error) {
-                console.error("Error fetching admins:", error);
-                setAdmins([]); // Ensure state is always an array
             }
-            setLoading(false);
-        };
+        } catch (error) {
+            console.error("Error fetching admins:", error);
+            setAdmins([]); // Ensure state is always an array
+        }
+        setLoading(false);
+    };
 
+    useEffect(() => {
         fetchAdmins();
     }, []);
 
@@ -199,7 +199,7 @@ const Admin = () => {
 
     return (
         <div className="h-full w-full bg-gray-100 flex flex-col">
-            <Breadcrumbs setSearchQuery={setSearchQuery} />
+            <Breadcrumbs setSearchQuery={setSearchQuery}  fetchAdmins={fetchAdmins} />
             {/* Table Section */}
             <div className="h-full w-full p-6">
                 <div className="h-full bg-white px-4 py-5 rounded-md shadow-md">
@@ -207,6 +207,7 @@ const Admin = () => {
                         <DataGrid
                             rows={filterData}
                             columns={updatedColumns}
+                            getRowId={(row) => row._id}
                             pageSize={5}
                             loading={loading}
                             initialState={{
