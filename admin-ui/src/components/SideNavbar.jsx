@@ -293,11 +293,10 @@ function SideNavbar({ toggle }) {
 {toggle || innerToggle ? (
             <div
             onClick={() => {
-              console.log("Navigating to admin");
-              handleNavigate("admin");
+              handleNavigate("user");
             }}
             
-              className={`flex ${isActive("admin") && "bg-gray-100"
+              className={`flex ${isActive("user") && "bg-gray-100"
                 } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
             >
               <span>
@@ -308,11 +307,10 @@ function SideNavbar({ toggle }) {
           ) : (
             <div
             onClick={() => {
-              console.log("Navigating to admin");
-              handleNavigate("admin");
+              handleNavigate("user");
             }}
             
-              className={`flex ${isActive("admin") && "bg-gray-100"
+              className={`flex ${isActive("user") && "bg-gray-100"
                 } hover:bg-gray-100 cursor-pointer transition-all duration-300  p-1.5 rounded-md  justify-center items-center`}
             >
               <span>

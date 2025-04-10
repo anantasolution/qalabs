@@ -13,7 +13,7 @@ const Breadcrumbs = ({ setSearchQuery, setSelectedCategory, setIsOpen }) => {
   const isCategoryPage = location.pathname.includes("/category");
   const isProjectPage = location.pathname.includes("/allprojects"); // Add this line
   const isFeedbackPage = location.pathname.includes("feedback"); // Add this line
-  const isAdminPage = location.pathname.includes("/admin/admin");
+  const isAdminPage = location.pathname.includes("/admin/user");
 
 
 
