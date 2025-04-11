@@ -182,7 +182,7 @@ const Admin = () => {
                             </span>
                         </Tooltip>
 
-                        <Tooltip title="Delete" arrow>
+                        <Tooltip title="Reset Password" arrow>
                             <span
                                 onClick={() => handleOpenResetPasswordPopUp(params.row)}
                                 className="bg-yellow-500 hover:bg-yellow-600 transition-colors duration-300 text-white w-8 h-8 flex justify-center items-center rounded-full cursor-pointer"
