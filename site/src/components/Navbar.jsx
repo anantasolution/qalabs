@@ -4,7 +4,7 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import navlogo from "../assets/navlogo.png"
 
-function Navbar() {
+function Navbar({scrolled}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [activeSubDropdown, setActiveSubDropdown] = useState(null);
@@ -135,7 +135,7 @@ function Navbar() {
   const [mobileSubCategory, setMobileSubCategory] = useState(null);
 
   return (
-    <nav className="absolute w-full z-50 px-4 sm:px-6 py-4">
+    <nav className={`w-full z-50 px-4 sm:px-6 py-4 transition-colors duration-300 ${scrolled ? 'bg-black/90' : 'bg-transparent'} absolute`}>
       <div className="container w-full flex justify-between md:justify-stretch items-center md:px-16">
         {/* Logo */}
         <Link to={"/"} className="flex items-center justify-center">

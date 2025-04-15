@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Check, ChevronDown } from "lucide-react";
-import IMAGE from "../assets/img_1.jpg";
+import { Check } from "lucide-react";
+import IMAGE from "../assets/services_images/software_services/cybersecurity.jpg";
 import { motion, useAnimation } from "framer-motion";
 
 const WhyChooseUs = () => {
