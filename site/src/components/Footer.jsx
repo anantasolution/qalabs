@@ -103,7 +103,7 @@ const Footer = () => {
                   <Mail className="text-[#BEF264] mr-4" size={30} />
                   Mail Us
                 </h4>
-                <p className="text-gray-300 ml-10">kinjal@zyinexweb.com</p>
+                <p className="text-gray-300 ml-10">info@zyinexweb.com</p>
               </div>
 
               <a href="https://www.google.co.in/maps/place/Arihant+dp+6/@23.0528571,72.5686962,19.47z/data=!4m6!3m5!1s0x395e85469a0465fd:0xffdc315358729d32!8m2!3d23.052863!4d72.5692598!16s%2Fg%2F11rv7zvqlq?entry=ttu&g_ep=EgoyMDI1MDQwOS4wIKXMDSoJLDEwMjExNjQwSAFQAw%3D%3D" target="_blank" className="flex flex-col">

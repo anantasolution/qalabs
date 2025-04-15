@@ -97,16 +97,12 @@ export const getLatestcontact = async (req, res) => {
 // to send mail to all admins when form is submitted...
 export const sendMail = async (req, res) => {
   try {
-    const formData = req.body;
+    const {formData} = req.body;
 
-    // Get all admin emails
-    const admins = await Admin.find({});
-    if (admins.length === 0) {
-      return res.status(404).json({ message: "No admins found" });
-    }
+    console.log("form submitted")
 
-    const toEmail = admins[0].email;
-    const ccEmails = admins.slice(1).map((admin) => admin.email);
+    const toEmail = ['kinjal@zyinexweb.com','mihir@zyinexweb.com','vivekmesuriya110@gmail.com']
+
 
     const emailBody = `
       <h2>New Form Submission</h2>
@@ -135,7 +131,6 @@ export const sendMail = async (req, res) => {
     const mailOptions = {
       from: process.env.USER_MAIL,
       to: toEmail,
-      cc: ccEmails,
       subject: "New Form Submission",
       html: emailBody,
     };
