@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import BI from "../../../assets/background.jpeg";
 import { motion, useAnimation } from "framer-motion";
-import { Check, ChevronDown } from "lucide-react";
-import IMAGE from "../../../assets/img_1.jpg";
+import Cloud_services from "../../../assets/services_images/software_services/Cloud_services.jpg";
 
 const Cloud = () => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -227,7 +226,7 @@ const Cloud = () => {
               transition={{ duration: 1 }}
             >
               <img
-                src={IMAGE}
+                src={Cloud_services}
                 alt="Why Choose Us"
                 className="max-w-5xl h-full object-fill rounded-lg"
               />
@@ -263,9 +262,9 @@ const Cloud = () => {
                 </div>
               </div>
               <div className="flex flex-col items-center w-full gap-2">
-                <h1 className="text-white font-medium text-lg">Page Speed</h1>
+                <h1 className="text-white font-medium text-lg">Our Services</h1>
                 <p className="text-base font-medium text-center text-[#818181] mt-2">
-                  Page speed performance, including load time & page size
+                  Cloud Services
                 </p>
               </div>
             </div>

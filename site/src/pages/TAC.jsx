@@ -64,76 +64,61 @@ const TAC = () => {
       >
         {[
           {
-            title: "1. Introduction",
-            content: "These Terms and Conditions govern the use of Zyinex.ai, a product of Ananta Solution. By creating an account and using our services, you agree to abide by these terms."
+            title: "1. Relationship",
+            content: "ZyinexWeb acknowledges that its relationship with the Client is that of an independent contractor. Acceptance of work does not establish a joint venture, partnership, or employer-employee relationship between ZyinexWeb and the Client. Accordingly, ZyinexWeb is not entitled to any employee benefits and is not authorized to make any representation, contract, or commitment on behalf of the Client unless explicitly authorized in writing. Both parties agree that neither holds the authority to legally bind the other in agreements with third parties."
           },
           {
-            title: "2. Service Description",
-            content: "Zyinex.ai provides AI-generated photoshoots using AI models. The models used in our services are not real humans, eliminating copyright concerns. We use advanced artificial intelligence to generate realistic images based on user-provided input. By using our platform, you acknowledge that:",
+            title: "2. Services",
+            content: "ZyinexWeb shall develop a website and/or application in accordance with the specifications mutually agreed upon with the Client, ensuring compliance with applicable laws and prevailing industry standards in all material aspects.",
+          },
+          {
+            title: "3. Payment Terms",
+            content: "As compensation for the services rendered, the Client agrees to pay ZyinexWeb a service fee equal to the total system cost specified in the formal proposal shared with the Client. If there are substantial changes to the project scope or requirements after the agreement has been executed, the service fee may be adjusted through mutual negotiation between both parties.",
+          },
+          {
+            title: "4. Client Responsibilities",
+            content: "The Client agrees to provide all necessary information and support reasonably required by ZyinexWeb in a timely manner. Timely completion of third-party services, where required, also falls under the Client’s responsibility. Additionally, the Client is responsible for:",
             list: [
-              "The AI-generated images are based on computational models and are not actual photographs.",
-              "The final output may vary depending on the input quality and AI interpretation.",
-              "Zyinex.ai is not responsible for the subjective satisfaction of the user."
+              "Registering the website’s domain name,",
+              "Selecting a web hosting provider and covering related fees,",
+              "Managing any other external services or expenses connected to the project.",
             ]
           },
           {
-            title: "3. Pricing & Payment",
-            content: "Our services operate on a coin-based payment system, allowing users flexibility in purchasing and using our features. Please note:",
+            title: "5. Approvals & Modifications",
+            content: "ZyinexWeb follows a structured methodology for system design and development, with client feedback being integral at each project stage. Client approvals will be requested at various milestones. If the Client fails to respond to feedback requests or queries within 10 calendar days, ZyinexWeb may place the project on hold and reassign the development team to other internal projects. Resuming the project may involve an updated quote and revised timeline. Any changes to previously approved elements that result in rework may incur additional charges.",
+          },
+          {
+            title: "6. Termination",
+            content: "Either party may terminate this agreement by providing written notice under the following circumstances:",
             list: [
-              "Pricing differs for single-photo output and multiple-photo output.",
-              "Payment must be made before using our services.",
-              "Additional features may be subject to separate charges.",
-              "Users are responsible for maintaining sufficient balance in their accounts.",
-              "Subscription-based services, if available, will be billed periodically per the selected plan."
+              "If the other party breaches any material terms of this agreement and fails to remedy the breach within 10 business days of receiving written notice,",
+              "If the other party is unable to pay debts as they become due."
             ]
           },
           {
-            title: "4. Refund Policy",
-            content: "We strive to offer a seamless experience, but we acknowledge that issues may arise. Our refund policy ensures fairness for both users and the company. Refund requests are handled as follows:",
-            list: [
-              "Refunds are provided only if we fail to deliver the requested AI-generated photos.",
-              "If we successfully deliver the output but the client is unsatisfied with the results, no refund will be issued.",
-              "Refund requests must be submitted within a specified timeframe after order completion.",
-              "We do not refund unused credits or balances in a user's account.",
-              "In case of service interruptions, partial refunds may be issued at our discretion."
-            ]
+            title: "7. Intellectual Property & Ownership",
+            content: `The Client guarantees that all materials (e.g., text, graphics, trademarks, images, and logos) provided to ZyinexWeb are either owned by the Client or the Client has permission to use them. The Client agrees to indemnify and hold ZyinexWeb and its subcontractors harmless against any claims or disputes related to these materials. Upon successful completion of the project and full payment, the Client will be granted complete ownership rights of the final product, including design, graphics, and textual content. However, ownership of source code, images, development files, and backend programming remains with ZyinexWeb until all outstanding payments are settled in full. ZyinexWeb reserves the right to showcase portions of the project in its portfolio.`
           },
           {
-            title: "5. Account Security",
-            content: "Users are responsible for maintaining the security of their accounts. We recommend:",
-            list: [
-              "Using strong, unique passwords for your Zyinex.ai account",
-              "Not sharing account credentials with third parties",
-              "Logging out of your account when using shared devices",
-              "Notifying us immediately if you suspect unauthorized access"
-            ]
+            title: "8. Non-Disclosure Agreement (NDA)",
+            content: "ZyinexWeb respects the confidentiality of the Client’s concepts and ideas. The company upholds ethical standards to ensure all sensitive and proprietary information received from the Client is protected. A formal NDA can be provided upon request to further safeguard confidential data and project-related information."
           },
           {
-            title: "6. Prohibited Activities",
-            content: "When using our services, the following activities are strictly prohibited:",
-            list: [
-              "Using our AI to generate illegal, offensive, or harmful content",
-              "Attempting to reverse engineer our AI models",
-              "Scraping or harvesting data from our platform",
-              "Disrupting or interfering with the service's normal operation",
-              "Using automated systems to access the service without explicit permission"
-            ]
+            title: "9. Liability & Dispute Reimbursement",
+            content: "ZyinexWeb shall not be held liable for any financial, reputational, or data-related losses resulting from the development or use of the software, website, or application. Any damages, disputes, or claims arising during the course of development shall not be subject to reimbursement by ZyinexWeb."
           },
           {
-            title: "7. Service Availability",
-            content: "While we strive to provide uninterrupted service, we do not guarantee 24/7 availability. We reserve the right to modify, suspend, or discontinue the service temporarily or permanently with or without notice. We will not be liable for any service interruptions or data loss resulting from such actions."
+            title: "10. Change Requests",
+            content: "Any request for changes in scope, design, or functionality during or after project execution must be submitted in writing or via email. Such changes may be treated as a new phase of work and charged separately. ZyinexWeb makes no guarantee that the original timeline will remain intact following change requests."
           },
           {
-            title: "8. Limitation of Liability",
-            content: "To the maximum extent permitted by law, Ananta Solution and Zyinex.ai shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use or inability to use the service, regardless of whether such damages are based on warranty, contract, tort, or any other legal theory."
+            title: "11. Disclaimer & Limitation of Liability",
+            content: "ZyinexWeb does not guarantee that the delivered system or website will be error-free or meet all client expectations. All software is provided “as-is,” and the Client assumes full responsibility for its usage and performance. ZyinexWeb shall not be liable for any indirect, incidental, or consequential damages, including but not limited to loss of profits, savings, or data, even if the company has been advised of such risks. If any clause of this agreement is found unenforceable, the remaining clauses shall remain in full force and effect."
           },
           {
-            title: "9. Governing Law",
-            content: "These Terms and Conditions shall be governed by and construed in accordance with the laws of the jurisdiction in which Ananta Solution operates, without regard to its conflict of law provisions."
-          },
-          {
-            title: "10. Contact Us",
-            content: "For any questions or concerns regarding these terms, contact us at: info@anantasolution.com"
+            title: "12. Governing Law",
+            content: "This agreement shall be governed by and construed in accordance with the laws of the Government of Gujarat, India. Any legal matters arising under this agreement shall be subject to the jurisdiction of the courts located in Gujarat."
           }
         ].map((section, index) => (
           <motion.section 

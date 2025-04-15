@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import BI from "../../../assets/background.jpeg";
 import { motion, useAnimation } from "framer-motion";
-import { Check } from "lucide-react";
-import IMAGE from "../../../assets/img_1.jpg";
+
+import service_hardwareannualcontract  from "../../../assets/services_images/hardware_services/service_hardwareannualcontract.jpg";
+
 
 const Maintanance = () => {
   const [openIndex, setOpenIndex] = useState(null);
@@ -229,7 +230,7 @@ const Maintanance = () => {
               transition={{ duration: 1 }}
             >
               <img
-                src={IMAGE}
+                src={service_hardwareannualcontract}
                 alt="Why Choose Us"
                 className="max-w-5xl h-full object-fill rounded-lg"
               />
@@ -265,9 +266,9 @@ const Maintanance = () => {
                 </div>
               </div>
               <div className="flex flex-col items-center w-full gap-2">
-                <h1 className="text-white font-medium text-lg">Page Speed</h1>
+                <h1 className="text-white font-medium text-lg">Our Services</h1>
                 <p className="text-base font-medium text-center text-[#818181] mt-2">
-                  Page speed performance, including load time & page size
+                  Annual Maintenance
                 </p>
               </div>
             </div>

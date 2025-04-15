@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 
 import HERO from "../assets/herobg.jpg";
@@ -14,8 +14,10 @@ import StartJourneySection from "../components/StartJourneySection";
 import WhyChooseUs from "../components/WhyChooseUs";
 import HeroForm from "../components/HeroForm";
 import Video from "../components/Video";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+
+// whats app icon
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -26,8 +28,20 @@ const Home = () => {
     transition: { duration: 0.6 },
   };
 
+  // method to redirect when whatsapp button clicked
+  const handleClick = () => {
+    const phone = '919316727742';
+    const url = `https://wa.me/${phone}`;
+    window.open(url, '_blank');
+  };
+
   return (
-    <>
+    <div className="relative">
+
+      <button onClick={handleClick} className="rounded-full p-2 bg-green-500 fixed top-[89%] left-5 sm:top-[70%] sm:left-10 z-[80] text-white flex justify-center items-center">
+        <WhatsAppIcon style={{ fontSize: "2.5rem" }} />
+      </button>
+
       <div id="home" className="relative min-h-screen w-full">
         {/* Dark overlay for background image */}
         <div
@@ -125,7 +139,7 @@ const Home = () => {
       <FeaturedProjectSection></FeaturedProjectSection>
       <WhyChooseUs></WhyChooseUs>
       <TestimonialSlider></TestimonialSlider>
-    </>
+    </div>
   );
 };
 

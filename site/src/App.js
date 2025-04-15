@@ -124,9 +124,9 @@ function App() {
           />
           <Route path="/project" element={<Project />}></Route>
           <Route path="/contactus" element={<ContactPage />}></Route>
-          <Route path="/blogsarchive" element={<BlogsArchive />}></Route>
+          {/* <Route path="/blogsarchive" element={<BlogsArchive />}></Route>
           <Route path="/blogsarchive/blog" element={<BlogPage />}></Route>
-          <Route path="/temp" element={<Temp />}></Route>
+          <Route path="/temp" element={<Temp />}></Route> */}
         </Route>
       </Routes>
     </Router>
