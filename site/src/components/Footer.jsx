@@ -26,19 +26,22 @@ const Footer = () => {
             </p>
             <div className="flex space-x-2">
               <a
-                href="#"
+                href="https://www.facebook.com/profile.php?id=61575081746613"
+                target="_blank"
                 className="bg-gray-700 p-2 rounded-md hover:bg-[#BEF264] transition"
               >
                 <Facebook size={20} />
               </a>
               <a
-                href="#"
+                href=" https://www.instagram.com/zyinexweb/"
+                target="_blank"
                 className="bg-gray-700 p-2 rounded-md hover:bg-[#BEF264] transition"
               >
                 <Instagram size={20} />
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/company/zyinexweb/"
+                target="_blank"
                 className="bg-gray-700 p-2 rounded-md hover:bg-[#BEF264] transition"
               >
                 <Linkedin size={20} />
@@ -103,7 +106,7 @@ const Footer = () => {
                 <p className="text-gray-300 ml-10">kinjal@zyinexweb.com</p>
               </div>
 
-              <div>
+              <a href="https://www.google.co.in/maps/place/Arihant+dp+6/@23.0528571,72.5686962,19.47z/data=!4m6!3m5!1s0x395e85469a0465fd:0xffdc315358729d32!8m2!3d23.052863!4d72.5692598!16s%2Fg%2F11rv7zvqlq?entry=ttu&g_ep=EgoyMDI1MDQwOS4wIKXMDSoJLDEwMjExNjQwSAFQAw%3D%3D" target="_blank" className="flex flex-col">
                 <h4 className="text-lg font-medium flex items-center">
                   <MapPin className="text-[#BEF264] mr-4" size={30} />
                   Communication Address
@@ -112,7 +115,7 @@ const Footer = () => {
                   101, Arihant dp-6, Swara Sanidhya Lane, B/H Shah Hospitals,
                   Usmanpura, Ahmedabad, 380013
                 </p>
-              </div>
+              </a>
             </div>
           </div>
         </div>
