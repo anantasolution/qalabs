@@ -106,7 +106,11 @@ const ContactPage = () => {
         `${process.env.REACT_APP_API_BASE_URL}/contact/`,
         formData
       );
-      console.log(response);
+      // console.log(response);
+
+      await axios.post(`${process.env.REACT_APP_API_BASE_URL}/contact/send-mail`,{
+        formData
+      });
       setFormData({
         name: "",
         company: "",
