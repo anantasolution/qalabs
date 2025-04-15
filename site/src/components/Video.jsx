@@ -46,7 +46,7 @@ const Video = () => {
       <div className="absolute bottom-0 left-0 w-full h-1/2 bg-[#242424]"></div>
 
       {/* Video Container (Centered) */}
-      <div className="absolute inset-0 flex justify-center items-center z-50">
+      <div className="absolute inset-0 flex justify-center items-center z-40">
         <div className="relative w-full px-2 md:w-3/4 h-full rounded-xl overflow-hidden">
           {isPlaying ? (
             <>

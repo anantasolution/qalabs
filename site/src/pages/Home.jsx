@@ -26,21 +26,10 @@ const Home = () => {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
     transition: { duration: 0.6 },
-  };
-
-  // method to redirect when whatsapp button clicked
-  const handleClick = () => {
-    const phone = '919316727742';
-    const url = `https://wa.me/${phone}`;
-    window.open(url, '_blank');
-  };
+  }
 
   return (
     <div className="relative">
-
-      <button onClick={handleClick} className="rounded-full p-2 bg-green-500 fixed top-[89%] left-5 sm:top-[70%] sm:left-10 z-[80] text-white flex justify-center items-center">
-        <WhatsAppIcon style={{ fontSize: "2.5rem" }} />
-      </button>
 
       <div id="home" className="relative min-h-screen w-full">
         {/* Dark overlay for background image */}
