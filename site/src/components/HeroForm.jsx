@@ -113,7 +113,7 @@ const HeroForm = () => {
         formData
       );
       await axios.post(`${process.env.REACT_APP_API_BASE_URL}/consulation/send-mail`,
-        formData);
+        {formData});
       toast.success(response.data.message);
 
       setFormData({ name: "", company: "", phone: "", email: "", message: "" });
