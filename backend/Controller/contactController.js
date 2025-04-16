@@ -102,25 +102,103 @@ export const sendMail = async (req, res) => {
     const toEmail = ['kinjal@zyinexweb.com','mihir@zyinexweb.com','vivekmesuriya110@gmail.com']
 
     const emailBody = `
-      <h2>New Form Submission</h2>
-      <p><strong>Name:</strong> ${formData.name}</p>
-      <p><strong>Company:</strong> ${formData.company}</p>
-      <p><strong>Phone:</strong> ${formData.phone}</p>
-      <p><strong>Email:</strong> ${formData.email}</p>
-      <p><strong>Subject:</strong> ${formData.subject}</p>
-      <p><strong>Message:</strong> ${formData.message}</p>
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="UTF-8">
+      <title>New User Consultant - Zyinexweb Pvt Ltd</title>
+      <style>
+        body {
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          background-color: #f2f2f2;
+          margin: 0;
+          padding: 0;
+        }
+        .container {
+          background-color: #f2f2f2;
+          max-width: 600px;
+          margin: 40px auto;
+          padding: 30px;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .header {
+          text-align: center;
+          background-color: #70ecb6;
+          padding: 20px;
+          border-radius: 10px 10px 0 0;
+          color: #000;
+        }
+        .header h1 {
+          margin: 0;
+        }
+        .content {
+          margin-top: 20px;
+        }
+        .content h2 {
+          color: #333;
+          font-size: 20px;
+          margin-bottom: 10px;
+        }
+        .info {
+          margin: 10px 0;
+          font-size: 16px;
+          color: #777;
+          padding-bottom: 10px;
+        }
+        .info strong {
+          color: #000;
+        }
+        .intro-text {
+          font-size: 15px;
+          margin-bottom: 20px;
+          line-height: 1.6;
+          color: #777;
+        }
+        .footer {
+          margin-top: 30px;
+          text-align: center;
+          font-size: 13px;
+          color: #888;
+        }
+      </style>
+    </head>
+    <body>
+    
+      <div class="container">
+        <div class="header">
+          <h1>Zyinexweb Pvt Ltd</h1>
+        </div>
+        <div class="content">
+          <div class="intro-text">
+            Hello Admin,<br><br>
+            You have received a new inquiry from a user via the website consultant form. Below are the details of the submission:
+          </div>
+          <h2>User Details</h2><br>
+          <div class="info"><strong>Name:</strong> ${formData.name}</div>
+          <div class="info"><strong>Company:</strong> ${formData.company}</div>
+          <div class="info"><strong>Phone:</strong> ${formData.phone}</div>
+          <div class="info"><strong>Email:</strong> ${formData.email}</div>
+          <div class="info"><strong>Subject:</strong> ${formData.subject}</div>
+          <div class="info"><strong>Message:</strong><br><br>${formData.message}</div>
+        </div>
+        <div class="footer">
+          ©️ 2025 Zyinexweb Pvt Ltd. All rights reserved.<br>
+          This is an automated notification from your website.
+        </div>
+      </div>
+    
+    </body>
+    </html>
     `;
 
     const transporter = nodemailer.createTransport({
-      host: "email-smtp.us-east-1.amazonaws.com", // Replace with your SES SMTP endpoint
+      host: "smtp.gmail.com", // Replace with your SES SMTP endpoint
       port: 587, // For secure connection
       secure: false, // Use TLS
       auth: {
         user: process.env.USER_USERNAME, // SES SMTP username
         pass: process.env.USER_APP_PASS, // SES SMTP password
-      },
-      tls: {
-        rejectUnauthorized: true,
       },
     });
     
