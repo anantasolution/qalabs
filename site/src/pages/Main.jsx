@@ -17,7 +17,7 @@ function Main() {
 
   return (
     <>
-      <div className='fixed top-0 z-50 w-full'>
+      <div className='fixed top-0 z-40 w-full'>
         <Navbar scrolled={scrolled} />
       </div>
       <Outlet />
