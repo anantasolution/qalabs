@@ -114,7 +114,7 @@ const Home = () => {
             </motion.div>
           </div>
         </div>
-        <div className="md:relative  border border-red-500">
+        <div className="md:relative z-30">
           <HeroForm></HeroForm>
         </div>
       </div>

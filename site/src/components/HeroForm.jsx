@@ -133,7 +133,7 @@ const HeroForm = () => {
       ref={sectionRef}
     >
       <motion.div
-        className="w-full md:grid md:grid-cols-2 md:w-1/2 place-content-center z-50"
+        className="w-full md:grid md:grid-cols-2 md:w-1/2 place-content-center z-30"
         initial={{ y: "-110%", opacity: 0 }}
         animate={inView ? { y: 0, opacity: 100 } : {}}
         transition={{ duration: 1 }}
