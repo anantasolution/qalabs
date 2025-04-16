@@ -99,10 +99,7 @@ export const sendMail = async (req, res) => {
   try {
     const {formData} = req.body;
 
-    console.log("form submitted")
-
     const toEmail = ['kinjal@zyinexweb.com','mihir@zyinexweb.com','vivekmesuriya110@gmail.com']
-
 
     const emailBody = `
       <h2>New Form Submission</h2>
