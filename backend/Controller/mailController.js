@@ -6,18 +6,14 @@ import dotenv from "dotenv";
 import bcryptjs from "bcryptjs";
 dotenv.config();
 
-// Send email with the token link
-
+console.log(process.env.USER_MAIL, process.env.USER_APP_PASS);
 const transporter = nodemailer.createTransport({
-  host: "email-smtp.us-east-1.amazonaws.com", // Replace with your SES SMTP endpoint
-  port: 587, // For secure connection
-  secure: false, // Use TLS
+  host:"smtp.gmail.com",
+  port:587,
+  secure:false,
   auth: {
-    user: process.env.USER_USERNAME, // SES SMTP username
-    pass: process.env.USER_APP_PASS, // SES SMTP password
-  },
-  tls: {
-    rejectUnauthorized: true,
+    user:process.env.USER_MAIL, // your Gmail address
+    pass:process.env.USER_MAIL     // your Gmail app password (not your main Gmail password)
   },
 });
 
@@ -38,28 +34,93 @@ export const sendVerificationMail = async (req, res) => {
     });
 
     const mailOptions = {
-      from: process.env.USER_MAIL,
+      from:process.env.USER_MAIL,
       to: email, // Send email to this fixed recipient
       subject: "Password Reset Request",
       html: `
-        <html>
-        <head>
-          <style>
-            body { font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 20px; }
-            .container { max-width: 600px; margin: auto; background: #fff; padding: 20px; border-radius: 8px; }
-            .button { background-color: #007bff; color: #fff; padding: 10px 20px; text-decoration: none; display: inline-block; border-radius: 5px; }
-          </style>
-        </head>
-        <body>
-          <div class="container">
-            <h2>Password Reset Request</h2>
-            <p>Hello,</p>
-            <p>Click the button below to reset your password:</p>
-            <a class="button" href="${process.env.FRONT_URL}/verify-token/${token}">Reset Password</a>
-            <p>If you didn't request this, ignore this email.</p>
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <meta charset="UTF-8">
+        <title>Reset Your Password - Zyinexweb Pvt Ltd</title>
+        <style>
+          body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+          }
+          .container {
+            background-color: #ffffff;
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+          }
+          .header {
+            text-align: center;
+            background-color: #70ecb6;
+            padding: 20px;
+            border-radius: 10px 10px 0 0;
+            color: #000;
+          }
+          .header h1 {
+            margin: 0;
+          }
+          .content {
+            margin-top: 20px;
+          }
+          .content p {
+            font-size: 16px;
+            color: #333;
+            line-height: 1.6;
+          }
+          .button {
+            display: inline-block;
+            background-color: #70ecb6;
+            color: #000;
+            padding: 12px 24px;
+            margin: 20px 0;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+          }
+          .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 13px;
+            color: #888;
+          }
+        </style>
+      </head>
+      <body>
+      
+        <div class="container">
+          <div class="header">
+            <h1>Zyinexweb Pvt Ltd</h1>
           </div>
-        </body>
-        </html>
+          <div class="content">
+            <p>Hello,</p>
+      
+            <p>We received a request to reset your password for your account associated with this email address. If you made this request, you can reset your password by clicking the button below:</p>
+      
+            <p style="text-align: center;">
+              <a href="${process.env.FRONT_URL}/verify-token/${token}" class="button">Reset Your Password</a>
+            </p>
+      
+            <p>If you did not request a password reset, please ignore this email or contact support if you have concerns.</p>
+      
+            <p>Thank you,<br>
+            The Zyinexweb Team</p>
+          </div>
+          <div class="footer">
+            ©️ 2025 Zyinexweb Pvt Ltd. All rights reserved.
+          </div>
+        </div>
+      
+      </body>
+      </html>
       `,
     };
 
