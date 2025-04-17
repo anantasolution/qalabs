@@ -1,12 +1,27 @@
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useAnimation } from "framer-motion";
+import axios from "axios";
 
 function InovationDesign() {
+
+  const [network,setNetwork] = useState([])
+
+  const fetchData = async () =>{
+    try{
+       const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/networks`)
+       console.log('network data---->',response.data)
+       setNetwork(response.data)
+    }catch(err){
+      console.log(err)
+    }
+  }
+
   const [inView, setInView] = useState(false);
   const controls = useAnimation(); // Animation controls for Framer Motion
   const sectionRef = useRef(null);
 
   useEffect(() => {
+    fetchData()
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -63,66 +78,42 @@ function InovationDesign() {
 
           {/* Right side stats */}
           <div className="grid md:grid-cols-2 grid-cols-1 gap-6">
-            <motion.div
-              className=" bg-neutral-800 p-7 rounded-xl "
-              initial={{ y: "150%" }}
-              animate={inView ? { y: 0 } : {}}
-              transition={{ duration: 1 }}
-            >
-              <div className="flex items-start justify-between mb-4">
-                <h2 className="text-6xl font-dark text-white">+60%</h2>
-
-                <svg
-                  className="w-12 h-12 text-emerald-400"
-                  viewBox="0 0 25 25"
-                  fill="none"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 10l7-7m0 0l7 7m-7-7v18"
-                  />
-                </svg>
-              </div>
-              <h4 className="text-gray-400 text-xl mb-4">Traffic Increase</h4>
-              <div className="h-px bg-gray-500 mb-4"></div>
-              <p className="text-gray-400 text-base leading-relaxed">
-                Turn visitors into loyal customers with engaging and optimised
-                digital solutions.
-              </p>
-            </motion.div>
-
-            <motion.div
-              className="bg-black p-8 rounded-xl border border-gray-700"
-              initial={{ x: "150%" }}
-              animate={inView ? { x: 0 } : {}}
-              transition={{ duration: 1 }}
-            >
-              <div className="flex items-start justify-between mb-4">
-                <h2 className="text-6xl font-dark text-white">+30%</h2>
-                <svg
-                  className="w-10 h-10 text-emerald-400"
-                  viewBox="0 0 25 25"
-                  fill="none"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 10l7-7m0 0l7 7m-7-7v18"
-                  />
-                </svg>
-              </div>
-              <h4 className="text-gray-400 text-xl mb-4">Revenue Increase</h4>
-              <div className="h-px bg-zinc-700 mb-4"></div>
-              <p className="text-gray-400 text-base leading-relaxed">
-                Enhance your online presence with data-driven strategies and
-                seamless user experience.
-              </p>
-            </motion.div>
+            {
+              network.map((item,index)=>(
+                <motion.div
+                key={index}
+                className=" bg-neutral-800 p-7 rounded-xl "
+                initial={{ y: "150%" }}
+                animate={inView ? { y: 0 } : {}}
+                transition={{ duration: 1 }}
+              >
+                <div className="flex items-start justify-between mb-4">
+                  <h2 className="text-6xl font-dark text-white">{item.Count}</h2>
+  
+                  <svg
+                    className="w-12 h-12 text-emerald-400"
+                    viewBox="0 0 25 25"
+                    fill="none"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 10l7-7m0 0l7 7m-7-7v18"
+                    />
+                  </svg>
+                </div>
+                <h4 className="text-gray-400 text-xl mb-4">{item.Title}</h4>
+                <div className="h-px bg-gray-500 mb-4"></div>
+                <p className="text-gray-400 text-base leading-relaxed">
+                  {
+                    item.Description
+                  }
+                </p>
+              </motion.div>
+              ))
+            }
           </div>
         </div>
       </div>

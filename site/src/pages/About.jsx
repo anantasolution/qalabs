@@ -6,6 +6,7 @@ import BI from "../assets/background.jpeg";
 import { motion, useAnimation } from "framer-motion";
 import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 import { useInView } from "react-intersection-observer";
+import axios from "axios";
 
 const HeroSection = () => {
   const controls = useAnimation();
@@ -68,6 +69,23 @@ const HeroSection = () => {
   );
 };
 
+
+      
+const getData = (key) => {
+  switch(key){
+      case "ClientReviews":
+          return "Clients Reviews"
+      case "HappyClients":
+          return "Happy Clients"
+      
+      case "ProjectDone":
+          return "Project Done"
+      
+      default:
+         return "Project Done"
+  }
+}
+
 const About = () => {
   const services = [
     "Web App Development",
@@ -84,8 +102,34 @@ const About = () => {
     { value: 0, endValue: 4.7, label: "Client Reviews", suffix: "+" },
   ]);
 
+
+  const fetchStatsData = async () =>{
+    try{
+      const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/company-count`)
+      console.log(response.data)
+      const statsmap = Object.keys(response.data).map((key)=>{
+        if(key==="ClientReviews" || key==="HappyClients" || key==="ProjectDone"){
+          return {
+             label:getData(key),
+             endValue:response.data[key],
+             suffix:'+',
+             value:0
+           }
+        }else {
+          return null
+        }
+       
+      })
+      setStats(statsmap.filter(item => item!=null))
+    }catch(err){
+      console.log(err)
+    }
+  }
+
   useEffect(() => {
-    const duration = 3000; // duration of the animation in milliseconds
+    fetchStatsData()
+    
+    const duration = 30; // duration of the animation in milliseconds
     const intervalTime = 50; // interval time in milliseconds
     const steps = duration / intervalTime;
 
@@ -106,6 +150,8 @@ const About = () => {
     }, intervalTime);
 
     return () => clearInterval(interval);
+
+    
   }, []);
 
   const logos = [
