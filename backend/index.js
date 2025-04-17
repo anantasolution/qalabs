@@ -16,6 +16,7 @@ import newsLetterRoutes from "./routes/newsletter.js";
 import mailRoute from "./routes/mail.js";
 import feedbackRoutes from "./routes/feedback.js";
 import projectRoutes from "./routes/project.js";
+import companyCountRoutes from "./routes/companyCount.js";
 
 // Get the current file's path
 const __filename = fileURLToPath(import.meta.url);
@@ -125,6 +126,7 @@ app.use("/api/newsletter", newsLetterRoutes);
 app.use("/api/mail", mailRoute);
 app.use("/api/feedback", feedbackRoutes);
 app.use("/api/project", projectRoutes);
+app.use("/api/company-count",companyCountRoutes);
 
 // Middleware to catch errors
 app.use((err, req, res, next) => {
