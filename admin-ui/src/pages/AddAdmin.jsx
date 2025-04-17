@@ -6,31 +6,36 @@ import axios from "axios";
 
 export default function AddAdmin({ isOpen, onClose, setAdmins, setFilterData, searchQuery, fetchAdmins }) {
   const [passwordVisible, setPasswordVisible] = useState(false);
+  const [isPermanent, setIsPermanent] = useState(false);
   const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({
     username: "",
     email: "",
     mobileno: "",
     password: "",
+    isPermanent: false
   });
-
   const validateData = (name, value) => {
     const newErrors = { ...errors };
     const EmailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-    if (!value) {
-      newErrors[name] = `${name} is required`;
-    } else {
-      delete newErrors[name];
+  
+    if (name !== "isPermanent") {
+      if (value === "" || value === null || value === undefined) {
+        newErrors[name] = `${name} is required`;
+      } else {
+        delete newErrors[name];
+      }
+  
+      if (name === "email" && value && !EmailRegex.test(value)) {
+        newErrors[name] = "Invalid email format";
+      }
     }
-
-    if (name === "email" && value && !EmailRegex.test(value)) {
-      newErrors[name] = "Invalid email format";
-    }
-
+  
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
+  
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -59,11 +64,11 @@ export default function AddAdmin({ isOpen, onClose, setAdmins, setFilterData, se
       );
 
       if (response?.status === 201) {
-        fetchAdmins(); // Fetch updated admins list
+        fetchAdmins(); // Fetch updated admins list   
         // Update admins and filterData states
 
 
-        setFormData({ username: "", email: "", mobileno: "", password: "" });
+        setFormData({ username: "", email: "", mobileno: "", password: "", isPermanent: false });
         setErrors({});
         onClose();
         toast.success("Admin registered successfully!");
@@ -151,6 +156,25 @@ export default function AddAdmin({ isOpen, onClose, setAdmins, setFilterData, se
                 </div>
                 {errors.password && <span className="text-xs text-red-500">{errors.password}</span>}
               </div>
+
+              <div className="flex flex-col gap-1">
+                <label className="block text-sm font-medium">
+                  isPermanent <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="checkbox"
+                  checked={isPermanent}
+                  onChange={(e) => {
+                    const checked = e.target.checked;
+                    setIsPermanent(checked);
+                    setFormData({ ...formData, isPermanent: checked });
+                    validateData("isPermanent", checked);
+                  }}
+                />
+                {errors.isPermanent && <span className="text-xs text-red-500">{errors.isPermanent}</span>}
+
+              </div>
+
 
               <div className="flex justify-center gap-4 pt-4">
                 <button

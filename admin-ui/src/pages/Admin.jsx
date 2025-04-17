@@ -8,7 +8,7 @@ import Tooltip from "@mui/material/Tooltip";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/Edit";
 import LockResetIcon from '@mui/icons-material/LockReset';
-import axios from "axios"; 
+import axios from "axios";
 import AdminEditPopup from "../components/AdminEditPopUp";
 import ResetPasswordPopUp from "../components/ResetPasswordPopUp"; // Import ResetPasswordPopUp component
 import { toast } from "react-toastify"; // Import toast for notifications
@@ -117,21 +117,21 @@ const Admin = () => {
                 }
             );
 
-            toast.success("Password reset successfully!"); 
+            toast.success("Password reset successfully!");
             setResetPasswordPopUp(false);
             setSelectedAdmin(null);
         }
         catch (error) {
-            console.error("Error deleting admin:", error); 
-          
+            console.error("Error deleting admin:", error);
+
             if (error.response) {
-              console.error("Response Data:", error.response.data); 
-              console.error("Status Code:", error.response.status);
-              console.error("Headers:", error.response.headers);
+                console.error("Response Data:", error.response.data);
+                console.error("Status Code:", error.response.status);
+                console.error("Headers:", error.response.headers);
             }
-          
+
             toast.error("Failed to delete admin. Please try again.");
-          }
+        }
     };
 
 
@@ -162,16 +162,19 @@ const Admin = () => {
             flex: 1,
             minWidth: 220,
             renderCell: (params) => {
+                const isPermanent = params.row.isPermanent;
                 return (
                     <div className="flex items-center gap-4 h-full">
-                        <Tooltip title="Delete" arrow>
-                            <span
-                                onClick={() => handleOpenConfirmPopUp(params.row)}
-                                className="bg-red-500 hover:bg-red-600 transition-colors duration-300 text-white w-8 h-8 flex justify-center items-center rounded-full cursor-pointer"
-                            >
-                                <DeleteOutlineIcon className="text-white" style={{ fontSize: '1.4rem' }} />
-                            </span>
-                        </Tooltip>
+                        {!isPermanent && (
+                            <Tooltip title="Delete" arrow>
+                                <span
+                                    onClick={() => handleOpenConfirmPopUp(params.row)}
+                                    className="bg-red-500 hover:bg-red-600 transition-colors duration-300 text-white w-8 h-8 flex justify-center items-center rounded-full cursor-pointer"
+                                >
+                                    <DeleteOutlineIcon className="text-white" style={{ fontSize: '1.4rem' }} />
+                                </span>
+                            </Tooltip>
+                        )}
 
                         <Tooltip title="Edit" arrow>
                             <span
@@ -199,7 +202,7 @@ const Admin = () => {
 
     return (
         <div className="h-full w-full bg-gray-100 flex flex-col">
-            <Breadcrumbs setSearchQuery={setSearchQuery}  fetchAdmins={fetchAdmins} />
+            <Breadcrumbs setSearchQuery={setSearchQuery} fetchAdmins={fetchAdmins} />
             {/* Table Section */}
             <div className="h-full w-full p-6">
                 <div className="h-full bg-white px-4 py-5 rounded-md shadow-md">

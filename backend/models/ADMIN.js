@@ -18,9 +18,13 @@ const admin = new mongoose.Schema(
       type: Boolean,
       default: true,
     },
+    isPermanent: {
+      type: Boolean,
+      default: false,
+    }
   },
   { timestamps: true }
 );
-  
+
 const Admin = mongoose.model("Admin", admin);
 export default Admin;

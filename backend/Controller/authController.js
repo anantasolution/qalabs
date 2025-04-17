@@ -5,14 +5,15 @@ import jwt from "jsonwebtoken";
 
 export const createAdmin = async (req, res) => {
   try {
-    const { username, email, mobileno, password } = req.body;
+    const { username, email, mobileno, password, isPermanent} = req.body;
 
     // Validate input
     const { isValid, errors } = validateAdmin(
       username,
       email,
-      password,
-      mobileno
+      password, 
+      mobileno,
+      isPermanent
     );
     if (!isValid) {
       return res.status(400).json({
@@ -33,7 +34,7 @@ export const createAdmin = async (req, res) => {
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(password, salt);
     // Create new Admin
-    const newAdmin = new Admin({ username, email, mobileno, password: hash });
+    const newAdmin = new Admin({ username, email, mobileno, password: hash,isPermanent  });
     await newAdmin.save();
 
     // Create login mapping
