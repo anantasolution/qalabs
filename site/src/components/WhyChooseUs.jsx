@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Check } from "lucide-react";
-import IMAGE from "../assets/services_images/software_services/cybersecurity.jpg";
+import DIGITAL from '../assets/digital.jpg'
 import { motion, useAnimation } from "framer-motion";
 
 const WhyChooseUs = () => {
@@ -151,7 +151,7 @@ const WhyChooseUs = () => {
             transition={{ duration: 1 }}
           >
             <img
-              src={IMAGE}
+              src={DIGITAL}
               alt="Why Choose Us"
               className="max-w-5xl h-full object-fill rounded-lg"
             />
@@ -183,13 +183,13 @@ const WhyChooseUs = () => {
                 />
               </svg>
               <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-2xl font-bold">97%</span>
+                <span className="text-2xl font-bold">92%</span>
               </div>
             </div>
             <div className="flex flex-col items-center w-full gap-2">
-              <h1 className="text-white font-medium text-lg">Page Speed</h1>
+              <h1 className="text-white font-medium text-lg">Our Services</h1>
               <p className="text-base font-medium text-center text-[#818181] mt-2">
-                Page speed performance, including load time & page size
+              Shaping Digital Experiences That Make an Impact
               </p>
             </div>
           </div>

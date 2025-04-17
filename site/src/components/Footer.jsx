@@ -124,7 +124,7 @@ const Footer = () => {
       <div className="mt-12 pt-6 border-t border-gray-700 text-center text-gray-400">
         © 2025 Powered by{" "}
         <a href="#" className="text-[#BEF264]">
-          Zyinex Web PVT LTD
+          ZyinexWeb PVT LTD
         </a>
       </div>
       {/* Scroll to top button */}
