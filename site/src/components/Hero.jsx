@@ -3,6 +3,7 @@ import { Check } from "lucide-react";
 import HERO from "../assets/hero-section.jpg";
 import { motion, useAnimation } from "framer-motion";
 import { Link } from "react-router-dom";
+import axios from 'axios'
 
 const services = [
   "Web App Development",
@@ -14,19 +15,62 @@ const services = [
   "Hardware Services",
 ];
 
-const stats = [
-  { value: 27, label: "Project Done" },
-  { value: 4, label: "Happy Client" },
-  { value: 4.7, label: "Client Reviews" },
-];
+// const stats = [
+//   { value: 27, label: "Project Done" },
+//   { value: 4, label: "Happy Client" },
+//   { value: 4.7, label: "Client Reviews" },
+// ];
+
+      
+const getData = (key) => {
+  switch(key){
+      case "ClientReviews":
+          return "Clients Reviews"
+      case "HappyClients":
+          return "Happy Clients"
+      
+      case "ProjectDone":
+          return "Project Done"
+      
+      default:
+         return "Project Done"
+  }
+}
 
 const HeroSection = () => {
   const [inView, setInView] = useState(false);
   const controls = useAnimation();
   const sectionRef = useRef(null);
-  const [counts, setCounts] = useState(stats.map(() => 0)); // Initialize all counts at 0
+
+  const [stats,setStats] = useState([])
+  const [counts, setCounts] = useState([]) // Initialize all counts at 0
+
+  const fetchStatsData = async () => {
+    try {
+      const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/company-count`);
+      const statsmap = Object.keys(response.data).map((key) => {
+        if (["ClientReviews", "HappyClients", "ProjectDone"].includes(key)) {
+          return {
+            label: getData(key),
+            value: response.data[key]
+          };
+        }
+        return null;
+      }).filter(Boolean);
+  
+      setStats(statsmap);
+      setCounts(statsmap.map(() => 0));
+    } catch (err) {
+      console.log("Stats fetch error:", err);
+    }
+  };
+
+  console.log('stats---->',stats)
 
   useEffect(() => {
+
+    fetchStatsData()
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -46,16 +90,17 @@ const HeroSection = () => {
         observer.unobserve(sectionRef.current);
       }
     };
-  }, []);
 
+    
+  }, []);
   useEffect(() => {
     if (inView) {
       stats.forEach((stat, index) => {
         let start = 0;
-        const end = stat.value;
-        const duration = 3000; // 3 seconds
-        const stepTime = Math.abs(Math.floor(duration / end));
-
+        const end = Math.floor(stat.value);
+        const duration = 3000;
+        const stepTime = end > 0 ? Math.abs(Math.floor(duration / end)) : duration;
+  
         const counter = setInterval(() => {
           start += 1;
           setCounts((prev) => {
@@ -63,12 +108,12 @@ const HeroSection = () => {
             newCounts[index] = start;
             return newCounts;
           });
-
+  
           if (start >= end) clearInterval(counter);
         }, stepTime);
       });
     }
-  }, [inView]);
+  }, [inView]); 
 
   return (
     <div
