@@ -39,10 +39,10 @@ const Councelling = () => {
         if (entry.isIntersecting) {
           setInView(true);
           controls.start("visible"); // Start animations when in view
-          progressControls.start({ strokeDasharray: "97, 100" }); // Animate the progress circle
+          progressControls.start({ strokeDasharray: "94, 100" }); // Animate the progress circle
         } else {
           controls.start("hidden"); // Optionally, reverse animations when out of view
-          progressControls.start({ strokeDasharray: "97, 0" });
+          progressControls.start({ strokeDasharray: "94, 0" });
         }
       },
       { threshold: 0.3 } // Trigger when 30% of the section is in view
@@ -255,7 +255,7 @@ const Councelling = () => {
                   />
                 </svg>
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-2xl font-bold">97%</span>
+                  <span className="text-2xl font-bold">94%</span>
                 </div>
               </div>
               <div className="flex flex-col items-center w-full gap-2">

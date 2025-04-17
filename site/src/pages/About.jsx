@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Check } from "lucide-react";
-import TEAM from "../assets/TeamWork.jpeg";
+import WHYCHOOSEUS from '../assets/whychooseus.jpg'
 import BI from "../assets/background.jpeg";
 import { motion, useAnimation } from "framer-motion";
 import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
@@ -241,9 +241,9 @@ const About = () => {
               ))}
             </motion.div>
             <img
-              src={TEAM || "/placeholder.svg"}
+              src={WHYCHOOSEUS || "/placeholder.svg"}
               alt="Team working together"
-              className="rounded-lg grayscale hover:grayscale-0 transition-all duration-500 h-[85vh] bg-cover"
+              className="rounded-lg grayscale hover:grayscale-0 transition-all duration-500 bg-cover"
             />
           </motion.div>
 
