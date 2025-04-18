@@ -64,6 +64,11 @@ app.use(
   express.static(path.join(__dirname, "uploads/feedback/photos"))
 );
 
+app.use(
+  "/logo",
+  express.static(path.join(__dirname, "uploads/logo/photos"))
+)
+
 const corsOptions = {
   origin: (origin, callback) => {
     const allowedOrigins = [
