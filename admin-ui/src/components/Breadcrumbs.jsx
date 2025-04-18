@@ -1,29 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ChevronRight, Filter } from "lucide-react";
+import { ChevronRight, Filter,RefreshCcw } from "lucide-react";
 import SearchIcon from "@mui/icons-material/Search";
 import axios from "axios";
 import AddAdmin from "../pages/AddAdmin"; // Adjust path as needed
 
-const Breadcrumbs = ({ fetchAdmins, searchQuery , setSearchQuery, setSelectedCategory, setIsOpen }) => {
+const Breadcrumbs = ({ fetchAdmins, searchQuery, setSearchQuery, setSelectedCategory, setIsOpen, refreshCompanyCount }) => {
   const location = useLocation();
   const pathnames = location.pathname.split("/").filter((x) => x);
   const isDashboard = location.pathname.includes("/dashboard");
   const isBlogPage = location.pathname.includes("/allblogs");
   const isCategoryPage = location.pathname.includes("/category");
-  const isProjectPage = location.pathname.includes("/allprojects"); // Add this line
-  const isFeedbackPage = location.pathname.includes("feedback"); // Add this line
+  const isProjectPage = location.pathname.includes("/allprojects");
+  const isFeedbackPage = location.pathname.includes("feedback");
   const isAdminPage = location.pathname.includes("/admin/user");
-
-
+  const isCompanyCountPage = location.pathname.includes("/companycount");
 
   // State for categories
   const [categories, setCategories] = useState([]);
   const [isAddAdminOpen, setIsAddAdminOpen] = useState(false);
   const [admins, setAdmins] = useState([]);
-  const [filterData, setFilterData] = useState([]);
-  
-
+  const [ filterData, setFilterData] = useState([]);
 
   // Fetch categories from API on mount
   useEffect(() => {
@@ -75,8 +72,8 @@ const Breadcrumbs = ({ fetchAdmins, searchQuery , setSearchQuery, setSelectedCat
 
       {/* Search, Dropdown & Buttons */}
       <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4 mt-2 md:mt-0">
-        {/* Search Bar - Hidden on Dashboard */}
-        {!isDashboard && (
+        {/* Search Bar - Hidden on Dashboard and Company Count Page */}
+        {!isDashboard && !isCompanyCountPage && (
           <div className="relative w-full sm:w-64">
             <SearchIcon className="absolute left-3 top-3 text-gray-400" />
             <input
@@ -86,6 +83,16 @@ const Breadcrumbs = ({ fetchAdmins, searchQuery , setSearchQuery, setSelectedCat
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </div>
+        )}
+
+        {/* Refresh Button - Only on Company Count Page */}
+        {isCompanyCountPage && (
+          <button
+            className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-md text-sm sm:text-base"
+            onClick={refreshCompanyCount}
+          >
+            <RefreshCcw />
+          </button>
         )}
 
         {/* Dropdown for Category Selection */}
@@ -161,12 +168,9 @@ const Breadcrumbs = ({ fetchAdmins, searchQuery , setSearchQuery, setSelectedCat
           setAdmins={setAdmins}
           userId={null}
           setFilterData={setFilterData}
-          searchQuery={searchQuery} 
+          searchQuery={searchQuery}
           fetchAdmins={fetchAdmins}
         />
-
-
-
       </div>
     </div>
   );

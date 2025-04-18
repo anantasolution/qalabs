@@ -28,6 +28,7 @@ import PreviewAndEditFeedback from "./components/Feedback/PreviewAndEditFeedback
 import Admin from "./pages/Admin";
 import VerifyEmail from "./pages/VerifyEmail";
 import ConfirmPassword from "./pages/ConfirmPassword";
+import CompanyCount from "./pages/CompanyCount";
 
 
 const ProtectedRoute = () => {
@@ -78,7 +79,7 @@ function App() {
           }
         ></Route>
         <Route path="/forgot-password" element={<VerifyEmail />} />
-        <Route path="/verify-token/:token" element={!user ? <ConfirmPassword /> : <Navigate to={"/admin/dashboard"}/>} />
+        <Route path="/verify-token/:token" element={!user ? <ConfirmPassword /> : <Navigate to={"/admin/dashboard"} />} />
         <Route
           path="/forget-password"
           element={
@@ -124,17 +125,21 @@ function App() {
             path="feedback"
             element={<Feedback></Feedback>}
           ></Route>
-            <Route
+          <Route
             path="feedback/add_feedback"
             element={<AddFeedback></AddFeedback>}
           ></Route>
-            <Route
+          <Route
             path="feedback/preview"
             element={<PreviewAndEditFeedback></PreviewAndEditFeedback>}
           ></Route>
-           <Route
+          <Route
             path="user"
             element={<Admin></Admin>}
+          ></Route>
+          <Route
+            path="companycount"
+            element={<CompanyCount></CompanyCount>}
           ></Route>
         </Route>
       </Routes>
