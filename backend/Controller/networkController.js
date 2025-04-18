@@ -16,6 +16,7 @@ export const createNetwork = async (req, res) => {
 export const getAllNetworks = async (req, res) => {
     try {
         const networks = await Network.find();
+        console.log("Networks",networks)
         res.status(200).json(networks);
     } catch (error) {
         res.status(500).json({ message: "Error fetching network data", error });

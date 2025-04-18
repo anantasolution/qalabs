@@ -16,6 +16,7 @@ import { ChevronUp } from "lucide-react";
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import { ArrowUp10 } from 'lucide-react';
+import { ChartNetwork } from 'lucide-react';
 //Importing image
 import LOGO from '../assets/navlogo.png'
 
@@ -350,6 +351,37 @@ function SideNavbar({ toggle }) {
                 <ArrowUp10
                   style={{ fontSize: "1.8rem", fontWeight: "200" }}
                 ></ArrowUp10>
+              </span>
+            </div>
+          )}
+
+          {toggle || innerToggle ? (
+            <div
+              onClick={() => {
+                handleNavigate("networkcount");
+              }}
+
+              className={`flex ${isActive("networkcount") && "bg-gray-100"
+                } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
+            >
+              <span>
+                <ChartNetwork style={{ fontSize: "1.4rem" }}></ChartNetwork>
+              </span>
+              <span className="text-sm font-semibold">Network Count</span>
+            </div>
+          ) : (
+            <div
+              onClick={() => {
+                handleNavigate("networkcount");
+              }}
+
+              className={`flex ${isActive("networkcount") && "bg-gray-100"
+                } hover:bg-gray-100 cursor-pointer transition-all duration-300  p-1.5 rounded-md  justify-center items-center`}
+            >
+              <span>
+                <ChartNetwork
+                  style={{ fontSize: "1.8rem", fontWeight: "200" }}
+                ></ChartNetwork>
               </span>
             </div>
           )}
