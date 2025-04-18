@@ -17,6 +17,7 @@ import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import { ArrowUp10 } from 'lucide-react';
 import { ChartNetwork } from 'lucide-react';
+import { Codepen } from 'lucide-react'
 //Importing image
 import LOGO from '../assets/navlogo.png'
 
@@ -382,6 +383,37 @@ function SideNavbar({ toggle }) {
                 <ChartNetwork
                   style={{ fontSize: "1.8rem", fontWeight: "200" }}
                 ></ChartNetwork>
+              </span>
+            </div>
+          )}
+
+          {toggle || innerToggle ? (
+            <div
+              onClick={() => {
+                handleNavigate("logo");
+              }}
+
+              className={`flex ${isActive("logo") && "bg-gray-100"
+                } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
+            >
+              <span>
+                <Codepen style={{ fontSize: "1.4rem" }}></Codepen>
+              </span>
+              <span className="text-sm font-semibold">Logo</span>
+            </div>
+          ) : (
+            <div
+              onClick={() => {
+                handleNavigate("logo");
+              }}
+
+              className={`flex ${isActive("logo") && "bg-gray-100"
+                } hover:bg-gray-100 cursor-pointer transition-all duration-300  p-1.5 rounded-md  justify-center items-center`}
+            >
+              <span>
+                <Codepen
+                  style={{ fontSize: "1.8rem", fontWeight: "200" }}
+                ></Codepen>
               </span>
             </div>
           )}

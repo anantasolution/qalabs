@@ -10,6 +10,7 @@ import { Contact } from "lucide-react";
 import { Handshake } from "lucide-react";
 import { ArrowUp10 } from "lucide-react";
 import { ChartNetwork } from 'lucide-react';
+import { Codepen } from 'lucide-react';
 import { ChevronDown } from "lucide-react";
 import { ChevronUp } from "lucide-react";
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
@@ -205,6 +206,18 @@ function MobileSideNavbar({ toggle, ref }) {
               <ChartNetwork style={{ fontSize: "1.4rem" }} />
             </span>
             <span className="text-sm font-semibold">Network Count</span>
+          </div>
+
+          {/* Logo */}
+          <div
+            onClick={() => handleNavigate("logo")}
+            className={`flex ${isActive("logo") && "bg-gray-100"
+              } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
+          >
+            <span>
+              <Codepen style={{ fontSize: "1.4rem" }} />
+            </span>
+            <span className="text-sm font-semibold">Logo</span>
           </div>
         </div>
       </div>
