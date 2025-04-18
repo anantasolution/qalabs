@@ -3,16 +3,21 @@ import CompanyCount from "../models/COMPANYCOUNT.js";
 // To get company counts...
 export const getCompanyCount = async (req, res) => {
     try {
-        const count = await CompanyCount.findOne();
-        if (!count) {
-            return res.status(404).json({ message: "Count data not found" });
-        }
-        res.status(200).json(count);
+      console.log("Fetching company count...");
+      const count = await CompanyCount.findOne();
+      console.log("Result:", count);
+  
+      if (!count) {
+        return res.status(404).json({ message: "Count data not found" });
+      }
+  
+      res.status(200).json(count);
     } catch (error) {
-        res.status(500).json({ message: "Server Error", error });
+      console.error("Error in getCompanyCount:", error);
+      res.status(500).json({ message: "Server Error", error });
     }
-};
-
+  };
+  
 
 
 // To create Counts

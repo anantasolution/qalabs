@@ -15,7 +15,7 @@ import { ChevronDown } from "lucide-react";
 import { ChevronUp } from "lucide-react";
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
-
+import { ArrowUp10 } from 'lucide-react';
 //Importing image
 import LOGO from '../assets/navlogo.png'
 
@@ -226,11 +226,11 @@ function SideNavbar({ toggle }) {
 
           {toggle || innerToggle ? (
             <div
-            onClick={() => {
-              console.log("Navigating to projects/allprojects");
-              handleNavigate("projects/allprojects");
-            }}
-            
+              onClick={() => {
+                console.log("Navigating to projects/allprojects");
+                handleNavigate("projects/allprojects");
+              }}
+
               className={`flex ${isActive("projects/allprojects") && "bg-gray-100"
                 } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
             >
@@ -241,11 +241,11 @@ function SideNavbar({ toggle }) {
             </div>
           ) : (
             <div
-            onClick={() => {
-              console.log("Navigating to projects/allprojects");
-              handleNavigate("projects/allprojects");
-            }}
-            
+              onClick={() => {
+                console.log("Navigating to projects/allprojects");
+                handleNavigate("projects/allprojects");
+              }}
+
               className={`flex ${isActive("projects/allprojects") && "bg-gray-100"
                 } hover:bg-gray-100 cursor-pointer transition-all duration-300  p-1.5 rounded-md  justify-center items-center`}
             >
@@ -257,13 +257,13 @@ function SideNavbar({ toggle }) {
             </div>
           )}
 
-{toggle || innerToggle ? (
+          {toggle || innerToggle ? (
             <div
-            onClick={() => {
-              console.log("Navigating to feedback");
-              handleNavigate("feedback");
-            }}
-            
+              onClick={() => {
+                console.log("Navigating to feedback");
+                handleNavigate("feedback");
+              }}
+
               className={`flex ${isActive("feedback") && "bg-gray-100"
                 } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
             >
@@ -274,11 +274,11 @@ function SideNavbar({ toggle }) {
             </div>
           ) : (
             <div
-            onClick={() => {
-              console.log("Navigating to feedback");
-              handleNavigate("feedback");
-            }}
-            
+              onClick={() => {
+                console.log("Navigating to feedback");
+                handleNavigate("feedback");
+              }}
+
               className={`flex ${isActive("feedback") && "bg-gray-100"
                 } hover:bg-gray-100 cursor-pointer transition-all duration-300  p-1.5 rounded-md  justify-center items-center`}
             >
@@ -290,12 +290,12 @@ function SideNavbar({ toggle }) {
             </div>
           )}
 
-{toggle || innerToggle ? (
+          {toggle || innerToggle ? (
             <div
-            onClick={() => {
-              handleNavigate("user");
-            }}
-            
+              onClick={() => {
+                handleNavigate("user");
+              }}
+
               className={`flex ${isActive("user") && "bg-gray-100"
                 } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
             >
@@ -306,10 +306,10 @@ function SideNavbar({ toggle }) {
             </div>
           ) : (
             <div
-            onClick={() => {
-              handleNavigate("user");
-            }}
-            
+              onClick={() => {
+                handleNavigate("user");
+              }}
+
               className={`flex ${isActive("user") && "bg-gray-100"
                 } hover:bg-gray-100 cursor-pointer transition-all duration-300  p-1.5 rounded-md  justify-center items-center`}
             >
@@ -317,6 +317,39 @@ function SideNavbar({ toggle }) {
                 <PersonOutlineOutlinedIcon
                   style={{ fontSize: "1.8rem", fontWeight: "200" }}
                 ></PersonOutlineOutlinedIcon>
+              </span>
+            </div>
+          )}
+
+
+
+          {toggle || innerToggle ? (
+            <div
+              onClick={() => {
+                handleNavigate("companycount");
+              }}
+
+              className={`flex ${isActive("companycount") && "bg-gray-100"
+                } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
+            >
+              <span>
+                <ArrowUp10 style={{ fontSize: "1.4rem" }}></ArrowUp10>
+              </span>
+              <span className="text-sm font-semibold">Company Count</span>
+            </div>
+          ) : (
+            <div
+              onClick={() => {
+                handleNavigate("companycount");
+              }}
+
+              className={`flex ${isActive("companycount") && "bg-gray-100"
+                } hover:bg-gray-100 cursor-pointer transition-all duration-300  p-1.5 rounded-md  justify-center items-center`}
+            >
+              <span>
+                <ArrowUp10
+                  style={{ fontSize: "1.8rem", fontWeight: "200" }}
+                ></ArrowUp10>
               </span>
             </div>
           )}

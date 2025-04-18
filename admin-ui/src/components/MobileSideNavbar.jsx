@@ -8,6 +8,7 @@ import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
 import { FolderOpenDot, MessageSquareCode, SquarePen } from "lucide-react";
 import { Contact } from "lucide-react";
 import { Handshake } from "lucide-react";
+import { ArrowUp10 } from "lucide-react";
 import { ChevronDown } from "lucide-react";
 import { ChevronUp } from "lucide-react";
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
@@ -173,6 +174,15 @@ function MobileSideNavbar({ toggle, ref }) {
             <span className="text-sm font-semibold">Feedback</span>
           </div>
           <div
+            onClick={() => handleNavigate("companycount")}
+            className={`flex ${
+              isActive("feedback") && "bg-gray-100"
+            } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
+          >
+            <span>
+              <ArrowUp10 style={{ fontSize: "1.4rem" }}></ArrowUp10>
+            </span>
+            <span className="text-sm font-semibold">Company Count</span>
             onClick={() => handleNavigate("user")}
             className={`flex ${
               isActive("user") && "bg-gray-100"
