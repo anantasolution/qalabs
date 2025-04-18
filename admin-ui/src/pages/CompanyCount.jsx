@@ -105,6 +105,8 @@ const CompanyCount = () => {
         fetchCompanyCount();
     }, []);
 
+    console.log(editingItem)
+
     return (
         <div className="min-h-screen w-full bg-gray-100 flex flex-col">
             <Breadcrumbs title="Company Count" refreshCompanyCount={refreshCompanyCount} />
@@ -175,8 +177,9 @@ const CompanyCount = () => {
                                 <input
                                     type="text"
                                     value={editingItem.Title}
+                                    readOnly
                                     onChange={(e) => setEditingItem({ ...editingItem, Title: e.target.value })}
-                                    className="w-full px-3 py-2 border border-gray-300 rounded-md"
+                                    className="w-full px-3 py-2 border outline-none border-gray-300 rounded-md"
                                 />
                             </div>
 

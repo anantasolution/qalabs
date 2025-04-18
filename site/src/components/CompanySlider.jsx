@@ -4,12 +4,35 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import { Autoplay, FreeMode } from "swiper/modules";
-
-const logos = [
-  LOGO, LOGO, LOGO, LOGO, LOGO, LOGO, LOGO, LOGO, LOGO, LOGO, LOGO,
-];
+import {toast} from 'react-toastify'
+import axios from 'axios'
+import { useEffect } from "react";
+import { useState } from "react";
 
 const CompanySlider = () => {
+
+  const [logos,setLogos] = useState([])
+
+
+  const fetchPhotoes = async () =>{
+    try{
+      const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/photos`)
+      setLogos(response.data.map((item)=>(
+         `${process.env.REACT_APP_API_BASE_LOGOS}/${item.image.filename}`
+      )))
+    }catch(err){
+      console.log(err)
+      toast.error(err?.response?.data?.message || "Something went wrong.")
+    }
+  }
+
+  console.log("logos---->",logos)
+
+  useEffect(()=>{
+    fetchPhotoes()
+  },[])
+
+
   return (
     <>
       <div className="w-full py-7 md:py-10 bg-[#151515] flex justify-center px-10 border-t border-gray-600">
