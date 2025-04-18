@@ -30,6 +30,7 @@ import VerifyEmail from "./pages/VerifyEmail";
 import ConfirmPassword from "./pages/ConfirmPassword";
 import CompanyCount from "./pages/CompanyCount";
 import NetworkCount from "./pages/NetworkCount";
+import Logo from "./pages/Logo";
 
 
 const ProtectedRoute = () => {
@@ -145,6 +146,10 @@ function App() {
           <Route
             path="networkcount"
             element={<NetworkCount></NetworkCount>}
+          ></Route>
+          <Route
+            path="logo"
+            element={<Logo></Logo>}
           ></Route>
         </Route>
       </Routes>
