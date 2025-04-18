@@ -18,6 +18,7 @@ import feedbackRoutes from "./routes/feedback.js";
 import projectRoutes from "./routes/project.js";
 import companyCountRoutes from "./routes/companyCount.js";
 import networkRoutes from "./routes/network.js";
+import photoRoutes from "./routes/image.js";
 
 // Get the current file's path
 const __filename = fileURLToPath(import.meta.url);
@@ -129,6 +130,7 @@ app.use("/api/feedback", feedbackRoutes);
 app.use("/api/project", projectRoutes);
 app.use("/api/company-count",companyCountRoutes);
 app.use("/api/networks", networkRoutes);
+app.use('/api/photos', photoRoutes);
 
 // Middleware to catch errors
 app.use((err, req, res, next) => {
