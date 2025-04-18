@@ -15,6 +15,7 @@ const Breadcrumbs = ({ fetchAdmins, searchQuery, setSearchQuery, setSelectedCate
   const isFeedbackPage = location.pathname.includes("feedback");
   const isAdminPage = location.pathname.includes("/admin/user");
   const isCompanyCountPage = location.pathname.includes("/companycount");
+  const isNetworkCountPage = location.pathname.includes("/networkcount");
 
   // State for categories
   const [categories, setCategories] = useState([]);
@@ -73,7 +74,7 @@ const Breadcrumbs = ({ fetchAdmins, searchQuery, setSearchQuery, setSelectedCate
       {/* Search, Dropdown & Buttons */}
       <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4 mt-2 md:mt-0">
         {/* Search Bar - Hidden on Dashboard and Company Count Page */}
-        {!isDashboard && !isCompanyCountPage && (
+        {!isDashboard && !isCompanyCountPage && !isNetworkCountPage && (
           <div className="relative w-full sm:w-64">
             <SearchIcon className="absolute left-3 top-3 text-gray-400" />
             <input
@@ -86,7 +87,7 @@ const Breadcrumbs = ({ fetchAdmins, searchQuery, setSearchQuery, setSelectedCate
         )}
 
         {/* Refresh Button - Only on Company Count Page */}
-        {isCompanyCountPage && (
+        {(isCompanyCountPage || isNetworkCountPage) && (
           <button
             className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-md text-sm sm:text-base"
             onClick={refreshCompanyCount}

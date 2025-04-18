@@ -9,6 +9,7 @@ import { FolderOpenDot, MessageSquareCode, SquarePen } from "lucide-react";
 import { Contact } from "lucide-react";
 import { Handshake } from "lucide-react";
 import { ArrowUp10 } from "lucide-react";
+import { ChartNetwork } from 'lucide-react';
 import { ChevronDown } from "lucide-react";
 import { ChevronUp } from "lucide-react";
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
@@ -35,9 +36,8 @@ function MobileSideNavbar({ toggle, ref }) {
   return (
     <div
       ref={ref}
-      className={`${
-        toggle ? "left-0" : "-left-1/2"
-      } w-1/2 bg-white z-50 absolute md:hidden block overflow-y-hidden transition-all duration-300 h-full border`}
+      className={`${toggle ? "left-0" : "-left-1/2"
+        } w-1/2 bg-white z-50 absolute md:hidden block overflow-y-hidden transition-all duration-300 h-full border`}
     >
       <div className="h-20 px-4 w-full border-b flex justify-start items-center">
         {toggle ? (
@@ -62,9 +62,8 @@ function MobileSideNavbar({ toggle, ref }) {
           {/* Dashboard Section */}
           <div
             onClick={() => handleNavigate("dashboard")}
-            className={`flex ${
-              isActive("dashboard") && "bg-gray-100"
-            } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
+            className={`flex ${isActive("dashboard") && "bg-gray-100"
+              } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
           >
             <span>
               <SpaceDashboardOutlinedIcon
@@ -129,9 +128,8 @@ function MobileSideNavbar({ toggle, ref }) {
           {/* contact  */}
           <div
             onClick={() => handleNavigate("contactus")}
-            className={`flex ${
-              isActive("contactus") && "bg-gray-100"
-            } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
+            className={`flex ${isActive("contactus") && "bg-gray-100"
+              } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
           >
             <span>
               <Contact style={{ fontSize: "1.4rem" }}></Contact>
@@ -142,9 +140,8 @@ function MobileSideNavbar({ toggle, ref }) {
           {/* consulation */}
           <div
             onClick={() => handleNavigate("consultant")}
-            className={`flex ${
-              isActive("consultant") && "bg-gray-100"
-            } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
+            className={`flex ${isActive("consultant") && "bg-gray-100"
+              } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
           >
             <span>
               <Handshake style={{ fontSize: "1.4rem" }}></Handshake>
@@ -153,45 +150,61 @@ function MobileSideNavbar({ toggle, ref }) {
           </div>
           <div
             onClick={() => handleNavigate("projects/allprojects")}
-            className={`flex ${
-              isActive("projects") && "bg-gray-100"
-            } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
+            className={`flex ${isActive("projects") && "bg-gray-100"
+              } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
           >
             <span>
               <FolderOpenDot style={{ fontSize: "1.4rem" }}></FolderOpenDot>
             </span>
             <span className="text-sm font-semibold">Projects</span>
           </div>
+
+          {/* Feedback */}
           <div
             onClick={() => handleNavigate("feedback")}
-            className={`flex ${
-              isActive("feedback") && "bg-gray-100"
-            } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
+            className={`flex ${isActive("feedback") && "bg-gray-100"
+              } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
           >
             <span>
               <MessageSquareCode style={{ fontSize: "1.4rem" }}></MessageSquareCode>
             </span>
             <span className="text-sm font-semibold">Feedback</span>
           </div>
+
+          {/* Admin */}
           <div
-            onClick={() => handleNavigate("companycount")}
-            className={`flex ${
-              isActive("feedback") && "bg-gray-100"
-            } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
-          >
-            <span>
-              <ArrowUp10 style={{ fontSize: "1.4rem" }}></ArrowUp10>
-            </span>
-            <span className="text-sm font-semibold">Company Count</span>
             onClick={() => handleNavigate("user")}
-            className={`flex ${
-              isActive("user") && "bg-gray-100"
-            } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
+            className={`flex ${isActive("user") && "bg-gray-100"
+              } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
           >
             <span>
-              <PersonOutlineOutlinedIcon style={{ fontSize: "1.4rem" }}></PersonOutlineOutlinedIcon>
+              <PersonOutlineOutlinedIcon style={{ fontSize: "1.4rem" }} />
             </span>
             <span className="text-sm font-semibold">Admin</span>
+          </div>
+
+          {/* Company Count */}
+          <div
+            onClick={() => handleNavigate("companycount")}
+            className={`flex ${isActive("companycount") && "bg-gray-100"
+              } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
+          >
+            <span>
+              <ArrowUp10 style={{ fontSize: "1.4rem" }} />
+            </span>
+            <span className="text-sm font-semibold">Company Count</span>
+          </div>
+
+          {/* NetWork */}
+          <div
+            onClick={() => handleNavigate("networkcount")}
+            className={`flex ${isActive("networkcount") && "bg-gray-100"
+              } hover:bg-gray-100 cursor-pointer transition-all duration-300 rounded-md p-2 items-center gap-2`}
+          >
+            <span>
+              <ChartNetwork style={{ fontSize: "1.4rem" }} />
+            </span>
+            <span className="text-sm font-semibold">Network Count</span>
           </div>
         </div>
       </div>
