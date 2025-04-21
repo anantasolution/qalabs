@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ChevronRight, Filter,RefreshCcw } from "lucide-react";
+import { ChevronRight, Filter, RefreshCcw } from "lucide-react";
 import SearchIcon from "@mui/icons-material/Search";
 import axios from "axios";
 import AddAdmin from "../pages/AddAdmin"; // Adjust path as needed
+import AddLogo from "../pages/AddLogo"; // Adjust path as needed
+
 
 const Breadcrumbs = ({ fetchAdmins, searchQuery, setSearchQuery, setSelectedCategory, setIsOpen, refreshCompanyCount }) => {
   const location = useLocation();
@@ -22,7 +24,8 @@ const Breadcrumbs = ({ fetchAdmins, searchQuery, setSearchQuery, setSelectedCate
   const [categories, setCategories] = useState([]);
   const [isAddAdminOpen, setIsAddAdminOpen] = useState(false);
   const [admins, setAdmins] = useState([]);
-  const [ filterData, setFilterData] = useState([]);
+  const [isAddLogoOpen, setIsAddLogoOpen] = useState(false);
+  const [filterData, setFilterData] = useState([]);
 
   // Fetch categories from API on mount
   useEffect(() => {
@@ -90,7 +93,7 @@ const Breadcrumbs = ({ fetchAdmins, searchQuery, setSearchQuery, setSelectedCate
         {/* Refresh Button - Only on Company Count Page */}
         {(isCompanyCountPage || isNetworkCountPage || isLogo) && (
           <button
-            className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-md text-sm sm:text-base"
+            className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-md text-sm sm:text-base"
             onClick={refreshCompanyCount}
           >
             <RefreshCcw />
@@ -173,6 +176,24 @@ const Breadcrumbs = ({ fetchAdmins, searchQuery, setSearchQuery, setSelectedCate
           searchQuery={searchQuery}
           fetchAdmins={fetchAdmins}
         />
+
+        {/* Add  Button - Only on /logo */}
+        {isLogo && (
+          <button
+            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm sm:text-base w-full sm:w-auto text-center"
+            onClick={() => setIsAddLogoOpen(true)}
+          >
+            Add
+          </button>
+        )}
+
+        <AddLogo
+          isOpen={isAddLogoOpen} 
+          refreshCompanyCount={refreshCompanyCount}
+          onClose={() => setIsAddLogoOpen(false)}
+        />
+
+
       </div>
     </div>
   );
