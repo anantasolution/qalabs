@@ -91,7 +91,7 @@ const About = () => {
   const services = [
     "Web App Development",
     "CRM/ERP Development",
-    "Mobile App development",
+    "Mobile App Development",
     "Software Testing",
     "AI / ML Solutions",
     "Hardware Services",
