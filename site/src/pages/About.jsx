@@ -7,6 +7,7 @@ import { motion, useAnimation } from "framer-motion";
 import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 import { useInView } from "react-intersection-observer";
 import axios from "axios";
+import CompanySlider from "../components/CompanySlider";
 
 const HeroSection = () => {
   const controls = useAnimation();
@@ -106,7 +107,6 @@ const About = () => {
   const fetchStatsData = async () =>{
     try{
       const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/company-count`)
-      console.log(response.data)
       const statsmap = Object.keys(response.data).map((key)=>{
         if(key==="ClientReviews" || key==="HappyClients" || key==="ProjectDone"){
           return {
@@ -336,7 +336,7 @@ const About = () => {
                 <div key={index}>
                   <div className="text-white text-3xl lg:text-4xl font-bold mb-2">
                     {stat.label === "Client Reviews"
-                      ? stat.value.toFixed(1)
+                      ? stat                      .value.toFixed(1)
                       : Math.round(stat.value)}
                     {stat.suffix || ""}
                   </div>
@@ -357,32 +357,17 @@ const About = () => {
         </div>
       </div>
 
-      {/* <HeroSection className="border border-red-500 relative" /> */}
-
-      {/* White Line */}
-      <div className="border-t border-white my-8"></div>
-
-      {/* Logo Marquee */}
-      <div className="bg-[#151515] py-8 overflow-hidden flex justify-center items-center">
-        <div className="flex animate-marquee space-x-12">
-          {logos.concat(logos).map((logo, index) => (
-            <img
-              key={index}
-              src={logo || "/placeholder.svg"}
-              alt="Company Logo"
-              className="h-12 brightness-0 invert"
-            />
-          ))}
-        </div>
-      </div>
+      {/*div for spacing*/}
+      <div className=" my-8"></div>
+      <CompanySlider />
 
       {/* Hero Section */}
       <HeroSection />
 
       {/* Team Section */}
-      <div className="bg-[#151515] py-20 px-4 sm:px-8">
+      {/* <div className="bg-[#151515] py-20 px-4 sm:px-8">
         <div className="max-w-7xl mx-auto">
-          {/* Header */}
+          
           <motion.div
             className="text-center mb-16"
             ref={teamRef}
@@ -400,7 +385,7 @@ const About = () => {
               and <span className="text-cyan-400">teamwork</span>.
             </h2>
           </motion.div>
-          {/* Team Grid */}
+        
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {teamMembers.map((member) => (
               <motion.div
@@ -413,14 +398,13 @@ const About = () => {
                 }}
               >
                 <div className="relative overflow-hidden rounded-t-lg bg-[#1A1A1A]">
-                  {/* Image Container */}
                   <div className="relative aspect-square">
                     <img
                       src={member.image || "/placeholder.svg"}
                       alt={member.name}
                       className="w-full h-full object-cover transition-all duration-300 group-hover:filter-none filter grayscale"
                     />
-                    {/* Social Media Overlay */}
+                   
                     <div className="absolute top-2 right-2 flex flex-col space-y-2 transition-opacity duration-300 rounded-full p-2 bg-white">
                       <a
                         href="#"
@@ -453,7 +437,7 @@ const About = () => {
             ))}
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
