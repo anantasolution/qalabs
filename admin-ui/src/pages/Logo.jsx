@@ -68,21 +68,30 @@ const Logo = () => {
                     ) : logos.length > 0 ? (
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                             {logos.map(logo => (
-                                <div key={logo._id} className="bg-gray-100 p-3 rounded-lg shadow-sm hover:shadow-md transition duration-300 flex flex-col items-center">
-                                    <img
-                                        src={logo.url}
-                                        alt="logo"
-                                        className="h-24 w-auto object-contain mb-2"
-                                    />
+                                <div
+                                    key={logo._id}
+                                    className="relative bg-gray-100 p-4 py-5 rounded-lg shadow-sm hover:shadow-md transition duration-300"
+                                >
+                                    {/* Delete button in top-right */}
                                     <button
                                         onClick={() => openDeleteModal(logo._id)}
-                                        className="bg-red-500 hover:bg-red-600 text-white p-2 rounded-full"
+                                        className="absolute top-2 right-2 bg-red-500 hover:bg-red-600 text-white p-2 rounded-full z-10"
                                         aria-label="Delete logo"
                                     >
                                         <Trash2 size={18} />
                                     </button>
+
+                                    {/* Centered logo image */}
+                                    <div className="flex justify-center items-center h-24">
+                                        <img
+                                            src={logo.url}
+                                            alt="logo"
+                                            className="max-h-full w-auto object-contain"
+                                        />
+                                    </div>
                                 </div>
                             ))}
+
                         </div>
                     ) : (
                         <p className="text-center text-gray-500 py-10">No logos found.</p>
