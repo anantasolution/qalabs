@@ -60,7 +60,7 @@ export const sendVerificationMail = async (req, res) => {
           }
           .header {
             text-align: center;
-            background-color: #70ecb6;
+            background-color: black;
             padding: 20px;
             border-radius: 10px 10px 0 0;
             color: #000;
@@ -98,7 +98,7 @@ export const sendVerificationMail = async (req, res) => {
       
         <div class="container">
           <div class="header">
-            <h1>Zyinexweb Pvt Ltd</h1>
+            <img src="https://res.cloudinary.com/djxavfpqc/image/upload/v1745227683/navlogo_cuoecd.png" alt="Zyinexweb Logo" width="120" style="display:block; margin: 0 auto 10px;" />
           </div>
           <div class="content">
             <p>Hello,</p>
