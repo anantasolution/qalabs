@@ -8,6 +8,7 @@ import { FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
 import { useInView } from "react-intersection-observer";
 import axios from "axios";
 import CompanySlider from "../components/CompanySlider";
+import AboutCeo from "../components/AboutCeo";
 
 const HeroSection = () => {
   const controls = useAnimation();
@@ -438,6 +439,9 @@ const About = () => {
           </div>
         </div>
       </div> */}
+
+      <AboutCeo></AboutCeo>
+
     </div>
   );
 };
