@@ -75,7 +75,8 @@ const corsOptions = {
       "http://localhost:3000",
       "http://localhost:3001",
       "https://admin.zyinexweb.com",
-      "https://zyinexweb.com"
+      "https://zyinexweb.com",
+      "https://www.fuelflex.in"
     ];
     // Allow requests with no origin (like mobile apps or CURL)
     if (!origin || allowedOrigins.includes(origin)) {
