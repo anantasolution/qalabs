@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 // Importing icons
@@ -65,13 +65,17 @@ function SideNavbar({ toggle }) {
     >
       <div className="h-20 px-4 w-full border-b flex justify-start items-center">
         {toggle ? (
-          <div className="flex p-1 bg-black justify-center items-center">
-            <img src={LOGO} className="w-32 h-16"></img>
-          </div>
+            <Link to={'/admin/dashboard'}>
+                 <div className="flex p-1 bg-black justify-center items-center">
+                    <img src={LOGO} className="w-32 h-16"></img>
+                  </div>
+            </Link>
         ) : (
-          <div className="w-full p-1 bg-black flex justify-center items-center">
-            <img src={LOGO} className="w-20 h-10"></img>
-          </div>
+          <Link to={'/admin/dashboard'}>
+            <div className="w-full p-1 bg-black flex justify-center items-center">
+              <img src={LOGO} className="w-20 h-10"></img>
+            </div>
+          </Link>
         )}
       </div>
       {/* Navigation Div */}
