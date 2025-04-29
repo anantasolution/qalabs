@@ -7,10 +7,11 @@ import { ListCollapse } from 'lucide-react';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import user from "../user.jpg"
+import userPic from "../user.jpg"
 
 const useIsMobile = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
 
   useEffect(() => {
     const handleResize = () => {
@@ -27,6 +28,8 @@ const useIsMobile = () => {
 };
 
 function Navbar({ toggle, setToggle }) {
+  const {user} = useSelector((state)=>state.auth)
+  const [userName,setUserName] = useState('')
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const isMobile = useIsMobile()
@@ -64,6 +67,20 @@ function Navbar({ toggle, setToggle }) {
     };
   }, [isVisible]);
 
+  useEffect(()=>{
+     const fetchUserInfo = async () =>{
+       try{
+        const response = await axios.get(`${process.env.REACT_APP_API_BASE_URL}/admin/getadmin/${user.mongoid}`)
+        setUserName(response.data.data.username)
+       }catch(err){
+         console.log(err)
+         toast.error(err?.response?.data?.message || "Something went wrong.")
+       }
+     }
+
+     fetchUserInfo()
+  },[])
+
   return (
     <div className='h-[91px] sticky z-40 border-b flex justify-between items-center px-4'>
       {
@@ -72,14 +89,14 @@ function Navbar({ toggle, setToggle }) {
           : toggle ? <ListCollapse style={{ fontSize: '1.8rem' }} onClick={() => setToggle(false)} className='cursor-pointer'></ListCollapse> : <ArrowRightAltIcon style={{ fontSize: '1.8rem' }} onClick={() => setToggle(true)} className='cursor-pointer'></ArrowRightAltIcon>
       }
       <div className="relative flex justify-center items-center px-10">
-        <img onClick={() => setIsVisible((prev) => (!prev))} src={user} alt='profile' className='w-10 h-10 rounded-full cursor-pointer'></img>
+        <img onClick={() => setIsVisible((prev) => (!prev))} src={userPic} alt='profile' className='w-10 h-10 rounded-full cursor-pointer'></img>
         {
           isVisible &&
           <div ref={popupRef} className='absolute right-0 top-[120%] flex flex-col bg-white w-[200px] shadow border rounded-md'>
             <div className='flex items-center gap-2 border-b p-2'>
-              <img src={user} alt='profile' className='w-10 h-10 rounded-full cursor-pointer'></img>
+              <img src={userPic} alt='profile' className='w-10 h-10 rounded-full cursor-pointer'></img>
               <div className='flex flex-col'>
-                <h1>Harhit Gadhiya</h1>
+                <h1>{userName}</h1>
                 <span className='text-sm text-blue-600'>Admin</span>
               </div>
             </div>

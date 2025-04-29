@@ -56,6 +56,8 @@ const Logo = () => {
         fetchLogos();
     }, []);
 
+    console.log('logos---->',logos)
+
     return (
         <div className="min-h-screen w-full bg-gray-50 flex flex-col">
             <Breadcrumbs title="Logo" refreshCompanyCount={fetchLogos} />
