@@ -5,11 +5,6 @@ export const getCompanyCount = async (req, res) => {
     try {
       console.log("Fetching company count...");
       const count = await CompanyCount.findOne();
-      console.log("Result:", count);
-  
-      if (!count) {
-        return res.status(404).json({ message: "Count data not found" });
-      }
   
       res.status(200).json(count);
     } catch (error) {

@@ -6,7 +6,8 @@ import {
   disableAdmin,
   enableAdmin,
   changePassword,
-  deleteAdmin
+  deleteAdmin,
+  getAdminById
 } from "../Controller/adminController.js";
 
 const router = express.Router();
@@ -22,6 +23,9 @@ router.put("/enableAdmins", enableAdmin);
 router.put("/disableAdmins", disableAdmin);
 
 router.delete("/deleteAdmin/:id", deleteAdmin);
+
+//Get admin by id
+router.get('/getadmin/:id',getAdminById)
 
 
 // change anyones password by anyone

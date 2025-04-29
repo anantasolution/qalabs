@@ -177,3 +177,19 @@ export const deleteAdmin = async (req, res) => {
       .json({ Message: "Something Went Wrong from deleteAdmin", error: e });
   }
 };
+
+//For get admin by id
+export const getAdminById = async (req, res, next) =>{
+  try{
+    const {id} = req.params
+  
+    if(!id) return res.status(400).json({message:"Please provide admin id."})
+
+    const admin = await Admin.findById(id)
+
+    return res.status(200).json({message:"Admin retrived successfully.",data:admin})
+
+  }catch(err){
+    next(err)
+  }
+}
