@@ -36,8 +36,6 @@ import Logo from "./pages/Logo";
 const ProtectedRoute = () => {
   const { user } = useSelector((state) => state.auth);
 
-  console.log(user);
-
   // Check if the user is logged in
   return user ? <MySuperDashboard></MySuperDashboard> : <Navigate to="/" />;
 };
@@ -95,17 +93,7 @@ function App() {
         <Route path="category" element={<Categories></Categories>}></Route>
         {/* Protected route */}
         <Route path="/admin" element={<ProtectedRoute />}>
-          <Route path="dashboard" element={<Main></Main>}></Route>
-          {/* <Route path="blogs/allblogs" element={<Blogs />} />
-          <Route
-            path="blogs/category"
-            element={<Categories></Categories>}
-          ></Route>
-          <Route path="blogs/add_blog" element={<AddBlog></AddBlog>}></Route>
-          <Route
-            path="blogs/preview"
-            element={<PreviewAndEditBlog></PreviewAndEditBlog>}
-          ></Route> */}
+          <Route index path="dashboard" element={<Main></Main>}></Route>
           <Route path="contactus" element={<ContactUs></ContactUs>}></Route>
           <Route
             path="consultant"

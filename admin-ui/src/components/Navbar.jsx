@@ -94,7 +94,7 @@ function Navbar({ toggle, setToggle }) {
           isVisible &&
           <div ref={popupRef} className='absolute right-0 top-[120%] flex flex-col bg-white w-[200px] shadow border rounded-md'>
             <div className='flex items-center gap-2 border-b p-2'>
-              <img src={userPic} alt='profile' className='w-10 h-10 rounded-full cursor-pointer'></img>
+              <img src={userPic} alt='profile' className='w-10 h-10 rounded-full'></img>
               <div className='flex flex-col'>
                 <h1>{userName}</h1>
                 <span className='text-sm text-blue-600'>Admin</span>

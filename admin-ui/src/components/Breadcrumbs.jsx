@@ -50,7 +50,10 @@ const Breadcrumbs = ({ fetchAdmins, searchQuery, setSearchQuery, setSelectedCate
           <ChevronRight className="h-5 w-5 text-gray-400" />
         )}
         {pathnames.map((name, index) => {
-          const routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
+          let routeTo = `/${pathnames.slice(0, index + 1).join("/")}`;
+          if(routeTo==='/admin'){
+            routeTo='/admin/dashboard'
+          }
           const isLast = index === pathnames.length - 1;
           const formattedName = name
             .replace(/-/g, " ")
