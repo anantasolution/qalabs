@@ -86,15 +86,7 @@ function SideNavbar({ toggle }) {
           } h-[89%] flex bg-white flex-col z-50 transition-all duration-500 px-4 py-6`}
       >
         <div className="flex flex-col gap-4">
-          {toggle || innerToggle ? (
-            <span className="text-xs text-gray-500 font-semibold">
-              NAVIGATION
-            </span>
-          ) : (
-            <span className="flex items-center justify-center">
-              <Ellipsis></Ellipsis>
-            </span>
-          )}
+          
           {toggle || innerToggle ? (
             <div
               onClick={() => handleNavigate("dashboard")}
